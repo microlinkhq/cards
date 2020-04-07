@@ -1,0 +1,101 @@
+{
+  "name": "og-link",
+  "description": "shareable images playground",
+  "homepage": "https://nicedoc.io/microlinkhq/og-link",
+  "version": "0.0.0",
+  "main": "index.js",
+  "author": {
+    "name": "microlink.io",
+    "email": "hello@microlink.io",
+    "url": "https://microlink.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/microlinkhq/og-link.git"
+  },
+  "bugs": {
+    "url": "https://github.com/microlinkhq/og-link/issues"
+  },
+  "keywords": [
+    "img",
+    "meta",
+    "metatags",
+    "og-image",
+    "opengraph",
+    "seo",
+    "share"
+  ],
+  "dependencies": {
+    "next": "~9.3.4",
+    "polished": "~3.5.1",
+    "react": "~16.13.1",
+    "react-dom": "~16.13.1",
+    "react-live": "~2.2.2",
+    "rebass": "~4.0.7",
+    "styled-components": "~5.0.1",
+    "styled-system": "~5.1.5"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "latest",
+    "@commitlint/config-conventional": "latest",
+    "ava": "latest",
+    "conventional-github-releaser": "latest",
+    "coveralls": "latest",
+    "finepack": "latest",
+    "git-authors-cli": "latest",
+    "git-dirty": "latest",
+    "husky": "latest",
+    "lint-staged": "latest",
+    "npm-check-updates": "latest",
+    "nyc": "latest",
+    "prettier-standard": "latest",
+    "standard": "latest",
+    "standard-markdown": "latest",
+    "standard-version": "latest",
+    "babel-plugin-styled-components": "latest"
+  },
+  "engines": {
+    "node": ">= 10"
+  },
+  "scripts": {
+    "build": "next build",
+    "start": "next start",
+    "dev": "next",
+    "clean": "rm -rf node_modules",
+    "contributors": "(git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "standard-markdown README.md && standard",
+    "postrelease": "npm run release:tags && npm run release:github && npm publish",
+    "prerelease": "git-dirty && npm run update:check && npm test && npm run contributors",
+    "pretest": "npm run lint",
+    "release": "git-authors-cli finepack && git add package.json && standard-version -a",
+    "release:github": "conventional-github-releaser -p angular",
+    "release:tags": "git push --follow-tags origin master",
+    "test": "nyc ava",
+    "update": "ncu -u",
+    "update:check": "ncu -- --error-level 2"
+  },
+  "license": "MIT",
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "package.json": [
+      "finepack"
+    ],
+    "*.js": [
+      "prettier-standard"
+    ],
+    "*.md": [
+      "standard-markdown"
+    ]
+  }
+}
