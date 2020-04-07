@@ -1,6 +1,7 @@
 import App from 'next/app'
 import React from 'react'
-import { ThemeProvider, createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
+import { ThemeProvider } from 'theme-ui'
 import theme from '@themes/base'
 
 const GlobalStylesheet = createGlobalStyle`
@@ -14,13 +15,6 @@ const GlobalStylesheet = createGlobalStyle`
   #__next {
     font-family: system-ui, sans-serif;
     line-height: 1.5;
-  }
-
-  :root {
-    --aside-width: 30%;
-    --aside-color: #2a2734;
-    --editor-width: 1200px;
-    --editor-height: 630px;
   }
 `
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import theme from '@themes/base'
-import { Text, Box } from 'rebass'
+import { Text, Box } from 'theme-ui'
 import Center from '@components/center'
 
 import {
@@ -113,29 +113,36 @@ const Background = styled(Center)`
 
 const scope = { Background, Text, styled }
 
-const LivePreviewWrapper = styled(Box)`
-  width: var(--editor-width);
-  height: var(--editor-height);
-`
+const LivePreviewWrapper = styled(Box)``
 
 LivePreviewWrapper.defaultProps = {
-  margin: '0 auto',
-  marginTop: 6
+  sx: {
+    width: '100%',
+    px: [3, 3, 3, 3],
+    height: ['315px', '315px', '630px', '630px'],
+    maxWidth: ['600px', '600px', '1200px', '1200px'],
+    margin: 'auto'
+  }
 }
 
 export const LiveError = styled(BaseError)`
   position: relative;
-  margin: ${theme.space[4]} auto 0 auto;
-  padding: 1rem;
+  margin: auto;
+  padding: ${theme.space[3]};
   display: block;
   background: #ff5555;
   color: #f8f8f2;
   white-space: pre-wrap;
   text-align: left;
-  font-size: 0.9em;
-  font-family: 'Source Code Pro', monospace;
+  font-size: ${theme.fontSizes[2]};
+  font-family: ${theme.fonts.mono};
   bottom: 0;
   width: calc(100% - ${theme.space[5]});
+
+  @media screen and (min-width: ${theme.breakpoints[2]}) {
+    position: absolute;
+    width: 70%;
+  }
 `
 
 export const LivePreview = styled(BasePreview)``

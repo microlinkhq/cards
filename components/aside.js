@@ -1,15 +1,14 @@
 import styled from 'styled-components'
-import { Box } from 'rebass'
+import { Flex } from 'theme-ui'
 
-const Aside = styled(Box)`
-  width: var(--aside-width);
-  background: var(--aside-color);
-  display: flex;
-  flex-direction: column;
-`
+const Aside = styled(Flex)``
 
 Aside.defaultProps = {
-  as: 'aside'
+  sx: {
+    flexDirection: 'column',
+    bg: '#2a2734',
+    width: ['30%', '30%', '30%', '30%']
+  }
 }
 
 export default Aside

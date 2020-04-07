@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Flex } from 'rebass'
+import { Box, Flex } from 'theme-ui'
 import Aside from '@components/aside'
 import Main from '@components/main'
 
@@ -15,15 +15,19 @@ const Container = styled(Flex)`
   height: 100vh;
 `
 
-const codeTitle = `<Background bg='black' color='white'>
+const codeTitle = `<Background sx={{ bg: 'black', color: 'white' }}>
   <Text
-    fontSize={6}
-    fontWeight='bold'
+    sx={{
+      fontSize: 6,
+      fontWeight: 'bold'
+    }}
     children='Culture of Shipping'
   />
   <Text
-    fontSize={3}
-    fontWeight='lighter'
+    sx={{
+      fontSize: 3,
+      fontWeight: 'lighter'
+    }}
     children='when dreams come true'
   />
 </Background>`
@@ -33,12 +37,8 @@ export default () => {
     <LiveProvider code={codeTitle}>
       <Container>
         <Main>
-          {/* <PreviewContainer> */}
-          {/* <Center p={3}> */}
           <LivePreview />
           <LiveError />
-          {/* </Center> */}
-          {/* </PreviewContainer> */}
         </Main>
         <Aside p={3}>
           <Box as='section' height='100%'>

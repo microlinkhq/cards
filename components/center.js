@@ -1,12 +1,10 @@
 import styled from 'styled-components'
-import { Flex } from 'rebass'
+import { Flex } from 'theme-ui'
 
-const Center = styled(Flex)``
-
-Center.defaultProps = {
-  alignItems: 'center',
-  justifyContent: 'center',
-  flexDirection: 'column'
-}
+const Center = styled(Flex)`
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`
 
 export default Center

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Box } from 'rebass'
+import { Box } from 'theme-ui'
 
 const Main = styled(Box)`
   /* Take the remaining width */
