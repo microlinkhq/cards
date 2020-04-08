@@ -1,28 +1,10 @@
-import { useState, useEffect } from 'react'
-import { encode, decode } from 'qss'
-import Router from 'next/router'
-
-const isSSR = typeof window === 'undefined'
-
-const fromLocation = isSSR
-  ? () => ({})
-  : () => decode(window.location.search.substring(1))
-
-const condition = isSSR ? [] : [window.location.search]
+import { useRouter } from 'next/router'
 
 export default () => {
-  const [query, setQuery] = useState(fromLocation())
-
-  useEffect(() => {
-    const query = fromLocation()
-    setQuery(query)
-  }, condition)
-
+  const router = useRouter()
   const set = obj => {
-    const newQuery = { ...query, ...obj }
-    const pathname = window.location.pathname
-    return Router.push({ pathname, query: encode(newQuery) })
+    const query = { ...router.query, ...obj }
+    return router.replace({ pathname: router.pathname, query })
   }
-
-  return [query, set]
+  return [router.query, set]
 }

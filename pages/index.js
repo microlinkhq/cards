@@ -1,7 +1,7 @@
 import { marshall, unmarshall } from '@lib/compress-json'
 import * as templates from '@components/templates'
 import { Text, Select, Box, Flex } from 'theme-ui'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { debounce } from 'throttle-debounce'
 import styled from 'styled-components'
 
@@ -31,11 +31,9 @@ const sync = debounce(300, ({ setQuery, newCode }) =>
 export default () => {
   const [query, setQuery] = useQueryState()
   const [preset] = useState(query.preset || DEFAULT_PRESET)
-  const [code, setCode] = useState(templates[preset])
-
-  useEffect(() => {
-    if (query.s) setCode(unmarshall(query.s))
-  }, [])
+  const [code, setCode] = useState(() => {
+    return query.s ? unmarshall(query.s) : templates[preset]
+  })
 
   const handleChange = newCode => {
     setCode(newCode)
@@ -94,4 +92,10 @@ export default () => {
       </Container>
     </LiveProvider>
   )
+}
+
+export async function getServerSideProps () {
+  return {
+    props: {}
+  }
 }
