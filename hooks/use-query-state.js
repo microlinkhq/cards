@@ -1,6 +1,9 @@
+import stringify from 'fast-safe-stringify'
 import { useState, useEffect } from 'react'
 import { encode, decode } from 'qss'
 import Router from 'next/router'
+
+const eq = (str1, str2) => stringify(str1) === stringify(str2)
 
 const isSSR = typeof window === 'undefined'
 
@@ -14,8 +17,8 @@ export default () => {
   const [query, setQuery] = useState(fromLocation())
 
   useEffect(() => {
-    const query = fromLocation()
-    setQuery(query)
+    const newQuery = fromLocation()
+    if (!eq(query, newQuery)) setQuery(newQuery)
   }, condition)
 
   const set = obj => {
