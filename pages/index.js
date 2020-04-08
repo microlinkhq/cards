@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import { Text, Select, Box, Flex } from 'theme-ui'
+import { marshall, unmarshall } from '@lib/compress-json'
 import * as templates from '@components/templates'
+import { Text, Select, Box, Flex } from 'theme-ui'
+import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+
+import useQueryState from '@hooks/use-query-state'
+
 import Aside from '@components/aside'
 import Main from '@components/main'
 import pkg from '../package.json'
@@ -20,11 +24,21 @@ const Container = styled(Flex)`
 const DEFAULT_PRESET = 'simple'
 
 export default () => {
-  const [preset] = useState(DEFAULT_PRESET)
-  const Template = templates[preset]
+  const [query, setQuery] = useQueryState()
+  const [preset] = useState(query.preset || DEFAULT_PRESET)
+  const [code, setCode] = useState(templates[preset])
+
+  useEffect(() => {
+    if (query.s) setCode(unmarshall(decodeURIComponent(query.s)))
+  }, [])
+
+  const handleChange = newCode => {
+    setCode(newCode)
+    setQuery({ s: marshall(newCode) })
+  }
 
   return (
-    <LiveProvider code={Template}>
+    <LiveProvider code={code}>
       <Container>
         <Main>
           <LivePreview />
@@ -69,8 +83,7 @@ export default () => {
             </Box>
           </Flex>
           <Box as='section'>
-            {/* <StyledTextarea onChange={handleChange} value={code} /> */}
-            <LiveEditor />
+            <LiveEditor onChange={handleChange} />
           </Box>
         </Aside>
       </Container>
