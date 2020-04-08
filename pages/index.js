@@ -29,7 +29,7 @@ export default () => {
   const [code, setCode] = useState(templates[preset])
 
   useEffect(() => {
-    if (query.s) setCode(unmarshall(decodeURIComponent(query.s)))
+    if (query.s) setCode(unmarshall(query.s))
   }, [])
 
   const handleChange = newCode => {

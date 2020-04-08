@@ -28,6 +28,7 @@
   "dependencies": {
     "babel-plugin-macros": "~2.8.0",
     "inlinejsx.macro": "~1.0.3",
+    "msgpack5": "~4.2.1",
     "next": "~9.3.4",
     "prettier": "~2.0.4",
     "qss": "~2.0.3",
@@ -35,7 +36,8 @@
     "react-dom": "~16.13.1",
     "react-live": "~2.2.2",
     "styled-components": "~5.0.1",
-    "theme-ui": "~0.3.1"
+    "theme-ui": "~0.3.1",
+    "urlsafe-base64": "~1.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
