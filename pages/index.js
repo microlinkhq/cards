@@ -2,6 +2,7 @@ import { marshall, unmarshall } from '@lib/compress-json'
 import * as templates from '@components/templates'
 import { Text, Select, Box, Flex } from 'theme-ui'
 import React, { useState, useEffect } from 'react'
+import { debounce } from 'throttle-debounce'
 import styled from 'styled-components'
 
 import useQueryState from '@hooks/use-query-state'
@@ -23,6 +24,10 @@ const Container = styled(Flex)`
 
 const DEFAULT_PRESET = 'simple'
 
+const sync = debounce(300, ({ setQuery, newCode }) =>
+  setQuery({ s: marshall(newCode) })
+)
+
 export default () => {
   const [query, setQuery] = useQueryState()
   const [preset] = useState(query.preset || DEFAULT_PRESET)
@@ -34,7 +39,7 @@ export default () => {
 
   const handleChange = newCode => {
     setCode(newCode)
-    setQuery({ s: marshall(newCode) })
+    sync({ setQuery, newCode })
   }
 
   return (

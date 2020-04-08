@@ -21,7 +21,7 @@ export default () => {
   const set = obj => {
     const newQuery = { ...query, ...obj }
     const pathname = window.location.pathname
-    Router.push({ pathname, query: encode(newQuery) })
+    return Router.push({ pathname, query: encode(newQuery) })
   }
 
   return [query, set]
