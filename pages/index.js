@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Box, Flex } from 'theme-ui'
+import { Text, Select, Box, Flex } from 'theme-ui'
 import Aside from '@components/aside'
 import Main from '@components/main'
+import pkg from '../package.json'
 
 import {
   LiveProvider,
@@ -32,7 +33,11 @@ const codeTitle = `<Background sx={{ bg: 'black', color: 'white' }}>
   />
 </Background>`
 
+const DEFAULT_PRESET = 'simple'
+
 export default () => {
+  const [preset, setPreset] = useState(DEFAULT_PRESET)
+
   return (
     <LiveProvider code={codeTitle}>
       <Container>
@@ -40,40 +45,48 @@ export default () => {
           <LivePreview />
           <LiveError />
         </Main>
-        <Aside p={3}>
-          <Box as='section' height='100%'>
-            {/* {pkg.name} v{pkg.version} */}
+        <Aside>
+          <Flex
+            as='section'
+            sx={{
+              borderBottom: '1px solid #6c6783',
+              color: '#6c6783',
+              bg: '#2a2734',
+              p: 3,
+              justifyContent: 'space-between',
+              alignItems: 'center'
+            }}
+          >
+            <Flex
+              sx={{
+                alignItems: 'center'
+              }}
+            >
+              <Select
+                defaultValue={DEFAULT_PRESET}
+                sx={{
+                  fontSize: 1,
+                  width: '8rem',
+                  p: '2px 8px'
+                }}
+              >
+                <option>{DEFAULT_PRESET}</option>
+              </Select>
+            </Flex>
+            <Box>
+              <Text
+                sx={{
+                  fontSize: 1
+                }}
+              >
+                v{pkg.version}
+              </Text>
+            </Box>
+          </Flex>
+          <Box as='section'>
+            {/* <StyledTextarea onChange={handleChange} value={code} /> */}
             <LiveEditor />
           </Box>
-          {/* <Box bg='white' as='section' height='30%' p={3}>
-            <Text fontSize={1}>og-image generator v{pkg.version}</Text>
-            <Text mt={3} fontSize={1}>
-              <Text as='span' fontWeight='bold'>
-                fontSizes
-              </Text>
-              :{' [ '}
-              {theme.fontSizes.map((value, index) => (
-                <Text key={value} as='span'>
-                  {value}
-                  {index === theme.fontSizes.length - 1 ? '' : ', '}
-                </Text>
-              ))}
-              {' ]'}
-            </Text>
-            <Text mt={2} fontSize={1}>
-              <Text as='span' fontWeight='bold'>
-                space
-              </Text>
-              {': [ '}
-              {theme.space.map((value, index) => (
-                <Text key={value} as='span'>
-                  {value}
-                  {index === theme.space.length - 1 ? '' : ', '}
-                </Text>
-              ))}
-              {' ]'}
-            </Text>
-          </Box> */}
         </Aside>
       </Container>
     </LiveProvider>
