@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Text, Select, Box, Flex } from 'theme-ui'
+import * as templates from '@components/templates'
 import Aside from '@components/aside'
 import Main from '@components/main'
 import pkg from '../package.json'
@@ -16,30 +17,14 @@ const Container = styled(Flex)`
   height: 100vh;
 `
 
-const codeTitle = `<Background sx={{ bg: 'black', color: 'white' }}>
-  <Text
-    sx={{
-      fontSize: 6,
-      fontWeight: 'bold'
-    }}
-    children='Culture of Shipping'
-  />
-  <Text
-    sx={{
-      fontSize: 3,
-      fontWeight: 'lighter'
-    }}
-    children='when dreams come true'
-  />
-</Background>`
-
 const DEFAULT_PRESET = 'simple'
 
 export default () => {
-  const [preset, setPreset] = useState(DEFAULT_PRESET)
+  const [preset] = useState(DEFAULT_PRESET)
+  const Template = templates[preset]
 
   return (
-    <LiveProvider code={codeTitle}>
+    <LiveProvider code={Template}>
       <Container>
         <Main>
           <LivePreview />

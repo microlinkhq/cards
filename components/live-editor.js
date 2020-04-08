@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import theme from '@themes/base'
-import { Text, Box } from 'theme-ui'
-import Center from '@components/center'
+import { Box } from 'theme-ui'
+import * as scope from '@components/templates/scope'
 
 import {
   LiveProvider as BaseProvider,
@@ -106,13 +106,6 @@ const editorTheme = {
   ]
 }
 
-const Background = styled(Center)`
-  height: inherit;
-  width: inherit;
-`
-
-const scope = { Background, Text, styled }
-
 const LivePreviewWrapper = styled(Box)``
 
 LivePreviewWrapper.defaultProps = {
@@ -145,7 +138,12 @@ export const LiveError = styled(BaseError)`
   }
 `
 
-export const LivePreview = styled(BasePreview)``
+export const LivePreview = styled(BasePreview)`
+  > div {
+    height: inherit;
+    width: inherit;
+  }
+`
 
 LivePreview.defaultProps = {
   Component: LivePreviewWrapper

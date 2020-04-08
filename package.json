@@ -26,7 +26,10 @@
     "share"
   ],
   "dependencies": {
+    "babel-plugin-macros": "~2.8.0",
+    "inlinejsx.macro": "~1.0.3",
     "next": "~9.3.4",
+    "prettier": "~2.0.4",
     "react": "~16.13.1",
     "react-dom": "~16.13.1",
     "react-live": "~2.2.2",

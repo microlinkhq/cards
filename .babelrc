@@ -1,4 +1,4 @@
 {
   "presets": ["next/babel"],
-  "plugins": [["babel-plugin-styled-components", { "ssr": true }]]
+  "plugins": ["macros", ["babel-plugin-styled-components", { "ssr": true }]]
 }
