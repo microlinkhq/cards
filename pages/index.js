@@ -8,6 +8,7 @@ import styled from 'styled-components'
 import themeBase from '@themes/base'
 import Main from '@components/main'
 import decamelize from 'decamelize'
+
 import Cycled from 'cycled'
 
 import pkg from '../package.json'
@@ -74,6 +75,7 @@ export default () => {
           <LiveError />
         </Main>
         <Flex
+          as='aside'
           sx={{
             bg: 'plain.backgroundColor',
             flexDirection: 'column',
@@ -131,15 +133,15 @@ export default () => {
               </Text>
             </Box>
           </Flex>
-          <Flex as='section' sx={{ height: '100%', flexDirection: 'column' }}>
-            <Box sx={{ p: 3, flexGrow: 1 }} as='section'>
+          <Flex sx={{ height: '100%', flexDirection: 'column' }}>
+            <Box as='section' sx={{ height: '60%', p: 3 }}>
               <LiveEditor onChange={handleCode} />
             </Box>
             <Box
               as='section'
               sx={{
+                height: '25%',
                 p: 3,
-                height: '30%',
                 bg: 'plain.backgroundColor',
                 borderTop: '1px solid',
                 borderColor: 'plain.color'
@@ -161,9 +163,14 @@ export default () => {
             </Box>
             <Flex
               as='footer'
-              sx={{ color: 'plain.color', p: 3, justifyContent: 'flex-end' }}
+              sx={{
+                height: '5%',
+                color: 'plain.color',
+                p: 3,
+                justifyContent: 'flex-end'
+              }}
             >
-              <Text>v{pkg.version}</Text>
+              <Text sx={{ fontSize: 1 }}>v{pkg.version}</Text>
             </Flex>
           </Flex>
         </Flex>
