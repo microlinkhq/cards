@@ -56,10 +56,12 @@ export default () => {
   )
 
   useEffect(() => {
-    if (!isEmpty(query)) {
-      const { s, ...queryVariables } = query
+    if (isEmpty(query)) {
+      setQuery({ preview: true })
+    } else {
+      const { p, preview, ...queryVariables } = query
       setQueryVariables({ ...DEFAULT_QUERY_VARIABLES, ...queryVariables })
-      if (s) setCode(unmarshall(s))
+      if (p) setCode(unmarshall(p))
     }
     setIsLoading(false)
   }, [])
@@ -79,8 +81,9 @@ export default () => {
   }
 
   if (colorMode === 'default') setColorMode(DEFAULT_COLOR_MODE)
-
   if (isLoading) return null
+
+  const isPreview = query.preview
 
   return (
     <LiveProvider
@@ -90,110 +93,112 @@ export default () => {
     >
       <Container>
         <Main>
-          <LivePreview />
+          <LivePreview isPreview={isPreview} />
           <LiveError />
         </Main>
-        <Flex
-          as='aside'
-          sx={{
-            bg: 'plain.backgroundColor',
-            flexDirection: 'column',
-            width: ['30%', '30%', '30%', '30%'],
-            fontSize: 2,
-            fontFamily: 'mono',
-            fontWeight: 'light'
-          }}
-        >
+        {isPreview && (
           <Flex
-            as='header'
+            as='aside'
             sx={{
-              borderBottom: '1px solid',
-              borderColor: 'plain.color',
               bg: 'plain.backgroundColor',
-              color: 'plain.color',
-              p: 3,
-              justifyContent: 'space-between',
-              alignItems: 'center'
+              flexDirection: 'column',
+              width: ['30%', '30%', '30%', '30%'],
+              fontSize: 2,
+              fontFamily: 'mono',
+              fontWeight: 'light'
             }}
           >
             <Flex
+              as='header'
               sx={{
+                borderBottom: '1px solid',
+                borderColor: 'plain.color',
+                bg: 'plain.backgroundColor',
+                color: 'plain.color',
+                p: 3,
+                justifyContent: 'space-between',
                 alignItems: 'center'
               }}
             >
-              <Select
-                defaultValue={DEFAULT_PRESET}
+              <Flex
                 sx={{
-                  fontSize: 1,
-                  width: '8rem',
-                  p: '2px 8px'
+                  alignItems: 'center'
                 }}
               >
-                <option>{DEFAULT_PRESET}</option>
-              </Select>
-            </Flex>
-            <Box>
-              <Text
-                sx={{
-                  fontSize: 1
-                }}
-              >
-                <Button
+                <Select
+                  defaultValue={DEFAULT_PRESET}
                   sx={{
-                    bg: 'plain.color',
-                    color: 'plain.backgroundColor',
-                    fontSize: 0,
-                    ml: 2
+                    fontSize: 1,
+                    width: '8rem',
+                    p: '2px 8px'
                   }}
-                  onClick={() => setColorMode(nextMode())}
                 >
-                  {decamelize(colorMode, ' ')}
-                </Button>
-              </Text>
-            </Box>
-          </Flex>
-          <Flex sx={{ height: '100%', flexDirection: 'column' }}>
-            <Box as='section' sx={{ height: '60%', p: 3 }}>
-              <LiveEditor onChange={handleCode} />
-            </Box>
-            <Box
-              as='section'
-              sx={{
-                flexGrow: 1,
-                height: '25%',
-                p: 3,
-                bg: 'plain.backgroundColor',
-                borderTop: '1px solid',
-                borderColor: 'plain.color'
-              }}
-            >
-              <Textarea
+                  <option>{DEFAULT_PRESET}</option>
+                </Select>
+              </Flex>
+              <Box>
+                <Text
+                  sx={{
+                    fontSize: 1
+                  }}
+                >
+                  <Button
+                    sx={{
+                      bg: 'plain.color',
+                      color: 'plain.backgroundColor',
+                      fontSize: 0,
+                      ml: 2
+                    }}
+                    onClick={() => setColorMode(nextMode())}
+                  >
+                    {decamelize(colorMode, ' ')}
+                  </Button>
+                </Text>
+              </Box>
+            </Flex>
+            <Flex sx={{ height: '100%', flexDirection: 'column' }}>
+              <Box as='section' sx={{ height: '60%', p: 3 }}>
+                <LiveEditor onChange={handleCode} />
+              </Box>
+              <Box
+                as='section'
                 sx={{
-                  resize: 'none',
-                  caretColor: 'plain.color',
-                  padding: 0,
-                  outline: 0,
-                  border: 0,
-                  height: '100%',
-                  color: 'plain.color'
+                  flexGrow: 1,
+                  height: '25%',
+                  p: 3,
+                  bg: 'plain.backgroundColor',
+                  borderTop: '1px solid',
+                  borderColor: 'plain.color'
                 }}
-                defaultValue={JSON.stringify(queryVariables, null, 2)}
-                onChange={handleQueryVariables}
-              />
-            </Box>
-            <Flex
-              as='footer'
-              sx={{
-                height: '5%',
-                color: 'plain.color',
-                p: 3,
-                justifyContent: 'flex-end'
-              }}
-            >
-              <Text sx={{ fontSize: 1 }}>v{pkg.version}</Text>
+              >
+                <Textarea
+                  sx={{
+                    resize: 'none',
+                    caretColor: 'plain.color',
+                    padding: 0,
+                    outline: 0,
+                    border: 0,
+                    height: '100%',
+                    color: 'plain.color'
+                  }}
+                  defaultValue={JSON.stringify(queryVariables, null, 2)}
+                  onChange={handleQueryVariables}
+                />
+              </Box>
+              <Flex
+                as='footer'
+                sx={{
+                  height: '5%',
+                  color: 'plain.color',
+                  p: 3,
+                  justifyContent: 'flex-end'
+                }}
+              >
+                <Text sx={{ fontSize: 1 }}>v{pkg.version}</Text>
+              </Flex>
             </Flex>
           </Flex>
-        </Flex>
+        )}
       </Container>
     </LiveProvider>
   )

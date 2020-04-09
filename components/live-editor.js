@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import theme from '@themes/base'
+import theme, { toPx } from '@themes/base'
 import { Box } from 'theme-ui'
 import * as scope from '@components/templates/scope'
 
@@ -10,18 +10,34 @@ import {
   LivePreview as BasePreview
 } from 'react-live'
 
-import dracula from 'prism-react-renderer/themes/dracula'
+const BASE_HEIGHT = 441
+const BASE_WIDTH = 843
+const ratios = [1, 1.2, 1.5, 1.6]
 
-const LivePreviewWrapper = styled(Box)``
+const LivePreviewWrapper = styled('div')`
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  padding: ${({ isPreview }) => (isPreview ? theme.space[3] : 0)};
+  ${({ isPreview }) =>
+    !isPreview &&
+    `
+    ${ratios.reduce(
+      (acc, ratio, index) =>
+        acc +
+        `
+      @media screen and (min-width: ${theme.breakpoints[index]}) {
+        height: ${ratio * BASE_HEIGHT}px;
+        width: ${ratio * BASE_WIDTH}px;
+      }
+    `,
+      ''
+    )}
+  `}
+`
 
 LivePreviewWrapper.defaultProps = {
-  sx: {
-    width: '100%',
-    px: [3, 3, 3, 3],
-    height: ['315px', '315px', '630px', '630px'],
-    maxWidth: ['600px', '600px', '1200px', '1200px'],
-    margin: 'auto'
-  }
+  id: 'screenshot'
 }
 
 export const LiveError = styled(BaseError)`
@@ -59,7 +75,7 @@ const LiveProviderBase = styled(BaseProvider)``
 
 LiveProviderBase.defaultProps = {
   scope,
-  theme: dracula,
+  theme: undefined,
   noInline: false
 }
 
