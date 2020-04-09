@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import theme, { editorTheme } from '@themes/base'
+import theme from '@themes/base'
 import { Box } from 'theme-ui'
 import * as scope from '@components/templates/scope'
 

@@ -42,10 +42,10 @@ export default () => {
   const [query, setQuery] = useQueryState()
   const { theme, colorMode, setColorMode } = useThemeUI()
   const [preset] = useState(query.preset || DEFAULT_PRESET)
-  const [code, setCode] = useState(templates[preset])
+  const [code, setCode] = useState(templates[preset.split(' ')[1]])
   const [queryVariables, setQueryVariables] = useState({
-    headline: 'Culture of Shipping',
-    caption: 'when dreams come true'
+    headline: 'Add your headline',
+    caption: 'Add your caption'
   })
 
   useEffect(() => {
