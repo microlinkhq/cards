@@ -159,6 +159,7 @@ export default () => {
             <Box
               as='section'
               sx={{
+                flexGrow: 1,
                 height: '25%',
                 p: 3,
                 bg: 'plain.backgroundColor',
