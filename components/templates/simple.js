@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 import Inline from 'inlinejsx.macro'
 import { Box, Text } from './scope'
 
@@ -18,14 +20,14 @@ export const simple = (
           fontSize: 6,
           fontWeight: 'bold'
         }}
-        children='Culture of Shipping'
+        children={headline}
       />
       <Text
         sx={{
           fontSize: 3,
           fontWeight: 'lighter'
         }}
-        children='when dreams come true'
+        children={caption}
       />
     </Box>
   </Inline>

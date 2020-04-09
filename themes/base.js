@@ -1,13 +1,38 @@
-// default theme theme
+import dracula from 'prism-react-renderer/themes/dracula'
+import duotoneDark from 'prism-react-renderer/themes/duotoneDark'
+import duotoneLight from 'prism-react-renderer/themes/duotoneLight'
+import github from 'prism-react-renderer/themes/github'
+import nightOwl from 'prism-react-renderer/themes/nightOwl'
+import nightOwlLight from 'prism-react-renderer/themes/nightOwlLight'
+import oceanicNext from 'prism-react-renderer/themes/oceanicNext'
+import palenight from 'prism-react-renderer/themes/palenight'
+import shadesOfPurple from 'prism-react-renderer/themes/shadesOfPurple'
+import ultramin from 'prism-react-renderer/themes/ultramin'
+import vsDark from 'prism-react-renderer/themes/vsDark'
 
 export const toPx = n => `${n}px`
 export const toEm = n => `${n}em`
+
+export const editorTheme = {
+  dracula,
+  duotoneDark,
+  duotoneLight,
+  github,
+  nightOwl,
+  nightOwlLight,
+  oceanicNext,
+  palenight,
+  shadesOfPurple,
+  ultramin,
+  vsDark
+}
 
 export const theme = {
   colors: {
     text: '#000',
     background: '#fff',
-    primary: '#33e'
+    primary: '#33e',
+    modes: editorTheme
   },
   fonts: {
     sans: "'Inter', sans-serif",
@@ -23,7 +48,12 @@ export const theme = {
     regular: 500,
     bold: 600
   },
-  space: [0, 4, 8, 16, 32, 64, 128, 256, 512].map(toPx)
+  space: [0, 4, 8, 16, 32, 64, 128, 256, 512].map(toPx),
+  styles: {
+    textarea: {
+      ...nightOwl
+    }
+  }
 }
 
 export default theme

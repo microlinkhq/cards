@@ -1,14 +1,15 @@
+import { Button, Textarea, Text, Select, Box, Flex, useThemeUI } from 'theme-ui'
 import { marshall, unmarshall } from '@lib/compress-json'
 import * as templates from '@components/templates'
-import { Text, Select, Box, Flex } from 'theme-ui'
+import useQueryState from '@hooks/use-query-state'
 import React, { useState, useEffect } from 'react'
 import { debounce } from 'throttle-debounce'
 import styled from 'styled-components'
-
-import useQueryState from '@hooks/use-query-state'
-
-import Aside from '@components/aside'
+import themeBase from '@themes/base'
 import Main from '@components/main'
+import decamelize from 'decamelize'
+import Cycled from 'cycled'
+
 import pkg from '../package.json'
 
 import {
@@ -22,40 +23,73 @@ const Container = styled(Flex)`
   height: 100vh;
 `
 
-const DEFAULT_PRESET = 'simple'
+const DEFAULT_PRESET = 'preset: simple'
 
-const sync = debounce(300, ({ setQuery, newCode }) =>
+const syncCodeQuery = debounce(300, ({ setQuery, newCode }) =>
   setQuery({ s: marshall(newCode) })
 )
 
+const syncQueryVariables = debounce(0, ({ setQueryVariables, payload }) => {
+  try {
+    setQueryVariables(JSON.parse(payload))
+  } catch (_) {}
+})
+
+const cycledMode = new Cycled(Object.keys(themeBase.colors.modes))
+const nextMode = () => cycledMode.next()
+
 export default () => {
   const [query, setQuery] = useQueryState()
+  const { theme, colorMode, setColorMode } = useThemeUI()
   const [preset] = useState(query.preset || DEFAULT_PRESET)
   const [code, setCode] = useState(templates[preset])
+  const [queryVariables, setQueryVariables] = useState({
+    headline: 'Culture of Shipping',
+    caption: 'when dreams come true'
+  })
 
   useEffect(() => {
     if (query.s) setCode(unmarshall(query.s))
   }, [])
 
-  const handleChange = newCode => {
+  const handleCode = newCode => {
     setCode(newCode)
-    sync({ setQuery, newCode })
+    syncCodeQuery({ setQuery, newCode })
+  }
+
+  const handleQueryVariables = event => {
+    const payload = event.target.value
+    syncQueryVariables({ setQueryVariables, payload })
   }
 
   return (
-    <LiveProvider code={code}>
+    <LiveProvider
+      theme={theme.colors.modes[colorMode]}
+      queryVariables={queryVariables}
+      code={code}
+    >
       <Container>
         <Main>
           <LivePreview />
           <LiveError />
         </Main>
-        <Aside>
+        <Flex
+          sx={{
+            bg: 'plain.backgroundColor',
+            flexDirection: 'column',
+            width: ['30%', '30%', '30%', '30%'],
+            fontSize: 2,
+            fontFamily: 'mono',
+            fontWeight: 'light'
+          }}
+        >
           <Flex
-            as='section'
+            as='header'
             sx={{
-              borderBottom: '1px solid #6c6783',
-              color: '#6c6783',
-              bg: '#2a2734',
+              borderBottom: '1px solid',
+              borderColor: 'plain.color',
+              bg: 'plain.backgroundColor',
+              color: 'plain.color',
               p: 3,
               justifyContent: 'space-between',
               alignItems: 'center'
@@ -83,14 +117,56 @@ export default () => {
                   fontSize: 1
                 }}
               >
-                v{pkg.version}
+                <Button
+                  sx={{
+                    bg: 'plain.color',
+                    color: 'plain.backgroundColor',
+                    fontSize: 0,
+                    ml: 2
+                  }}
+                  onClick={() => setColorMode(nextMode())}
+                >
+                  {decamelize(colorMode, ' ')}
+                </Button>
               </Text>
             </Box>
           </Flex>
-          <Box as='section'>
-            <LiveEditor onChange={handleChange} />
-          </Box>
-        </Aside>
+          <Flex as='section' sx={{ height: '100%', flexDirection: 'column' }}>
+            <Box sx={{ p: 3, flexGrow: 1 }} as='section'>
+              <LiveEditor onChange={handleCode} />
+            </Box>
+            <Box
+              as='section'
+              sx={{
+                p: 3,
+                height: '30%',
+                bg: 'plain.backgroundColor',
+                borderTop: '1px solid',
+                borderColor: 'plain.color'
+              }}
+            >
+              <Textarea
+                sx={{
+                  resize: 'none',
+                  caretColor: 'plain.color',
+                  padding: 0,
+                  outline: 0,
+                  border: 0,
+                  height: '100%',
+                  color: 'plain.color'
+                }}
+                defaultValue={JSON.stringify(queryVariables, null, 2)}
+                onChange={handleQueryVariables}
+              />
+            </Box>
+            <Flex
+              as='footer'
+              sx={{ color: 'plain.color', p: 3, justifyContent: 'flex-end' }}
+            >
+              <Text>v{pkg.version}</Text>
+            </Flex>
+          </Flex>
+        </Flex>
       </Container>
     </LiveProvider>
   )

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import theme from '@themes/base'
+import theme, { editorTheme } from '@themes/base'
 import { Box } from 'theme-ui'
 import * as scope from '@components/templates/scope'
 
@@ -10,101 +10,7 @@ import {
   LivePreview as BasePreview
 } from 'react-live'
 
-const editorTheme = {
-  plain: {
-    backgroundColor: '#2a2734',
-    color: '#9a86fd'
-  },
-  styles: [
-    {
-      types: ['comment', 'prolog', 'doctype', 'cdata', 'punctuation'],
-      style: {
-        color: '#6c6783'
-      }
-    },
-    {
-      types: ['namespace'],
-      style: {
-        opacity: 0.7
-      }
-    },
-    {
-      types: ['tag', 'operator', 'number'],
-      style: {
-        color: '#e09142'
-      }
-    },
-    {
-      types: ['property', 'function'],
-      style: {
-        color: '#9a86fd'
-      }
-    },
-    {
-      types: ['tag-id', 'selector', 'atrule-id'],
-      style: {
-        color: '#eeebff'
-      }
-    },
-    {
-      types: ['attr-name'],
-      style: {
-        color: '#c4b9fe'
-      }
-    },
-    {
-      types: [
-        'boolean',
-        'string',
-        'entity',
-        'url',
-        'attr-value',
-        'keyword',
-        'control',
-        'directive',
-        'unit',
-        'statement',
-        'regex',
-        'at-rule',
-        'placeholder',
-        'variable'
-      ],
-      style: {
-        color: '#ffcc99'
-      }
-    },
-    {
-      types: ['deleted'],
-      style: {
-        textDecorationLine: 'line-through'
-      }
-    },
-    {
-      types: ['inserted'],
-      style: {
-        textDecorationLine: 'underline'
-      }
-    },
-    {
-      types: ['italic'],
-      style: {
-        fontStyle: 'italic'
-      }
-    },
-    {
-      types: ['important', 'bold'],
-      style: {
-        fontWeight: 'bold'
-      }
-    },
-    {
-      types: ['important'],
-      style: {
-        color: '#c4b9fe'
-      }
-    }
-  ]
-}
+import dracula from 'prism-react-renderer/themes/dracula'
 
 const LivePreviewWrapper = styled(Box)``
 
@@ -149,19 +55,27 @@ LivePreview.defaultProps = {
   Component: LivePreviewWrapper
 }
 
-export const LiveProvider = styled(BaseProvider)``
+const LiveProviderBase = styled(BaseProvider)``
 
-LiveProvider.defaultProps = {
+LiveProviderBase.defaultProps = {
   scope,
-  theme: editorTheme,
+  theme: dracula,
   noInline: false
 }
 
+export const LiveProvider = ({ queryVariables, ...props }) => {
+  const extendedScope = { ...scope, ...queryVariables }
+  return <LiveProviderBase {...props} scope={extendedScope} />
+}
+
 export const LiveEditor = styled(BaseEditor)`
-  font-size: ${theme.fontSizes[2]};
-  font-family: ${theme.fonts.mono};
-  font-weight: ${theme.fontWeights.light};
   overflow: auto;
+  height: 100%;
+
+  pre,
+  textarea {
+    padding: 0 !important;
+  }
 
   textarea:focus {
     outline: none;
