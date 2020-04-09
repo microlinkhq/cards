@@ -25,6 +25,8 @@ const Container = styled(Flex)`
   height: 100vh;
 `
 
+const DEFAULT_COLOR_MODE = 'github'
+
 const DEFAULT_PRESET = 'preset: simple'
 
 const DEFAULT_QUERY_VARIABLES = {
@@ -75,6 +77,8 @@ export default () => {
       updateUrl({ setQuery, code, queryVariables: json })
     } catch (_) {}
   }
+
+  if (colorMode === 'default') setColorMode(DEFAULT_COLOR_MODE)
 
   if (isLoading) return null
 
