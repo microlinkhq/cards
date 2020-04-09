@@ -3,9 +3,10 @@ import { marshall, unmarshall } from '@lib/compress-json'
 import * as templates from '@components/templates'
 import useQueryState from '@hooks/use-query-state'
 import React, { useState, useEffect } from 'react'
-import { debounce } from 'throttle-debounce'
 import styled from 'styled-components'
+import debounce from '@lib/debounce'
 import themeBase from '@themes/base'
+import isEmpty from '@lib/is-empty'
 import Main from '@components/main'
 import decamelize from 'decamelize'
 
@@ -26,14 +27,16 @@ const Container = styled(Flex)`
 
 const DEFAULT_PRESET = 'preset: simple'
 
-const syncCodeQuery = debounce(300, ({ setQuery, newCode }) =>
-  setQuery({ s: marshall(newCode) })
-)
+const DEFAULT_QUERY_VARIABLES = {
+  headline: 'Add your headline',
+  caption: 'Add your caption'
+}
 
-const syncQueryVariables = debounce(0, ({ setQueryVariables, payload }) => {
-  try {
-    setQueryVariables(JSON.parse(payload))
-  } catch (_) {}
+const updateUrl = debounce(({ setQuery, code, queryVariables }) => {
+  setQuery({
+    s: marshall(code),
+    ...queryVariables
+  })
 })
 
 const cycledMode = new Cycled(Object.keys(themeBase.colors.modes))
@@ -43,25 +46,37 @@ export default () => {
   const [query, setQuery] = useQueryState()
   const { theme, colorMode, setColorMode } = useThemeUI()
   const [preset] = useState(query.preset || DEFAULT_PRESET)
-  const [code, setCode] = useState(templates[preset.split(' ')[1]])
-  const [queryVariables, setQueryVariables] = useState({
-    headline: 'Add your headline',
-    caption: 'Add your caption'
-  })
+  const presetName = preset.split(' ')[1]
+  const [code, setCode] = useState(templates[presetName])
+  const [isLoading, setIsLoading] = useState(true)
+  const [queryVariables, setQueryVariables] = useState(
+    isEmpty(query) ? DEFAULT_QUERY_VARIABLES : query
+  )
 
   useEffect(() => {
-    if (query.s) setCode(unmarshall(query.s))
+    if (!isEmpty(query)) {
+      const { s, ...queryVariables } = query
+      setQueryVariables({ ...DEFAULT_QUERY_VARIABLES, ...queryVariables })
+      if (s) setCode(unmarshall(s))
+    }
+    setIsLoading(false)
   }, [])
 
   const handleCode = newCode => {
     setCode(newCode)
-    syncCodeQuery({ setQuery, newCode })
+    updateUrl({ setQuery, code, queryVariables })
   }
 
   const handleQueryVariables = event => {
     const payload = event.target.value
-    syncQueryVariables({ setQueryVariables, payload })
+    try {
+      const json = JSON.parse(payload)
+      setQueryVariables(json)
+      updateUrl({ setQuery, code, queryVariables: json })
+    } catch (_) {}
   }
+
+  if (isLoading) return null
 
   return (
     <LiveProvider

@@ -41,7 +41,6 @@
     "react-live": "~2.2.2",
     "styled-components": "~5.0.1",
     "theme-ui": "~0.3.1",
-    "throttle-debounce": "~2.1.0",
     "urlsafe-base64": "~1.0.0"
   },
   "devDependencies": {
