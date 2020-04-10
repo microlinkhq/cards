@@ -5,7 +5,8 @@ module.exports = {
   exportTrailingSlash: true,
   exportPathMap: function () {
     return {
-      '/': { page: '/' }
+      '/': { page: '/' },
+      '/editor': { page: '/' }
     }
   }
 }
