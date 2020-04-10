@@ -1,19 +1,14 @@
 /* eslint-disable no-undef */
 
 import Inline from 'inlinejsx.macro'
-import { Link, Box, Text } from './scope'
+import { Flex, Image, Box, Text } from './scope'
 
 export const thePracticalDev = (
   <Inline>
     <>
-      <Link
-        href='https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap'
-        rel='stylesheet'
-      />
-      <Box
+      <Flex
         sx={{
           bg: '#EAF1F7',
-          display: 'flex',
           justifyContent: 'center',
           flexDirection: 'column'
         }}
@@ -26,17 +21,21 @@ export const thePracticalDev = (
             borderTopLeftRadius: '10px',
             borderTopRightRadius: '10px',
             padding: '30px',
+            border: '2px solid #000',
             boxShadow: '10px 10px 0px 0px rgba(0,0,0)'
           }}
         >
           <Text
             sx={{
-              fontFamily: 'Roboto',
+              pt: 4,
+              pb: 5,
               fontSize: 7,
+              lineHeight: 1,
               fontWeight: '700',
-              marginBottom: 6
+              fontFamily: 'mono',
+              maxWidth: '46rem'
             }}
-            children={'Learn Vuejs for free'}
+            children='Learn Web Development for Free'
           />
           <Box
             sx={{
@@ -52,19 +51,19 @@ export const thePracticalDev = (
             >
               <Image
                 sx={{
+                  border: '2px solid #000',
                   maxHeight: '50px',
                   borderRadius: '50%',
                   marginRight: '10px'
                 }}
-                src={'https://kikobeats.com/images/avatar-glitch.jpg'}
+                src='https://kikobeats.com/images/avatar-glitch.jpg'
               />
               <Text
                 sx={{
-                  fontFamily: 'Roboto',
-                  fontSize: 1,
+                  fontSize: 3,
                   fontWeight: '700'
                 }}
-                children={'Apr 9'}
+                children='Kiko Beats · Apr 29'
               />
             </Box>
 
@@ -84,6 +83,7 @@ export const thePracticalDev = (
                     sx={{
                       maxHeight: '50px'
                     }}
+                    key={image}
                     src={image}
                   />
                 )
@@ -91,7 +91,7 @@ export const thePracticalDev = (
             </Flex>
           </Box>
         </Box>
-      </Box>
+      </Flex>
     </>
   </Inline>
 )
