@@ -130,11 +130,10 @@ const GlobalStylesheet = createGlobalStyle`
     padding: 8px;
     height: 36px;
     margin: auto 8px auto -8px;
-    min-width: 5em;
     background: none;
     border: none;
     border-radius: 3px;
-    color: lightgreen;
+    color: white;
     font-weight: inherit;
     letter-spacing: 0.05em;
     font-size: 100%;
@@ -144,9 +143,6 @@ const GlobalStylesheet = createGlobalStyle`
     overflow: hidden;
     transition: background-color 200ms ease;
     outline: none;
-  }
-  .snackbar--button:hover {
-    background-color: rgba(0, 0, 0, 0.15);
   }
   .snackbar--button:focus:before {
     content: '';
