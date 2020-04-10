@@ -36,7 +36,7 @@ export const thePracticalDev = (
               fontWeight: '700',
               marginBottom: 6
             }}
-            children={headline}
+            children={'Learn Vuejs for free'}
           />
           <Box
             sx={{
@@ -56,7 +56,7 @@ export const thePracticalDev = (
                   borderRadius: '50%',
                   marginRight: '10px'
                 }}
-                src={image}
+                src={'https://kikobeats.com/images/avatar-glitch.jpg'}
               />
               <Text
                 sx={{
@@ -64,15 +64,20 @@ export const thePracticalDev = (
                   fontSize: 1,
                   fontWeight: '700'
                 }}
-                children={cuote}
+                children={'Apr 9'}
               />
             </Box>
 
-            <Box>
+            <Flex
+              sx={{
+                width: '200px',
+                justifyContent: 'space-between'
+              }}
+            >
               {[
-                'https://picsum.photos/seed/picsum/300',
-                'https://picsum.photos/seed/picsum/300',
-                'https://picsum.photos/seed/picsum/300'
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/490px-Unofficial_JavaScript_logo_2.svg.png',
+                'https://miro.medium.com/max/1024/1*dOizsWycMALIUfqbpNvaMQ.png',
+                'https://vuejs.org/images/logo.png'
               ].map(image => {
                 return (
                   <Image
@@ -83,7 +88,7 @@ export const thePracticalDev = (
                   />
                 )
               })}
-            </Box>
+            </Flex>
           </Box>
         </Box>
       </Box>

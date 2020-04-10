@@ -15,7 +15,8 @@ export const article = (
           display: 'flex',
           justifyContent: 'center',
           flexDirection: 'column',
-          bg: 'black',
+          backgroundImage:
+            'url(https://w.wallhaven.cc/full/2e/wallhaven-2exmm9.jpg)',
           color: 'white',
           padding: 50
         }}
@@ -26,15 +27,16 @@ export const article = (
             fontSize: 3,
             fontWeight: '300'
           }}
-          children={date}
+          children={'21 January'}
         />
         <Text
           sx={{
             fontFamily: 'Roboto',
             fontSize: 7,
-            fontWeight: '700'
+            fontWeight: '700',
+            textTransform: 'uppercase'
           }}
-          children={headline}
+          children={'STARSIGHT'}
         />
         <Text
           sx={{
@@ -44,7 +46,7 @@ export const article = (
             borderBottom: '1px solid',
             paddingBottom: 5
           }}
-          children={caption}
+          children={'The highly-anticipated sequel to Skyward.'}
         />
       </Box>
     </>
