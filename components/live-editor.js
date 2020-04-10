@@ -17,9 +17,9 @@ const LivePreviewWrapper = styled('div')`
   height: 100%;
   width: 100%;
   margin: auto;
-  padding: ${({ isPreview }) => (isPreview ? theme.space[3] : 0)};
-  ${({ isPreview }) =>
-    !isPreview &&
+  padding: ${({ isEditor }) => (isEditor ? theme.space[3] : 0)};
+  ${({ isEditor }) =>
+    !isEditor &&
     `
     ${ratios.reduce(
       (acc, ratio, index) =>

@@ -13,6 +13,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import debounce from '@lib/debounce'
 import themeBase from '@themes/base'
+import Router from 'next/router'
 import isEmpty from '@lib/is-empty'
 import Main from '@components/main'
 import decamelize from 'decamelize'
@@ -29,8 +30,6 @@ import {
 const Container = styled(Flex)`
   height: 100vh;
 `
-
-const DEFAULT_COLOR_MODE = 'github'
 
 const DEFAULT_PRESET = 'preset: simple'
 
@@ -58,10 +57,12 @@ export default () => {
   )
 
   useEffect(() => {
-    if (isEmpty(query)) {
-      setQuery({ preview: true })
-    } else {
-      const { p, preview, ...queryVariables } = query
+    if (Router.asPath === '/' && isEmpty(Router.query)) {
+      return Router.push({ pathname: '/editor' })
+    }
+
+    if (!isEmpty(query)) {
+      const { p, ...queryVariables } = query
       setQueryVariables({ ...DEFAULT_QUERY_VARIABLES, ...queryVariables })
       if (p) setCode(unmarshall(p))
     }
@@ -82,10 +83,8 @@ export default () => {
     } catch (_) {}
   }
 
-  if (colorMode === 'default') setColorMode(DEFAULT_COLOR_MODE)
   if (isLoading) return null
-
-  const isPreview = !isEmpty(query) ? query.preview : true
+  const isEditor = Router.asPath.startsWith('/editor')
 
   return (
     <LiveProvider
@@ -95,10 +94,10 @@ export default () => {
     >
       <Container>
         <Main>
-          <LivePreview isPreview={isPreview} />
+          <LivePreview isEditor={isEditor} />
           <LiveError />
         </Main>
-        {isPreview && (
+        {isEditor && (
           <Flex
             as='aside'
             sx={{

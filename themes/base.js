@@ -17,7 +17,7 @@ export const editorTheme = {
   dracula,
   duotoneDark,
   duotoneLight,
-  github,
+  default: github,
   nightOwl,
   nightOwlLight,
   oceanicNext,
