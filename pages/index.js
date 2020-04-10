@@ -43,7 +43,7 @@ const nextMode = () => cycledMode.next()
 export default () => {
   const [query, setQuery] = useQueryState()
   const { theme, colorMode, setColorMode } = useThemeUI()
-  const [preset] = useState(query.preset || DEFAULT_PRESET)
+  const [preset, setPreset] = useState(query.preset || DEFAULT_PRESET)
   const [isLoading, setIsLoading] = useState(true)
 
   const [code, setCode] = useState(() => {
@@ -133,8 +133,20 @@ export default () => {
                     width: '8rem',
                     p: '2px 8px'
                   }}
+                  onChange={e => {
+                    const preset = e.currentTarget.value
+                    setPreset(preset)
+                    const newCode = templates[preset]
+                    setCode(newCode)
+                  }}
                 >
-                  <option>{DEFAULT_PRESET}</option>
+                  {Object.keys(templates).map(templateName => (
+                    <option
+                      key={templateName}
+                      value={templateName}
+                      children={templateName}
+                    />
+                  ))}
                 </Select>
               </Flex>
               <Button
