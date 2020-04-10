@@ -1,7 +1,6 @@
 import stringify from 'fast-safe-stringify'
 import { useState, useEffect } from 'react'
 import { encode, decode } from 'qss'
-import Router from 'next/router'
 
 const eq = (str1, str2) => stringify(str1) === stringify(str2)
 
@@ -22,9 +21,12 @@ export default () => {
   }, condition)
 
   const set = obj => {
-    const newQuery = { ...query, ...obj }
-    const pathname = window.location.pathname
-    return Router.push({ pathname, query: encode(newQuery) })
+    const newQuery = { ...fromLocation(), ...obj }
+    return window.history.pushState(
+      {},
+      '',
+      `${window.location.pathname}?${encode(newQuery)}`
+    )
   }
 
   return [query, set]

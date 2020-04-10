@@ -3,14 +3,14 @@ import { marshall, unmarshall } from '@lib/compress-json'
 import * as templates from '@components/templates'
 import useQueryState from '@hooks/use-query-state'
 import React, { useState, useEffect } from 'react'
-import Cycled from 'cycled'
 import styled from 'styled-components'
-import debounce from '@lib/debounce'
 import themeBase from '@themes/base'
-import Router from 'next/router'
+import debounce from '@lib/debounce'
 import isEmpty from '@lib/is-empty'
 import Main from '@components/main'
 import decamelize from 'decamelize'
+import Router from 'next/router'
+import Cycled from 'cycled'
 
 import {
   LiveProvider,
@@ -44,29 +44,33 @@ export default () => {
   const [query, setQuery] = useQueryState()
   const { theme, colorMode, setColorMode } = useThemeUI()
   const [preset] = useState(query.preset || DEFAULT_PRESET)
-  const presetName = preset.split(' ')[1]
-  const [code, setCode] = useState(templates[presetName])
   const [isLoading, setIsLoading] = useState(true)
-  const [queryVariables, setQueryVariables] = useState(
-    isEmpty(query) ? DEFAULT_QUERY_VARIABLES : query
-  )
+
+  const [code, setCode] = useState(() => {
+    const presetName = preset.split(' ')[1]
+    if (isEmpty(query)) return templates[presetName]
+    const { p } = query
+    if (isEmpty(p)) return templates[presetName]
+    return unmarshall(p)
+  })
+
+  const [queryVariables, setQueryVariables] = useState(() => {
+    if (isEmpty(query)) return DEFAULT_QUERY_VARIABLES
+    const { p, ...queryVariables } = query
+    if (isEmpty(queryVariables)) return DEFAULT_QUERY_VARIABLES
+    return queryVariables
+  })
 
   useEffect(() => {
     if (Router.asPath === '/' && isEmpty(Router.query)) {
       return Router.push({ pathname: '/editor' })
-    }
-
-    if (!isEmpty(query)) {
-      const { p, ...queryVariables } = query
-      setQueryVariables({ ...DEFAULT_QUERY_VARIABLES, ...queryVariables })
-      if (p) setCode(unmarshall(p))
     }
     setIsLoading(false)
   }, [])
 
   const handleCode = newCode => {
     setCode(newCode)
-    updateUrl({ setQuery, code, queryVariables })
+    updateUrl({ setQuery, code: newCode, queryVariables })
   }
 
   const handleQueryVariables = event => {
