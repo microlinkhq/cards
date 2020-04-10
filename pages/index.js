@@ -213,7 +213,7 @@ export default () => {
                     height: '100%',
                     color: 'plain.color'
                   }}
-                  defaultValue={JSON.stringify(queryVariables, null, 2)}
+                  value={JSON.stringify(queryVariables, null, 2)}
                   onChange={handleQueryVariables}
                 />
               </Box>
