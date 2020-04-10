@@ -33,11 +33,11 @@ const code = (
             sx={{
               pt: 4,
               pb: 5,
-              fontSize: 7,
+              fontSize: 6,
               lineHeight: 1.4,
               fontWeight: '900',
               fontFamily: 'Merriweather',
-              maxWidth: '46rem'
+              maxWidth: '36rem'
             }}
             children={title}
           />
