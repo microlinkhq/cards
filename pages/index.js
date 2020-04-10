@@ -27,7 +27,7 @@ const Container = styled(Flex)`
   height: 100vh;
 `
 
-const DEFAULT_PRESET = 'preset: simple'
+const DEFAULT_PRESET = 'simple'
 
 const DEFAULT_QUERY_VARIABLES = {
   headline: 'Add your headline',
@@ -35,10 +35,10 @@ const DEFAULT_QUERY_VARIABLES = {
 }
 
 const updateUrl = debounce(({ setQuery, code, queryVariables }) => {
-  setQuery({
-    p: marshall(code),
-    ...queryVariables
-  })
+  let newQuery = {}
+  if (!isEmpty(code)) newQuery.p = marshall(code)
+  if (!isEmpty(queryVariables)) newQuery = { ...newQuery, ...queryVariables }
+  setQuery(newQuery)
 })
 
 const cycledMode = new Cycled(Object.keys(themeBase.colors.modes))
@@ -47,20 +47,22 @@ const nextMode = () => cycledMode.next()
 export default () => {
   const [query, setQuery] = useQueryState()
   const { theme, colorMode, setColorMode } = useThemeUI()
-  const [preset, setPreset] = useState(query.preset || DEFAULT_PRESET)
   const [isLoading, setIsLoading] = useState(true)
 
+  const [preset, setPreset] = useState(() => {
+    return query.preset || DEFAULT_PRESET
+  })
+
   const [code, setCode] = useState(() => {
-    const presetName = preset.split(' ')[1]
-    if (isEmpty(query)) return templates[presetName]
+    if (isEmpty(query)) return templates[preset]
     const { p } = query
-    if (isEmpty(p)) return templates[presetName]
+    if (isEmpty(p)) return templates[preset]
     return unmarshall(p)
   })
 
   const [queryVariables, setQueryVariables] = useState(() => {
     if (isEmpty(query)) return DEFAULT_QUERY_VARIABLES
-    const { p, ...queryVariables } = query
+    const { p, preset, ...queryVariables } = query
     if (isEmpty(queryVariables)) return DEFAULT_QUERY_VARIABLES
     return queryVariables
   })
@@ -95,7 +97,7 @@ export default () => {
 
   const handleCode = newCode => {
     setCode(newCode)
-    updateUrl({ setQuery, code: newCode, queryVariables })
+    updateUrl({ setQuery, code: newCode })
   }
 
   const handleQueryVariables = event => {
@@ -103,7 +105,7 @@ export default () => {
     try {
       const json = JSON.parse(payload)
       setQueryVariables(json)
-      updateUrl({ setQuery, code, queryVariables: json })
+      updateUrl({ setQuery, queryVariables: json })
     } catch (_) {}
   }
 
@@ -163,6 +165,7 @@ export default () => {
                     setPreset(preset)
                     const newCode = templates[preset]
                     setCode(newCode)
+                    setQuery({ preset })
                   }}
                 >
                   {Object.keys(templates).map(templateName => (
