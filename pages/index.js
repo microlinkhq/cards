@@ -83,7 +83,7 @@ export default () => {
   if (colorMode === 'default') setColorMode(DEFAULT_COLOR_MODE)
   if (isLoading) return null
 
-  const isPreview = query.preview
+  const isPreview = !isEmpty(query) ? query.preview : true
 
   return (
     <LiveProvider
