@@ -15,6 +15,7 @@ import Main from '@components/main'
 import decamelize from 'decamelize'
 import Router from 'next/router'
 import Cycled from 'cycled'
+import { decode } from 'qss'
 
 import {
   LiveProvider,
@@ -70,12 +71,16 @@ export default () => {
       p: marshall(code),
       ...queryVariables
     })
-    const [url] = getApiUrl(window.location.href.replace('/editor/', ''), {
-      meta: false,
-      screenshot: true,
-      embed: 'screenshot.url',
-      element: '#screenshot'
-    })
+
+    const [url] = getApiUrl(
+      decodeURI(window.location.href.replace('/editor/', '')),
+      {
+        meta: false,
+        screenshot: true,
+        embed: 'screenshot.url',
+        element: '#screenshot'
+      }
+    )
     await Promise.all([clipboard.write(url)])
     notification('Copied URL to clipboard')
   }
