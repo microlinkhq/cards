@@ -64,11 +64,6 @@ export default () => {
   })
 
   const toClipboard = async () => {
-    setQuery({
-      p: marshall(code),
-      ...queryVariables
-    })
-
     const [url] = getApiUrl(
       decodeURI(window.location.href.replace('/editor/', '')),
       {

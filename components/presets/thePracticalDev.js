@@ -34,7 +34,7 @@ const code = (
               pt: 4,
               pb: 5,
               fontSize: 7,
-              lineHeight: 1,
+              lineHeight: 1.4,
               fontWeight: '900',
               fontFamily: 'Merriweather',
               maxWidth: '46rem'
