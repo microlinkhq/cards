@@ -9,6 +9,12 @@ const GlobalStylesheet = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+
+  html,
+  body {
+    overflow: hidden;
+  }
+
   body {
     margin: 0;
   }

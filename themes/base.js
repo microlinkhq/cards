@@ -30,7 +30,7 @@ export const editorTheme = {
 export const theme = {
   colors: {
     text: '#000',
-    background: '#fff',
+    background: '#333333',
     primary: '#33e',
     modes: editorTheme
   },
