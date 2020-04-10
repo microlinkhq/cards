@@ -100,6 +100,7 @@ export default () => {
           <Flex
             as='aside'
             sx={{
+              height: '100%',
               bg: 'plain.backgroundColor',
               flexDirection: 'column',
               width: ['30%', '30%', '30%', '30%'],
@@ -156,19 +157,22 @@ export default () => {
                 </Text>
               </Box>
             </Flex>
-            <Flex sx={{ height: '100%', flexDirection: 'column' }}>
-              <Box as='section' sx={{ height: '60%', p: 3 }}>
+            <Flex sx={{ flex: 1, minHeight: 0, flexDirection: 'column' }}>
+              <Box
+                as='section'
+                sx={{ flex: '1 0 60%', p: 3, overflow: 'auto' }}
+              >
                 <LiveEditor onChange={handleCode} />
               </Box>
               <Box
                 as='section'
                 sx={{
-                  flexGrow: 1,
                   height: '25%',
                   p: 3,
                   bg: 'plain.backgroundColor',
                   borderTop: '1px solid',
-                  borderColor: 'plain.color'
+                  borderColor: 'plain.color',
+                  overflow: 'scroll'
                 }}
               >
                 <Textarea
@@ -188,7 +192,7 @@ export default () => {
               <Flex
                 as='footer'
                 sx={{
-                  height: '5%',
+                  minHeight: '5%',
                   color: 'plain.color',
                   p: 3,
                   justifyContent: 'flex-end'

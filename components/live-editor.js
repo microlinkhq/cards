@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import theme, { toPx } from '@themes/base'
-import { Box } from 'theme-ui'
+import theme from '@themes/base'
 import * as scope from '@components/templates/scope'
 
 import {
@@ -85,9 +84,6 @@ export const LiveProvider = ({ queryVariables, ...props }) => {
 }
 
 export const LiveEditor = styled(BaseEditor)`
-  overflow: auto;
-  height: 100%;
-
   pre,
   textarea {
     padding: 0 !important;
