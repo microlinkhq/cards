@@ -11,7 +11,7 @@ import {
 
 const BASE_HEIGHT = 441
 const BASE_WIDTH = 843
-const ratios = [1, 1.2, 1.5, 1.6]
+const ratios = [1, 1, 1, 1]
 
 const LivePreviewWrapper = styled('div')`
   cursor: pointer;
