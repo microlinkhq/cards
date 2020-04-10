@@ -1,14 +1,18 @@
-import { Button, Textarea, Text, Select, Box, Flex, useThemeUI } from 'theme-ui'
+import { Button, Textarea, Select, Box, Flex, useThemeUI } from 'theme-ui'
 import { marshall, unmarshall } from '@lib/compress-json'
 import * as templates from '@components/templates'
 import useQueryState from '@hooks/use-query-state'
 import React, { useState, useEffect } from 'react'
+import ThemeIcon from '@components/icons/theme'
+import notification from '@lib/notification'
+import { getApiUrl } from '@microlink/mql'
 import styled from 'styled-components'
+import clipboard from '@lib/clipboard'
 import themeBase from '@themes/base'
 import debounce from '@lib/debounce'
 import isEmpty from '@lib/is-empty'
+import onSave from '@lib/on-save'
 import Main from '@components/main'
-import decamelize from 'decamelize'
 import Router from 'next/router'
 import Cycled from 'cycled'
 
@@ -61,10 +65,31 @@ export default () => {
     return queryVariables
   })
 
+  const toClipboard = async () => {
+    setQuery({
+      p: marshall(code),
+      ...queryVariables
+    })
+
+    const [url] = getApiUrl(
+      decodeURI(window.location.href.replace('/editor/', '')),
+      {
+        meta: false,
+        screenshot: true,
+        embed: 'screenshot.url',
+        element: '#screenshot',
+        waitUntil: ['load', 'networkidle0']
+      }
+    )
+    await Promise.all([clipboard.write(url)])
+    notification('Copied URL to clipboard')
+  }
+
   useEffect(() => {
     if (Router.asPath === '/' && isEmpty(Router.query)) {
       return Router.push({ pathname: '/editor' })
     }
+    onSave(toClipboard)
     setIsLoading(false)
   }, [])
 
@@ -93,7 +118,7 @@ export default () => {
     >
       <Container>
         <Main>
-          <LivePreview isEditor={isEditor} />
+          <LivePreview onClick={toClipboard} isEditor={isEditor} />
           <LiveError />
         </Main>
         {isEditor && (
@@ -150,21 +175,15 @@ export default () => {
                 </Select>
               </Flex>
               <Button
+                title='Change color mode'
                 sx={{
-                  bg: 'plain.color',
-                  color: 'plain.backgroundColor',
-                  fontSize: 0,
-                  ml: 2
+                  outline: 0,
+                  cursor: 'pointer',
+                  bg: 'transparent'
                 }}
                 onClick={() => setColorMode(nextMode())}
               >
-                <Text
-                  sx={{
-                    fontSize: 0
-                  }}
-                >
-                  {decamelize(colorMode, ' ')}
-                </Text>
+                <ThemeIcon color={theme.colors.modes[colorMode].plain.color} />
               </Button>
             </Flex>
             <Flex sx={{ flex: 1, minHeight: 0, flexDirection: 'column' }}>
