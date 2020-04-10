@@ -14,6 +14,7 @@ const BASE_WIDTH = 843
 const ratios = [1, 1.2, 1.5, 1.6]
 
 const LivePreviewWrapper = styled('div')`
+  cursor: pointer;
   height: 100%;
   width: 100%;
   margin: auto;

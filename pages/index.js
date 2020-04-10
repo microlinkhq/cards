@@ -3,10 +3,14 @@ import { marshall, unmarshall } from '@lib/compress-json'
 import * as templates from '@components/templates'
 import useQueryState from '@hooks/use-query-state'
 import React, { useState, useEffect } from 'react'
+import notification from '@lib/notification'
+import { getApiUrl } from '@microlink/mql'
 import styled from 'styled-components'
+import clipboard from '@lib/clipboard'
 import themeBase from '@themes/base'
 import debounce from '@lib/debounce'
 import isEmpty from '@lib/is-empty'
+import onSave from '@lib/on-save'
 import Main from '@components/main'
 import decamelize from 'decamelize'
 import Router from 'next/router'
@@ -61,10 +65,26 @@ export default () => {
     return queryVariables
   })
 
+  const toClipboard = async () => {
+    setQuery({
+      p: marshall(code),
+      ...queryVariables
+    })
+    const [url] = getApiUrl(window.location.href.replace('/editor/', ''), {
+      meta: false,
+      screenshot: true,
+      embed: 'screenshot.url',
+      element: '#screenshot'
+    })
+    await Promise.all([clipboard.write(url)])
+    notification('Copied URL to clipboard')
+  }
+
   useEffect(() => {
     if (Router.asPath === '/' && isEmpty(Router.query)) {
       return Router.push({ pathname: '/editor' })
     }
+    onSave(toClipboard)
     setIsLoading(false)
   }, [])
 
@@ -93,7 +113,7 @@ export default () => {
     >
       <Container>
         <Main>
-          <LivePreview isEditor={isEditor} />
+          <LivePreview onClick={toClipboard} isEditor={isEditor} />
           <LiveError />
         </Main>
         {isEditor && (
