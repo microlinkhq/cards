@@ -32,7 +32,7 @@ const DEFAULT_QUERY_VARIABLES = {
 
 const updateUrl = debounce(({ setQuery, code, queryVariables }) => {
   setQuery({
-    s: marshall(code),
+    p: marshall(code),
     ...queryVariables
   })
 })
