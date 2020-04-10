@@ -1,6 +1,6 @@
 import { Button, Textarea, Select, Box, Flex, useThemeUI } from 'theme-ui'
 import { marshall, unmarshall } from '@lib/compress-json'
-import * as templates from '@components/templates'
+import presets from '@components/presets'
 import useQueryState from '@hooks/use-query-state'
 import React, { useState, useEffect } from 'react'
 import ThemeIcon from '@components/icons/theme'
@@ -23,16 +23,11 @@ import {
   LivePreview
 } from '@components/live-editor'
 
+const DEFAULT_PRESET = Object.keys(presets)[0]
+
 const Container = styled(Flex)`
   height: 100vh;
 `
-
-const DEFAULT_PRESET = 'simple'
-
-const DEFAULT_QUERY_VARIABLES = {
-  headline: 'Add your headline',
-  caption: 'Add your caption'
-}
 
 const updateUrl = debounce(({ setQuery, code, queryVariables }) => {
   let newQuery = {}
@@ -50,20 +45,21 @@ export default () => {
   const [isLoading, setIsLoading] = useState(true)
 
   const [preset, setPreset] = useState(() => {
-    return query.preset || DEFAULT_PRESET
+    const presetName = query.preset || DEFAULT_PRESET
+    return presets[presetName]
   })
 
   const [code, setCode] = useState(() => {
-    if (isEmpty(query)) return templates[preset]
+    if (isEmpty(query)) return preset.code
     const { p } = query
-    if (isEmpty(p)) return templates[preset]
+    if (isEmpty(p)) return preset.code
     return unmarshall(p)
   })
 
   const [queryVariables, setQueryVariables] = useState(() => {
-    if (isEmpty(query)) return DEFAULT_QUERY_VARIABLES
-    const { p, preset, ...queryVariables } = query
-    if (isEmpty(queryVariables)) return DEFAULT_QUERY_VARIABLES
+    if (isEmpty(query)) return preset.query
+    const { p, preset: queryPreset, ...queryVariables } = query
+    if (isEmpty(queryVariables)) return preset.query
     return queryVariables
   })
 
@@ -154,25 +150,26 @@ export default () => {
                 }}
               >
                 <Select
-                  defaultValue={DEFAULT_PRESET}
+                  defaultValue={preset.name}
                   sx={{
                     fontSize: 1,
                     width: '8rem',
                     p: '2px 8px'
                   }}
                   onChange={e => {
-                    const preset = e.currentTarget.value
-                    setPreset(preset)
-                    const newCode = templates[preset]
-                    setCode(newCode)
-                    setQuery({ preset })
+                    const presetName = e.currentTarget.value
+                    const newPreset = presets[presetName]
+                    setPreset(newPreset)
+                    setCode(newPreset.code)
+                    setQueryVariables(newPreset.query)
+                    setQuery({ p: undefined, preset: presetName })
                   }}
                 >
-                  {Object.keys(templates).map(templateName => (
+                  {Object.keys(presets).map(presetName => (
                     <option
-                      key={templateName}
-                      value={templateName}
-                      children={templateName}
+                      key={presetName}
+                      value={presetName}
+                      children={presetName}
                     />
                   ))}
                 </Select>

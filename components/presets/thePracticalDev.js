@@ -1,9 +1,9 @@
 /* eslint-disable no-undef */
 
 import Inline from 'inlinejsx.macro'
-import { Flex, Image, Box, Text } from './scope'
+import { Link, Flex, Image, Box, Text } from './scope'
 
-export const thePracticalDev = (
+const code = (
   <Inline>
     <>
       <Flex
@@ -25,17 +25,21 @@ export const thePracticalDev = (
             boxShadow: '10px 10px 0px 0px rgba(0,0,0)'
           }}
         >
+          <Link
+            href='https://fonts.googleapis.com/css2?family=Merriweather:wght@400;900&display=swap'
+            rel='stylesheet'
+          />
           <Text
             sx={{
               pt: 4,
               pb: 5,
               fontSize: 7,
               lineHeight: 1,
-              fontWeight: '700',
-              fontFamily: 'mono',
+              fontWeight: '900',
+              fontFamily: 'Merriweather',
               maxWidth: '46rem'
             }}
-            children='Learn Web Development for Free'
+            children={title}
           />
           <Box
             sx={{
@@ -61,9 +65,27 @@ export const thePracticalDev = (
               <Text
                 sx={{
                   fontSize: 3,
-                  fontWeight: '700'
+                  fontWeight: '400',
+                  fontFamily: 'Merriweather'
                 }}
-                children='Kiko Beats · Apr 29'
+                children={author}
+              />
+              <Text
+                sx={{
+                  fontSize: 3,
+                  px: 2,
+                  fontWeight: '400',
+                  fontFamily: 'Merriweather'
+                }}
+                children='•'
+              />
+              <Text
+                sx={{
+                  fontSize: 3,
+                  fontWeight: '400',
+                  fontFamily: 'Merriweather'
+                }}
+                children={date}
               />
             </Box>
 
@@ -77,11 +99,14 @@ export const thePracticalDev = (
                 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/490px-Unofficial_JavaScript_logo_2.svg.png',
                 'https://miro.medium.com/max/1024/1*dOizsWycMALIUfqbpNvaMQ.png',
                 'https://vuejs.org/images/logo.png'
-              ].map(image => {
+              ].map((image, index) => {
                 return (
                   <Image
                     sx={{
                       maxHeight: '50px'
+                    }}
+                    style={{
+                      transform: `rotate(${index % 2 === 1 ? '0deg' : '15deg'})`
                     }}
                     key={image}
                     src={image}
@@ -95,3 +120,11 @@ export const thePracticalDev = (
     </>
   </Inline>
 )
+
+const query = {
+  title: 'Learn Web Development for Free',
+  author: 'Kiko Beats',
+  date: '29 Apr'
+}
+
+export default { name: 'thePracticalDev', code, query }

@@ -3,7 +3,7 @@
 import Inline from 'inlinejsx.macro'
 import { Link, Box, Text } from './scope'
 
-export const article = (
+const code = (
   <Inline>
     <>
       <Link
@@ -27,7 +27,7 @@ export const article = (
             fontSize: 3,
             fontWeight: '300'
           }}
-          children={'21 January'}
+          children='21 January'
         />
         <Text
           sx={{
@@ -36,7 +36,7 @@ export const article = (
             fontWeight: '700',
             textTransform: 'uppercase'
           }}
-          children={'STARSIGHT'}
+          children='STARSIGHT'
         />
         <Text
           sx={{
@@ -46,9 +46,15 @@ export const article = (
             borderBottom: '1px solid',
             paddingBottom: 5
           }}
-          children={'The highly-anticipated sequel to Skyward.'}
+          children='The highly-anticipated sequel to Skyward.'
         />
       </Box>
     </>
   </Inline>
 )
+
+const query = {
+  foo: 'bar'
+}
+
+export default { name: 'article', code, query }

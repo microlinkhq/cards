@@ -3,7 +3,7 @@
 import Inline from 'inlinejsx.macro'
 import { Link, Box, Text } from './scope'
 
-export const simple = (
+const code = (
   <Inline>
     <>
       <Link
@@ -40,3 +40,14 @@ export const simple = (
     </>
   </Inline>
 )
+
+const query = {
+  headline: 'Add your headline',
+  caption: 'Add your caption'
+}
+
+export default {
+  name: 'simple',
+  code,
+  query
+}

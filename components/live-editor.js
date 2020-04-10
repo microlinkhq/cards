@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import theme from '@themes/base'
-import * as scope from '@components/templates/scope'
+import * as scope from '@components/presets/scope'
 
 import {
   LiveProvider as BaseProvider,
