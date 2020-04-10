@@ -78,7 +78,8 @@ export default () => {
         meta: false,
         screenshot: true,
         embed: 'screenshot.url',
-        element: '#screenshot'
+        element: '#screenshot',
+        waitUntil: ['load', 'networkidle0']
       }
     )
     await Promise.all([clipboard.write(url)])
