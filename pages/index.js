@@ -1,15 +1,9 @@
-import {
-  Textarea,
-  Text,
-  Select,
-  Box,
-  Flex,
-  useThemeUI
-} from 'theme-ui'
+import { Button, Textarea, Text, Select, Box, Flex, useThemeUI } from 'theme-ui'
 import { marshall, unmarshall } from '@lib/compress-json'
 import * as templates from '@components/templates'
 import useQueryState from '@hooks/use-query-state'
 import React, { useState, useEffect } from 'react'
+import Cycled from 'cycled'
 import styled from 'styled-components'
 import debounce from '@lib/debounce'
 import themeBase from '@themes/base'
@@ -17,8 +11,6 @@ import Router from 'next/router'
 import isEmpty from '@lib/is-empty'
 import Main from '@components/main'
 import decamelize from 'decamelize'
-
-import pkg from '../package.json'
 
 import {
   LiveProvider,
@@ -45,6 +37,9 @@ const updateUrl = debounce(({ setQuery, code, queryVariables }) => {
   })
 })
 
+const cycledMode = new Cycled(Object.keys(themeBase.colors.modes))
+const nextMode = () => cycledMode.next()
+
 export default () => {
   const [query, setQuery] = useQueryState()
   const { theme, colorMode, setColorMode } = useThemeUI()
@@ -69,12 +64,12 @@ export default () => {
     setIsLoading(false)
   }, [])
 
-  const handleCode = (newCode) => {
+  const handleCode = newCode => {
     setCode(newCode)
     updateUrl({ setQuery, code, queryVariables })
   }
 
-  const handleQueryVariables = (event) => {
+  const handleQueryVariables = event => {
     const payload = event.target.value
     try {
       const json = JSON.parse(payload)
@@ -127,35 +122,34 @@ export default () => {
                   flex: 1
                 }}
               >
-                <div style={{ marginRight: 10 }}>
-                  <Select
-                    defaultValue={DEFAULT_PRESET}
-                    sx={{
-                      fontSize: 1,
-                      width: '8rem',
-                      p: '2px 8px'
-                    }}
-                  >
-                    <option>{DEFAULT_PRESET}</option>
-                  </Select>
-                </div>
                 <Select
-                  defaultValue={decamelize(colorMode, ' ')}
+                  defaultValue={DEFAULT_PRESET}
                   sx={{
                     fontSize: 1,
                     width: '8rem',
                     p: '2px 8px'
                   }}
-                  onChange={(e) => setColorMode(e.currentTarget.value)}
                 >
-                  {Object.keys(themeBase.colors.modes).map((k) => (
-                    <option key={k} value={k}>
-                      {k}
-                    </option>
-                  ))}
+                  <option>{DEFAULT_PRESET}</option>
                 </Select>
               </Flex>
-              <Text sx={{ fontSize: 1 }}>v{pkg.version}</Text>
+              <Button
+                sx={{
+                  bg: 'plain.color',
+                  color: 'plain.backgroundColor',
+                  fontSize: 0,
+                  ml: 2
+                }}
+                onClick={() => setColorMode(nextMode())}
+              >
+                <Text
+                  sx={{
+                    fontSize: 0
+                  }}
+                >
+                  {decamelize(colorMode, ' ')}
+                </Text>
+              </Button>
             </Flex>
             <Flex sx={{ flex: 1, minHeight: 0, flexDirection: 'column' }}>
               <Box
