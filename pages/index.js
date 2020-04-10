@@ -1,4 +1,11 @@
-import { Button, Textarea, Text, Select, Box, Flex, useThemeUI } from 'theme-ui'
+import {
+  Textarea,
+  Text,
+  Select,
+  Box,
+  Flex,
+  useThemeUI
+} from 'theme-ui'
 import { marshall, unmarshall } from '@lib/compress-json'
 import * as templates from '@components/templates'
 import useQueryState from '@hooks/use-query-state'
@@ -9,8 +16,6 @@ import themeBase from '@themes/base'
 import isEmpty from '@lib/is-empty'
 import Main from '@components/main'
 import decamelize from 'decamelize'
-
-import Cycled from 'cycled'
 
 import pkg from '../package.json'
 
@@ -41,9 +46,6 @@ const updateUrl = debounce(({ setQuery, code, queryVariables }) => {
   })
 })
 
-const cycledMode = new Cycled(Object.keys(themeBase.colors.modes))
-const nextMode = () => cycledMode.next()
-
 export default () => {
   const [query, setQuery] = useQueryState()
   const { theme, colorMode, setColorMode } = useThemeUI()
@@ -66,12 +68,12 @@ export default () => {
     setIsLoading(false)
   }, [])
 
-  const handleCode = newCode => {
+  const handleCode = (newCode) => {
     setCode(newCode)
     updateUrl({ setQuery, code, queryVariables })
   }
 
-  const handleQueryVariables = event => {
+  const handleQueryVariables = (event) => {
     const payload = event.target.value
     try {
       const json = JSON.parse(payload)
@@ -117,45 +119,44 @@ export default () => {
                 bg: 'plain.backgroundColor',
                 color: 'plain.color',
                 p: 3,
-                justifyContent: 'space-between',
                 alignItems: 'center'
               }}
             >
               <Flex
                 sx={{
-                  alignItems: 'center'
+                  alignItems: 'center',
+                  flex: 1
                 }}
               >
+                <div style={{ marginRight: 10 }}>
+                  <Select
+                    defaultValue={DEFAULT_PRESET}
+                    sx={{
+                      fontSize: 1,
+                      width: '8rem',
+                      p: '2px 8px'
+                    }}
+                  >
+                    <option>{DEFAULT_PRESET}</option>
+                  </Select>
+                </div>
                 <Select
-                  defaultValue={DEFAULT_PRESET}
+                  defaultValue={decamelize(colorMode, ' ')}
                   sx={{
                     fontSize: 1,
                     width: '8rem',
                     p: '2px 8px'
                   }}
+                  onChange={(e) => setColorMode(e.currentTarget.value)}
                 >
-                  <option>{DEFAULT_PRESET}</option>
+                  {Object.keys(themeBase.colors.modes).map((k) => (
+                    <option key={k} value={k}>
+                      {k}
+                    </option>
+                  ))}
                 </Select>
               </Flex>
-              <Box>
-                <Text
-                  sx={{
-                    fontSize: 1
-                  }}
-                >
-                  <Button
-                    sx={{
-                      bg: 'plain.color',
-                      color: 'plain.backgroundColor',
-                      fontSize: 0,
-                      ml: 2
-                    }}
-                    onClick={() => setColorMode(nextMode())}
-                  >
-                    {decamelize(colorMode, ' ')}
-                  </Button>
-                </Text>
-              </Box>
+              <Text sx={{ fontSize: 1 }}>v{pkg.version}</Text>
             </Flex>
             <Flex sx={{ flex: 1, minHeight: 0, flexDirection: 'column' }}>
               <Box
@@ -168,7 +169,6 @@ export default () => {
                 as='section'
                 sx={{
                   height: '25%',
-                  p: 3,
                   bg: 'plain.backgroundColor',
                   borderTop: '1px solid',
                   borderColor: 'plain.color',
@@ -179,7 +179,7 @@ export default () => {
                   sx={{
                     resize: 'none',
                     caretColor: 'plain.color',
-                    padding: 0,
+                    p: 3,
                     outline: 0,
                     border: 0,
                     height: '100%',
@@ -189,17 +189,6 @@ export default () => {
                   onChange={handleQueryVariables}
                 />
               </Box>
-              <Flex
-                as='footer'
-                sx={{
-                  minHeight: '5%',
-                  color: 'plain.color',
-                  p: 3,
-                  justifyContent: 'flex-end'
-                }}
-              >
-                <Text sx={{ fontSize: 1 }}>v{pkg.version}</Text>
-              </Flex>
             </Flex>
           </Flex>
         )}
