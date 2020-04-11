@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import theme from '@/themes/base'
+import theme from '@/theme'
 import * as scope from '@/components/presets/scope'
 
 import {

@@ -2,7 +2,7 @@ import NextApp from 'next/app'
 import { createGlobalStyle } from 'styled-components'
 import { ThemeProvider } from 'theme-ui'
 
-import theme from '@/themes/base'
+import theme from '@/theme'
 
 const GlobalStylesheet = createGlobalStyle`
   * {
