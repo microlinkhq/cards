@@ -40,6 +40,8 @@ import onSave from '@/lib/on-save'
 import pkg from '../../package.json'
 
 const DEFAULT_PRESET = Object.keys(presets)[0]
+const ASIDE_WIDTH_KEY = 'sidebar-width'
+const ASIDE_HEIGHT_KEY = 'sidebar-json-height'
 
 const updateUrl = debounce(({ setQuery, code, queryVariables }) => {
   let newQuery = {}
@@ -51,16 +53,19 @@ const updateUrl = debounce(({ setQuery, code, queryVariables }) => {
 const cycledMode = new Cycled(Object.keys(themeBase.colors.modes))
 const nextMode = () => cycledMode.next()
 
-const asideWidthKey = 'sidebar-width'
-const jsonHeightKey = 'sidebar-json-height'
-
 export default () => {
   const [query, setQuery] = useQueryState()
   const { theme, colorMode, setColorMode } = useThemeUI()
   const [isLoading, setIsLoading] = useState(true)
   // const [isOverlayOpen, setOverlayOpen] = useState(false)
-  const [asideWidth, setAsideWidth] = useState('30%')
-  const [jsonHeight, setJsonHeight] = useState('25%')
+
+  const [asideWidth, setAsideWidth] = useState(
+    localStorage.get(ASIDE_WIDTH_KEY) || '30%'
+  )
+
+  const [jsonHeight, setJsonHeight] = useState(
+    localStorage.get(ASIDE_HEIGHT_KEY) || '25%'
+  )
 
   const [preset, setPreset] = useState(() => {
     const presetName = query.preset || DEFAULT_PRESET
@@ -94,20 +99,8 @@ export default () => {
     if (Router.asPath === '/' && isEmpty(Router.query)) {
       return Router.push({ pathname: '/editor' })
     }
-
     onSave(toClipboard)
     setIsLoading(false)
-
-    const storedAsideWidth = localStorage.get(asideWidthKey)
-    const storedJsonHeight = localStorage.get(jsonHeightKey)
-
-    if (storedAsideWidth) {
-      setAsideWidth(storedAsideWidth)
-    }
-
-    if (storedJsonHeight) {
-      setJsonHeight(storedJsonHeight)
-    }
   }, [])
 
   const handleCode = newCode => {
@@ -122,12 +115,12 @@ export default () => {
 
   const onAsideResize = width => {
     setAsideWidth(width)
-    localStorage.set(asideWidthKey, width)
+    localStorage.set(ASIDE_WIDTH_KEY, width)
   }
 
   const onJsonResize = height => {
     setJsonHeight(height)
-    localStorage.set(jsonHeightKey, height)
+    localStorage.set(ASIDE_HEIGHT_KEY, height)
   }
 
   if (isLoading) return null
