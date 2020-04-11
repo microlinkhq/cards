@@ -1,23 +1,3 @@
-import { marshall, unmarshall } from '@/lib/compress-json'
-import presets from '@/components/presets'
-import useQueryState from '@/hooks/use-query-state'
-import GitHubIcon from '@/components/icons/github'
-import JSONViewer from '@/components/json-viewer'
-import ThemeIcon from '@/components/icons/theme'
-import screenshotUrl from '@/lib/screenshot-url'
-import Container from '@/components/container'
-import notification from '@/lib/notification'
-import { useState, useEffect } from 'react'
-// import Overlay from '@/components/overlay'
-import clipboard from '@/lib/clipboard'
-import debounce from '@/lib/debounce'
-import Main from '@/components/main'
-import isEmpty from '@/lib/is-empty'
-import onSave from '@/lib/on-save'
-import Router from 'next/router'
-import themeBase from '@/theme'
-import Cycled from 'cycled'
-
 import {
   Link as ExternalLink,
   Button,
@@ -27,12 +7,31 @@ import {
   useThemeUI
 } from 'theme-ui'
 
+import presets from '@/components/presets'
+import ThemeIcon from '@/components/icons/theme'
+import Main from '@/components/main'
 import {
   LiveProvider,
   LiveEditor,
   LiveError,
   LivePreview
 } from '@/components/live-editor'
+import presets from '@/components/presets'
+import JSONViewer from '@/components/json-viewer'
+import ThemeIcon from '@/components/icons/theme'
+import GitHubIcon from '@/components/icons/github'
+import Container from '@/components/container'
+import Main from '@/components/main'
+// import Overlay from '@/components/overlay'
+import useQueryState from '@/hooks/use-query-state'
+import themeBase from '@/themes/base'
+import { marshall, unmarshall } from '@/lib/compress-json'
+import clipboard from '@/lib/clipboard'
+import debounce from '@/lib/debounce'
+import isEmpty from '@/lib/is-empty'
+import notification from '@/lib/notification'
+import screenshotUrl from '@/lib/screenshot-url'
+import onSave from '@/lib/on-save'
 
 import pkg from '../../package.json'
 
