@@ -1,7 +1,11 @@
 import NextApp from 'next/app'
+import Head from 'next/head'
 import { createGlobalStyle } from 'styled-components'
 import { ThemeProvider } from 'theme-ui'
 import theme from '@/theme'
+
+const CHECKER_SIZE = 10
+const CHECKER_COLOR = 'rgba(255,255,255,0.4)'
 
 const GlobalStylesheet = createGlobalStyle`
   * {
@@ -13,6 +17,9 @@ const GlobalStylesheet = createGlobalStyle`
   }
   body {
     margin: 0;
+    background-image: linear-gradient(45deg, ${CHECKER_COLOR} 25%, transparent 25%), linear-gradient(-45deg, ${CHECKER_COLOR} 25%, transparent 25%), linear-gradient(45deg, transparent 75%, ${CHECKER_COLOR} 75%), linear-gradient(-45deg, transparent 75%, ${CHECKER_COLOR} 75%);
+    background-size: ${CHECKER_SIZE * 2}px ${CHECKER_SIZE * 2}px;
+    background-position: 0 0, 0 ${CHECKER_SIZE}px, ${CHECKER_SIZE}px -${CHECKER_SIZE}px, -${CHECKER_SIZE}px 0px;
   }
   #__next {
     font-family: system-ui, sans-serif;
@@ -163,10 +170,15 @@ export default class App extends NextApp {
     const { Component, pageProps } = this.props
 
     return (
-      <ThemeProvider theme={theme}>
-        <GlobalStylesheet />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <>
+        <Head>
+          <title>og.link</title>
+        </Head>
+        <ThemeProvider theme={theme}>
+          <GlobalStylesheet />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </>
     )
   }
 }

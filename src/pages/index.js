@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import Router from 'next/router'
 import {
   Link as ExternalLink,
   Button,
@@ -6,6 +8,7 @@ import {
   Flex,
   useThemeUI
 } from 'theme-ui'
+import Cycled from 'cycled';
 
 import presets from '@/components/presets'
 import Main from '@/components/main'
@@ -22,7 +25,7 @@ import Container from '@/components/container'
 import AsideDrag from '@/components/aside-drag'
 // import Overlay from '@/components/overlay'
 import useQueryState from '@/hooks/use-query-state'
-import themeBase from '@/themes/base'
+import themeBase from '@/theme'
 import { marshall, unmarshall } from '@/lib/compress-json'
 import clipboard from '@/lib/clipboard'
 import debounce from '@/lib/debounce'
