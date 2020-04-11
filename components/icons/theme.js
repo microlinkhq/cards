@@ -1,21 +1,18 @@
-export default ({ color, ...props }) => (
+import React from 'react'
+
+export default ({ size = '24', color }) => (
   <svg
-    viewBox='0 0 32 32'
-    width='24'
-    height='24'
+    xmlns='http://www.w3.org/2000/svg'
     fill={color}
-    style={{
-      display: 'block'
-    }}
-    {...props}
+    stroke={color}
+    strokeWidth='0'
+    viewBox='0 0 24 24'
+    width={size}
+    height={size}
   >
-    <circle cx='16' cy='16' r='14' fill='none' stroke={color} strokeWidth='4' />
     <path
-      d={`
-        M 16 0
-        A 16 16 0 0 0 16 32
-        z
-      `}
+      stroke='none'
+      d='M17.66 7.93L12 2.27 6.34 7.93c-3.12 3.12-3.12 8.19 0 11.31A7.98 7.98 0 0012 21.58c2.05 0 4.1-.78 5.66-2.34 3.12-3.12 3.12-8.19 0-11.31zM12 19.59c-1.6 0-3.11-.62-4.24-1.76C6.62 16.69 6 15.19 6 13.59s.62-3.11 1.76-4.24L12 5.1v14.49z'
     />
   </svg>
 )

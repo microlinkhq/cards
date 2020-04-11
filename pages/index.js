@@ -1,21 +1,32 @@
-import { Text, Button, Textarea, Select, Box, Flex, useThemeUI } from 'theme-ui'
+import {
+  Link as ExternalLink,
+  Button,
+  Select,
+  Box,
+  Flex,
+  useThemeUI
+} from 'theme-ui'
 import { marshall, unmarshall } from '@lib/compress-json'
 import presets from '@components/presets'
 import useQueryState from '@hooks/use-query-state'
 import React, { useState, useEffect } from 'react'
+import JSONViewer from '@components/json-viewer'
 import ThemeIcon from '@components/icons/theme'
+import GitHubIcon from '@components/icons/github'
 import Container from '@components/container'
 import notification from '@lib/notification'
-import { getApiUrl } from '@microlink/mql'
-import Overlay from '@components/overlay'
+import screenshotUrl from '@lib/screenshot-url'
+// import Overlay from '@components/overlay'
 import clipboard from '@lib/clipboard'
 import themeBase from '@themes/base'
 import debounce from '@lib/debounce'
-import isEmpty from '@lib/is-empty'
-import onSave from '@lib/on-save'
 import Main from '@components/main'
+import isEmpty from '@lib/is-empty'
+
+import onSave from '@lib/on-save'
 import Router from 'next/router'
 import Cycled from 'cycled'
+import pkg from '../package.json'
 
 import {
   LiveProvider,
@@ -40,7 +51,7 @@ export default () => {
   const [query, setQuery] = useQueryState()
   const { theme, colorMode, setColorMode } = useThemeUI()
   const [isLoading, setIsLoading] = useState(true)
-  const [isOverlayOpen, setOverlayOpen] = useState(false)
+  // const [isOverlayOpen, setOverlayOpen] = useState(false)
 
   const [preset, setPreset] = useState(() => {
     const presetName = query.preset || DEFAULT_PRESET
@@ -62,16 +73,9 @@ export default () => {
   })
 
   const toClipboard = async () => {
-    setOverlayOpen(true)
-    const [url] = getApiUrl(
-      decodeURI(window.location.href.replace('/editor/', '')),
-      {
-        meta: false,
-        screenshot: true,
-        embed: 'screenshot.url',
-        element: '#screenshot',
-        waitUntil: ['load', 'networkidle0']
-      }
+    // setOverlayOpen(true)
+    const url = screenshotUrl(
+      decodeURI(window.location.href.replace('/editor/', ''))
     )
     await Promise.all([clipboard.write(url)])
     notification('Copied URL to clipboard')
@@ -90,13 +94,9 @@ export default () => {
     updateUrl({ setQuery, code: newCode })
   }
 
-  const handleQueryVariables = event => {
-    const payload = event.target.value
-    try {
-      const json = JSON.parse(payload)
-      setQueryVariables(json)
-      updateUrl({ setQuery, queryVariables: json })
-    } catch (_) {}
+  const handleQueryVariables = newJSON => {
+    setQueryVariables(newJSON)
+    updateUrl({ setQuery, queryVariables: newJSON })
   }
 
   if (isLoading) return null
@@ -153,8 +153,8 @@ export default () => {
                     width: '8rem',
                     p: '2px 8px'
                   }}
-                  onChange={e => {
-                    const presetName = e.currentTarget.value
+                  onChange={event => {
+                    const { value: presetName } = event.currentTarget
                     const newPreset = presets[presetName]
                     setPreset(newPreset)
                     setCode(newPreset.code)
@@ -171,17 +171,45 @@ export default () => {
                   ))}
                 </Select>
               </Flex>
-              <Button
-                title='Change color mode'
+              <Flex
                 sx={{
-                  outline: 0,
-                  cursor: 'pointer',
-                  bg: 'transparent'
+                  alignItems: 'center'
                 }}
-                onClick={() => setColorMode(nextMode())}
               >
-                <ThemeIcon color={theme.colors.modes[colorMode].plain.color} />
-              </Button>
+                <ExternalLink
+                  href={pkg.homepage}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  title='See on GitHub'
+                  sx={{
+                    display: 'flex',
+                    p: 0,
+                    outline: 0,
+                    cursor: 'pointer',
+                    bg: 'transparent'
+                  }}
+                >
+                  <GitHubIcon
+                    color={theme.colors.modes[colorMode].plain.color}
+                  />
+                </ExternalLink>
+                <Button
+                  title='Change color mode'
+                  sx={{
+                    display: 'flex',
+                    ml: 2,
+                    p: 0,
+                    outline: 0,
+                    cursor: 'pointer',
+                    bg: 'transparent'
+                  }}
+                  onClick={() => setColorMode(nextMode())}
+                >
+                  <ThemeIcon
+                    color={theme.colors.modes[colorMode].plain.color}
+                  />
+                </Button>
+              </Flex>
             </Flex>
             <Flex sx={{ flex: 1, minHeight: 0, flexDirection: 'column' }}>
               <Box
@@ -197,20 +225,12 @@ export default () => {
                   bg: 'plain.backgroundColor',
                   borderTop: '1px solid',
                   borderColor: 'plain.color',
-                  overflow: 'scroll'
+                  overflow: 'scroll',
+                  p: 3
                 }}
               >
-                <Textarea
-                  sx={{
-                    resize: 'none',
-                    caretColor: 'plain.color',
-                    p: 3,
-                    outline: 0,
-                    border: 0,
-                    height: '100%',
-                    color: 'plain.color'
-                  }}
-                  defaultValue={JSON.stringify(queryVariables, null, 2)}
+                <JSONViewer
+                  children={queryVariables}
                   onChange={handleQueryVariables}
                 />
               </Box>

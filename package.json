@@ -3,6 +3,7 @@
   "description": "shareable images playground",
   "homepage": "https://nicedoc.io/microlinkhq/og-link",
   "version": "0.0.0",
+  "private": true,
   "main": "index.js",
   "author": {
     "name": "microlink.io",
@@ -39,6 +40,7 @@
     "qss": "~2.0.3",
     "react": "~16.13.1",
     "react-dom": "~16.13.1",
+    "react-json-view": "~1.19.1",
     "react-live": "~2.2.2",
     "styled-components": "~5.0.1",
     "theme-ui": "~0.3.1",
