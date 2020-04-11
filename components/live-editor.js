@@ -79,8 +79,8 @@ LiveProviderBase.defaultProps = {
   noInline: false
 }
 
-export const LiveProvider = ({ queryVariables, ...props }) => {
-  const extendedScope = { ...scope, ...queryVariables }
+export const LiveProvider = ({ queryVariables: query, ...props }) => {
+  const extendedScope = { ...scope, query }
   return <LiveProviderBase {...props} scope={extendedScope} />
 }
 

@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+/* eslint-disable no-use-before-define */
 
 import Inline from 'inlinejsx.macro'
 import { Link, Box, Text } from './scope'

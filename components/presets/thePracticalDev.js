@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+/* eslint-disable no-use-before-define */
 
 import Inline from 'inlinejsx.macro'
 import { Link, Flex, Image, Box, Text } from './scope'
@@ -39,7 +39,7 @@ const code = (
               fontFamily: 'Merriweather',
               maxWidth: '36rem'
             }}
-            children={title}
+            children={query.title}
           />
           <Box
             sx={{
@@ -68,7 +68,7 @@ const code = (
                   fontWeight: '400',
                   fontFamily: 'Merriweather'
                 }}
-                children={author}
+                children={query.author}
               />
               <Text
                 sx={{
@@ -85,7 +85,7 @@ const code = (
                   fontWeight: '400',
                   fontFamily: 'Merriweather'
                 }}
-                children={date}
+                children={query.date}
               />
             </Box>
 

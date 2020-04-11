@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+/* eslint-disable no-use-before-define */
 
 import Inline from 'inlinejsx.macro'
 import { Link, Box, Text } from './scope'
@@ -56,7 +56,7 @@ const code = (
           fontWeight: '700',
           lineHeight: 1
         }}
-        children={headline}
+        children={query.headline}
       />
       <Text
         sx={{
@@ -66,7 +66,7 @@ const code = (
           textAlign: 'center',
           fontWeight: '300'
         }}
-        children={caption}
+        children={query.caption}
       />
     </Box>
   </Inline>
