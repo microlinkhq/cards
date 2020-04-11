@@ -1,23 +1,5 @@
-import { marshall, unmarshall } from '@/lib/compress-json'
-import presets from '@/components/presets'
-import useQueryState from '@/hooks/use-query-state'
-import GitHubIcon from '@/components/icons/github'
-import JSONViewer from '@/components/json-viewer'
-import ThemeIcon from '@/components/icons/theme'
-import screenshotUrl from '@/lib/screenshot-url'
-import Container from '@/components/container'
-import notification from '@/lib/notification'
-import { useState, useEffect } from 'react'
-// import Overlay from '@/components/overlay'
-import clipboard from '@/lib/clipboard'
-import debounce from '@/lib/debounce'
-import Main from '@/components/main'
-import isEmpty from '@/lib/is-empty'
-import onSave from '@/lib/on-save'
+import { useEffect, useState } from 'react'
 import Router from 'next/router'
-import themeBase from '@/theme'
-import Cycled from 'cycled'
-
 import {
   Link as ExternalLink,
   Button,
@@ -26,17 +8,38 @@ import {
   Flex,
   useThemeUI
 } from 'theme-ui'
+import Cycled from 'cycled'
 
+import presets from '@/components/presets'
+import Main from '@/components/main'
 import {
   LiveProvider,
   LiveEditor,
   LiveError,
   LivePreview
 } from '@/components/live-editor'
+import JSONViewer from '@/components/json-viewer'
+import ThemeIcon from '@/components/icons/theme'
+import GitHubIcon from '@/components/icons/github'
+import Container from '@/components/container'
+import { HorizontalDragBar, VerticalDragBar } from '@/components/drag-bars'
+// import Overlay from '@/components/overlay'
+import useQueryState from '@/hooks/use-query-state'
+import themeBase from '@/theme'
+import { marshall, unmarshall } from '@/lib/compress-json'
+import clipboard from '@/lib/clipboard'
+import debounce from '@/lib/debounce'
+import isEmpty from '@/lib/is-empty'
+import localStorage from '@/lib/localstorage'
+import notification from '@/lib/notification'
+import screenshotUrl from '@/lib/screenshot-url'
+import onSave from '@/lib/on-save'
 
 import pkg from '../../package.json'
 
 const DEFAULT_PRESET = Object.keys(presets)[0]
+const ASIDE_WIDTH_KEY = 'sidebar-width'
+const ASIDE_HEIGHT_KEY = 'sidebar-json-height'
 
 const updateUrl = debounce(({ setQuery, code, queryVariables }) => {
   let newQuery = {}
@@ -53,6 +56,14 @@ export default () => {
   const { theme, colorMode, setColorMode } = useThemeUI()
   const [isLoading, setIsLoading] = useState(true)
   // const [isOverlayOpen, setOverlayOpen] = useState(false)
+
+  const [asideWidth, setAsideWidth] = useState(
+    localStorage.get(ASIDE_WIDTH_KEY) || '30%'
+  )
+
+  const [jsonHeight, setJsonHeight] = useState(
+    localStorage.get(ASIDE_HEIGHT_KEY) || '25%'
+  )
 
   const [preset, setPreset] = useState(() => {
     const presetName = query.preset || DEFAULT_PRESET
@@ -100,6 +111,16 @@ export default () => {
     updateUrl({ setQuery, queryVariables: newJSON })
   }
 
+  const onAsideResize = width => {
+    setAsideWidth(width)
+    localStorage.set(ASIDE_WIDTH_KEY, width)
+  }
+
+  const onJsonResize = height => {
+    setJsonHeight(height)
+    localStorage.set(ASIDE_HEIGHT_KEY, height)
+  }
+
   if (isLoading) return null
   const isEditor = Router.asPath.startsWith('/editor')
 
@@ -120,16 +141,22 @@ export default () => {
         {isEditor && (
           <Flex
             as='aside'
+            style={{ width: asideWidth }}
             sx={{
+              position: 'relative',
               height: '100%',
+              minWidth: '20%',
+              maxWidth: '60%',
               bg: 'plain.backgroundColor',
               flexDirection: 'column',
-              width: ['30%', '30%', '30%', '30%'],
               fontSize: 2,
               fontFamily: 'mono',
-              fontWeight: 'light'
+              fontWeight: 'light',
+              willChange: 'width'
             }}
           >
+            <VerticalDragBar onDrag={onAsideResize} />
+
             <Flex
               as='header'
               sx={{
@@ -151,7 +178,7 @@ export default () => {
                   defaultValue={preset.name}
                   sx={{
                     fontSize: 1,
-                    width: '8rem',
+                    width: '8.5rem',
                     p: '2px 8px'
                   }}
                   onChange={event => {
@@ -213,27 +240,34 @@ export default () => {
               </Flex>
             </Flex>
             <Flex sx={{ flex: 1, minHeight: 0, flexDirection: 'column' }}>
-              <Box
-                as='section'
-                sx={{ flex: '1 0 60%', p: 3, overflow: 'auto' }}
-              >
+              <Box as='section' sx={{ flex: 1, p: 3, overflow: 'auto' }}>
                 <LiveEditor onChange={handleCode} />
               </Box>
               <Box
-                as='section'
                 sx={{
-                  height: '25%',
-                  bg: 'plain.backgroundColor',
-                  borderTop: '1px solid',
-                  borderColor: 'plain.color',
-                  overflow: 'scroll',
-                  p: 3
+                  position: 'relative',
+                  maxHeight: '70%',
+                  minHeight: '15%',
+                  willChange: 'height'
                 }}
+                style={{ height: jsonHeight }}
               >
-                <JSONViewer
-                  children={queryVariables}
-                  onChange={handleQueryVariables}
-                />
+                <HorizontalDragBar onDrag={onJsonResize} />
+                <Box
+                  as='section'
+                  sx={{
+                    bg: 'plain.backgroundColor',
+                    borderTop: '1px solid',
+                    borderColor: 'plain.color',
+                    overflow: 'scroll',
+                    p: 3
+                  }}
+                >
+                  <JSONViewer
+                    children={queryVariables}
+                    onChange={handleQueryVariables}
+                  />
+                </Box>
               </Box>
             </Flex>
           </Flex>

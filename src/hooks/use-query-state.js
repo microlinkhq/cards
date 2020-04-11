@@ -1,10 +1,9 @@
 import stringify from 'fast-safe-stringify'
 import { useState, useEffect } from 'react'
 import { encode, decode } from 'qss'
+import isSSR from '../lib/is-ssr'
 
 const eq = (str1, str2) => stringify(str1) === stringify(str2)
-
-const isSSR = typeof window === 'undefined'
 
 const fromLocation = isSSR
   ? () => ({})
