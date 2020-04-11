@@ -1,12 +1,13 @@
-import { Button, Textarea, Select, Box, Flex, useThemeUI } from 'theme-ui'
+import { Text, Button, Textarea, Select, Box, Flex, useThemeUI } from 'theme-ui'
 import { marshall, unmarshall } from '@lib/compress-json'
 import presets from '@components/presets'
 import useQueryState from '@hooks/use-query-state'
 import React, { useState, useEffect } from 'react'
 import ThemeIcon from '@components/icons/theme'
+import Container from '@components/container'
 import notification from '@lib/notification'
 import { getApiUrl } from '@microlink/mql'
-import styled from 'styled-components'
+import Overlay from '@components/overlay'
 import clipboard from '@lib/clipboard'
 import themeBase from '@themes/base'
 import debounce from '@lib/debounce'
@@ -25,10 +26,6 @@ import {
 
 const DEFAULT_PRESET = Object.keys(presets)[0]
 
-const Container = styled(Flex)`
-  height: 100vh;
-`
-
 const updateUrl = debounce(({ setQuery, code, queryVariables }) => {
   let newQuery = {}
   if (!isEmpty(code)) newQuery.p = marshall(code)
@@ -43,6 +40,7 @@ export default () => {
   const [query, setQuery] = useQueryState()
   const { theme, colorMode, setColorMode } = useThemeUI()
   const [isLoading, setIsLoading] = useState(true)
+  const [isOverlayOpen, setOverlayOpen] = useState(false)
 
   const [preset, setPreset] = useState(() => {
     const presetName = query.preset || DEFAULT_PRESET
@@ -64,6 +62,7 @@ export default () => {
   })
 
   const toClipboard = async () => {
+    setOverlayOpen(true)
     const [url] = getApiUrl(
       decodeURI(window.location.href.replace('/editor/', '')),
       {
@@ -109,6 +108,9 @@ export default () => {
       queryVariables={queryVariables}
       code={code}
     >
+      {/* <Overlay isOpen={isOverlayOpen}>
+        <Text>Embed HTML</Text>
+      </Overlay> */}
       <Container>
         <Main>
           <LivePreview onClick={toClipboard} isEditor={isEditor} />
@@ -208,7 +210,7 @@ export default () => {
                     height: '100%',
                     color: 'plain.color'
                   }}
-                  value={JSON.stringify(queryVariables, null, 2)}
+                  defaultValue={JSON.stringify(queryVariables, null, 2)}
                   onChange={handleQueryVariables}
                 />
               </Box>
