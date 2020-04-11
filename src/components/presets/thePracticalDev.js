@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 
-import Inline from 'inlinejsx.macro'
+import Inline from '../inline.macro'
 import { Link, Flex, Image, Box, Text } from './scope'
 
 const code = (
