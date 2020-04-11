@@ -32,6 +32,7 @@ import { marshall, unmarshall } from '@/lib/compress-json'
 import clipboard from '@/lib/clipboard'
 import debounce from '@/lib/debounce'
 import isEmpty from '@/lib/is-empty'
+import localStorage from '@/lib/localstorage'
 import notification from '@/lib/notification'
 import screenshotUrl from '@/lib/screenshot-url'
 import onSave from '@/lib/on-save'
@@ -97,8 +98,8 @@ export default () => {
     onSave(toClipboard)
     setIsLoading(false)
 
-    const storedAsideWidth = localStorage.getItem(asideWidthKey)
-    const storedJsonHeight = localStorage.getItem(jsonHeightKey)
+    const storedAsideWidth = localStorage.get(asideWidthKey)
+    const storedJsonHeight = localStorage.get(jsonHeightKey)
 
     if (storedAsideWidth) {
       setAsideWidth(storedAsideWidth)
@@ -121,12 +122,12 @@ export default () => {
 
   const onAsideResize = width => {
     setAsideWidth(width)
-    localStorage.setItem(asideWidthKey, width)
+    localStorage.set(asideWidthKey, width)
   }
 
   const onJsonResize = height => {
     setJsonHeight(height)
-    localStorage.setItem(jsonHeightKey, height)
+    localStorage.set(jsonHeightKey, height)
   }
 
   if (isLoading) return null
