@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default ({ size = '24', color }) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'

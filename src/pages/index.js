@@ -1,3 +1,23 @@
+import { marshall, unmarshall } from '@/lib/compress-json'
+import presets from '@/components/presets'
+import useQueryState from '@/hooks/use-query-state'
+import GitHubIcon from '@/components/icons/github'
+import JSONViewer from '@/components/json-viewer'
+import ThemeIcon from '@/components/icons/theme'
+import screenshotUrl from '@/lib/screenshot-url'
+import Container from '@/components/container'
+import notification from '@/lib/notification'
+import { useState, useEffect } from 'react'
+// import Overlay from '@/components/overlay'
+import clipboard from '@/lib/clipboard'
+import debounce from '@/lib/debounce'
+import Main from '@/components/main'
+import isEmpty from '@/lib/is-empty'
+import onSave from '@/lib/on-save'
+import Router from 'next/router'
+import themeBase from '@/theme'
+import Cycled from 'cycled'
+
 import {
   Link as ExternalLink,
   Button,
@@ -6,27 +26,6 @@ import {
   Flex,
   useThemeUI
 } from 'theme-ui'
-import { marshall, unmarshall } from '@/lib/compress-json'
-import presets from '@/components/presets'
-import useQueryState from '@/hooks/use-query-state'
-import React, { useState, useEffect } from 'react'
-import GitHubIcon from '@/components/icons/github'
-import JSONViewer from '@/components/json-viewer'
-import ThemeIcon from '@/components/icons/theme'
-import screenshotUrl from '@/lib/screenshot-url'
-import Container from '@/components/container'
-import notification from '@/lib/notification'
-// import Overlay from '@/components/overlay'
-import clipboard from '@/lib/clipboard'
-import debounce from '@/lib/debounce'
-import Main from '@/components/main'
-import isEmpty from '@/lib/is-empty'
-import themeBase from '@/theme'
-
-import onSave from '@/lib/on-save'
-import Router from 'next/router'
-import Cycled from 'cycled'
-import pkg from '../../package.json'
 
 import {
   LiveProvider,
@@ -34,6 +33,8 @@ import {
   LiveError,
   LivePreview
 } from '@/components/live-editor'
+
+import pkg from '../../package.json'
 
 const DEFAULT_PRESET = Object.keys(presets)[0]
 
