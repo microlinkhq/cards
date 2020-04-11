@@ -1,29 +1,24 @@
-import App from 'next/app'
-
-import React from 'react'
+import NextApp from 'next/app'
 import { createGlobalStyle } from 'styled-components'
 import { ThemeProvider } from 'theme-ui'
-import theme from '@themes/base'
+
+import theme from '@/themes/base'
 
 const GlobalStylesheet = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
-
   html,
   body {
     overflow: hidden;
   }
-
   body {
     margin: 0;
   }
-
   #__next {
     font-family: system-ui, sans-serif;
     line-height: 1.5;
   }
-
   .snackbars {
     display: block;
     position: fixed;
@@ -34,7 +29,6 @@ const GlobalStylesheet = createGlobalStyle`
     z-index: 100;
     overflow: visible;
   }
-
   .snackbar {
     position: fixed;
     box-sizing: border-box;
@@ -46,17 +40,14 @@ const GlobalStylesheet = createGlobalStyle`
     will-change: transform;
     transition: transform 300ms ease, opacity 300ms ease;
   }
-
   .snackbar[aria-hidden='false'] {
     -webkit-animation: snackbar-show 300ms ease 1;
             animation: snackbar-show 300ms ease 1;
   }
-
   .snackbar[aria-hidden='true'] {
     -webkit-animation: snackbar-hide 300ms ease forwards 1;
             animation: snackbar-hide 300ms ease forwards 1;
   }
-
   @media (min-width: 1080px) {
       .snackbars-right .snackbar {
         left: auto;
@@ -68,35 +59,30 @@ const GlobalStylesheet = createGlobalStyle`
         margin-left: 0;
       }
   }
-
   @-webkit-keyframes snackbar-show {
     from {
       opacity: 0;
       transform: translate3d(0, 100%, 0)
     }
   }
-
   @keyframes snackbar-show {
     from {
       opacity: 0;
       transform: translate3d(0, 100%, 0)
     }
   }
-
   @-webkit-keyframes snackbar-hide {
     to {
       opacity: 0;
       transform: translateY(100%);
     }
   }
-
   @keyframes snackbar-hide {
     to {
       opacity: 0;
       transform: translateY(100%);
     }
   }
-
   @media (max-width: 400px) {
     .snackbar {
       width: 100%;
@@ -106,7 +92,6 @@ const GlobalStylesheet = createGlobalStyle`
       border-radius: 0;
     }
   }
-
   .snackbar--container {
     display: flex;
     background: #2a2a2a;
@@ -116,14 +101,12 @@ const GlobalStylesheet = createGlobalStyle`
     cursor: default;
     margin-bottom: 10px;
   }
-
   .snackbar--text {
     flex: 1 1 auto;
     padding: 16px;
     font-size: 100%;
     font-family: ${theme.fonts.sans};
   }
-
   .snackbar--button {
     position: relative;
     flex: 0 1 auto;
@@ -166,6 +149,7 @@ const GlobalStylesheet = createGlobalStyle`
       transform: scale(0.01);
     }
   }
+
   @keyframes focus-ring {
     from {
       transform: scale(0.01);
@@ -173,9 +157,10 @@ const GlobalStylesheet = createGlobalStyle`
   }
 `
 
-export default class MyApp extends App {
+export default class App extends NextApp {
   render () {
     const { Component, pageProps } = this.props
+
     return (
       <ThemeProvider theme={theme}>
         <GlobalStylesheet />
