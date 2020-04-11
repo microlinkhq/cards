@@ -17,15 +17,9 @@ import onSave from '@/lib/on-save'
 import Router from 'next/router'
 import themeBase from '@/theme'
 import Cycled from 'cycled'
+import Select from 'react-select'
 
-import {
-  Link as ExternalLink,
-  Button,
-  Select,
-  Box,
-  Flex,
-  useThemeUI
-} from 'theme-ui'
+import { Link as ExternalLink, Button, Box, Flex, useThemeUI } from 'theme-ui'
 
 import {
   LiveProvider,
@@ -100,6 +94,28 @@ export default () => {
     updateUrl({ setQuery, queryVariables: newJSON })
   }
 
+  const handleSelectChange = event => {
+    const presetName = event.value
+    const newPreset = presets[presetName]
+    setPreset(newPreset)
+    setCode(newPreset.code)
+    setQueryVariables(newPreset.query)
+    setQuery({ p: undefined, preset: presetName })
+  }
+
+  const getOptions = () => {
+    return Object.keys(presets).map(presetName => {
+      return {
+        value: presetName,
+        label: presetName
+          .replace(/([A-Z])/g, ' $1')
+          .replace(/^./, function (str) {
+            return str.toUpperCase()
+          })
+      }
+    })
+  }
+
   if (isLoading) return null
   const isEditor = Router.asPath.startsWith('/editor')
 
@@ -138,40 +154,21 @@ export default () => {
                 bg: 'plain.backgroundColor',
                 color: 'plain.color',
                 p: 3,
-                alignItems: 'center'
+                justifyContent: 'space-between'
               }}
             >
-              <Flex
+              <Box
                 sx={{
-                  alignItems: 'center',
-                  flex: 1
+                  width: '200px'
                 }}
               >
                 <Select
-                  defaultValue={preset.name}
-                  sx={{
-                    fontSize: 1,
-                    width: '8rem',
-                    p: '2px 8px'
-                  }}
-                  onChange={event => {
-                    const { value: presetName } = event.currentTarget
-                    const newPreset = presets[presetName]
-                    setPreset(newPreset)
-                    setCode(newPreset.code)
-                    setQueryVariables(newPreset.query)
-                    setQuery({ p: undefined, preset: presetName })
-                  }}
-                >
-                  {Object.keys(presets).map(presetName => (
-                    <option
-                      key={presetName}
-                      value={presetName}
-                      children={presetName}
-                    />
-                  ))}
-                </Select>
-              </Flex>
+                  value={preset.name}
+                  options={getOptions()}
+                  onChange={event => handleSelectChange(event)}
+                />
+              </Box>
+
               <Flex
                 sx={{
                   alignItems: 'center'
