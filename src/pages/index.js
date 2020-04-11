@@ -8,7 +8,6 @@ import {
 } from 'theme-ui'
 
 import presets from '@/components/presets'
-import ThemeIcon from '@/components/icons/theme'
 import Main from '@/components/main'
 import {
   LiveProvider,
@@ -16,12 +15,11 @@ import {
   LiveError,
   LivePreview
 } from '@/components/live-editor'
-import presets from '@/components/presets'
 import JSONViewer from '@/components/json-viewer'
 import ThemeIcon from '@/components/icons/theme'
 import GitHubIcon from '@/components/icons/github'
 import Container from '@/components/container'
-import Main from '@/components/main'
+import AsideDrag from '@/components/aside-drag'
 // import Overlay from '@/components/overlay'
 import useQueryState from '@/hooks/use-query-state'
 import themeBase from '@/themes/base'
@@ -52,6 +50,7 @@ export default () => {
   const { theme, colorMode, setColorMode } = useThemeUI()
   const [isLoading, setIsLoading] = useState(true)
   // const [isOverlayOpen, setOverlayOpen] = useState(false)
+  const [asideWidth, setAsideWidth] = useState('30%')
 
   const [preset, setPreset] = useState(() => {
     const presetName = query.preset || DEFAULT_PRESET
@@ -119,16 +118,22 @@ export default () => {
         {isEditor && (
           <Flex
             as='aside'
+            style={{ width: asideWidth }}
             sx={{
+              position: 'relative',
               height: '100%',
+              minWidth: '20%',
+              maxWidth: '60%',
               bg: 'plain.backgroundColor',
               flexDirection: 'column',
-              width: ['30%', '30%', '30%', '30%'],
               fontSize: 2,
               fontFamily: 'mono',
-              fontWeight: 'light'
+              fontWeight: 'light',
+              willChange: 'width'
             }}
           >
+            <AsideDrag onDrag={w => setAsideWidth(w)} />
+
             <Flex
               as='header'
               sx={{
@@ -150,7 +155,7 @@ export default () => {
                   defaultValue={preset.name}
                   sx={{
                     fontSize: 1,
-                    width: '8rem',
+                    width: '8.5rem',
                     p: '2px 8px'
                   }}
                   onChange={event => {
