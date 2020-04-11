@@ -1,3 +1,5 @@
+/* global localStorage */
+
 import { useEffect, useState } from 'react'
 import Router from 'next/router'
 import {
@@ -48,6 +50,9 @@ const updateUrl = debounce(({ setQuery, code, queryVariables }) => {
 const cycledMode = new Cycled(Object.keys(themeBase.colors.modes))
 const nextMode = () => cycledMode.next()
 
+const asideWidthKey = 'sidebar-width'
+const jsonHeightKey = 'sidebar-json-height'
+
 export default () => {
   const [query, setQuery] = useQueryState()
   const { theme, colorMode, setColorMode } = useThemeUI()
@@ -88,8 +93,20 @@ export default () => {
     if (Router.asPath === '/' && isEmpty(Router.query)) {
       return Router.push({ pathname: '/editor' })
     }
+
     onSave(toClipboard)
     setIsLoading(false)
+
+    const storedAsideWidth = localStorage.getItem(asideWidthKey)
+    const storedJsonHeight = localStorage.getItem(jsonHeightKey)
+
+    if (storedAsideWidth) {
+      setAsideWidth(storedAsideWidth)
+    }
+
+    if (storedJsonHeight) {
+      setJsonHeight(storedJsonHeight)
+    }
   }, [])
 
   const handleCode = newCode => {
@@ -100,6 +117,16 @@ export default () => {
   const handleQueryVariables = newJSON => {
     setQueryVariables(newJSON)
     updateUrl({ setQuery, queryVariables: newJSON })
+  }
+
+  const onAsideResize = width => {
+    setAsideWidth(width)
+    localStorage.setItem(asideWidthKey, width)
+  }
+
+  const onJsonResize = height => {
+    setJsonHeight(height)
+    localStorage.setItem(jsonHeightKey, height)
   }
 
   if (isLoading) return null
@@ -136,7 +163,7 @@ export default () => {
               willChange: 'width'
             }}
           >
-            <VerticalDragBar onDrag={w => setAsideWidth(w)} />
+            <VerticalDragBar onDrag={onAsideResize} />
 
             <Flex
               as='header'
@@ -232,7 +259,7 @@ export default () => {
                 }}
                 style={{ height: jsonHeight }}
               >
-                <HorizontalDragBar onDrag={h => setJsonHeight(h)} />
+                <HorizontalDragBar onDrag={onJsonResize} />
                 <Box
                   as='section'
                   sx={{
