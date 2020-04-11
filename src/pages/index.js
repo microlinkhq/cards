@@ -255,7 +255,8 @@ export default () => {
                 sx={{
                   position: 'relative',
                   maxHeight: '70%',
-                  minHeight: '15%'
+                  minHeight: '15%',
+                  willChange: 'height'
                 }}
                 style={{ height: jsonHeight }}
               >
