@@ -1,13 +1,13 @@
 import styled from 'styled-components'
-import theme from '@themes/base'
-import * as scope from '@components/presets/scope'
-
 import {
   LiveProvider as BaseProvider,
   LiveEditor as BaseEditor,
   LiveError as BaseError,
   LivePreview as BasePreview
 } from 'react-live'
+
+import theme from '@/themes/base'
+import * as scope from '@/components/presets/scope'
 
 const BASE_HEIGHT = 441
 const BASE_WIDTH = 843

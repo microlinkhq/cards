@@ -1,9 +1,8 @@
-import App from 'next/app'
-
-import React from 'react'
+import NextApp from 'next/app'
 import { createGlobalStyle } from 'styled-components'
 import { ThemeProvider } from 'theme-ui'
-import theme from '@themes/base'
+
+import theme from '@/themes/base'
 
 const GlobalStylesheet = createGlobalStyle`
   * {
@@ -144,6 +143,7 @@ const GlobalStylesheet = createGlobalStyle`
     transition: background-color 200ms ease;
     outline: none;
   }
+
   .snackbar--button:focus:before {
     content: '';
     position: absolute;
@@ -161,11 +161,13 @@ const GlobalStylesheet = createGlobalStyle`
             animation: focus-ring 300ms ease-out forwards 1;
     pointer-events: none;
   }
+
   @-webkit-keyframes focus-ring {
     from {
       transform: scale(0.01);
     }
   }
+  
   @keyframes focus-ring {
     from {
       transform: scale(0.01);
@@ -173,9 +175,10 @@ const GlobalStylesheet = createGlobalStyle`
   }
 `
 
-export default class MyApp extends App {
+export default class App extends NextApp {
   render () {
     const { Component, pageProps } = this.props
+
     return (
       <ThemeProvider theme={theme}>
         <GlobalStylesheet />
