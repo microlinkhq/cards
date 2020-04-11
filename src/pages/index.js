@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 import Router from 'next/router'
 import {
   Link as ExternalLink,
@@ -8,7 +8,7 @@ import {
   Flex,
   useThemeUI
 } from 'theme-ui'
-import Cycled from 'cycled';
+import Cycled from 'cycled'
 
 import presets from '@/components/presets'
 import Main from '@/components/main'
@@ -22,7 +22,7 @@ import JSONViewer from '@/components/json-viewer'
 import ThemeIcon from '@/components/icons/theme'
 import GitHubIcon from '@/components/icons/github'
 import Container from '@/components/container'
-import AsideDrag from '@/components/aside-drag'
+import { HorizontalDragBar, VerticalDragBar } from '@/components/drag-bars'
 // import Overlay from '@/components/overlay'
 import useQueryState from '@/hooks/use-query-state'
 import themeBase from '@/theme'
@@ -54,6 +54,7 @@ export default () => {
   const [isLoading, setIsLoading] = useState(true)
   // const [isOverlayOpen, setOverlayOpen] = useState(false)
   const [asideWidth, setAsideWidth] = useState('30%')
+  const [jsonHeight, setJsonHeight] = useState('25%')
 
   const [preset, setPreset] = useState(() => {
     const presetName = query.preset || DEFAULT_PRESET
@@ -135,7 +136,7 @@ export default () => {
               willChange: 'width'
             }}
           >
-            <AsideDrag onDrag={w => setAsideWidth(w)} />
+            <VerticalDragBar onDrag={w => setAsideWidth(w)} />
 
             <Flex
               as='header'
@@ -220,27 +221,33 @@ export default () => {
               </Flex>
             </Flex>
             <Flex sx={{ flex: 1, minHeight: 0, flexDirection: 'column' }}>
-              <Box
-                as='section'
-                sx={{ flex: '1 0 60%', p: 3, overflow: 'auto' }}
-              >
+              <Box as='section' sx={{ flex: 1, p: 3, overflow: 'auto' }}>
                 <LiveEditor onChange={handleCode} />
               </Box>
               <Box
-                as='section'
                 sx={{
-                  height: '25%',
-                  bg: 'plain.backgroundColor',
-                  borderTop: '1px solid',
-                  borderColor: 'plain.color',
-                  overflow: 'scroll',
-                  p: 3
+                  position: 'relative',
+                  maxHeight: '70%',
+                  minHeight: '15%'
                 }}
+                style={{ height: jsonHeight }}
               >
-                <JSONViewer
-                  children={queryVariables}
-                  onChange={handleQueryVariables}
-                />
+                <HorizontalDragBar onDrag={h => setJsonHeight(h)} />
+                <Box
+                  as='section'
+                  sx={{
+                    bg: 'plain.backgroundColor',
+                    borderTop: '1px solid',
+                    borderColor: 'plain.color',
+                    overflow: 'scroll',
+                    p: 3
+                  }}
+                >
+                  <JSONViewer
+                    children={queryVariables}
+                    onChange={handleQueryVariables}
+                  />
+                </Box>
               </Box>
             </Flex>
           </Flex>
