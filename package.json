@@ -1,26 +1,27 @@
 {
   "name": "og-link",
   "description": "shareable images playground",
-  "homepage": "https://nicedoc.io/microlinkhq/og-link",
+  "homepage": "https://cards.microlink.io",
   "version": "0.0.0",
-  "private": true,
   "main": "index.js",
   "author": {
-    "name": "microlink.io",
     "email": "hello@microlink.io",
+    "name": "microlink.io",
     "url": "https://microlink.io"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/microlinkhq/og-link.git"
+    "url": "git+https://github.com/microlinkhq/cards.git"
   },
   "bugs": {
-    "url": "https://github.com/microlinkhq/og-link/issues"
+    "url": "https://github.com/microlinkhq/cards/issues"
   },
   "keywords": [
+    "cards",
     "img",
     "meta",
     "metatags",
+    "microlink",
     "og-image",
     "opengraph",
     "seo",
@@ -50,6 +51,7 @@
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
     "ava": "latest",
+    "babel-plugin-styled-components": "latest",
     "conventional-github-releaser": "latest",
     "coveralls": "latest",
     "finepack": "latest",
@@ -62,20 +64,18 @@
     "prettier-standard": "latest",
     "standard": "latest",
     "standard-markdown": "latest",
-    "standard-version": "latest",
-    "babel-plugin-styled-components": "latest"
+    "standard-version": "latest"
   },
   "engines": {
     "node": "12.x"
   },
   "scripts": {
     "build": "next build",
-    "export": "next export",
-    "start": "next start",
-    "dev": "next",
     "clean": "rm -rf node_modules",
     "contributors": "(git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "dev": "next",
+    "export": "next export",
     "lint": "standard-markdown README.md && standard",
     "postrelease": "npm run release:tags && npm run release:github && npm publish",
     "prerelease": "git-dirty && npm run update:check && npm test && npm run contributors",
@@ -83,10 +83,12 @@
     "release": "git-authors-cli finepack && git add package.json && standard-version -a",
     "release:github": "conventional-github-releaser -p angular",
     "release:tags": "git push --follow-tags origin master",
+    "start": "next start",
     "test": "nyc ava",
     "update": "ncu -u",
     "update:check": "ncu -- --error-level 2"
   },
+  "private": true,
   "license": "MIT",
   "commitlint": {
     "extends": [
