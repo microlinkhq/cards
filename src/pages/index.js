@@ -1,5 +1,33 @@
+import { HorizontalDragBar, VerticalDragBar } from '@/components/drag-bars'
+import { marshall, unmarshall } from '@/lib/compress-json'
+import useQueryState from '@/hooks/use-query-state'
+import GitHubIcon from '@/components/icons/github'
+import JSONViewer from '@/components/json-viewer'
+import ThemeIcon from '@/components/icons/theme'
+import screenshotUrl from '@/lib/screenshot-url'
+import Container from '@/components/container'
+import notification from '@/lib/notification'
 import { useEffect, useState } from 'react'
+import presets from '@/components/presets'
+import store from '@/lib/local-storage'
+import clipboard from '@/lib/clipboard'
+import debounce from '@/lib/debounce'
+import Main from '@/components/main'
+import isEmpty from '@/lib/is-empty'
+import onSave from '@/lib/on-save'
 import Router from 'next/router'
+import themeBase from '@/theme'
+import Cycled from 'cycled'
+
+// import Overlay from '@/components/overlay'
+
+import {
+  LiveProvider,
+  LiveEditor,
+  LiveError,
+  LivePreview
+} from '@/components/live-editor'
+
 import {
   Link as ExternalLink,
   Button,
@@ -8,40 +36,20 @@ import {
   Flex,
   useThemeUI
 } from 'theme-ui'
-import Cycled from 'cycled'
 
-import presets from '@/components/presets'
-import Main from '@/components/main'
-import {
-  LiveProvider,
-  LiveEditor,
-  LiveError,
-  LivePreview
-} from '@/components/live-editor'
-import JSONViewer from '@/components/json-viewer'
-import ThemeIcon from '@/components/icons/theme'
-import GitHubIcon from '@/components/icons/github'
-import Container from '@/components/container'
-import { HorizontalDragBar, VerticalDragBar } from '@/components/drag-bars'
-// import Overlay from '@/components/overlay'
-import useQueryState from '@/hooks/use-query-state'
-import themeBase from '@/theme'
-import { marshall, unmarshall } from '@/lib/compress-json'
-import clipboard from '@/lib/clipboard'
-import debounce from '@/lib/debounce'
-import isEmpty from '@/lib/is-empty'
-import localStorage from '@/lib/localstorage'
-import notification from '@/lib/notification'
-import screenshotUrl from '@/lib/screenshot-url'
-import onSave from '@/lib/on-save'
-
-import pkg from '../../package.json'
+import pkg from '@/package.json'
 
 const DEFAULT_PRESET = Object.keys(presets)[0]
-const ASIDE_WIDTH_KEY = 'sidebar-width'
 const ASIDE_HEIGHT_KEY = 'sidebar-json-height'
+const ASIDE_WIDTH_KEY = 'sidebar-width'
+const DEFAULT_ASIDE_WIDTH = '30%'
+const DEFAULT_ASIDE_HEIGHT = '25%'
+const ASIDE_MIN_WIDTH = '20%'
+const ASIDE_MAX_WIDTH = '60%'
+const ASIDE_MIN_HEIGHT = '15%'
+const ASIDE_MAX_HEIGHT = '70%'
 
-const updateUrl = debounce(({ setQuery, code, queryVariables }) => {
+const updateQuery = debounce(({ setQuery, code, queryVariables }) => {
   let newQuery = {}
   if (!isEmpty(code)) newQuery.p = marshall(code)
   if (!isEmpty(queryVariables)) newQuery = { ...newQuery, ...queryVariables }
@@ -58,17 +66,14 @@ export default () => {
   // const [isOverlayOpen, setOverlayOpen] = useState(false)
 
   const [asideWidth, setAsideWidth] = useState(
-    localStorage.get(ASIDE_WIDTH_KEY) || '30%'
+    store.get(ASIDE_WIDTH_KEY) || DEFAULT_ASIDE_WIDTH
   )
 
   const [jsonHeight, setJsonHeight] = useState(
-    localStorage.get(ASIDE_HEIGHT_KEY) || '25%'
+    store.get(ASIDE_HEIGHT_KEY) || DEFAULT_ASIDE_HEIGHT
   )
 
-  const [preset, setPreset] = useState(() => {
-    const presetName = query.preset || DEFAULT_PRESET
-    return presets[presetName]
-  })
+  const [preset, setPreset] = useState(presets[query.preset || DEFAULT_PRESET])
 
   const [code, setCode] = useState(() => {
     if (isEmpty(query)) return preset.code
@@ -103,22 +108,22 @@ export default () => {
 
   const handleCode = newCode => {
     setCode(newCode)
-    updateUrl({ setQuery, code: newCode })
+    updateQuery({ setQuery, code: newCode })
   }
 
   const handleQueryVariables = newJSON => {
     setQueryVariables(newJSON)
-    updateUrl({ setQuery, queryVariables: newJSON })
+    updateQuery({ setQuery, queryVariables: newJSON })
   }
 
   const onAsideResize = width => {
     setAsideWidth(width)
-    localStorage.set(ASIDE_WIDTH_KEY, width)
+    store.set(ASIDE_WIDTH_KEY, width)
   }
 
   const onJsonResize = height => {
     setJsonHeight(height)
-    localStorage.set(ASIDE_HEIGHT_KEY, height)
+    store.set(ASIDE_HEIGHT_KEY, height)
   }
 
   if (isLoading) return null
@@ -141,17 +146,17 @@ export default () => {
         {isEditor && (
           <Flex
             as='aside'
-            style={{ width: asideWidth }}
             sx={{
-              position: 'relative',
-              height: '100%',
-              minWidth: '20%',
-              maxWidth: '60%',
               bg: 'plain.backgroundColor',
               flexDirection: 'column',
-              fontSize: 2,
               fontFamily: 'mono',
+              fontSize: 2,
               fontWeight: 'light',
+              height: '100%',
+              maxWidth: ASIDE_MAX_WIDTH,
+              minWidth: ASIDE_MIN_WIDTH,
+              position: 'relative',
+              width: asideWidth,
               willChange: 'width'
             }}
           >
@@ -160,12 +165,12 @@ export default () => {
             <Flex
               as='header'
               sx={{
+                alignItems: 'center',
+                bg: 'plain.backgroundColor',
                 borderBottom: '1px solid',
                 borderColor: 'plain.color',
-                bg: 'plain.backgroundColor',
                 color: 'plain.color',
-                p: 3,
-                alignItems: 'center'
+                p: 3
               }}
             >
               <Flex
@@ -178,8 +183,8 @@ export default () => {
                   defaultValue={preset.name}
                   sx={{
                     fontSize: 1,
-                    width: '8.5rem',
-                    p: '2px 8px'
+                    p: '2px 8px',
+                    width: '8.5rem'
                   }}
                   onChange={event => {
                     const { value: presetName } = event.currentTarget
@@ -192,9 +197,9 @@ export default () => {
                 >
                   {Object.keys(presets).map(presetName => (
                     <option
+                      children={presetName}
                       key={presetName}
                       value={presetName}
-                      children={presetName}
                     />
                   ))}
                 </Select>
@@ -210,11 +215,11 @@ export default () => {
                   rel='noopener noreferrer'
                   title='See on GitHub'
                   sx={{
-                    display: 'flex',
-                    p: 0,
-                    outline: 0,
+                    bg: 'transparent',
                     cursor: 'pointer',
-                    bg: 'transparent'
+                    display: 'flex',
+                    outline: 0,
+                    p: 0
                   }}
                 >
                   <GitHubIcon
@@ -224,12 +229,12 @@ export default () => {
                 <Button
                   title='Change color mode'
                   sx={{
+                    bg: 'transparent',
+                    cursor: 'pointer',
                     display: 'flex',
                     ml: 2,
-                    p: 0,
                     outline: 0,
-                    cursor: 'pointer',
-                    bg: 'transparent'
+                    p: 0
                   }}
                   onClick={() => setColorMode(nextMode())}
                 >
@@ -245,20 +250,20 @@ export default () => {
               </Box>
               <Box
                 sx={{
+                  height: jsonHeight,
+                  maxHeight: ASIDE_MAX_HEIGHT,
+                  minHeight: ASIDE_MIN_HEIGHT,
                   position: 'relative',
-                  maxHeight: '70%',
-                  minHeight: '15%',
                   willChange: 'height'
                 }}
-                style={{ height: jsonHeight }}
               >
                 <HorizontalDragBar onDrag={onJsonResize} />
                 <Box
                   as='section'
                   sx={{
                     bg: 'plain.backgroundColor',
-                    borderTop: '1px solid',
                     borderColor: 'plain.color',
+                    borderTop: '1px solid',
                     overflow: 'scroll',
                     p: 3
                   }}
