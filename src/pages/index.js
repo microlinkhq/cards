@@ -1,4 +1,5 @@
 import { HorizontalDragBar, VerticalDragBar } from '@/components/drag-bars'
+import SearchableSelect from '@/components/searchable-select'
 import { marshall, unmarshall } from '@/lib/compress-json'
 import { Button, Box, Flex, useThemeUI } from 'theme-ui'
 import useQueryState from '@/hooks/use-query-state'
@@ -18,7 +19,6 @@ import Main from '@/components/main'
 import isEmpty from '@/lib/is-empty'
 import * as polished from 'polished'
 import onSave from '@/lib/on-save'
-import Select from 'react-select'
 import Router from 'next/router'
 import themeBase from '@/theme'
 import Cycled from 'cycled'
@@ -161,6 +161,7 @@ export default () => {
   const isEditor = Router.asPath.startsWith('/editor')
 
   const color = theme.colors.modes[colorMode].plain.color
+  const bg = theme.colors.modes[colorMode].plain.backgroundColor
   const borderColor = polished.rgba(color, 0.6)
 
   return (
@@ -213,7 +214,9 @@ export default () => {
                   width: '200px'
                 }}
               >
-                <Select
+                <SearchableSelect
+                  color={color}
+                  bg={bg}
                   value={{ value: preset.name, label: preset.name }}
                   options={Object.keys(presets).map(key => ({
                     value: key,
