@@ -160,13 +160,14 @@ export default () => {
 
   const isEditor = Router.asPath.startsWith('/editor')
 
-  const color = theme.colors.modes[colorMode].plain.color
-  const bg = theme.colors.modes[colorMode].plain.backgroundColor
+  const editorTheme = theme.colors.modes[colorMode]
+  const color = editorTheme.plain.color
+  const bg = editorTheme.plain.backgroundColor
   const borderColor = polished.rgba(color, 0.6)
 
   return (
     <LiveProvider
-      theme={theme.colors.modes[colorMode]}
+      theme={editorTheme}
       queryVariables={queryVariables}
       code={code}
     >
@@ -290,6 +291,7 @@ export default () => {
                   }}
                 >
                   <JSONViewer
+                    theme={editorTheme}
                     children={queryVariables}
                     onChange={handleQueryVariables}
                   />
