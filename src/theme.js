@@ -41,9 +41,10 @@ export const theme = {
     modes: editorTheme
   },
   fonts: {
-    sans: "'Inter', sans-serif",
+    sans:
+      'Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Oxygen, Ubuntu, Cantarell, "Open Sans", sans-serif',
     mono:
-      '"Operator Mono", "Fira Code", "SF Mono", "Roboto Mono", "Ubuntu Mono", Menlo, monospace'
+      '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace'
   },
   speed,
   transition: {

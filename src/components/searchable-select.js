@@ -1,5 +1,6 @@
 import SearchableSelect from 'react-select'
 import * as polished from 'polished'
+import themeBase from '@/theme'
 
 export default ({ bg, color, ...props }) => {
   const secondaryColor = polished.lighten(0.1, bg)
@@ -30,9 +31,14 @@ export default ({ bg, color, ...props }) => {
   }
 
   const styles = {
+    singleValue: (provided, { isFocused }) => ({
+      ...provided,
+      fontFamily: themeBase.fonts.sans,
+      fontSize: themeBase.fontSizes[2]
+    }),
     indicatorSeparator: () => ({ display: 'none' }),
-    control: (provided, { isFocused, ...state }) => {
-      return { ...provided, boxShadow: 'none' } // isFocused && `0 0 0 1px ${color}` }
+    control: (provided, { isFocused }) => {
+      return { ...provided, opacity: isFocused ? 1 : 0.6, boxShadow: 'none' } // isFocused && `0 0 0 1px ${color}` }
     }
   }
 

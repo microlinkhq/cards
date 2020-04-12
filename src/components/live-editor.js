@@ -88,8 +88,9 @@ export const LiveEditor = styled(BaseEditor)`
   pre,
   textarea {
     padding: 0 !important;
+    font-family: ${theme.fonts.mono} !important;
+    font-weight: ${theme.fontWeights.light} !important;
   }
-
   textarea:focus {
     outline: none;
   }
