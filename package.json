@@ -3,11 +3,10 @@
   "description": "shareable images playground",
   "homepage": "https://nicedoc.io/microlinkhq/og-link",
   "version": "0.0.0",
-  "private": true,
   "main": "index.js",
   "author": {
-    "name": "microlink.io",
     "email": "hello@microlink.io",
+    "name": "microlink.io",
     "url": "https://microlink.io"
   },
   "repository": {
@@ -29,18 +28,19 @@
   "dependencies": {
     "@microlink/mql": "~0.6.11",
     "@snackbar/core": "~1.7.0",
-    "@theme-ui/prism": "~0.3.0",
     "babel-plugin-macros": "~2.8.0",
     "cycled": "~1.1.0",
     "fast-safe-stringify": "~2.0.7",
     "msgpack5": "~4.2.1",
     "next": "~9.3.4",
     "prettier": "~2.0.4",
+    "prism-react-renderer": "~1.0.2",
     "qss": "~2.0.3",
     "react": "~16.13.1",
     "react-dom": "~16.13.1",
     "react-json-view": "~1.19.1",
     "react-live": "~2.2.2",
+    "react-select": "~3.1.0",
     "styled-components": "~5.1.0",
     "theme-ui": "~0.3.1",
     "throttle-debounce": "~2.1.0",
@@ -50,6 +50,7 @@
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
     "ava": "latest",
+    "babel-plugin-styled-components": "latest",
     "conventional-github-releaser": "latest",
     "coveralls": "latest",
     "finepack": "latest",
@@ -62,20 +63,18 @@
     "prettier-standard": "latest",
     "standard": "latest",
     "standard-markdown": "latest",
-    "standard-version": "latest",
-    "babel-plugin-styled-components": "latest"
+    "standard-version": "latest"
   },
   "engines": {
     "node": "12.x"
   },
   "scripts": {
     "build": "next build",
-    "export": "next export",
-    "start": "next start",
-    "dev": "next",
     "clean": "rm -rf node_modules",
     "contributors": "(git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "dev": "next",
+    "export": "next export",
     "lint": "standard-markdown README.md && standard",
     "postrelease": "npm run release:tags && npm run release:github && npm publish",
     "prerelease": "git-dirty && npm run update:check && npm test && npm run contributors",
@@ -83,10 +82,12 @@
     "release": "git-authors-cli finepack && git add package.json && standard-version -a",
     "release:github": "conventional-github-releaser -p angular",
     "release:tags": "git push --follow-tags origin master",
+    "start": "next start",
     "test": "nyc ava",
     "update": "ncu -u",
     "update:check": "ncu -- --error-level 2"
   },
+  "private": true,
   "license": "MIT",
   "commitlint": {
     "extends": [
