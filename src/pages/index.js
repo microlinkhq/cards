@@ -15,6 +15,7 @@ import debounce from '@/lib/debounce'
 import Main from '@/components/main'
 import isEmpty from '@/lib/is-empty'
 import onSave from '@/lib/on-save'
+import Select from 'react-select'
 import Router from 'next/router'
 import themeBase from '@/theme'
 import Cycled from 'cycled'
@@ -28,14 +29,7 @@ import {
   LivePreview
 } from '@/components/live-editor'
 
-import {
-  Link as ExternalLink,
-  Button,
-  Select,
-  Box,
-  Flex,
-  useThemeUI
-} from 'theme-ui'
+import { Link as ExternalLink, Button, Box, Flex, useThemeUI } from 'theme-ui'
 
 import pkg from '@/package.json'
 
@@ -55,6 +49,8 @@ const updateQuery = debounce(({ setQuery, code, queryVariables }) => {
   if (!isEmpty(queryVariables)) newQuery = { ...newQuery, ...queryVariables }
   setQuery(newQuery)
 })
+
+const updateStore = debounce(({ key, value }) => store.set(key, value))
 
 const cycledMode = new Cycled(Object.keys(themeBase.colors.modes))
 const nextMode = () => cycledMode.next()
@@ -116,18 +112,33 @@ export default () => {
     updateQuery({ setQuery, queryVariables: newJSON })
   }
 
-  const onAsideResize = width => {
+  const handleAsideWidthReize = width => {
     setAsideWidth(width)
-    store.set(ASIDE_WIDTH_KEY, width)
+    updateStore({ key: ASIDE_WIDTH_KEY, value: width })
   }
 
-  const onJsonResize = height => {
+  const handleAsideHeightResize = height => {
     setJsonHeight(height)
-    store.set(ASIDE_HEIGHT_KEY, height)
+    updateStore({ key: ASIDE_HEIGHT_KEY, value: height })
+  }
+
+  const handleSelectChange = event => {
+    const presetName = event.value
+    const newPreset = presets[presetName]
+    setPreset(newPreset)
+    setCode(newPreset.code)
+    setQueryVariables(newPreset.query)
+    setQuery({ p: undefined, preset: presetName })
+  }
+
+  const handleChangeColor = () => {
+    setColorMode(nextMode())
   }
 
   if (isLoading) return null
+
   const isEditor = Router.asPath.startsWith('/editor')
+  const color = theme.colors.modes[colorMode].plain.color
 
   return (
     <LiveProvider
@@ -160,7 +171,7 @@ export default () => {
               willChange: 'width'
             }}
           >
-            <VerticalDragBar onDrag={onAsideResize} />
+            <VerticalDragBar onDrag={handleAsideWidthReize} />
 
             <Flex
               as='header'
@@ -170,40 +181,24 @@ export default () => {
                 borderBottom: '1px solid',
                 borderColor: 'plain.color',
                 color: 'plain.color',
-                p: 3
+                p: 3,
+                justifyContent: 'space-between'
               }}
             >
-              <Flex
+              <Box
                 sx={{
-                  alignItems: 'center',
-                  flex: 1
+                  width: '200px'
                 }}
               >
                 <Select
-                  defaultValue={preset.name}
-                  sx={{
-                    fontSize: 1,
-                    p: '2px 8px',
-                    width: '8.5rem'
-                  }}
-                  onChange={event => {
-                    const { value: presetName } = event.currentTarget
-                    const newPreset = presets[presetName]
-                    setPreset(newPreset)
-                    setCode(newPreset.code)
-                    setQueryVariables(newPreset.query)
-                    setQuery({ p: undefined, preset: presetName })
-                  }}
-                >
-                  {Object.keys(presets).map(presetName => (
-                    <option
-                      children={presetName}
-                      key={presetName}
-                      value={presetName}
-                    />
-                  ))}
-                </Select>
-              </Flex>
+                  value={{ value: preset.name, label: preset.name }}
+                  options={Object.keys(presets).map(key => ({
+                    value: key,
+                    label: presets[key].name
+                  }))}
+                  onChange={handleSelectChange}
+                />
+              </Box>
               <Flex
                 sx={{
                   alignItems: 'center'
@@ -222,9 +217,7 @@ export default () => {
                     p: 0
                   }}
                 >
-                  <GitHubIcon
-                    color={theme.colors.modes[colorMode].plain.color}
-                  />
+                  <GitHubIcon color={color} />
                 </ExternalLink>
                 <Button
                   title='Change color mode'
@@ -236,11 +229,9 @@ export default () => {
                     outline: 0,
                     p: 0
                   }}
-                  onClick={() => setColorMode(nextMode())}
+                  onClick={handleChangeColor}
                 >
-                  <ThemeIcon
-                    color={theme.colors.modes[colorMode].plain.color}
-                  />
+                  <ThemeIcon color={color} />
                 </Button>
               </Flex>
             </Flex>
@@ -257,7 +248,7 @@ export default () => {
                   willChange: 'height'
                 }}
               >
-                <HorizontalDragBar onDrag={onJsonResize} />
+                <HorizontalDragBar onDrag={handleAsideHeightResize} />
                 <Box
                   as='section'
                   sx={{

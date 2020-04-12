@@ -127,4 +127,4 @@ const query = {
   date: '29 Apr'
 }
 
-export default { name: 'thePracticalDev', code, query }
+export default { name: 'The Practical Dev', code, query }

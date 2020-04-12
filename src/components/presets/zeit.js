@@ -78,7 +78,7 @@ const query = {
 }
 
 export default {
-  name: 'zeit',
+  name: 'ZEIT',
   code,
   query
 }
