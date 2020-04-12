@@ -27,6 +27,12 @@ export const editorTheme = {
   vsDark
 }
 
+const speed = {
+  quickly: 150,
+  normal: 300,
+  slowly: 450
+}
+
 export const theme = {
   colors: {
     text: '#000',
@@ -38,6 +44,12 @@ export const theme = {
     sans: "'Inter', sans-serif",
     mono:
       '"Operator Mono", "Fira Code", "SF Mono", "Roboto Mono", "Ubuntu Mono", Menlo, monospace'
+  },
+  speed,
+  transition: {
+    short: `${speed.quickly}ms cubic-bezier(.25,.8,.25,1)`,
+    medium: `${speed.normal}ms cubic-bezier(.25,.8,.25,1)`,
+    long: `${speed.slowly}ms cubic-bezier(.4, 0, .2, 1)`
   },
   breakpoints: [576, 768, 991, 1220].map(toPx),
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96].map(toPx),

@@ -1,25 +1,27 @@
 import { HorizontalDragBar, VerticalDragBar } from '@/components/drag-bars'
 import { marshall, unmarshall } from '@/lib/compress-json'
+import { Button, Box, Flex, useThemeUI } from 'theme-ui'
 import useQueryState from '@/hooks/use-query-state'
 import GitHubIcon from '@/components/icons/github'
 import JSONViewer from '@/components/json-viewer'
 import ThemeIcon from '@/components/icons/theme'
 import screenshotUrl from '@/lib/screenshot-url'
-import Container from '@/components/container'
+import InfoIcon from '@/components/icons/info'
 import notification from '@/lib/notification'
 import { useEffect, useState } from 'react'
 import presets from '@/components/presets'
 import store from '@/lib/local-storage'
 import clipboard from '@/lib/clipboard'
+import styled from 'styled-components'
 import debounce from '@/lib/debounce'
 import Main from '@/components/main'
 import isEmpty from '@/lib/is-empty'
+import * as polished from 'polished'
 import onSave from '@/lib/on-save'
 import Select from 'react-select'
 import Router from 'next/router'
 import themeBase from '@/theme'
 import Cycled from 'cycled'
-
 // import Overlay from '@/components/overlay'
 
 import {
@@ -28,8 +30,6 @@ import {
   LiveError,
   LivePreview
 } from '@/components/live-editor'
-
-import { Link as ExternalLink, Button, Box, Flex, useThemeUI } from 'theme-ui'
 
 import pkg from '@/package.json'
 
@@ -54,6 +54,27 @@ const updateStore = debounce(({ key, value }) => store.set(key, value))
 
 const cycledMode = new Cycled(Object.keys(themeBase.colors.modes))
 const nextMode = () => cycledMode.next()
+
+const ButtonIcon = styled(Button)`
+  display: flex;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  outline: 0;
+  padding: 0;
+
+  svg {
+    transition: fill ${themeBase.transition.medium},
+      stroke ${themeBase.transition.medium};
+    stroke: ${({ color }) => color};
+    fill: ${({ color }) => color};
+  }
+
+  &:hover svg {
+    stroke: ${({ hoverColor }) => hoverColor};
+    fill: ${({ hoverColor }) => hoverColor};
+  }
+`
 
 export default () => {
   const [query, setQuery] = useQueryState()
@@ -138,7 +159,9 @@ export default () => {
   if (isLoading) return null
 
   const isEditor = Router.asPath.startsWith('/editor')
+
   const color = theme.colors.modes[colorMode].plain.color
+  const borderColor = polished.rgba(color, 0.6)
 
   return (
     <LiveProvider
@@ -149,7 +172,7 @@ export default () => {
       {/* <Overlay isOpen={isOverlayOpen}>
         <Text>Embed HTML</Text>
       </Overlay> */}
-      <Container>
+      <Flex sx={{ height: '100vh' }}>
         <Main>
           <LivePreview onClick={toClipboard} isEditor={isEditor} />
           <LiveError />
@@ -179,7 +202,7 @@ export default () => {
                 alignItems: 'center',
                 bg: 'plain.backgroundColor',
                 borderBottom: '1px solid',
-                borderColor: 'plain.color',
+                borderColor,
                 color: 'plain.color',
                 p: 3,
                 justifyContent: 'space-between'
@@ -204,35 +227,39 @@ export default () => {
                   alignItems: 'center'
                 }}
               >
-                <ExternalLink
+                <ButtonIcon
+                  as='a'
                   href={pkg.homepage}
                   target='_blank'
                   rel='noopener noreferrer'
                   title='See on GitHub'
-                  sx={{
-                    bg: 'transparent',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    outline: 0,
-                    p: 0
-                  }}
+                  color={borderColor}
+                  hoverColor={color}
                 >
-                  <GitHubIcon color={color} />
-                </ExternalLink>
-                <Button
+                  <InfoIcon />
+                </ButtonIcon>
+                <Box sx={{ pl: '6px', pr: '4px' }}>
+                  <ButtonIcon
+                    as='a'
+                    href={pkg.homepage}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    title='See on GitHub'
+                    color={borderColor}
+                    hoverColor={color}
+                  >
+                    <GitHubIcon />
+                  </ButtonIcon>
+                </Box>
+                <ButtonIcon
+                  as='button'
                   title='Change color mode'
-                  sx={{
-                    bg: 'transparent',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    ml: 2,
-                    outline: 0,
-                    p: 0
-                  }}
                   onClick={handleChangeColor}
+                  color={borderColor}
+                  hoverColor={color}
                 >
-                  <ThemeIcon color={color} />
-                </Button>
+                  <ThemeIcon />
+                </ButtonIcon>
               </Flex>
             </Flex>
             <Flex sx={{ flex: 1, minHeight: 0, flexDirection: 'column' }}>
@@ -253,8 +280,8 @@ export default () => {
                   as='section'
                   sx={{
                     bg: 'plain.backgroundColor',
-                    borderColor: 'plain.color',
                     borderTop: '1px solid',
+                    borderColor,
                     overflow: 'scroll',
                     p: 3
                   }}
@@ -268,7 +295,7 @@ export default () => {
             </Flex>
           </Flex>
         )}
-      </Container>
+      </Flex>
     </LiveProvider>
   )
 }

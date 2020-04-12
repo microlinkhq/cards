@@ -24,7 +24,7 @@ const Dragger = styled('div').attrs(({ isDrag, isHorizontal }) => ({
 const DragBar = ({ isHorizontal = false, onDrag = () => {} }) => {
   const [isDrag, setIsDrag] = useState(false)
 
-  const onMouseMove = useCallback((e) => {
+  const onMouseMove = useCallback(e => {
     const vw = Math.max(
       document.documentElement[!isHorizontal ? 'clientWidth' : 'clientHeight'],
       window[!isHorizontal ? 'innerWidth' : 'innerHeight'] || 0
@@ -58,6 +58,6 @@ const DragBar = ({ isHorizontal = false, onDrag = () => {} }) => {
   )
 }
 
-export const VerticalDragBar = (props) => <DragBar {...props} />
+export const VerticalDragBar = props => <DragBar {...props} />
 
-export const HorizontalDragBar = (props) => <DragBar isHorizontal {...props} />
+export const HorizontalDragBar = props => <DragBar isHorizontal {...props} />
