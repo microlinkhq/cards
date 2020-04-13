@@ -3,21 +3,11 @@ import Head from 'next/head'
 import { createGlobalStyle } from 'styled-components'
 import { ThemeProvider } from 'theme-ui'
 import theme from '@/theme'
+import pkg from '@/package.json'
 
 const GlobalStylesheet = createGlobalStyle`
   * {
     box-sizing: border-box;
-  }
-  html,
-  body {
-    overflow: hidden;
-  }
-  body {
-    margin: 0;
-  }
-  #__next {
-    font-family: system-ui, sans-serif;
-    line-height: 1.5;
   }
   .snackbars {
     display: block;
@@ -160,8 +150,7 @@ const GlobalStylesheet = createGlobalStyle`
 `
 const meta = {
   title: 'Microlink Cards',
-  description:
-    'The easiest way to create, manage and ship OG and Twitter cards at scale.',
+  description: pkg.description,
   image: 'https://cdn.microlink.io/banner/cards.png',
   logo: 'https://cdn.microlink.io/logo/trim.png',
   url: 'https://cards.microlink.io',

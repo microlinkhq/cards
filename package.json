@@ -1,9 +1,8 @@
 {
-  "name": "og-link",
-  "description": "shareable images playground",
-  "homepage": "https://cards.microlink.io",
+  "name": "microlink-cards",
+  "description": "The easiest way to create, manage and ship OG and Twitter cards at scale.",
+  "homepage": "https://github.com/microlinkhq/cards",
   "version": "0.0.0",
-  "main": "index.js",
   "author": {
     "email": "hello@microlink.io",
     "name": "microlink.io",
@@ -28,7 +27,9 @@
     "share"
   ],
   "dependencies": {
+    "@mdx-js/loader": "~1.5.8",
     "@microlink/mql": "~0.6.11",
+    "@next/mdx": "~9.3.4",
     "@snackbar/core": "~1.7.0",
     "babel-plugin-macros": "~2.8.0",
     "cycled": "~1.1.0",

@@ -35,9 +35,7 @@ const speed = {
 
 export const theme = {
   colors: {
-    text: '#000',
-    background: '#333333',
-    primary: '#33e',
+    github,
     modes: editorTheme
   },
   fonts: {
@@ -63,8 +61,11 @@ export const theme = {
   },
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512].map(toPx),
   styles: {
-    textarea: {
-      ...nightOwl
+    root: {
+      fontFamily: 'sans',
+      lineHeight: 1.5,
+      margin: 0,
+      overflow: 'hidden'
     }
   }
 }

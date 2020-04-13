@@ -1,7 +1,7 @@
 import { HorizontalDragBar, VerticalDragBar } from '@/components/drag-bars'
 import SearchableSelect from '@/components/searchable-select'
 import { marshall, unmarshall } from '@/lib/compress-json'
-import { Button, Box, Flex, useThemeUI } from 'theme-ui'
+import { Button, Text, Box, Flex, useThemeUI } from 'theme-ui'
 import useQueryState from '@/hooks/use-query-state'
 import GitHubIcon from '@/components/icons/github'
 import JSONViewer from '@/components/json-viewer'
@@ -11,6 +11,7 @@ import InfoIcon from '@/components/icons/info'
 import notification from '@/lib/notification'
 import { useEffect, useState } from 'react'
 import presets from '@/components/presets'
+import Overlay from '@/components/overlay'
 import store from '@/lib/local-storage'
 import clipboard from '@/lib/clipboard'
 import styled from 'styled-components'
@@ -22,7 +23,6 @@ import onSave from '@/lib/on-save'
 import Router from 'next/router'
 import themeBase from '@/theme'
 import Cycled from 'cycled'
-// import Overlay from '@/components/overlay'
 
 import {
   LiveProvider,
@@ -80,7 +80,7 @@ export default () => {
   const [query, setQuery] = useQueryState()
   const { theme, colorMode, setColorMode } = useThemeUI()
   const [isLoading, setIsLoading] = useState(true)
-  // const [isOverlayOpen, setOverlayOpen] = useState(false)
+  const [isOverlayOpen, setOverlayOpen] = useState(true)
 
   const [asideWidth, setAsideWidth] = useState(
     store.get(ASIDE_WIDTH_KEY) || DEFAULT_ASIDE_WIDTH
@@ -107,7 +107,7 @@ export default () => {
   })
 
   const toClipboard = async () => {
-    // setOverlayOpen(true)
+    setOverlayOpen(true)
     const url = screenshotUrl(
       decodeURI(window.location.href.replace('/editor/', ''))
     )
@@ -171,10 +171,8 @@ export default () => {
       queryVariables={queryVariables}
       code={code}
     >
-      {/* <Overlay isOpen={isOverlayOpen}>
-        <Text>Embed HTML</Text>
-      </Overlay> */}
-      <Flex sx={{ height: '100vh' }}>
+      {/* <Overlay isOpen={isOverlayOpen}></Overlay> */}
+      <Flex sx={{ bg: 'plain.backgroundColor', height: '100vh' }}>
         <Main>
           <LivePreview onClick={toClipboard} isEditor={isEditor} />
           <LiveError />
