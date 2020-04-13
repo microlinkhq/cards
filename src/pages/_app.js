@@ -168,7 +168,7 @@ export default class App extends NextApp {
         <Head>
           {/* <!-- Basic --> */}
           <meta charSet='utf-8' />
-          <meta http-equiv='x-ua-compatible' content='ie=edge' />
+          <meta httpEquiv='x-ua-compatible' content='ie=edge' />
           {/* <!-- Search Engine --> */}
           <meta name='description' content={meta.description} />
           <meta name='image' content={meta.image} />
@@ -179,9 +179,9 @@ export default class App extends NextApp {
             content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'
           />
           {/* <!-- Schema.org for Google --> */}
-          <meta itemprop='name' content={meta.title} />
-          <meta itemprop='description' content={meta.description} />
-          <meta itemprop='image' content={meta.image} />
+          <meta itemProp='name' content={meta.title} />
+          <meta itemProp='description' content={meta.description} />
+          <meta itemProp='image' content={meta.image} />
           {/* <!-- Twitter --> */}
           <meta name='twitter:card' content='summary_large_image' />
           <meta name='twitter:title' content={meta.title} />
