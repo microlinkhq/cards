@@ -207,7 +207,8 @@ export default () => {
                 borderBottom: '1px solid',
                 borderColor,
                 color: 'plain.color',
-                p: 3,
+                py: 3,
+                mr: 3,
                 justifyContent: 'space-between'
               }}
             >
@@ -288,7 +289,8 @@ export default () => {
                     borderTop: '1px solid',
                     borderColor,
                     overflow: 'scroll',
-                    p: 3
+                    py: 3,
+                    mr: 3
                   }}
                 >
                   <JSONViewer
