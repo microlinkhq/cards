@@ -107,9 +107,12 @@ export default () => {
   })
 
   const toClipboard = async () => {
-    setOverlayOpen(true)
+    // setOverlayOpen(true)
     const url = screenshotUrl(
-      decodeURI(window.location.href.replace('/editor/', ''))
+      decodeURI(window.location.href.replace('/editor/', '')),
+      {
+        endpoint: queryVariables.endpoint
+      }
     )
     await Promise.all([clipboard.write(url)])
     notification('Copied URL to clipboard')
