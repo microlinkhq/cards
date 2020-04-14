@@ -186,8 +186,8 @@ export default () => {
           <Box
             sx={{
               border: '1px solid',
-              height: `calc(${toPx(PREVIEW_HEIGHT)} + 1px)`,
-              width: toPx(PREVIEW_WIDTH),
+              height: `calc(${toPx(PREVIEW_HEIGHT)} + 2px)`,
+              width: `calc(${toPx(PREVIEW_WIDTH)} + 2px)`,
               borderColor
             }}
           >
