@@ -8,11 +8,11 @@ import github from 'prism-react-renderer/themes/github'
 
 import toPx from '@/lib/to-px'
 
-const defaultTheme = github
+const defaultTheme = ultramin
 
 export const editorTheme = {
   default: defaultTheme,
-  ultramin,
+  github,
   dracula,
   duotoneDark,
   nightOwl,
