@@ -42,15 +42,13 @@ const code = (
             }}
             children={query.title}
           />
-          <Box
+          <Flex
             sx={{
-              display: 'flex',
               justifyContent: 'space-between'
             }}
           >
-            <Box
+            <Flex
               sx={{
-                display: 'flex',
                 alignItems: 'center'
               }}
             >
@@ -89,7 +87,7 @@ const code = (
                 }}
                 children={query.date}
               />
-            </Box>
+            </Flex>
 
             <Flex
               sx={{
@@ -112,7 +110,7 @@ const code = (
                 )
               })}
             </Flex>
-          </Box>
+          </Flex>
         </Box>
       </Flex>
     </>
