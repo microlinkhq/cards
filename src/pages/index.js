@@ -180,8 +180,8 @@ export default () => {
               highlightColor: polished.lighten(0.15, color)
             }}
             sx={{
-              height: '280px',
-              width: '100%'
+              height: '245px',
+              width: '436px'
             }}
             src={screenshotUrl}
           />
