@@ -168,6 +168,7 @@ export default () => {
       code={code}
     >
       <Overlay
+        aria-hidden={!isOverlayOpen}
         backgroundColor={bg}
         color={color}
         isOpen={isOverlayOpen}
@@ -283,7 +284,7 @@ export default () => {
           </Flex>
           <Flex sx={{ justifyContent: 'flex-end', pt: 4 }}>
             <Button
-              sx={{ outline: 0, borderRadius: 0, bg: color, color: bg }}
+              sx={{ outline: 0, borderRadius: 2, bg: color, color: bg }}
               onClick={() => setOverlayOpen(false)}
             >
               <Text>Got it</Text>

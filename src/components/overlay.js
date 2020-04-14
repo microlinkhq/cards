@@ -6,7 +6,8 @@ export default ({
   children,
   onClose,
   fullWidth,
-  isOpen
+  isOpen,
+  ...props
 }) => {
   const onDismiss = event => {
     if (event.target.dataset.overlayAction === 'close') {
@@ -16,6 +17,7 @@ export default ({
 
   return (
     <Box
+      id='overlay'
       data-overlay-action='close'
       sx={{
         p: 4,
@@ -32,9 +34,11 @@ export default ({
         justifyContent: 'center'
       }}
       onClick={onDismiss}
+      {...props}
     >
       <Box
         sx={{
+          borderRadius: 4,
           overflow: 'scroll',
           display: 'flex',
           flexDirection: 'column',
