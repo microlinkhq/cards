@@ -9,7 +9,7 @@ import aspectRatio from '@/lib/aspect-ratio-16-9'
 import JSONViewer from '@/components/json-viewer'
 import ButtonIcon from '@/components/button-icon'
 import ThemeIcon from '@/components/icons/theme'
-import LazyImage from '@/components/lazy-image'
+// import LazyImage from '@/components/lazy-image'
 // import InfoIcon from '@/components/icons/info'
 import notification from '@/lib/notification'
 import { useEffect, useState } from 'react'
@@ -191,7 +191,12 @@ export default () => {
               borderColor
             }}
           >
-            <LazyImage
+            <LivePreview
+              isThumbnail
+              thumbnailHeight={`calc(${toPx(PREVIEW_HEIGHT)} + 2px)`}
+              thumbnailWidth={`calc(${toPx(PREVIEW_WIDTH)} + 2px)`}
+            />
+            {/* <LazyImage
               theme={{
                 color: polished.lighten(0.05, bg),
                 highlightColor: polished.lighten(0.08, bg)
@@ -202,7 +207,7 @@ export default () => {
                 width: toPx(PREVIEW_WIDTH)
               }}
               src={screenshotUrl}
-            />
+            /> */}
           </Box>
           <Text sx={{ mt: 3, mb: 2, fontSize: 2, fontWeight: 'normal' }}>
             Add it to your website by copying the code below

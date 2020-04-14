@@ -19,8 +19,18 @@ const LivePreviewWrapper = styled('div')`
   width: 100%;
   margin: auto;
   padding: ${({ isEditor }) => (isEditor ? theme.space[3] : 0)};
-  ${({ isEditor }) =>
+
+  ${({ isThumbnail }) =>
+    isThumbnail &&
+    `
+    height: ${props => props.thumbnailHeight};
+    width: ${props => props.thumbnailWidth};
+    zoom: 0.5;
+    `}
+
+  ${({ isEditor, isThumbnail }) =>
     !isEditor &&
+    !isThumbnail &&
     `
     ${ratios.reduce(
       (acc, ratio, index) =>
