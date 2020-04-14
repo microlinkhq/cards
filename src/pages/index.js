@@ -362,7 +362,7 @@ export default () => {
                   alignItems: 'center'
                 }}
               >
-                <ButtonIcon
+                {/* <ButtonIcon
                   as='a'
                   href={pkg.homepage}
                   target='_blank'
@@ -372,7 +372,7 @@ export default () => {
                   hoverColor={color}
                 >
                   <InfoIcon />
-                </ButtonIcon>
+                </ButtonIcon> */}
                 <Box sx={{ pl: '6px', pr: '4px' }}>
                   <ButtonIcon
                     as='a'
