@@ -4,6 +4,7 @@ export default ({ sx, ...props }) => (
   <Box
     as='pre'
     sx={{
+      cursor: 'pointer',
       borderRadius: 2,
       overflow: 'auto',
       border: '1px solid',

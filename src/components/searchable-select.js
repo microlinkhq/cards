@@ -38,7 +38,12 @@ export default ({ bg, color, ...props }) => {
     }),
     indicatorSeparator: () => ({ display: 'none' }),
     control: (provided, { isFocused }) => {
-      return { ...provided, opacity: isFocused ? 1 : 0.6, boxShadow: 'none' } // isFocused && `0 0 0 1px ${color}` }
+      return {
+        ...provided,
+        opacity: isFocused ? 1 : 0.6,
+        cursor: 'pointer',
+        boxShadow: 'none'
+      } // isFocused && `0 0 0 1px ${color}` }
     }
   }
 

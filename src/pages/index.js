@@ -291,7 +291,13 @@ export default () => {
         </Box>
         <Flex as='footer' sx={{ justifyContent: 'flex-end', pt: 3 }}>
           <Button
-            sx={{ outline: 0, borderRadius: 2, bg: color, color: bg }}
+            sx={{
+              cursor: 'pointer',
+              outline: 0,
+              borderRadius: 2,
+              bg: color,
+              color: bg
+            }}
             onClick={() => setOverlayOpen(false)}
           >
             <Text>Got it</Text>
