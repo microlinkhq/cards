@@ -39,7 +39,6 @@ export default ({
         id='overlay-container'
         sx={{
           borderRadius: 4,
-          overflow: 'scroll',
           display: 'flex',
           flexDirection: 'column',
           bg: backgroundColor,
@@ -47,6 +46,7 @@ export default ({
           position: 'relative',
           zIndex: 999,
           width: fullWidth ? '100%' : 500,
+          overflow: 'auto',
           p: 3
         }}
         {...props}
