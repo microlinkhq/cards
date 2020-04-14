@@ -44,6 +44,7 @@
     "react-dom": "~16.13.1",
     "react-json-view": "~1.19.1",
     "react-live": "~2.2.2",
+    "react-loading-skeleton": "~2.0.1",
     "react-select": "~3.1.0",
     "styled-components": "~5.1.0",
     "theme-ui": "~0.3.1",
