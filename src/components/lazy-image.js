@@ -1,9 +1,13 @@
 import { useState, createElement, useEffect } from 'react'
-import Skeleton from 'react-loading-skeleton'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import { Image } from 'theme-ui'
 import noop from '@/lib/noop'
 
-const Placeholder = ({ sx, ...props }) => <Skeleton {...sx} {...props} />
+const Placeholder = ({ sx, theme, ...props }) => (
+  <SkeletonTheme {...theme}>
+    <Skeleton {...sx} {...props} />
+  </SkeletonTheme>
+)
 
 const LazyImage = ({ onError, ...props }) => {
   const [isLoading, setLoading] = useState(true)

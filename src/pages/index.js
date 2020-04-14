@@ -175,6 +175,10 @@ export default () => {
       >
         <Box as='header'>
           <LazyImage
+            theme={{
+              color: polished.lighten(0.1, color),
+              highlightColor: polished.lighten(0.15, color)
+            }}
             sx={{
               height: '280px',
               width: '100%'
