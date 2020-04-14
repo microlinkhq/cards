@@ -1,2 +1,2 @@
 import { debounce } from 'throttle-debounce'
-export default (fn, ms = 300) => debounce(ms, fn)
+export default (fn, ms = 600) => debounce(ms, fn)
