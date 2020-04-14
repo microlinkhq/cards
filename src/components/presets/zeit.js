@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 
 import Inline from '../inline.macro'
-import { Link, Box, Text } from './scope'
+import { Image, Link, Box, Text } from './scope'
 
 const code = (
   <Inline>
@@ -11,38 +11,18 @@ const code = (
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
-        backgroundImage:
-          'radial-gradient(#D7D7D7 1px, transparent 0), radial-gradient(#D7D7D7 1px, transparent 0)',
+        backgroundImage: `radial-gradient(${
+          query.radial[query.theme]
+        } 1px, transparent 0), radial-gradient(${
+          query.radial[query.theme]
+        } 1px, transparent 0)`,
         backgroundPosition: '0 0, 25px 25px',
         backgroundSize: '50px 50px',
-        color: 'black',
-        bg: 'white'
+        color: query.color[query.theme],
+        bg: query.bg[query.theme]
       }}
     >
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        width='114'
-        height='100'
-        viewBox='0 0 114 100'
-      >
-        <defs>
-          <linearGradient
-            id='a'
-            x1='100.93%'
-            x2='41.769%'
-            y1='181.283%'
-            y2='100%'
-          >
-            <stop offset='0%' stopColor='#FFF' />
-            <stop offset='100%' />
-          </linearGradient>
-        </defs>
-        <g fill='none' fillRule='evenodd' stroke='none' strokeWidth='1'>
-          <g fill='url(#a)' transform='translate(-293 -150)'>
-            <path d='M350 150L407 250 293 250z' />
-          </g>
-        </g>
-      </svg>
+      <Image src={query.logos[query.theme][query.logo]} />
       <Link
         href='https://fonts.googleapis.com/css2?family=Inter:wght@300;700&display=swap'
         rel='stylesheet'
@@ -74,7 +54,39 @@ const code = (
 
 const query = {
   headline: 'Serverless Deployments',
-  caption: 'with ZEIT Now'
+  caption: 'with ZEIT Now',
+  logo: 'zeit',
+  theme: 'dark',
+  bg: {
+    light: 'white',
+    dark: 'black'
+  },
+  color: {
+    light: 'black',
+    dark: 'white'
+  },
+  radial: {
+    light: 'lightgray',
+    dark: 'dimgray'
+  },
+  logos: {
+    light: {
+      zeit:
+        'https://assets.zeit.co/image/upload/front/assets/design/zeit-black-triangle.svg',
+      next:
+        'https://assets.zeit.co/image/upload/front/assets/design/nextjs-black-logo.svg',
+      hyper:
+        'https://assets.zeit.co/image/upload/front/assets/design/hyper-color-logo.svg'
+    },
+    dark: {
+      zeit:
+        'https://assets.zeit.co/image/upload/front/assets/design/zeit-white-triangle.svg',
+      next:
+        'https://assets.zeit.co/image/upload/front/assets/design/nextjs-white-logo.svg',
+      hyper:
+        'https://assets.zeit.co/image/upload/front/assets/design/hyper-bw-logo.svg'
+    }
+  }
 }
 
 export default {
