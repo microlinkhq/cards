@@ -424,7 +424,16 @@ export default () => {
               </Flex>
             </Flex>
             <Flex sx={{ flex: 1, minHeight: 0, flexDirection: 'column' }}>
-              <Box as='section' sx={{ flex: 1, p: 3, overflow: 'auto' }}>
+              <Box
+                as='section'
+                sx={{
+                  borderBottom: '1px solid',
+                  overflow: 'auto',
+                  borderColor,
+                  flex: 1,
+                  p: 3
+                }}
+              >
                 <LiveEditor onChange={handleCode} />
               </Box>
               <Box
@@ -433,7 +442,8 @@ export default () => {
                   maxHeight: ASIDE_MAX_HEIGHT,
                   minHeight: ASIDE_MIN_HEIGHT,
                   position: 'relative',
-                  willChange: 'height'
+                  willChange: 'height',
+                  overflow: 'auto'
                 }}
               >
                 <HorizontalDragBar onDrag={handleAsideHeightResize} />
@@ -441,9 +451,6 @@ export default () => {
                   as='section'
                   sx={{
                     bg: 'plain.backgroundColor',
-                    borderTop: '1px solid',
-                    borderColor,
-                    overflow: 'scroll',
                     py: 3,
                     mr: 3
                   }}
