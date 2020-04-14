@@ -18,6 +18,7 @@ export default ({
     <Box
       data-overlay-action='close'
       sx={{
+        p: 4,
         position: 'fixed',
         top: 0,
         right: 0,
@@ -34,6 +35,7 @@ export default ({
     >
       <Box
         sx={{
+          overflow: 'scroll',
           display: 'flex',
           flexDirection: 'column',
           bg: backgroundColor,
@@ -41,7 +43,7 @@ export default ({
           position: 'relative',
           zIndex: 999,
           width: fullWidth ? '100%' : 500,
-          p: 4
+          p: 3
         }}
       >
         {children}
