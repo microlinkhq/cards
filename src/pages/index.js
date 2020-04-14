@@ -5,6 +5,7 @@ import { Button, Text, Box, Flex, useThemeUI } from 'theme-ui'
 import getScreenshotUrl from '@/lib/screenshot-url'
 import useQueryState from '@/hooks/use-query-state'
 import GitHubIcon from '@/components/icons/github'
+import aspectRatio from '@/lib/aspect-ratio-16-9'
 import JSONViewer from '@/components/json-viewer'
 import ButtonIcon from '@/components/button-icon'
 import ThemeIcon from '@/components/icons/theme'
@@ -13,7 +14,6 @@ import LazyImage from '@/components/lazy-image'
 import notification from '@/lib/notification'
 import { useEffect, useState } from 'react'
 import presets from '@/components/presets'
-
 import Overlay from '@/components/overlay'
 import shareCode from '@/lib/share-code'
 import store from '@/lib/local-storage'
@@ -26,7 +26,10 @@ import * as polished from 'polished'
 import onSave from '@/lib/on-save'
 import Router from 'next/router'
 import isDev from '@/lib/is-dev'
+import isSSR from '@/lib/is-ssr'
 import themeBase from '@/theme'
+import toPx from '@/lib/to-px'
+import defer from 'tickedoff'
 import Cycled from 'cycled'
 
 import {
@@ -47,6 +50,9 @@ const ASIDE_MIN_WIDTH = '20%'
 const ASIDE_MAX_WIDTH = '60%'
 const ASIDE_MIN_HEIGHT = '15%'
 const ASIDE_MAX_HEIGHT = '70%'
+
+const PREVIEW_WIDTH = 500
+const PREVIEW_HEIGHT = aspectRatio(PREVIEW_WIDTH)
 
 const updateQuery = debounce(({ setQuery, code, queryVariables }) => {
   let newQuery = {}
@@ -91,7 +97,7 @@ export default () => {
   })
 
   const getURL = () => {
-    if (typeof window === 'undefined') return ''
+    if (isSSR) return
     return getScreenshotUrl(
       decodeURI(window.location.href.replace('/editor/', '')),
       {
@@ -104,7 +110,7 @@ export default () => {
 
   const showOverlay = () => {
     setScreenshotUrl(getURL())
-    setOverlayOpen(true)
+    defer(() => setOverlayOpen(true))
   }
 
   async function toClipboard (text, name) {
@@ -179,9 +185,9 @@ export default () => {
         <Box as='header' sx={{ position: 'sticky' }}>
           <Box
             sx={{
-              width: 500,
-              margin: 'auto',
               border: '1px solid',
+              height: `calc(${toPx(PREVIEW_HEIGHT)} + 1px)`,
+              width: toPx(PREVIEW_WIDTH),
               borderColor
             }}
           >
@@ -191,9 +197,9 @@ export default () => {
                 highlightColor: polished.lighten(0.08, bg)
               }}
               sx={{
-                objectFit: 'cover'
-                // height: '263.25px',
-                // width: '466px'
+                objectFit: 'cover',
+                height: toPx(PREVIEW_HEIGHT),
+                width: toPx(PREVIEW_WIDTH)
               }}
               src={screenshotUrl}
             />

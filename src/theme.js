@@ -6,8 +6,7 @@ import ultramin from 'prism-react-renderer/themes/ultramin'
 import dracula from 'prism-react-renderer/themes/dracula'
 import github from 'prism-react-renderer/themes/github'
 
-export const toPx = n => `${n}px`
-export const toEm = n => `${n}em`
+import toPx from '@/lib/to-px'
 
 const defaultTheme = github
 
