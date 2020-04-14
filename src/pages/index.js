@@ -180,6 +180,7 @@ export default () => {
               highlightColor: polished.lighten(0.15, color)
             }}
             sx={{
+              objectFit: 'cover',
               height: '263.25px',
               width: '468px'
             }}
