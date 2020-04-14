@@ -8,7 +8,7 @@ const code = (
     <>
       <Flex
         sx={{
-          bg: '#EAF1F7',
+          bg: query.bg,
           justifyContent: 'center',
           flexDirection: 'column'
         }}
@@ -21,8 +21,9 @@ const code = (
             borderTopLeftRadius: '10px',
             borderTopRightRadius: '10px',
             padding: '30px',
-            border: '2px solid #000',
-            boxShadow: '10px 10px 0px 0px rgba(0,0,0)'
+            border: '2px solid',
+            borderColor: query.color,
+            boxShadow: `10px 10px 0px 0px ${query.color}`
           }}
         >
           <Link
@@ -55,12 +56,13 @@ const code = (
             >
               <Image
                 sx={{
-                  border: '2px solid #000',
+                  border: '2px solid',
+                  borderColor: query.color,
                   maxHeight: '50px',
                   borderRadius: '50%',
                   marginRight: '10px'
                 }}
-                src='https://kikobeats.com/images/avatar-glitch.jpg'
+                src={query.avatar}
               />
               <Text
                 sx={{
@@ -95,11 +97,7 @@ const code = (
                 justifyContent: 'space-between'
               }}
             >
-              {[
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/490px-Unofficial_JavaScript_logo_2.svg.png',
-                'https://miro.medium.com/max/1024/1*dOizsWycMALIUfqbpNvaMQ.png',
-                'https://vuejs.org/images/logo.png'
-              ].map((image, index) => {
+              {query.logos.map((image, index) => {
                 return (
                   <Image
                     sx={{
@@ -123,8 +121,16 @@ const code = (
 
 const query = {
   title: 'Learn Web Development for Free',
+  avatar: 'https://kikobeats.com/images/avatar-glitch.jpg',
   author: 'Kiko Beats',
-  date: '29 Apr'
+  date: '29 Apr',
+  bg: '#EAF1F7',
+  color: '#000',
+  logos: [
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/490px-Unofficial_JavaScript_logo_2.svg.png',
+    'https://miro.medium.com/max/1024/1*dOizsWycMALIUfqbpNvaMQ.png',
+    'https://vuejs.org/images/logo.png'
+  ]
 }
 
 export default { name: 'The Practical Dev', code, query }
