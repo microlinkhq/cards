@@ -40,7 +40,7 @@ export default ({ bg, color, ...props }) => {
     control: (provided, { isFocused }) => {
       return {
         ...provided,
-        opacity: isFocused ? 1 : 0.6,
+        opacity: isFocused ? 1 : 0.75,
         cursor: 'pointer',
         boxShadow: 'none'
       } // isFocused && `0 0 0 1px ${color}` }

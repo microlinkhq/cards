@@ -160,6 +160,10 @@ const GlobalStylesheet = createGlobalStyle`
     -webkit-animation: snackbar-hide 300ms ease forwards 1;
             animation: snackbar-hide 300ms ease forwards 1;
   }
+
+  .react-loading-skeleton {
+    display: block !important;
+  }
 `
 const meta = {
   title: 'Microlink Cards',
