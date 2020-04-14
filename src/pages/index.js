@@ -177,16 +177,23 @@ export default () => {
         onClose={() => setOverlayOpen(false)}
       >
         <Box as='header' sx={{ position: 'sticky' }}>
-          <Box sx={{ border: '1px solid', borderColor }}>
+          <Box
+            sx={{
+              width: 500,
+              margin: 'auto',
+              border: '1px solid',
+              borderColor
+            }}
+          >
             <LazyImage
               theme={{
                 color: polished.lighten(0.05, bg),
                 highlightColor: polished.lighten(0.08, bg)
               }}
               sx={{
-                objectFit: 'cover',
-                height: '263.25px',
-                width: '466px'
+                objectFit: 'cover'
+                // height: '263.25px',
+                // width: '466px'
               }}
               src={screenshotUrl}
             />

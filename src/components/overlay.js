@@ -45,9 +45,9 @@ export default ({
           color: color,
           position: 'relative',
           zIndex: 999,
-          width: fullWidth ? '100%' : 500,
+          width: fullWidth ? '100%' : 560,
           overflow: 'auto',
-          p: 3
+          p: 4
         }}
         {...props}
       >
