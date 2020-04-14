@@ -1,7 +1,7 @@
 import { HorizontalDragBar, VerticalDragBar } from '@/components/drag-bars'
 import SearchableSelect from '@/components/searchable-select'
 import { marshall, unmarshall } from '@/lib/compress-json'
-import { Button, Image, Text, Box, Flex, useThemeUI } from 'theme-ui'
+import { Button, Text, Box, Flex, useThemeUI } from 'theme-ui'
 import getScreenshotUrl from '@/lib/screenshot-url'
 import useQueryState from '@/hooks/use-query-state'
 import GitHubIcon from '@/components/icons/github'
@@ -9,7 +9,7 @@ import JSONViewer from '@/components/json-viewer'
 import ButtonIcon from '@/components/button-icon'
 import ThemeIcon from '@/components/icons/theme'
 import LazyImage from '@/components/lazy-image'
-import InfoIcon from '@/components/icons/info'
+// import InfoIcon from '@/components/icons/info'
 import notification from '@/lib/notification'
 import { useEffect, useState } from 'react'
 import presets from '@/components/presets'
@@ -25,6 +25,7 @@ import isEmpty from '@/lib/is-empty'
 import * as polished from 'polished'
 import onSave from '@/lib/on-save'
 import Router from 'next/router'
+import isDev from '@/lib/is-dev'
 import themeBase from '@/theme'
 import Cycled from 'cycled'
 
@@ -94,7 +95,7 @@ export default () => {
     return getScreenshotUrl(
       decodeURI(window.location.href.replace('/editor/', '')),
       {
-        endpoint: queryVariables.endpoint
+        endpoint: isDev ? 'http://localhost:3000' : queryVariables.endpoint
       }
     )
   }
