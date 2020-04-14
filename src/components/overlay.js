@@ -34,9 +34,9 @@ export default ({
         justifyContent: 'center'
       }}
       onClick={onDismiss}
-      {...props}
     >
       <Box
+        id='overlay-container'
         sx={{
           borderRadius: 4,
           overflow: 'scroll',
@@ -49,6 +49,7 @@ export default ({
           width: fullWidth ? '100%' : 500,
           p: 3
         }}
+        {...props}
       >
         {children}
       </Box>

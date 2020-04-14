@@ -150,6 +150,16 @@ const GlobalStylesheet = createGlobalStyle`
       transform: scale(0.01);
     }
   }
+
+  #overlay-container[aria-hidden='false'] {
+    -webkit-animation: snackbar-show 300ms ease 1;
+            animation: snackbar-show 300ms ease 1;
+  }
+
+  #overlay-container[aria-hidden='true'] {
+    -webkit-animation: snackbar-hide 300ms ease forwards 1;
+            animation: snackbar-hide 300ms ease forwards 1;
+  }
 `
 const meta = {
   title: 'Microlink Cards',
