@@ -209,7 +209,7 @@ export default () => {
               src={screenshotUrl}
             /> */}
           </Box>
-          <Text sx={{ mt: 3, mb: 2, fontSize: 2, fontWeight: 'normal' }}>
+          <Text sx={{ mt: 3, mb: 3, fontSize: 2, fontWeight: 'normal' }}>
             Add it to your website by copying the code below
           </Text>
         </Box>
@@ -221,10 +221,12 @@ export default () => {
                 flexDirection: 'column'
               }}
             >
-              <Text sx={{ mt: 2, color, fontSize: 2, fontWeight: 'bold' }}>
+              <Text
+                sx={{ mt: 2, mb: 3, color, fontSize: 2, fontWeight: 'bold' }}
+              >
                 SEO tags
               </Text>
-              <Flex sx={{ mt: 2 }}>
+              <Flex>
                 <Code
                   sx={{
                     borderColor,
@@ -245,10 +247,12 @@ export default () => {
                 flexDirection: 'column'
               }}
             >
-              <Text sx={{ mt: 2, color, fontSize: 2, fontWeight: 'bold' }}>
+              <Text
+                sx={{ mt: 2, mb: 3, color, fontSize: 2, fontWeight: 'bold' }}
+              >
                 HTML
               </Text>
-              <Flex sx={{ mt: 2 }}>
+              <Flex>
                 <Code
                   sx={{
                     borderColor,
@@ -269,10 +273,12 @@ export default () => {
                 flexDirection: 'column'
               }}
             >
-              <Text sx={{ mt: 2, color, fontSize: 2, fontWeight: 'bold' }}>
+              <Text
+                sx={{ mt: 2, mb: 3, color, fontSize: 2, fontWeight: 'bold' }}
+              >
                 Markdown
               </Text>
-              <Flex sx={{ mt: 2 }}>
+              <Flex>
                 <Code
                   sx={{
                     borderColor,
@@ -293,10 +299,12 @@ export default () => {
                 flexDirection: 'column'
               }}
             >
-              <Text sx={{ mt: 2, color, fontSize: 2, fontWeight: 'bold' }}>
+              <Text
+                sx={{ mt: 2, mb: 3, color, fontSize: 2, fontWeight: 'bold' }}
+              >
                 Direct URL
               </Text>
-              <Flex sx={{ mt: 2 }}>
+              <Flex>
                 <Code
                   sx={{
                     borderColor,
@@ -311,7 +319,7 @@ export default () => {
             </Flex>
           </Box>
         </Box>
-        <Flex as='footer' sx={{ justifyContent: 'flex-end', pt: 3 }}>
+        <Flex as='footer' sx={{ justifyContent: 'flex-end', pt: 4 }}>
           <Button
             sx={{
               cursor: 'pointer',
