@@ -1,22 +1,24 @@
 import { HorizontalDragBar, VerticalDragBar } from '@/components/drag-bars'
 import SearchableSelect from '@/components/searchable-select'
 import { marshall, unmarshall } from '@/lib/compress-json'
-import { Button, Text, Box, Flex, useThemeUI } from 'theme-ui'
+import { Button, Image, Text, Box, Flex, useThemeUI } from 'theme-ui'
+import getScreenshotUrl from '@/lib/screenshot-url'
 import useQueryState from '@/hooks/use-query-state'
 import GitHubIcon from '@/components/icons/github'
 import JSONViewer from '@/components/json-viewer'
 import ThemeIcon from '@/components/icons/theme'
-import screenshotUrl from '@/lib/screenshot-url'
+import ButtonIcon from '@/components/button-icon'
 import InfoIcon from '@/components/icons/info'
 import notification from '@/lib/notification'
 import { useEffect, useState } from 'react'
 import presets from '@/components/presets'
 import Overlay from '@/components/overlay'
+import shareCode from '@/lib/share-code'
 import store from '@/lib/local-storage'
 import clipboard from '@/lib/clipboard'
-import styled from 'styled-components'
 import debounce from '@/lib/debounce'
 import Main from '@/components/main'
+import Code from '@/components/code'
 import isEmpty from '@/lib/is-empty'
 import * as polished from 'polished'
 import onSave from '@/lib/on-save'
@@ -55,32 +57,11 @@ const updateStore = debounce(({ key, value }) => store.set(key, value))
 const cycledMode = new Cycled(Object.keys(themeBase.colors.modes))
 const nextMode = () => cycledMode.next()
 
-const ButtonIcon = styled(Button)`
-  display: flex;
-  cursor: pointer;
-  background: none;
-  border: 0;
-  outline: 0;
-  padding: 0;
-
-  svg {
-    transition: fill ${themeBase.transition.medium},
-      stroke ${themeBase.transition.medium};
-    stroke: ${({ color }) => color};
-    fill: ${({ color }) => color};
-  }
-
-  &:hover svg {
-    stroke: ${({ hoverColor }) => hoverColor};
-    fill: ${({ hoverColor }) => hoverColor};
-  }
-`
-
 export default () => {
   const [query, setQuery] = useQueryState()
   const { theme, colorMode, setColorMode } = useThemeUI()
   const [isLoading, setIsLoading] = useState(true)
-  const [isOverlayOpen, setOverlayOpen] = useState(true)
+  const [isOverlayOpen, setOverlayOpen] = useState(false)
 
   const [asideWidth, setAsideWidth] = useState(
     store.get(ASIDE_WIDTH_KEY) || DEFAULT_ASIDE_WIDTH
@@ -106,23 +87,33 @@ export default () => {
     return queryVariables
   })
 
-  const toClipboard = async () => {
-    // setOverlayOpen(true)
-    const url = screenshotUrl(
+  const getURL = () => {
+    if (typeof window === 'undefined') return ''
+    return getScreenshotUrl(
       decodeURI(window.location.href.replace('/editor/', '')),
       {
         endpoint: queryVariables.endpoint
       }
     )
-    await Promise.all([clipboard.write(url)])
-    notification('Copied URL to clipboard')
+  }
+
+  const [screenshotUrl, setScreenshotUrl] = useState(getURL)
+
+  const showOverlay = () => {
+    setScreenshotUrl(getURL())
+    setOverlayOpen(true)
+  }
+
+  async function toClipboard (text, name) {
+    await clipboard.write(text)
+    notification(`Copied ${name} to clipboard`)
   }
 
   useEffect(() => {
     if (Router.asPath === '/' && isEmpty(Router.query)) {
       return Router.push({ pathname: '/editor' })
     }
-    onSave(toClipboard)
+    onSave(showOverlay)
     setIsLoading(false)
   }, [])
 
@@ -155,10 +146,6 @@ export default () => {
     setQuery({ p: undefined, preset: presetName })
   }
 
-  const handleChangeColor = () => {
-    setColorMode(nextMode())
-  }
-
   if (isLoading) return null
 
   const isEditor = Router.asPath.startsWith('/editor')
@@ -168,16 +155,132 @@ export default () => {
   const bg = editorTheme.plain.backgroundColor
   const borderColor = polished.rgba(color, 0.6)
 
+  const operatorColor = theme.colors.styles.find(item =>
+    item.types.includes('operator')
+  ).style.color
+
   return (
     <LiveProvider
       theme={editorTheme}
       queryVariables={queryVariables}
       code={code}
     >
-      {/* <Overlay isOpen={isOverlayOpen}></Overlay> */}
+      <Overlay
+        backgroundColor={bg}
+        color={color}
+        isOpen={isOverlayOpen}
+        onClose={() => setOverlayOpen(false)}
+      >
+        <Box as='header'>
+          <Image src='https://api.microlink.io/?url=https://kikobeats.com&meta=false&screenshot=true&embed=screenshot.url&waitUntil.0=load&waitUntil.1=networkidle0' />
+          <Text sx={{ mt: 3, mb: 2, fontSize: 2, fontWeight: 'normal' }}>
+            Add it to your website by copying the code below
+          </Text>
+        </Box>
+
+        <Box>
+          <Flex
+            sx={{
+              flexDirection: 'column'
+            }}
+          >
+            <Text sx={{ mt: 2, color, fontSize: 2, fontWeight: 'bold' }}>
+              SEO tags
+            </Text>
+            <Flex sx={{ mt: 2 }}>
+              <Code
+                sx={{
+                  borderColor,
+                  color: operatorColor
+                }}
+                onClick={event =>
+                  toClipboard(event.target.textContent, 'SEO Tags')
+                }
+                children={shareCode(screenshotUrl)}
+              />
+            </Flex>
+          </Flex>
+        </Box>
+        <Box sx={{ mt: 2 }}>
+          <Flex
+            sx={{
+              mt: 3,
+              flexDirection: 'column'
+            }}
+          >
+            <Text sx={{ mt: 2, color, fontSize: 2, fontWeight: 'bold' }}>
+              HTML
+            </Text>
+            <Flex sx={{ mt: 2 }}>
+              <Code
+                sx={{
+                  borderColor,
+                  color: operatorColor
+                }}
+                children={`<img src="${screenshotUrl}" alt="Generated by https://cards.microlink.io">`}
+                onClick={event => toClipboard(event.target.textContent, 'HTML')}
+              />
+            </Flex>
+          </Flex>
+        </Box>
+        <Box sx={{ mt: 2 }}>
+          <Flex
+            sx={{
+              mt: 3,
+              flexDirection: 'column'
+            }}
+          >
+            <Text sx={{ mt: 2, color, fontSize: 2, fontWeight: 'bold' }}>
+              Markdown
+            </Text>
+            <Flex sx={{ mt: 2 }}>
+              <Code
+                sx={{
+                  borderColor,
+                  color: operatorColor
+                }}
+                children={`![Generated by https://cards.microlink.io](${screenshotUrl})`}
+                onClick={event =>
+                  toClipboard(event.target.textContent, 'Markdown')
+                }
+              />
+            </Flex>
+          </Flex>
+        </Box>
+        <Box sx={{ mt: 2 }}>
+          <Flex
+            sx={{
+              mt: 3,
+              flexDirection: 'column'
+            }}
+          >
+            <Text sx={{ mt: 2, color, fontSize: 2, fontWeight: 'bold' }}>
+              Direct URL
+            </Text>
+            <Flex sx={{ mt: 2 }}>
+              <Code
+                sx={{
+                  borderColor,
+                  color: operatorColor
+                }}
+                children={screenshotUrl}
+                onClick={event => toClipboard(event.target.textContent, 'URL')}
+              />
+            </Flex>
+          </Flex>
+          <Flex sx={{ justifyContent: 'flex-end', pt: 4 }}>
+            <Button
+              sx={{ outline: 0, borderRadius: 0, bg: color, color: bg }}
+              onClick={() => setOverlayOpen(false)}
+            >
+              <Text>Got it</Text>
+            </Button>
+          </Flex>
+        </Box>
+      </Overlay>
       <Flex sx={{ bg: 'plain.backgroundColor', height: '100vh' }}>
         <Main>
-          <LivePreview onClick={toClipboard} isEditor={isEditor} />
+          <LivePreview onClick={showOverlay} isEditor={isEditor} />
           <LiveError />
         </Main>
         {isEditor && (
@@ -260,7 +363,7 @@ export default () => {
                 <ButtonIcon
                   as='button'
                   title='Change color mode'
-                  onClick={handleChangeColor}
+                  onClick={() => setColorMode(nextMode())}
                   color={borderColor}
                   hoverColor={color}
                 >
