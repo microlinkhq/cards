@@ -179,7 +179,7 @@ export default () => {
               height: '280px',
               width: '100%'
             }}
-            src='https://api.microlink.io/?url=https://kikobeats.com&meta=false&screenshot=true&embed=screenshot.url&waitUntil.0=load&waitUntil.1=networkidle0'
+            src={screenshotUrl}
           />
           <Text sx={{ mt: 3, mb: 2, fontSize: 2, fontWeight: 'normal' }}>
             Add it to your website by copying the code below
