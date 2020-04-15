@@ -15,10 +15,9 @@ export default (initialKeyBindings = {}, eventListener = 'keydown') => {
         const keyBinding = keyBindings[code]
         if (keyBinding === undefined) return
         const condition = keyBinding.ctrl ? isCtrl(event) : true
-        if (condition) {
-          event.preventDefault()
-          keyBinding.fn(event)
-        }
+        if (!condition) return
+        event.preventDefault()
+        keyBinding.fn(event)
       },
       false
     )

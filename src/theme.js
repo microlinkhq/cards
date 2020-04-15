@@ -1,5 +1,4 @@
 import nightOwlLight from 'prism-react-renderer/themes/nightOwlLight'
-import duotoneDark from 'prism-react-renderer/themes/duotoneDark'
 import palenight from 'prism-react-renderer/themes/palenight'
 import nightOwl from 'prism-react-renderer/themes/nightOwl'
 import ultramin from 'prism-react-renderer/themes/ultramin'
@@ -14,7 +13,6 @@ export const editorTheme = {
   default: defaultTheme,
   github,
   dracula,
-  duotoneDark,
   nightOwl,
   nightOwlLight,
   palenight
