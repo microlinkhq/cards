@@ -73,7 +73,7 @@ const nextMode = () => cycledMode.next()
 export default () => {
   const [query, setQuery] = useQueryState()
   const { theme, colorMode, setColorMode } = useThemeUI()
-  const [isOverlay, setOverlay] = useState(OVERLAY_STATE.INFO)
+  const [isOverlay, setOverlay] = useState('')
   const [asideWidth, setAsideWidth] = useState(
     store.get(ASIDE_WIDTH_KEY) || DEFAULT_ASIDE_WIDTH
   )
@@ -118,9 +118,12 @@ export default () => {
     notification(`Copied ${name} to clipboard`)
   }
 
+  const changeTheme = () => setColorMode(nextMode())
+
   useKeyBindings({
     Escape: { fn: hideOverlay },
     KeyI: { fn: showOverlay(OVERLAY_STATE.INFO) },
+    KeyT: { fn: changeTheme },
     KeyS: { ctrl: true, fn: showOverlay(OVERLAY_STATE.PREVIEW) }
   })
 
@@ -472,7 +475,7 @@ export default () => {
                 <ButtonIcon
                   as='button'
                   title='Change color mode'
-                  onClick={() => setColorMode(nextMode())}
+                  onClick={changeTheme}
                   color={iconColor}
                   hoverColor={color}
                 >
