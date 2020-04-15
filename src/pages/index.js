@@ -1,17 +1,15 @@
 import { HorizontalDragBar, VerticalDragBar } from '@/components/drag-bars'
-import { Button, Text, Box, Flex, useThemeUI } from 'theme-ui'
+import { Image, Button, Text, Box, Flex, useThemeUI } from 'theme-ui'
 import SearchableSelect from '@/components/searchable-select'
 import { marshall, unmarshall } from '@/lib/compress-json'
 import useScreenshotUrl from '@/hooks/use-screenshot-url'
 import useKeyBindings from '@/hooks/use-key-bindings'
 import useQueryState from '@/hooks/use-query-state'
-import GitHubIcon from '@/components/icons/github'
 import aspectRatio from '@/lib/aspect-ratio-16-9'
 import JSONViewer from '@/components/json-viewer'
 import ButtonIcon from '@/components/button-icon'
 import ThemeIcon from '@/components/icons/theme'
-// import LazyImage from '@/components/lazy-image'
-// import InfoIcon from '@/components/icons/info'
+import InfoIcon from '@/components/icons/info'
 import notification from '@/lib/notification'
 import useLoading from '@/hooks/use-loading'
 import presets from '@/components/presets'
@@ -53,7 +51,8 @@ const ASIDE_MIN_HEIGHT = '15%'
 const ASIDE_MAX_HEIGHT = '70%'
 
 const OVERLAY_STATE = {
-  PREVIEW: 'preview'
+  PREVIEW: 'preview',
+  INFO: 'info'
 }
 
 const PREVIEW_WIDTH = 500
@@ -74,7 +73,7 @@ const nextMode = () => cycledMode.next()
 export default () => {
   const [query, setQuery] = useQueryState()
   const { theme, colorMode, setColorMode } = useThemeUI()
-  const [isOverlay, setOverlay] = useState('')
+  const [isOverlay, setOverlay] = useState(OVERLAY_STATE.INFO)
   const [asideWidth, setAsideWidth] = useState(
     store.get(ASIDE_WIDTH_KEY) || DEFAULT_ASIDE_WIDTH
   )
@@ -121,6 +120,7 @@ export default () => {
 
   useKeyBindings({
     Escape: { fn: hideOverlay },
+    KeyI: { fn: showOverlay(OVERLAY_STATE.INFO) },
     KeyS: { ctrl: true, fn: showOverlay(OVERLAY_STATE.PREVIEW) }
   })
 
@@ -166,28 +166,114 @@ export default () => {
     item.types.includes('string')
   ).style.color
 
+  const OverlayHeader = ({ sx, children }) => {
+    return (
+      <Box as='header' sx={{ position: 'sticky' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            maxWidth: '100%',
+            border: '1px solid',
+            borderColor,
+            ...sx
+          }}
+        >
+          {children}
+        </Box>
+      </Box>
+    )
+  }
+
+  const OverlayFooter = () => {
+    return (
+      <Flex as='footer' sx={{ justifyContent: 'flex-end', pt: 4 }}>
+        <Button
+          sx={{
+            cursor: 'pointer',
+            outline: 0,
+            borderRadius: 2,
+            bg: color,
+            color: bg
+          }}
+          onClick={hideOverlay}
+        >
+          <Text>Got it</Text>
+        </Button>
+      </Flex>
+    )
+  }
+
+  const InfoOverlay = () => {
+    return (
+      <>
+        <OverlayHeader>
+          <Image
+            src='https://cdn.microlink.io/banner/cards.png'
+            alt='microlink cards'
+          />
+        </OverlayHeader>
+
+        <Text sx={{ color, my: 3, fontSize: 2, fontWeight: 'normal' }}>
+          <b>Microlink Cards</b> generates social images on demand, ready to be
+          embed in your{' '}
+          <Text as='code' sx={{ fontFamily: 'mono' }}>
+            &lt;meta&gt;
+          </Text>{' '}
+          tags.
+        </Text>
+        <Text sx={{ color, my: 3, fontSize: 2, fontWeight: 'normal' }}>
+          The tool is an interactive editor that allows generate your images
+          writing them with code and feed with dynamic content.
+        </Text>
+        <Text sx={{ color, my: 3, fontSize: 2, fontWeight: 'normal' }}>
+          It's powered by{' '}
+          <Text
+            as='a'
+            sx={{ textDecoration: 'none', color: stringColor }}
+            href='https://microlink.io'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            Microlink API
+          </Text>
+          , the fastest and scalable headless browser platform on the cloud.
+        </Text>
+        <Text sx={{ my: 3, fontSize: 2, fontWeight: 'normal' }}>
+          It starts from <b>free</b> and code is available on{' '}
+          <Text
+            as='a'
+            sx={{ textDecoration: 'none', color: stringColor }}
+            href={pkg.homepage}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            GitHub
+          </Text>
+          .
+        </Text>
+        <OverlayFooter />
+      </>
+    )
+  }
+
   const PreviewOverlay = () => {
     return (
       <>
-        <Box as='header' sx={{ position: 'sticky' }}>
-          <Box
-            sx={{
-              border: '1px solid',
-              height: `calc(${toPx(PREVIEW_HEIGHT)} + 2px)`,
-              width: `calc(${toPx(PREVIEW_WIDTH)} + 2px)`,
-              borderColor
-            }}
-          >
-            <LivePreview
-              isThumbnail
-              thumbnailHeight={`calc(${toPx(PREVIEW_HEIGHT)} + 2px)`}
-              thumbnailWidth={`calc(${toPx(PREVIEW_WIDTH)} + 2px)`}
-            />
-          </Box>
-          <Text sx={{ mt: 3, mb: 3, fontSize: 2, fontWeight: 'normal' }}>
-            Add it to your website by copying the code below
-          </Text>
-        </Box>
+        <OverlayHeader
+          sx={{
+            height: PREVIEW_HEIGHT
+          }}
+        >
+          <LivePreview
+            isThumbnail
+            thumbnailHeight={`calc(${toPx(PREVIEW_HEIGHT)} + 2px)`}
+            thumbnailWidth={`calc(${toPx(PREVIEW_WIDTH)} + 2px)`}
+          />
+        </OverlayHeader>
+
+        <Text sx={{ color, my: 3, fontSize: 2, fontWeight: 'normal' }}>
+          Add it to your website by copying the code below
+        </Text>
 
         <Box as='section' sx={{ overflow: 'scroll' }}>
           <Box>
@@ -286,20 +372,7 @@ export default () => {
             </Flex>
           </Box>
         </Box>
-        <Flex as='footer' sx={{ justifyContent: 'flex-end', pt: 4 }}>
-          <Button
-            sx={{
-              cursor: 'pointer',
-              outline: 0,
-              borderRadius: 2,
-              bg: color,
-              color: bg
-            }}
-            onClick={hideOverlay}
-          >
-            <Text>Got it</Text>
-          </Button>
-        </Flex>
+        <OverlayFooter />
       </>
     )
   }
@@ -319,6 +392,9 @@ export default () => {
       >
         <Choose.When condition={isOverlay === OVERLAY_STATE.PREVIEW}>
           <PreviewOverlay />
+        </Choose.When>
+        <Choose.When condition={isOverlay === OVERLAY_STATE.INFO}>
+          <InfoOverlay />
         </Choose.When>
       </Overlay>
       <Flex sx={{ bg: 'plain.backgroundColor', height: '100vh' }}>
@@ -382,28 +458,15 @@ export default () => {
                   alignItems: 'center'
                 }}
               >
-                {/* <ButtonIcon
-                  as='a'
-                  href={pkg.homepage}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  title='See on GitHub'
-                  color={borderColor}
-                  hoverColor={color}
-                >
-                  <InfoIcon />
-                </ButtonIcon> */}
-                <Box sx={{ pl: '6px', pr: '4px' }}>
+                <Box>
                   <ButtonIcon
-                    as='a'
-                    href={pkg.homepage}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    title='See on GitHub'
+                    as='button'
+                    title='README'
                     color={iconColor}
                     hoverColor={color}
+                    onClick={showOverlay(OVERLAY_STATE.INFO)}
                   >
-                    <GitHubIcon />
+                    <InfoIcon />
                   </ButtonIcon>
                 </Box>
                 <ButtonIcon
