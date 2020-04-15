@@ -6,17 +6,17 @@ export default queryVariables => {
   const [screenshotUrl, setScreenshotUrl] = useState('')
 
   const sync = queryVariables => {
-    return getScreenshotUrl(
-      decodeURI(window.location.href.replace('/editor/', '')),
-      {
-        endpoint: isDev ? 'http://localhost:3000' : queryVariables.endpoint
-      }
+    setScreenshotUrl(
+      getScreenshotUrl(
+        decodeURI(window.location.href.replace('/editor/', '')),
+        {
+          endpoint: isDev ? 'http://localhost:3000' : queryVariables.endpoint
+        }
+      )
     )
   }
 
-  useEffect(() => {
-    setScreenshotUrl(sync(queryVariables))
-  }, [])
+  useEffect(() => sync(queryVariables), [])
 
   return [screenshotUrl, sync]
 }
