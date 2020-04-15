@@ -9,7 +9,6 @@ export default (initialKeyBindings = {}, eventListener = 'keydown') => {
       eventListener,
       event => {
         const { code } = event
-        console.log(code, keyBindings)
         const keyBinding = keyBindings[code]
         if (keyBinding) {
           event.preventDefault()
