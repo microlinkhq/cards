@@ -8,6 +8,20 @@
     "name": "microlink.io",
     "url": "https://microlink.io"
   },
+  "contributors": [
+    {
+      "name": "Kiko Beats",
+      "email": "josefrancisco.verdu@gmail.com"
+    },
+    {
+      "name": "Brad Adams",
+      "email": "hi@breadadams.com"
+    },
+    {
+      "name": "GermanRodrickson",
+      "email": "germanrodrickson@gmail.com"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/microlinkhq/cards.git"
@@ -78,12 +92,12 @@
     "dev": "next -p 3001",
     "export": "next export",
     "lint": "standard-markdown README.md && standard",
-    "postrelease": "npm run release:tags && npm run release:github && npm publish",
-    "prerelease": "git-dirty && npm run update:check && npm test && npm run contributors",
+    "postrelease": "npm run release:tags && npm run release:github",
+    "prerelease": "npm run update:check && npm run contributors",
     "pretest": "npm run lint",
-    "release": "git-authors-cli finepack && git add package.json && standard-version -a",
+    "release": "standard-version -a",
     "release:github": "conventional-github-releaser -p angular",
-    "release:tags": "git push --follow-tags origin master",
+    "release:tags": "git push --follow-tags origin HEAD:master",
     "start": "next start",
     "test": "exit 0",
     "update": "ncu -u",
