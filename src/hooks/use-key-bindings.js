@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react'
+import isMac from '@/lib/is-mac'
+
+const isCtrl = e => (isMac ? e.metaKey : e.ctrlKey)
 
 // https://keycode.info
 export default (initialKeyBindings = {}, eventListener = 'keydown') => {
@@ -10,9 +13,11 @@ export default (initialKeyBindings = {}, eventListener = 'keydown') => {
       event => {
         const { code } = event
         const keyBinding = keyBindings[code]
-        if (keyBinding) {
+        if (keyBinding === undefined) return
+        const condition = keyBinding.ctrl ? isCtrl(event) : true
+        if (condition) {
           event.preventDefault()
-          keyBinding(event)
+          keyBinding.fn(event)
         }
       },
       false

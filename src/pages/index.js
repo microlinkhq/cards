@@ -116,8 +116,8 @@ export default () => {
   }
 
   useKeyBindings({
-    Escape: hideOverlay,
-    KeyS: showOverlay
+    Escape: { fn: hideOverlay },
+    KeyS: { ctrl: true, fn: showOverlay }
   })
 
   const handleCode = newCode => {
