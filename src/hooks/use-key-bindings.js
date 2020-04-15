@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
-import isMac from '@/lib/is-mac'
 
-const isCtrl = e => (isMac ? e.metaKey : e.ctrlKey)
+const isCtrl = e => e.ctrlKey
 
 // https://keycode.info
 export default (initialKeyBindings = {}, eventListener = 'keydown') => {
