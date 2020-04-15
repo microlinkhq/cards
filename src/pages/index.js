@@ -17,6 +17,7 @@ import useLoading from '@/hooks/use-loading'
 import presets from '@/components/presets'
 import Overlay from '@/components/overlay'
 import shareCode from '@/lib/share-code'
+import Choose from '@/components/choose'
 import store from '@/lib/local-storage'
 import clipboard from '@/lib/clipboard'
 import debounce from '@/lib/debounce'
@@ -28,6 +29,7 @@ import Router from 'next/router'
 import { useState } from 'react'
 import themeBase from '@/theme'
 import toPx from '@/lib/to-px'
+
 import defer from 'tickedoff'
 import Cycled from 'cycled'
 
@@ -50,6 +52,10 @@ const ASIDE_MAX_WIDTH = '60%'
 const ASIDE_MIN_HEIGHT = '15%'
 const ASIDE_MAX_HEIGHT = '70%'
 
+const OVERLAY_STATE = {
+  PREVIEW: 'preview'
+}
+
 const PREVIEW_WIDTH = 500
 const PREVIEW_HEIGHT = aspectRatio(PREVIEW_WIDTH)
 
@@ -68,7 +74,7 @@ const nextMode = () => cycledMode.next()
 export default () => {
   const [query, setQuery] = useQueryState()
   const { theme, colorMode, setColorMode } = useThemeUI()
-  const [isOverlayOpen, setOverlayOpen] = useState(false)
+  const [isOverlay, setOverlay] = useState('')
   const [asideWidth, setAsideWidth] = useState(
     store.get(ASIDE_WIDTH_KEY) || DEFAULT_ASIDE_WIDTH
   )
@@ -101,14 +107,12 @@ export default () => {
     }
   })
 
-  const showOverlay = () => {
+  const showOverlay = state => () => {
     syncScreenshotUrl(queryVariables)
-    defer(() => setOverlayOpen(true))
+    defer(() => setOverlay(state))
   }
 
-  const hideOverlay = () => {
-    setOverlayOpen(false)
-  }
+  const hideOverlay = () => setOverlay('')
 
   async function toClipboard (text, name) {
     await clipboard.write(text)
@@ -117,7 +121,7 @@ export default () => {
 
   useKeyBindings({
     Escape: { fn: hideOverlay },
-    KeyS: { ctrl: true, fn: showOverlay }
+    KeyS: { ctrl: true, fn: showOverlay(OVERLAY_STATE.PREVIEW) }
   })
 
   const handleCode = newCode => {
@@ -162,19 +166,9 @@ export default () => {
     item.types.includes('string')
   ).style.color
 
-  return (
-    <LiveProvider
-      theme={editorTheme}
-      queryVariables={queryVariables}
-      code={code}
-    >
-      <Overlay
-        aria-hidden={!isOverlayOpen}
-        backgroundColor={bg}
-        color={color}
-        isOpen={isOverlayOpen}
-        onClose={hideOverlay}
-      >
+  const PreviewOverlay = () => {
+    return (
+      <>
         <Box as='header' sx={{ position: 'sticky' }}>
           <Box
             sx={{
@@ -189,18 +183,6 @@ export default () => {
               thumbnailHeight={`calc(${toPx(PREVIEW_HEIGHT)} + 2px)`}
               thumbnailWidth={`calc(${toPx(PREVIEW_WIDTH)} + 2px)`}
             />
-            {/* <LazyImage
-              theme={{
-                color: polished.lighten(0.05, bg),
-                highlightColor: polished.lighten(0.08, bg)
-              }}
-              sx={{
-                objectFit: 'cover',
-                height: toPx(PREVIEW_HEIGHT),
-                width: toPx(PREVIEW_WIDTH)
-              }}
-              src={screenshotUrl}
-            /> */}
           </Box>
           <Text sx={{ mt: 3, mb: 3, fontSize: 2, fontWeight: 'normal' }}>
             Add it to your website by copying the code below
@@ -318,10 +300,33 @@ export default () => {
             <Text>Got it</Text>
           </Button>
         </Flex>
+      </>
+    )
+  }
+
+  return (
+    <LiveProvider
+      theme={editorTheme}
+      queryVariables={queryVariables}
+      code={code}
+    >
+      <Overlay
+        aria-hidden={isOverlay === ''}
+        backgroundColor={bg}
+        color={color}
+        isOpen={isOverlay !== ''}
+        onClose={hideOverlay}
+      >
+        <Choose.When condition={isOverlay === OVERLAY_STATE.PREVIEW}>
+          <PreviewOverlay />
+        </Choose.When>
       </Overlay>
       <Flex sx={{ bg: 'plain.backgroundColor', height: '100vh' }}>
         <Main>
-          <LivePreview onClick={showOverlay} isEditor={isEditor} />
+          <LivePreview
+            onClick={showOverlay(OVERLAY_STATE.PREVIEW)}
+            isEditor={isEditor}
+          />
           <LiveError />
         </Main>
         {isEditor && (
