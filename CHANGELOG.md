@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/microlinkhq/cards/compare/v0.0.4...v0.0.5) (2020-04-15)
+
+
+### Bug Fixes
+
+* sync screenshot url ([399f40e](https://github.com/microlinkhq/cards/commit/399f40ea9f2a27c5f59fb6dbb5ee8457c315a63c))
+* use ctrl in key bindings ([151aa20](https://github.com/microlinkhq/cards/commit/151aa20ba836f38a53cb77a1896f41e8e5358673))
+
 ### [0.0.4](https://github.com/microlinkhq/cards/compare/v0.0.2...v0.0.4) (2020-04-15)
 
 ### [0.0.3](https://github.com/microlinkhq/cards/compare/v0.0.2...v0.0.3) (2020-04-15)
