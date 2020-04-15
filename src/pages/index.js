@@ -122,8 +122,8 @@ export default () => {
 
   useKeyBindings({
     Escape: { fn: hideOverlay },
-    KeyI: { fn: showOverlay(OVERLAY_STATE.INFO) },
-    KeyT: { fn: changeTheme },
+    KeyI: { ctrl: true, fn: showOverlay(OVERLAY_STATE.INFO) },
+    KeyT: { ctrl: true, fn: changeTheme },
     KeyS: { ctrl: true, fn: showOverlay(OVERLAY_STATE.PREVIEW) }
   })
 
