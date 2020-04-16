@@ -18,10 +18,10 @@ export default () => {
     if (!eq(query, newQuery)) setQuery(newQuery)
   }, condition)
 
-  const set = (obj, { assign = true } = {}) => {
-    const newQuery = flatten(assign ? { ...fromLocation(), ...obj } : obj)
-
-    return window.history.pushState(
+  const set = (obj, { replace = false } = {}) => {
+    const newQuery = flatten(replace ? obj : { ...fromLocation(), ...obj })
+    setQuery(newQuery)
+    window.history.pushState(
       {},
       '',
       `${window.location.pathname}?${encode(newQuery)}`

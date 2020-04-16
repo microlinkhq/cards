@@ -152,7 +152,7 @@ export default () => {
     setPreset(newPreset)
     setCode(newPreset.code)
     setQueryVariables(newPreset.query)
-    setQuery({ p: undefined, preset: presetName }, { assign: false })
+    setQuery({ p: undefined, preset: presetName }, { replace: true })
   }
 
   if (isLoading) return null
