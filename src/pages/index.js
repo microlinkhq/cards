@@ -27,7 +27,6 @@ import Router from 'next/router'
 import { useState } from 'react'
 import themeBase from '@/theme'
 import toPx from '@/lib/to-px'
-
 import defer from 'tickedoff'
 import Cycled from 'cycled'
 
