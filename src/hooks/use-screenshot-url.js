@@ -5,7 +5,7 @@ import isDev from '@/lib/is-dev'
 const getRootUrl = () => {
   const urlObj = new URL(window.location)
   urlObj.pathname = ''
-  return urlObj.toString()
+  return decodeURIComponent(urlObj.toString())
 }
 
 export default queryVariables => {
