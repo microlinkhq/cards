@@ -407,12 +407,17 @@ export default () => {
           <Flex
             as='aside'
             sx={{
+              mt: 3,
+              mb: 3,
+              pl: 3,
+              borderLeft: '1px solid',
+              borderColor,
               bg: 'plain.backgroundColor',
               flexDirection: 'column',
               fontFamily: 'mono',
               fontSize: 2,
               fontWeight: 'light',
-              height: '100%',
+              height: 'calc(100vh - 32px)',
               maxWidth: ASIDE_MAX_WIDTH,
               minWidth: ASIDE_MIN_WIDTH,
               position: 'relative',
@@ -429,9 +434,9 @@ export default () => {
                 bg: 'plain.backgroundColor',
                 borderBottom: '1px solid',
                 borderColor,
-                color: 'plain.color',
                 py: 3,
                 mr: 3,
+                color: 'plain.color',
                 justifyContent: 'space-between'
               }}
             >
@@ -483,10 +488,11 @@ export default () => {
                 as='section'
                 sx={{
                   borderBottom: '1px solid',
-                  overflow: 'auto',
                   borderColor,
-                  flex: 1,
-                  p: 3
+                  p: 3,
+                  mr: 3,
+                  overflow: 'auto',
+                  flex: 1
                 }}
               >
                 <LiveEditor onChange={handleCode} />
