@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/microlinkhq/cards/compare/v0.0.6...v0.0.7) (2020-04-16)
+
+
+### Bug Fixes
+
+* ensure to flat/unflat query ([d28b35d](https://github.com/microlinkhq/cards/commit/d28b35d388b4f3b93fd2ee0747c406f48ca2e2ef)), closes [#13](https://github.com/microlinkhq/cards/issues/13)
+
 ### [0.0.6](https://github.com/microlinkhq/cards/compare/v0.0.5...v0.0.6) (2020-04-15)
 
 
