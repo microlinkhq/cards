@@ -1,13 +1,12 @@
-import stringify from 'fast-safe-stringify'
 import { useState, useEffect } from 'react'
+import { flatten, unflatten } from 'flat'
 import { encode, decode } from 'qss'
-import isSSR from '../lib/is-ssr'
-
-const eq = (str1, str2) => stringify(str1) === stringify(str2)
+import isSSR from '@/lib/is-ssr'
+import eq from '@/lib/eq'
 
 const fromLocation = isSSR
   ? () => ({})
-  : () => decode(window.location.search.substring(1))
+  : () => unflatten(decode(window.location.search.substring(1)))
 
 const condition = isSSR ? [] : [window.location.search]
 
@@ -20,7 +19,7 @@ export default () => {
   }, condition)
 
   const set = obj => {
-    const newQuery = { ...fromLocation(), ...obj }
+    const newQuery = flatten({ ...fromLocation(), ...obj })
     return window.history.pushState(
       {},
       '',
