@@ -5,6 +5,7 @@ import { marshall, unmarshall } from '@/lib/compress-json'
 import useScreenshotUrl from '@/hooks/use-screenshot-url'
 import useKeyBindings from '@/hooks/use-key-bindings'
 import useQueryState from '@/hooks/use-query-state'
+import GitHubIcon from '@/components/icons/github'
 import aspectRatio from '@/lib/aspect-ratio-16-9'
 import JSONViewer from '@/components/json-viewer'
 import ButtonIcon from '@/components/button-icon'
@@ -99,10 +100,13 @@ export default () => {
     return { ...preset.query, ...queryVariables }
   })
 
-  const [screenshotUrl, syncScreenshotUrl] = useScreenshotUrl(queryVariables)
+  const [screenshotUrl, syncScreenshotUrl] = useScreenshotUrl({
+    queryVariables,
+    query
+  })
 
   const showOverlay = state => () => {
-    syncScreenshotUrl(queryVariables)
+    syncScreenshotUrl({ query, queryVariables })
     defer(() => setOverlay(state))
   }
 
@@ -128,6 +132,7 @@ export default () => {
   }
 
   const handleQueryVariables = newJSON => {
+    setQueryVariables(newJSON)
     updateQuery({ setQuery, queryVariables: diff(preset.query, newJSON) })
   }
 
@@ -461,15 +466,26 @@ export default () => {
                   alignItems: 'center'
                 }}
               >
-                <Box sx={{ mr: 1 }}>
+                <ButtonIcon
+                  as='button'
+                  title='README'
+                  color={iconColor}
+                  hoverColor={color}
+                  onClick={showOverlay(OVERLAY_STATE.INFO)}
+                >
+                  <InfoIcon />
+                </ButtonIcon>
+                <Box sx={{ mx: 1 }}>
                   <ButtonIcon
-                    as='button'
-                    title='README'
+                    as='a'
+                    href={pkg.homepage}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    title='See on GitHub'
                     color={iconColor}
                     hoverColor={color}
-                    onClick={showOverlay(OVERLAY_STATE.INFO)}
                   >
-                    <InfoIcon />
+                    <GitHubIcon />
                   </ButtonIcon>
                 </Box>
                 <ButtonIcon
