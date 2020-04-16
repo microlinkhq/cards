@@ -23,28 +23,24 @@ const Dragger = styled('div').attrs(({ isDrag, isHorizontal }) => ({
 
 const DragBar = ({ isHorizontal = false, onDrag = () => {} }) => {
   const [isDrag, setIsDrag] = useState(false)
-
   const onMouseMove = useCallback(e => {
     const vw = Math.max(
       document.documentElement[!isHorizontal ? 'clientWidth' : 'clientHeight'],
       window[!isHorizontal ? 'innerWidth' : 'innerHeight'] || 0
     )
-
     const cursorPos = e[!isHorizontal ? 'clientX' : 'clientY']
-
     const percent = Math.round(100 - (cursorPos / vw) * 100)
-
-    onDrag(`${percent}%`)
+    return onDrag(`${percent}%`)
   }, [])
 
   const addListener = useCallback(() => {
     setIsDrag(true)
-    document.addEventListener('mousemove', onMouseMove)
+    return document.addEventListener('mousemove', onMouseMove)
   }, [onMouseMove])
 
   const removeListener = useCallback(() => {
     setIsDrag(false)
-    document.removeEventListener('mousemove', onMouseMove)
+    return document.removeEventListener('mousemove', onMouseMove)
   }, [onMouseMove])
 
   return (
