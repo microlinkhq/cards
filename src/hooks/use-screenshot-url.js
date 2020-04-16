@@ -1,7 +1,6 @@
 import getScreenshotUrl from '@/lib/screenshot-url'
 import { useState, useEffect } from 'react'
 import isDev from '@/lib/is-dev'
-import { encode } from 'qss'
 
 const getRootUrl = () => {
   const urlObj = new URL(window.location)
@@ -11,7 +10,14 @@ const getRootUrl = () => {
 
 const getCardUrl = ({ query, queryVariables }) => {
   const { endpoint } = queryVariables
-  if (!endpoint && !isDev) return `https://i.microlink.io/${encode(query)}`
+  if (!endpoint && !isDev) {
+    const str = Object.keys(query).reduce((acc, key, index) => {
+      acc = `${acc}${index === 0 ? '' : '&'}${key}=${query[key]}`
+      return acc
+    }, '')
+    return `https://i.microlink.io/${encodeURIComponent(str)}`
+  }
+
   return getScreenshotUrl(getRootUrl(), {
     force: !!isDev,
     endpoint: endpoint || 'http://localhost:3000',
@@ -26,10 +32,7 @@ const getCardUrl = ({ query, queryVariables }) => {
 
 export default opts => {
   const [screenshotUrl, setScreenshotUrl] = useState('')
-
   const sync = opts => setScreenshotUrl(getCardUrl(opts))
-
   useEffect(() => sync(opts), [])
-
   return [screenshotUrl, sync]
 }
