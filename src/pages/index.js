@@ -100,10 +100,13 @@ export default () => {
     return { ...preset.query, ...queryVariables }
   })
 
-  const [screenshotUrl, syncScreenshotUrl] = useScreenshotUrl(queryVariables)
+  const [screenshotUrl, syncScreenshotUrl] = useScreenshotUrl({
+    queryVariables,
+    query
+  })
 
   const showOverlay = state => () => {
-    syncScreenshotUrl(queryVariables)
+    syncScreenshotUrl({ query, queryVariables })
     defer(() => setOverlay(state))
   }
 
