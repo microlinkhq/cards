@@ -129,6 +129,7 @@ export default () => {
   }
 
   const handleQueryVariables = newJSON => {
+    setQueryVariables(newJSON)
     updateQuery({ setQuery, queryVariables: diff(preset.query, newJSON) })
   }
 
