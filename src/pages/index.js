@@ -70,6 +70,7 @@ const cycledMode = new Cycled(Object.keys(themeBase.colors.modes))
 const nextMode = () => cycledMode.next()
 
 export default () => {
+  const isLoading = useLoading()
   const [query, setQuery] = useQueryState()
   const { theme, colorMode, setColorMode } = useThemeUI()
   const [isOverlay, setOverlay] = useState('')
@@ -98,12 +99,6 @@ export default () => {
   })
 
   const [screenshotUrl, syncScreenshotUrl] = useScreenshotUrl(queryVariables)
-
-  const isLoading = useLoading(() => {
-    if (Router.asPath === '/' && isEmpty(Router.query)) {
-      return Router.push({ pathname: '/editor' })
-    }
-  })
 
   const showOverlay = state => () => {
     syncScreenshotUrl(queryVariables)
