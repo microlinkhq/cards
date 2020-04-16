@@ -6,20 +6,21 @@ import eq from '@/lib/eq'
 
 const fromLocation = isSSR
   ? () => ({})
-  : () => unflatten(decode(window.location.search.substring(1)))
+  : () => decode(window.location.search.substring(1))
 
 const condition = isSSR ? [] : [window.location.search]
 
 export default () => {
-  const [query, setQuery] = useState(fromLocation())
+  const [query, setQuery] = useState(unflatten(fromLocation()))
 
   useEffect(() => {
     const newQuery = fromLocation()
     if (!eq(query, newQuery)) setQuery(newQuery)
   }, condition)
 
-  const set = obj => {
-    const newQuery = flatten({ ...fromLocation(), ...obj })
+  const set = (obj, { assign = true } = {}) => {
+    const newQuery = flatten(assign ? { ...fromLocation(), ...obj } : obj)
+
     return window.history.pushState(
       {},
       '',
