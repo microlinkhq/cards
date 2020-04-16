@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react'
 import isEmpty from '@/lib/is-empty'
 import Router from 'next/router'
-import defer from 'tickedoff'
 
 export default () => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    if (Router.asPath === '/' && isEmpty(Router.query)) {
-      return Router.push({ pathname: '/editor' })
+    const isEditor = Router.asPath.startsWith('/editor')
+    if (!isEditor && isEmpty(Router.query)) {
+      return Router.push('/editor', '/editor', { shallow: true })
     }
-    defer(() => setIsLoading(false))
+    setIsLoading(false)
   }, [])
 
   return isLoading
