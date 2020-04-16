@@ -10,7 +10,8 @@ export default () => {
     if (Router.asPath === '/' && isEmpty(Router.query)) {
       return Router.push({ pathname: '/editor' })
     }
-    defer(() => setIsLoading(false))
+    setIsLoading(false)
+    // defer(() => setIsLoading(false))
   }, [])
 
   return isLoading
