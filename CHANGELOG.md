@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.19](https://github.com/microlinkhq/cards/compare/v0.0.18...v0.0.19) (2020-04-16)
+
+
+### Bug Fixes
+
+* call set query ([e0a1bf1](https://github.com/microlinkhq/cards/commit/e0a1bf1f5adbf37c83d4776a98c465a03f0f031a))
+
 ### [0.0.18](https://github.com/microlinkhq/cards/compare/v0.0.17...v0.0.18) (2020-04-16)
 
 
