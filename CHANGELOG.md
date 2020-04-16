@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.14](https://github.com/microlinkhq/cards/compare/v0.0.13...v0.0.14) (2020-04-16)
+
+
+### Bug Fixes
+
+* avoid decode twice ([50f6a69](https://github.com/microlinkhq/cards/commit/50f6a69a9b0af6f6045614851001cab21f7dee80))
+* decode ([68c9311](https://github.com/microlinkhq/cards/commit/68c9311559372acc62cef0b3ff95ef93971cdb57))
+
 ### [0.0.13](https://github.com/microlinkhq/cards/compare/v0.0.12...v0.0.13) (2020-04-16)
 
 ### [0.0.12](https://github.com/microlinkhq/cards/compare/v0.0.11...v0.0.12) (2020-04-16)
