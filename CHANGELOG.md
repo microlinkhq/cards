@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.10](https://github.com/microlinkhq/cards/compare/v0.0.9...v0.0.10) (2020-04-16)
+
+
+### Bug Fixes
+
+* set load after defer ([990cf00](https://github.com/microlinkhq/cards/commit/990cf001af75893bac6d606861af65b8c991f1ae))
+
 ### [0.0.9](https://github.com/microlinkhq/cards/compare/v0.0.8...v0.0.9) (2020-04-16)
 
 ### [0.0.8](https://github.com/microlinkhq/cards/compare/v0.0.7...v0.0.8) (2020-04-16)
