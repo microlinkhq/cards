@@ -15,7 +15,9 @@ export default queryVariables => {
     const url = getRootUrl()
     setScreenshotUrl(
       getScreenshotUrl(url, {
-        endpoint: isDev ? 'http://localhost:3000' : queryVariables.endpoint,
+        endpoint: isDev
+          ? 'http://localhost:3000'
+          : queryVariables.endpoint || 'https://i.microlink.io',
         force: !!isDev
       })
     )
