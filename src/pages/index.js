@@ -16,6 +16,7 @@ import presets from '@/components/presets'
 import Overlay from '@/components/overlay'
 import shareCode from '@/lib/share-code'
 import Choose from '@/components/choose'
+import { diff } from 'deep-object-diff'
 import store from '@/lib/local-storage'
 import clipboard from '@/lib/clipboard'
 import debounce from '@/lib/debounce'
@@ -95,7 +96,7 @@ export default () => {
     if (isEmpty(query)) return preset.query
     const { p, preset: queryPreset, ...queryVariables } = query
     if (isEmpty(queryVariables)) return preset.query
-    return queryVariables
+    return { ...preset.query, ...queryVariables }
   })
 
   const [screenshotUrl, syncScreenshotUrl] = useScreenshotUrl(queryVariables)
@@ -127,8 +128,7 @@ export default () => {
   }
 
   const handleQueryVariables = newJSON => {
-    setQueryVariables(newJSON)
-    updateQuery({ setQuery, queryVariables: newJSON })
+    updateQuery({ setQuery, queryVariables: diff(preset.query, newJSON) })
   }
 
   const handleAsideWidthReize = width => {
