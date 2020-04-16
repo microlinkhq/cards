@@ -6,7 +6,8 @@ export default () => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    if (Router.asPath === '/' && isEmpty(Router.query)) {
+    const isEditor = Router.asPath.startsWith('/editor')
+    if (!isEditor && isEmpty(Router.query)) {
       return Router.push('/editor', '/editor', { shallow: true })
     }
     setIsLoading(false)

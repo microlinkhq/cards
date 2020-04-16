@@ -3,6 +3,7 @@ import { Image, Button, Text, Box, Flex, useThemeUI } from 'theme-ui'
 import SearchableSelect from '@/components/searchable-select'
 import { marshall, unmarshall } from '@/lib/compress-json'
 import useScreenshotUrl from '@/hooks/use-screenshot-url'
+import useKeyBindings from '@/hooks/use-key-bindings'
 import useQueryState from '@/hooks/use-query-state'
 import aspectRatio from '@/lib/aspect-ratio-16-9'
 import JSONViewer from '@/components/json-viewer'
@@ -22,7 +23,6 @@ import Main from '@/components/main'
 import Code from '@/components/code'
 import isEmpty from '@/lib/is-empty'
 import * as polished from 'polished'
-import dynamic from 'next/dynamic'
 import Router from 'next/router'
 import { useState } from 'react'
 import themeBase from '@/theme'
@@ -38,8 +38,6 @@ import {
 } from '@/components/live-editor'
 
 import pkg from '@/package.json'
-
-const useKeyBindings = dynamic(() => import('@/hooks/use-key-bindings'))
 
 const DEFAULT_PRESET = Object.keys(presets)[0]
 const ASIDE_HEIGHT_KEY = 'sidebar-json-height'
@@ -116,6 +114,13 @@ export default () => {
 
   const changeTheme = () => setColorMode(nextMode())
 
+  useKeyBindings({
+    Escape: { fn: hideOverlay },
+    KeyI: { ctrl: true, fn: showOverlay(OVERLAY_STATE.INFO) },
+    KeyT: { ctrl: true, fn: changeTheme },
+    KeyS: { ctrl: true, fn: showOverlay(OVERLAY_STATE.PREVIEW) }
+  })
+
   const handleCode = newCode => {
     setCode(newCode)
     updateQuery({ setQuery, code: newCode })
@@ -148,16 +153,6 @@ export default () => {
   if (isLoading) return null
 
   const isEditor = Router.asPath.startsWith('/editor')
-
-  if (!isEditor) {
-    useKeyBindings({
-      Escape: { fn: hideOverlay },
-      KeyI: { ctrl: true, fn: showOverlay(OVERLAY_STATE.INFO) },
-      KeyT: { ctrl: true, fn: changeTheme },
-      KeyS: { ctrl: true, fn: showOverlay(OVERLAY_STATE.PREVIEW) }
-    })
-  }
-
   const editorTheme = theme.colors.modes[colorMode]
   const color = editorTheme.plain.color
   const bg = editorTheme.plain.backgroundColor
