@@ -2,7 +2,7 @@
   "name": "microlink-cards",
   "description": "The easiest way to create, manage and ship OG and Twitter cards at scale.",
   "homepage": "https://github.com/microlinkhq/cards",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "author": {
     "email": "hello@microlink.io",
     "name": "microlink.io",

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/microlinkhq/cards/compare/v0.0.7...v0.0.8) (2020-04-16)
+
+
+### Bug Fixes
+
+* reset query between presets ([c48fe17](https://github.com/microlinkhq/cards/commit/c48fe17b0c65d8d7b10123bcdf253ba523d755b0))
+
 ### [0.0.7](https://github.com/microlinkhq/cards/compare/v0.0.6...v0.0.7) (2020-04-16)
 
 
