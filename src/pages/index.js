@@ -271,6 +271,7 @@ export default () => {
             isThumbnail
             thumbnailHeight={`calc(${toPx(PREVIEW_HEIGHT)} + 2px)`}
             thumbnailWidth={`calc(${toPx(PREVIEW_WIDTH)} + 2px)`}
+            onClick={() => toClipboard(screenshotUrl, 'URL')}
           />
         </OverlayHeader>
 
