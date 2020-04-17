@@ -8,14 +8,10 @@ const getUrl = () => {
   return urlObj.toString()
 }
 
-const getCardUrl = ({ query, queryVariables }) => {
+const getCardUrl = ({ queryVariables }) => {
   const { endpoint } = queryVariables
-  if (!endpoint && !isDev) {
-    const str = Object.keys(query).reduce((acc, key, index) => {
-      acc = `${acc}${index === 0 ? '' : '&'}${key}=${query[key]}`
-      return acc
-    }, '')
-    return `https://i.microlink.io/${encodeURIComponent(str)}`
+  if (!isDev && !endpoint) {
+    return `https://i.microlink.io/${encodeURIComponent(getUrl())}`
   }
 
   return getScreenshotUrl(getUrl(), {

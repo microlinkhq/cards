@@ -104,8 +104,7 @@ export default () => {
   })
 
   const [screenshotUrl, syncScreenshotUrl] = useScreenshotUrl({
-    queryVariables,
-    query
+    queryVariables
   })
 
   const showOverlay = state => () => {
