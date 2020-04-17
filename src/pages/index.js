@@ -125,7 +125,7 @@ export default () => {
   useKeyBindings({
     Escape: { fn: hideOverlay },
     Minus: { fn: showOverlay(OVERLAY_STATE.KEYBINDINGS) },
-    KeyI: { ctrl: true, fn: showOverlay(OVERLAY_STATE.ABOUT) },
+    KeyH: { ctrl: true, fn: showOverlay(OVERLAY_STATE.ABOUT) },
     KeyP: { ctrl: true, fn: changeTheme },
     KeyS: { ctrl: true, fn: showOverlay(OVERLAY_STATE.PREVIEW) }
   })
@@ -230,6 +230,10 @@ export default () => {
             {
               combination: ['?'],
               description: 'Show keybindings information'
+            },
+            {
+              combination: [ctrl, ' + ', 'h'],
+              description: 'Show information about the project'
             },
             {
               combination: [ctrl, ' + ', 's'],
