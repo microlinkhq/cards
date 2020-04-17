@@ -1,12 +1,20 @@
 import { useState, useEffect } from 'react'
 import { flatten, unflatten } from 'flat'
-import { encode, decode } from 'qss'
+import { encode } from 'qss'
 import isSSR from '@/lib/is-ssr'
 import eq from '@/lib/eq'
 
 const fromLocation = isSSR
   ? () => ({})
-  : () => decode(window.location.search.substring(1))
+  : () => {
+      const urlObj = new URL(window.location)
+      const query = Object.fromEntries(urlObj.searchParams.entries())
+      const decodeQuery = Object.keys(query).reduce(
+        (acc, key) => ({ ...acc, [key]: decodeURIComponent(query[key]) }),
+        {}
+      )
+      return decodeQuery
+    }
 
 const condition = isSSR ? [] : [window.location.search]
 

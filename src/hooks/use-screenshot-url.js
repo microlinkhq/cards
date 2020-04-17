@@ -2,10 +2,10 @@ import getScreenshotUrl from '@/lib/screenshot-url'
 import { useState, useEffect } from 'react'
 import isDev from '@/lib/is-dev'
 
-const getRootUrl = () => {
+const getUrl = () => {
   const urlObj = new URL(window.location)
   urlObj.pathname = ''
-  return decodeURIComponent(urlObj.toString())
+  return urlObj.toString()
 }
 
 const getCardUrl = ({ query, queryVariables }) => {
@@ -18,7 +18,7 @@ const getCardUrl = ({ query, queryVariables }) => {
     return `https://i.microlink.io/${encodeURIComponent(str)}`
   }
 
-  return getScreenshotUrl(getRootUrl(), {
+  return getScreenshotUrl(getUrl(), {
     force: !!isDev,
     endpoint: endpoint || 'http://localhost:3000',
     adblock: false,
