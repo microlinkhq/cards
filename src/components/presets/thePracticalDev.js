@@ -16,7 +16,7 @@ const code = (
         <Box
           sx={{
             bg: 'white',
-            color: 'black',
+            color: query.color,
             margin: 50,
             borderTopLeftRadius: '10px',
             borderTopRightRadius: '10px',
