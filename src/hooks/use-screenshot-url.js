@@ -15,7 +15,7 @@ const getUrl = () => {
 const getCardUrl = ({ queryVariables }) => {
   const { endpoint } = queryVariables
   if (!isDev && !endpoint) {
-    return `${shortenUrl}/${encodeURIComponent(getUrl())}`
+    return `${shortenUrl}${encodeURIComponent(getUrl())}`
   }
   return getScreenshotUrl(getUrl(), {
     force: !!isDev,
