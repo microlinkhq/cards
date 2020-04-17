@@ -123,8 +123,8 @@ export default () => {
 
   useKeyBindings({
     Escape: { fn: hideOverlay },
-    Minus: { fn: showOverlay(OVERLAY_STATE.KEYBINDINGS) },
-    KeyH: { ctrl: true, fn: showOverlay(OVERLAY_STATE.ABOUT) },
+    KeyH: { ctrl: true, fn: showOverlay(OVERLAY_STATE.KEYBINDINGS) },
+    KeyI: { ctrl: true, fn: showOverlay(OVERLAY_STATE.ABOUT) },
     KeyP: { ctrl: true, fn: changeTheme },
     KeyS: { ctrl: true, fn: showOverlay(OVERLAY_STATE.PREVIEW) }
   })
@@ -227,11 +227,11 @@ export default () => {
           </Flex>
           {[
             {
-              combination: ['?'],
+              combination: [ctrl, ' + ', 'h'],
               description: 'Show keybindings information'
             },
             {
-              combination: [ctrl, ' + ', 'h'],
+              combination: [ctrl, ' + ', 'i'],
               description: 'Show information about the project'
             },
             {
