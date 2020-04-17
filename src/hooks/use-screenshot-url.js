@@ -17,7 +17,7 @@ const getCardUrl = ({ queryVariables }) => {
   // if (!endpoint) return shortenUrl + encodeURIComponent(getUrl())
   return getScreenshotUrl(getUrl(), {
     force: !!isDev,
-    endpoint: endpoint || 'http://localhost:3000',
+    endpoint: isDev ? 'http://localhost:3000' : endpoint,
     adblock: false,
     element: '#screenshot',
     embed: 'screenshot.url',
