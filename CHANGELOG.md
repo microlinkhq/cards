@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.23](https://github.com/microlinkhq/cards/compare/v0.0.22...v0.0.23) (2020-04-17)
+
+
+### Bug Fixes
+
+* remove slash ([ace6946](https://github.com/microlinkhq/cards/commit/ace694629452333c0dfba6117e6a78f71858f1b5))
+* use the correct endpoint ([d9012c0](https://github.com/microlinkhq/cards/commit/d9012c023057f2b66f70a0a901ff34f704521e66))
+
 ### [0.0.22](https://github.com/microlinkhq/cards/compare/v0.0.21...v0.0.22) (2020-04-17)
 
 
