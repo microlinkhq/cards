@@ -14,9 +14,12 @@ const getUrl = () => {
 
 const getCardUrl = ({ queryVariables }) => {
   const { endpoint } = queryVariables
-  if (!endpoint) return shortenUrl + encodeURIComponent(getUrl())
+  if (!isDev && !endpoint) {
+    return `${shortenUrl}${encodeURIComponent(getUrl())}`
+  }
   return getScreenshotUrl(getUrl(), {
-    endpoint: endpoint,
+    force: !!isDev,
+    endpoint: isDev ? 'http://localhost:3000' : endpoint,
     adblock: false,
     element: '#screenshot',
     embed: 'screenshot.url',
