@@ -7,7 +7,7 @@ export default ({ sx, ...props }) => (
       cursor: 'pointer',
       borderRadius: 2,
       overflow: 'auto',
-      border: '1px solid',
+      border: 1,
       width: '100%',
       p: 3,
       userSelect: 'all',

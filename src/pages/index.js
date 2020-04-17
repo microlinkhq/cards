@@ -3,6 +3,7 @@ import { Image, Button, Text, Box, Flex, useThemeUI } from 'theme-ui'
 import SearchableSelect from '@/components/searchable-select'
 import { marshall, unmarshall } from '@/lib/compress-json'
 import useScreenshotUrl from '@/hooks/use-screenshot-url'
+import KeyboardIcon from '@/components/icons/keyboard'
 import useKeyBindings from '@/hooks/use-key-bindings'
 import useQueryState from '@/hooks/use-query-state'
 import GitHubIcon from '@/components/icons/github'
@@ -25,6 +26,7 @@ import Main from '@/components/main'
 import Code from '@/components/code'
 import isEmpty from '@/lib/is-empty'
 import * as polished from 'polished'
+import isMac from '@/lib/is-mac'
 import Router from 'next/router'
 import { useState } from 'react'
 import themeBase from '@/theme'
@@ -53,7 +55,8 @@ const ASIDE_MAX_HEIGHT = '70%'
 
 const OVERLAY_STATE = {
   PREVIEW: 'preview',
-  INFO: 'info'
+  ABOUT: 'about',
+  KEYBINDINGS: 'keybindings'
 }
 
 const PREVIEW_WIDTH = 500
@@ -121,8 +124,9 @@ export default () => {
 
   useKeyBindings({
     Escape: { fn: hideOverlay },
-    KeyI: { ctrl: true, fn: showOverlay(OVERLAY_STATE.INFO) },
-    KeyT: { ctrl: true, fn: changeTheme },
+    Minus: { fn: showOverlay(OVERLAY_STATE.KEYBINDINGS) },
+    KeyI: { ctrl: true, fn: showOverlay(OVERLAY_STATE.ABOUT) },
+    KeyP: { ctrl: true, fn: changeTheme },
     KeyS: { ctrl: true, fn: showOverlay(OVERLAY_STATE.PREVIEW) }
   })
 
@@ -175,7 +179,7 @@ export default () => {
           sx={{
             display: 'flex',
             maxWidth: '100%',
-            border: '1px solid',
+            border: 1,
             borderColor,
             ...sx
           }}
@@ -205,7 +209,85 @@ export default () => {
     )
   }
 
-  const InfoOverlay = () => {
+  const OverlayKeyBindings = () => {
+    const ctrl = isMac ? 'cmd' : 'ctrl'
+    return (
+      <>
+        <Box sx={{ width: '100%' }}>
+          <Flex
+            as='header'
+            sx={{
+              p: '10px',
+              fontWeight: 'bold',
+              borderBottom: 1,
+              borderColor
+            }}
+          >
+            <Box sx={{ width: '25%', mr: 3 }}>Combination</Box>
+            <Box sx={{ width: '75%' }}>Description</Box>
+          </Flex>
+          {[
+            {
+              combination: ['?'],
+              description: 'Show keybindings information'
+            },
+            {
+              combination: [ctrl, ' + ', 's'],
+              description: 'Get the current image URL'
+            },
+            {
+              combination: [ctrl, ' + ', 'click'],
+              description: 'Edit the selected value on query variables'
+            },
+            {
+              combination: [ctrl, ' + ', 'p'],
+              description: 'Change the editor theme'
+            },
+            {
+              combination: ['esc'],
+              description: 'Close the active modal'
+            }
+          ].map(({ combination, description }) => (
+            <Flex
+              as='section'
+              key={combination}
+              sx={{ lineHeight: 2, p: 3, borderBottom: 1, borderColor }}
+            >
+              <Box sx={{ width: '25%', mr: 3 }}>
+                <Box
+                  sx={{
+                    display: 'inline',
+                    py: '3px',
+                    px: '6px',
+                    border: 1,
+                    borderColor,
+                    borderRadius: 4
+                  }}
+                >
+                  {combination.map(key => (
+                    <Text
+                      sx={{
+                        fontSize: 0,
+                        textTransform: 'uppercase',
+                        color,
+                        display: 'inherit'
+                      }}
+                      key={key}
+                      children={key}
+                    />
+                  ))}
+                </Box>
+              </Box>
+              <Box sx={{ width: '75%' }}>{description}</Box>
+            </Flex>
+          ))}
+        </Box>
+        <OverlayFooter />
+      </>
+    )
+  }
+
+  const OverlayAbout = () => {
     return (
       <>
         <OverlayHeader>
@@ -258,7 +340,7 @@ export default () => {
     )
   }
 
-  const PreviewOverlay = () => {
+  const OverlayPreview = () => {
     return (
       <>
         <OverlayHeader
@@ -394,10 +476,13 @@ export default () => {
         onClose={hideOverlay}
       >
         <Choose.When condition={isOverlay === OVERLAY_STATE.PREVIEW}>
-          <PreviewOverlay />
+          <OverlayPreview />
         </Choose.When>
-        <Choose.When condition={isOverlay === OVERLAY_STATE.INFO}>
-          <InfoOverlay />
+        <Choose.When condition={isOverlay === OVERLAY_STATE.ABOUT}>
+          <OverlayAbout />
+        </Choose.When>
+        <Choose.When condition={isOverlay === OVERLAY_STATE.KEYBINDINGS}>
+          <OverlayKeyBindings />
         </Choose.When>
       </Overlay>
       <Flex sx={{ bg: 'plain.backgroundColor', height: '100vh' }}>
@@ -415,7 +500,7 @@ export default () => {
               mt: 3,
               mb: 3,
               pl: 3,
-              borderLeft: '1px solid',
+              borderLeft: 1,
               borderColor,
               bg: 'plain.backgroundColor',
               flexDirection: 'column',
@@ -437,7 +522,7 @@ export default () => {
               sx={{
                 alignItems: 'center',
                 bg: 'plain.backgroundColor',
-                borderBottom: '1px solid',
+                borderBottom: 1,
                 borderColor,
                 py: 3,
                 mr: 3,
@@ -468,14 +553,25 @@ export default () => {
               >
                 <ButtonIcon
                   as='button'
-                  title='README'
+                  title='Show keybindings'
                   color={iconColor}
                   hoverColor={color}
-                  onClick={showOverlay(OVERLAY_STATE.INFO)}
+                  onClick={showOverlay(OVERLAY_STATE.KEYBINDINGS)}
                 >
-                  <InfoIcon />
+                  <KeyboardIcon />
                 </ButtonIcon>
-                <Box sx={{ mx: 1 }}>
+                <Box sx={{ ml: 1 }}>
+                  <ButtonIcon
+                    as='button'
+                    title='Learn more about the project'
+                    color={iconColor}
+                    hoverColor={color}
+                    onClick={showOverlay(OVERLAY_STATE.ABOUT)}
+                  >
+                    <InfoIcon />
+                  </ButtonIcon>
+                </Box>
+                <Box sx={{ ml: 1 }}>
                   <ButtonIcon
                     as='a'
                     href={pkg.homepage}
@@ -488,22 +584,24 @@ export default () => {
                     <GitHubIcon />
                   </ButtonIcon>
                 </Box>
-                <ButtonIcon
-                  as='button'
-                  title='Change color mode'
-                  onClick={changeTheme}
-                  color={iconColor}
-                  hoverColor={color}
-                >
-                  <ThemeIcon />
-                </ButtonIcon>
+                <Box sx={{ ml: 1 }}>
+                  <ButtonIcon
+                    as='button'
+                    title='Change color mode'
+                    onClick={changeTheme}
+                    color={iconColor}
+                    hoverColor={color}
+                  >
+                    <ThemeIcon />
+                  </ButtonIcon>
+                </Box>
               </Flex>
             </Flex>
             <Flex sx={{ flex: 1, minHeight: 0, flexDirection: 'column' }}>
               <Box
                 as='section'
                 sx={{
-                  borderBottom: '1px solid',
+                  borderBottom: 1,
                   borderColor,
                   p: 3,
                   mr: 3,

@@ -7,11 +7,11 @@ import github from 'prism-react-renderer/themes/github'
 
 import toPx from '@/lib/to-px'
 
-const defaultTheme = ultramin
+const defaultTheme = github
 
 export const editorTheme = {
   default: defaultTheme,
-  github,
+  ultramin,
   dracula,
   nightOwl,
   nightOwlLight,
@@ -25,6 +25,7 @@ const speed = {
 }
 
 export const theme = {
+  borders: [0, '1px solid'],
   colors: {
     modes: editorTheme
   },

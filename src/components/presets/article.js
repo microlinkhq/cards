@@ -43,7 +43,7 @@ const code = (
             fontFamily: 'Roboto',
             fontSize: 4,
             fontWeight: '300',
-            borderBottom: '1px solid',
+            borderBottom: 1,
             paddingBottom: 5
           }}
           children='The highly-anticipated sequel to Skyward.'

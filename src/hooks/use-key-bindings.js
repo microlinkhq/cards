@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import isEditor from '@/lib/is-editor'
 import Router from 'next/router'
 
-const isCtrl = e => e.ctrlKey
+const isCtrl = e => e.metaKey || e.ctrlKey
 
 // https://keycode.info
 export default (initialKeyBindings = {}, eventListener = 'keydown') => {
