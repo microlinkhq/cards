@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 
 import Inline from '../inline.macro'
-import { Link, Box, Text } from './scope'
+import { Link, Flex, Text } from './scope'
 
 const code = (
   <Inline>
@@ -10,14 +10,13 @@ const code = (
         href='https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap'
         rel='stylesheet'
       />
-      <Box
+      <Flex
         sx={{
-          display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           flexDirection: 'column',
-          bg: 'black',
-          color: 'white'
+          bg: query.bg,
+          color: query.color
         }}
       >
         <Text
@@ -36,14 +35,16 @@ const code = (
           }}
           children={query.caption}
         />
-      </Box>
+      </Flex>
     </>
   </Inline>
 )
 
 const query = {
   headline: 'Add your headline',
-  caption: 'Add your caption'
+  caption: 'Add your caption',
+  bg: 'black',
+  color: 'white'
 }
 
 export default {

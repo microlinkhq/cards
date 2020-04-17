@@ -43,7 +43,7 @@ import {
 
 import pkg from '@/package.json'
 
-const DEFAULT_PRESET = Object.keys(presets)[0]
+const DEFAULT_PRESET = 'rauchg'
 const ASIDE_HEIGHT_KEY = 'sidebar-json-height'
 const ASIDE_WIDTH_KEY = 'sidebar-width'
 const DEFAULT_ASIDE_WIDTH = '30%'
