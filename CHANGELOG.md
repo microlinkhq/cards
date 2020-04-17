@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.21](https://github.com/microlinkhq/cards/compare/v0.0.20...v0.0.21) (2020-04-17)
+
+
+### Bug Fixes
+
+* decode url ([bc279d0](https://github.com/microlinkhq/cards/commit/bc279d02e125dac6c3dbd2572db4db2a220ad4b1))
+* linter ([18869f3](https://github.com/microlinkhq/cards/commit/18869f3ad4b453b6c394260e1e74259af1190d73))
+* query short url ([e9542d7](https://github.com/microlinkhq/cards/commit/e9542d7d6deb1e014849bcaa0d35b85f71dcbbf0))
+* use query color ([c03bead](https://github.com/microlinkhq/cards/commit/c03bead39b76c7e780a307a2a22676a8d0a85e74))
+
 ### [0.0.20](https://github.com/microlinkhq/cards/compare/v0.0.19...v0.0.20) (2020-04-17)
 
 ### [0.0.19](https://github.com/microlinkhq/cards/compare/v0.0.18...v0.0.19) (2020-04-16)
