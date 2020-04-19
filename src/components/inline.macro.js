@@ -18,18 +18,25 @@ const PRETTIER_CONFIG = {
   tabWidth: 2
 }
 
+const toPrettier = ({ referencePath, babel, prettierOpts }) => {
+  const children = referencePath.parentPath.parentPath.get('children')
+  const body = children[1].getSource()
+  let formattedBody = prettier.format(body, prettierOpts)
+  if (formattedBody.endsWith(';\n')) {
+    formattedBody = formattedBody.substring(0, formattedBody.length - 2)
+  }
+  referencePath.parentPath.parentPath.replaceWith(
+    babel.types.stringLiteral(formattedBody)
+  )
+}
+
 const createInlineJSXMacro = prettierOpts => ({ references, babel }) => {
-  references.default.forEach(referencePath => {
+  const { default: defaultImport = [] } = references
+
+  defaultImport.forEach(referencePath => {
     if (referencePath.parentPath.type === 'JSXOpeningElement') {
-      const children = referencePath.parentPath.parentPath.get('children')
-      const body = children[1].getSource()
-      let formattedBody = prettier.format(body, prettierOpts)
-      if (formattedBody.endsWith(';\n')) {
-        formattedBody = formattedBody.substring(0, formattedBody.length - 2)
-      }
-      referencePath.parentPath.parentPath.replaceWith(
-        babel.types.stringLiteral(formattedBody)
-      )
+      // prettify code inside jsx
+      toPrettier({ referencePath, babel, prettierOpts })
     }
   })
 }
