@@ -56,8 +56,7 @@ import {
   ASIDE_MIN_HEIGHT,
   ASIDE_MAX_HEIGHT,
   ASIDE_MAX_WIDTH,
-  OVERLAY_STATE,
-  PREVIEW_WIDTH
+  OVERLAY_STATE
 } from '@/constants'
 
 const updateQuery = debounce(({ setQuery, code, queryVariables }) => {
@@ -171,18 +170,8 @@ export default () => {
 
   const OverlayHeader = ({ sx, children }) => {
     return (
-      <Box as='header' sx={{ position: 'sticky' }}>
-        <Box
-          sx={{
-            display: 'flex',
-            maxWidth: '100%',
-            border: 1,
-            borderColor,
-            ...sx
-          }}
-        >
-          {children}
-        </Box>
+      <Box as='header' sx={{ borderRadius: 2, border: 1, borderColor, ...sx }}>
+        {children}
       </Box>
     )
   }
@@ -338,7 +327,7 @@ export default () => {
     return (
       <>
         <OverlayHeader>
-          <AspectRatio ratio='16/9' style={{ width: PREVIEW_WIDTH }}>
+          <AspectRatio ratio='16/9'>
             <LivePreview
               css={`
                 zoom: 0.5;
@@ -348,7 +337,7 @@ export default () => {
           </AspectRatio>
         </OverlayHeader>
 
-        <Text sx={{ color, my: 3, fontSize: 2, fontWeight: 'normal' }}>
+        <Text sx={{ color, mt: 4, mb: 3, fontSize: 2, fontWeight: 'normal' }}>
           Add it to your website by copying the code below
         </Text>
 
