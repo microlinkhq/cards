@@ -12,8 +12,7 @@ const getUrl = () => {
   return urlObj.toString()
 }
 
-const getCardUrl = ({ queryVariables }) => {
-  const { endpoint } = queryVariables
+const getCardUrl = ({ endpoint }) => {
   if (!isDev && !endpoint) {
     return `${shortenUrl}${encodeURIComponent(getUrl())}`
   }
@@ -29,9 +28,12 @@ const getCardUrl = ({ queryVariables }) => {
   })
 }
 
-export default opts => {
+export default queryVariables => {
   const [screenshotUrl, setScreenshotUrl] = useState('')
-  const sync = opts => setScreenshotUrl(getCardUrl(opts))
-  useEffect(() => sync(opts), [])
+
+  const sync = queryVariables => setScreenshotUrl(getCardUrl(queryVariables))
+
+  useEffect(() => sync(queryVariables), [])
+
   return [screenshotUrl, sync]
 }
