@@ -6,13 +6,9 @@ import { Flex, Link, Box, Text, Image } from './scope'
 const code = (
   <Inline>
     <>
-      <Link
-        href='https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap'
-        rel='stylesheet'
-      />
       <Box
         sx={{
-          fontFamily: 'Roboto',
+          backgroundSize: 'cover',
           backgroundImage:
             'url(https://kikobeats.com/images/avatar-glitch.jpg)',
           color: 'white',
