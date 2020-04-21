@@ -32,7 +32,7 @@ export default ({ bg, color, ...props }) => {
 
   const fontStyle = {
     fontFamily: themeBase.fonts.sans,
-    fontSize: themeBase.fontSizes[2]
+    fontSize: themeBase.fontSizes[1]
   }
 
   const styles = {
