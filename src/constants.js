@@ -30,4 +30,4 @@ export const OVERLAY_STATE = {
   KEYBINDINGS: 'keybindings'
 }
 
-export const PREVIEW_WIDTH = toPx(500)
+export const PREVIEW_WIDTH = toPx(450)
