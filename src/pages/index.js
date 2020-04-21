@@ -12,6 +12,7 @@ import aspectRatio from '@/lib/aspect-ratio-16-9'
 import JSONViewer from '@/components/json-viewer'
 import ButtonIcon from '@/components/button-icon'
 import ThemeIcon from '@/components/icons/theme'
+import setImageMeta from '@/lib/set-image-meta'
 import InfoIcon from '@/components/icons/info'
 import notification from '@/lib/notification'
 import useLoading from '@/hooks/use-loading'
@@ -106,6 +107,7 @@ export default () => {
   })
 
   const [screenshotUrl, syncScreenshotUrl] = useScreenshotUrl(queryVariables)
+  setImageMeta(screenshotUrl)
 
   const showOverlay = state => () => {
     syncScreenshotUrl(queryVariables)
