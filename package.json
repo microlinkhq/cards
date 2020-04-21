@@ -48,6 +48,7 @@
     "prism-react-renderer": "~1.0.2",
     "qss": "~2.0.3",
     "react": "~16.13.1",
+    "react-aspect-ratio": "~1.0.42",
     "react-dom": "~16.13.1",
     "react-json-view": "~1.19.1",
     "react-live": "~2.2.2",

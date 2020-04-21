@@ -10,6 +10,7 @@ const Main = styled(Box)`
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
 `
 
 Main.defaultProps = {
