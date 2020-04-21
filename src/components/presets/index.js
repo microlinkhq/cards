@@ -1,4 +1,4 @@
-import zeit from './zeit'
+import vercell from './vercell'
 import simple from './simple'
 import article from './article'
 import rauchg from './rauchg'
@@ -15,5 +15,5 @@ export default {
   rauchg,
   simple,
   thePracticalDev,
-  zeit
+  vercell
 }
