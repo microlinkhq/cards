@@ -1,19 +1,21 @@
-import vercell from './vercell'
-import simple from './simple'
 import article from './article'
-import rauchg from './rauchg'
 import bytesandhumans from './bytesandhumans'
-import microlink from './microlink'
-import thePracticalDev from './thepracticaldev'
 import fauna from './fauna'
-import swyxdotio from './swyxdotio'
+import microlink from './microlink'
+import midudev from './midudev'
 import news from './news'
+import rauchg from './rauchg'
+import simple from './simple'
+import swyxdotio from './swyxdotio'
+import thePracticalDev from './thepracticaldev'
+import vercell from './vercell'
 
 export default {
   article,
   bytesandhumans,
   fauna,
   microlink,
+  midudev,
   news,
   rauchg,
   simple,
