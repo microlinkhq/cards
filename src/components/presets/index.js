@@ -6,6 +6,7 @@ import bytesandhumans from './bytesandhumans'
 import microlink from './microlink'
 import thePracticalDev from './thepracticaldev'
 import fauna from './fauna'
+import swyxdotio from './swyxdotio'
 import news from './news'
 
 export default {
@@ -16,6 +17,7 @@ export default {
   news,
   rauchg,
   simple,
+  swyxdotio,
   thePracticalDev,
   vercell
 }
