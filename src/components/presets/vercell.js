@@ -90,7 +90,7 @@ const query = {
 }
 
 export default {
-  name: 'Vercell',
+  name: 'vercell',
   code,
   query
 }
