@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.31](https://github.com/microlinkhq/cards/compare/v0.0.30...v0.0.31) (2020-04-21)
+
+
+### Bug Fixes
+
+* remove debounce over store ([9a0af74](https://github.com/microlinkhq/cards/commit/9a0af74420419171acb3e0b8d0f39f693382ccaa))
+
 ### [0.0.30](https://github.com/microlinkhq/cards/compare/v0.0.29...v0.0.30) (2020-04-21)
 
 
