@@ -1,4 +1,5 @@
 import toPx from '@/lib/to-px'
+import theme from '@/theme'
 
 import { BASE_WIDTH, RATIOS } from '@/components/live-editor'
 
@@ -19,7 +20,9 @@ export const ASIDE_MIN_HEIGHT = '15%'
 export const ASIDE_MAX_HEIGHT = '70%'
 
 export const ASIDE_MAX_WIDTH = size =>
-  toPx(size.width - BASE_WIDTH * RATIOS[RATIOS.length - 1])
+  `calc(${toPx(size.width - BASE_WIDTH * RATIOS[RATIOS.length - 1])} - ${
+    theme.space[4]
+  })`
 
 export const OVERLAY_STATE = {
   PREVIEW: 'preview',

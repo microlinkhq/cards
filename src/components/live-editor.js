@@ -18,7 +18,6 @@ const LivePreviewWrapper = styled('div')`
   height: 100%;
   width: 100%;
   margin: auto;
-  padding: ${({ isEditor }) => (isEditor ? theme.space[3] : 0)};
 
   ${({ isEditor }) =>
     !isEditor &&
