@@ -125,9 +125,9 @@ export default () => {
 
   useKeyBindings({
     Escape: { fn: hideOverlay },
-    KeyH: { ctrl: true, fn: showOverlay(OVERLAY_STATE.KEYBINDINGS) },
-    KeyI: { ctrl: true, fn: showOverlay(OVERLAY_STATE.ABOUT) },
-    KeyP: { ctrl: true, fn: changeTheme },
+    KeyJ: { ctrl: true, fn: showOverlay(OVERLAY_STATE.KEYBINDINGS) },
+    KeyK: { ctrl: true, fn: showOverlay(OVERLAY_STATE.ABOUT) },
+    KeyL: { ctrl: true, fn: changeTheme },
     KeyS: { ctrl: true, fn: showOverlay(OVERLAY_STATE.PREVIEW) }
   })
 
@@ -222,11 +222,11 @@ export default () => {
           </Flex>
           {[
             {
-              combination: [ctrl, ' + ', 'h'],
+              combination: [ctrl, ' + ', 'j'],
               description: 'Show keybindings information'
             },
             {
-              combination: [ctrl, ' + ', 'i'],
+              combination: [ctrl, ' + ', 'k'],
               description: 'Show information about the project'
             },
             {
@@ -238,7 +238,7 @@ export default () => {
               description: 'Edit the selected value on query variables'
             },
             {
-              combination: [ctrl, ' + ', 'p'],
+              combination: [ctrl, ' + ', 'l'],
               description: 'Change the editor theme'
             },
             {
