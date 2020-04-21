@@ -1,5 +1,5 @@
 import { HorizontalDragBar, VerticalDragBar } from '@/components/drag-bars'
-import { Image, Button, Text, Box, Flex, useThemeUI } from 'theme-ui'
+import { Image, Text, Box, Flex, useThemeUI } from 'theme-ui'
 import SearchableSelect from '@/components/searchable-select'
 import { marshall, unmarshall } from '@/lib/compress-json'
 import useScreenshotUrl from '@/hooks/use-screenshot-url'
@@ -16,6 +16,7 @@ import notification from '@/lib/notification'
 import useLoading from '@/hooks/use-loading'
 import presets from '@/components/presets'
 import Overlay from '@/components/overlay'
+import Button from '@/components/button'
 import shareCode from '@/lib/share-code'
 import Choose from '@/components/choose'
 import { diff } from 'deep-object-diff'
@@ -193,17 +194,10 @@ export default () => {
     return (
       <Flex as='footer' sx={{ justifyContent: 'flex-end', pt: 4 }}>
         <Button
-          sx={{
-            cursor: 'pointer',
-            outline: 0,
-            borderRadius: 2,
-            bg: color,
-            color: bg
-          }}
+          sx={{ bg: color, color: bg }}
           onClick={hideOverlay}
-        >
-          <Text>Got it</Text>
-        </Button>
+          children='Got it'
+        />
       </Flex>
     )
   }
@@ -533,22 +527,31 @@ export default () => {
                 justifyContent: 'space-between'
               }}
             >
-              <Box
-                sx={{
-                  width: '200px'
-                }}
-              >
-                <SearchableSelect
-                  color={color}
-                  bg={bg}
-                  value={{ value: preset.name, label: preset.name }}
-                  options={Object.keys(presets).map(key => ({
-                    value: key,
-                    label: presets[key].name
-                  }))}
-                  onChange={handleSelectChange}
-                />
-              </Box>
+              <Flex sx={{ alignItems: 'center' }}>
+                <Box
+                  sx={{
+                    width: '200px'
+                  }}
+                >
+                  <SearchableSelect
+                    color={color}
+                    bg={bg}
+                    value={{ value: preset.name, label: preset.name }}
+                    options={Object.keys(presets).map(key => ({
+                      value: key,
+                      label: presets[key].name
+                    }))}
+                    onChange={handleSelectChange}
+                  />
+                </Box>
+                <Box sx={{ ml: 2 }}>
+                  <Button
+                    sx={{ color: bg, bg: color }}
+                    onClick={showOverlay(OVERLAY_STATE.PREVIEW)}
+                    children='Get URL'
+                  />
+                </Box>
+              </Flex>
               <Flex
                 sx={{
                   alignItems: 'center'

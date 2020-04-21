@@ -40,6 +40,10 @@ export default ({ bg, color, ...props }) => {
       ...provided,
       ...fontStyle
     }),
+    valueContainer: provided => ({
+      ...provided,
+      padding: '2px 8px'
+    }),
     menu: provided => ({
       ...provided,
       ...fontStyle
