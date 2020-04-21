@@ -69,7 +69,7 @@ const updateQuery = debounce(({ setQuery, code, queryVariables }) => {
   setQuery(newQuery)
 })
 
-const updateStore = debounce(({ key, value }) => store.set(key, value))
+const updateStore = ({ key, value }) => store.set(key, value)
 
 const cycledMode = new Cycled(Object.keys(themeBase.colors.modes))
 const nextMode = () => cycledMode.next()
