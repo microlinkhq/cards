@@ -10,58 +10,25 @@ const code = (
         href='https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap'
         rel='stylesheet'
       />
-      <Box as='header' sx={{}}>
-        <Flex
-          sx={{
-            left: 0,
-            right: 0,
-            bottom: 4,
-            position: 'absolute',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
-          <Image
-            sx={{
-              width: 48,
-              height: 48
-            }}
-            src='https://midu.dev/logo.svg'
-          />
-          <Text
-            as='span'
-            sx={{
-              ml: 2,
-              letterSpacing: '-.03m',
-              fontFamily: 'Inter',
-              fontSize: 5,
-              fontWeight: '500',
-              textAlign: 'center'
-            }}
-          >
-            midu.dev
-          </Text>
-        </Flex>
-      </Box>
       <Box
         sx={{
-          backgroundColor: '#fff',
+          backgroundColor: 'white',
           backgroundImage: 'radial-gradient(#f3f3f3 .5px, transparent .5px)',
           backgroundSize: 'calc(10 * .5px) calc(10 * .5px)',
-          fontFamily: 'Inter',
           color: 'white',
+          fontFamily: 'Inter',
           textAlign: 'center',
           zIndex: 1
         }}
       >
         <Flex
           sx={{
-            justifyContent: 'center',
+            color: 'black',
             flexDirection: 'column',
             height: '100%',
-            color: 'black',
-            width: '100%',
-            padding: 48
+            justifyContent: 'center',
+            padding: 48,
+            width: '100%'
           }}
         >
           <Flex
@@ -83,21 +50,57 @@ const code = (
             <Text
               sx={{
                 fontSize: '62px',
+                fontWeight: '700',
                 lineHeight: 1,
-                marginBottom: 3,
-                fontWeight: '700'
+                marginBottom: 3
               }}
             >
               {query.title}
             </Text>
           </Box>
         </Flex>
+
+        <Box as='footer'>
+          <Flex
+            sx={{
+              alignItems: 'center',
+              bottom: 4,
+              justifyContent: 'center',
+              left: 0,
+              position: 'absolute',
+              right: 0
+            }}
+          >
+            <Image
+              sx={{
+                width: 48,
+                height: 48
+              }}
+              src='https://midu.dev/logo.svg'
+            />
+            <Text
+              as='span'
+              sx={{
+                color: 'black',
+                fontFamily: 'Inter',
+                fontSize: 5,
+                fontWeight: '500',
+                letterSpacing: '-.03m',
+                ml: 2,
+                textAlign: 'center'
+              }}
+            >
+              {query.domain}
+            </Text>
+          </Flex>
+        </Box>
       </Box>
     </>
   </Inline>
 )
 
 const query = {
+  domain: 'midu.dev',
   title: 'Cómo eliminar un fichero con Node.js',
   tag: 'node'
 }
