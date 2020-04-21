@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.38](https://github.com/microlinkhq/cards/compare/v0.0.37...v0.0.38) (2020-04-21)
+
+
+### Features
+
+* merge from upstream ([77074a2](https://github.com/microlinkhq/cards/commit/77074a29ecf50610c457f05730d6daea6446eeed))
+
+
+### Bug Fixes
+
+* add missing import Link ([47e5895](https://github.com/microlinkhq/cards/commit/47e5895cbecdd5c9b78cd6b31b91f78f8731daf9))
+* remove not used Link imported on news preset ([ebe8cf6](https://github.com/microlinkhq/cards/commit/ebe8cf63f1b482140fa643d3970262b365c17d16))
+
 ### [0.0.37](https://github.com/microlinkhq/cards/compare/v0.0.36...v0.0.37) (2020-04-21)
 
 ### [0.0.36](https://github.com/microlinkhq/cards/compare/v0.0.35...v0.0.36) (2020-04-21)

@@ -2,7 +2,7 @@
   "name": "microlink-cards",
   "description": "The easiest way to generate dynamic social images at scale.",
   "homepage": "https://github.com/microlinkhq/cards",
-  "version": "0.0.37",
+  "version": "0.0.38",
   "author": {
     "email": "hello@microlink.io",
     "name": "microlink.io",
