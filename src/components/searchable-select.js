@@ -30,21 +30,27 @@ export default ({ bg, color, ...props }) => {
     }
   }
 
+  const fontStyle = {
+    fontFamily: themeBase.fonts.sans,
+    fontSize: themeBase.fontSizes[2]
+  }
+
   const styles = {
-    singleValue: (provided, { isFocused }) => ({
+    singleValue: provided => ({
       ...provided,
-      fontFamily: themeBase.fonts.sans,
-      fontSize: themeBase.fontSizes[2]
+      ...fontStyle
+    }),
+    menu: provided => ({
+      ...provided,
+      ...fontStyle
     }),
     indicatorSeparator: () => ({ display: 'none' }),
-    control: (provided, { isFocused }) => {
-      return {
-        ...provided,
-        opacity: isFocused ? 1 : 0.75,
-        cursor: 'pointer',
-        boxShadow: 'none'
-      } // isFocused && `0 0 0 1px ${color}` }
-    }
+    control: (provided, { isFocused }) => ({
+      ...provided,
+      opacity: isFocused ? 1 : 0.75,
+      cursor: 'pointer',
+      boxShadow: 'none'
+    })
   }
 
   return <SearchableSelect styles={styles} theme={theme} {...props} />
