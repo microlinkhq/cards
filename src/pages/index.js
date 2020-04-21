@@ -563,7 +563,7 @@ export default () => {
                 >
                   <KeyboardIcon />
                 </ButtonIcon>
-                <Box sx={{ ml: 1 }}>
+                <Box sx={{ ml: 2 }}>
                   <ButtonIcon
                     as='button'
                     title='Learn more about the project'
@@ -574,7 +574,7 @@ export default () => {
                     <InfoIcon />
                   </ButtonIcon>
                 </Box>
-                <Box sx={{ ml: 1 }}>
+                <Box sx={{ ml: 2 }}>
                   <ButtonIcon
                     as='a'
                     href={pkg.homepage}
@@ -587,7 +587,7 @@ export default () => {
                     <GitHubIcon />
                   </ButtonIcon>
                 </Box>
-                <Box sx={{ ml: 1 }}>
+                <Box sx={{ ml: 2 }}>
                   <ButtonIcon
                     as='button'
                     title='Change color mode'
