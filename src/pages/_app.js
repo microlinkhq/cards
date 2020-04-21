@@ -5,6 +5,8 @@ import { ThemeProvider } from 'theme-ui'
 import theme from '@/theme'
 import pkg from '@/package.json'
 
+import 'react-aspect-ratio/aspect-ratio.css'
+
 const GlobalStylesheet = createGlobalStyle`
   * {
     box-sizing: border-box;

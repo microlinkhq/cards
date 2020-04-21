@@ -7,14 +7,15 @@ import useScreenshotUrl from '@/hooks/use-screenshot-url'
 import KeyboardIcon from '@/components/icons/keyboard'
 import useKeyBindings from '@/hooks/use-key-bindings'
 import useQueryState from '@/hooks/use-query-state'
+import useWindowSize from '@/hooks/use-window-size'
 import GitHubIcon from '@/components/icons/github'
-import aspectRatio from '@/lib/aspect-ratio-16-9'
 import JSONViewer from '@/components/json-viewer'
 import ButtonIcon from '@/components/button-icon'
 import ThemeIcon from '@/components/icons/theme'
 import setImageMeta from '@/lib/set-image-meta'
 import InfoIcon from '@/components/icons/info'
 import notification from '@/lib/notification'
+import AspectRatio from 'react-aspect-ratio'
 import useLoading from '@/hooks/use-loading'
 import presets from '@/components/presets'
 import Overlay from '@/components/overlay'
@@ -33,7 +34,6 @@ import isMac from '@/lib/is-mac'
 import Router from 'next/router'
 import { useState } from 'react'
 import themeBase from '@/theme'
-import toPx from '@/lib/to-px'
 import defer from 'tickedoff'
 import Cycled from 'cycled'
 
@@ -46,24 +46,19 @@ import {
 
 import pkg from '@/package.json'
 
-const DEFAULT_PRESET = 'rauchg'
-const ASIDE_HEIGHT_KEY = 'sidebar-json-height'
-const ASIDE_WIDTH_KEY = 'sidebar-width'
-const DEFAULT_ASIDE_WIDTH = '40%'
-const DEFAULT_ASIDE_HEIGHT = '25%'
-const ASIDE_MIN_WIDTH = '40%'
-const ASIDE_MAX_WIDTH = '60%'
-const ASIDE_MIN_HEIGHT = '15%'
-const ASIDE_MAX_HEIGHT = '70%'
-
-const OVERLAY_STATE = {
-  PREVIEW: 'preview',
-  ABOUT: 'about',
-  KEYBINDINGS: 'keybindings'
-}
-
-const PREVIEW_WIDTH = 500
-const PREVIEW_HEIGHT = aspectRatio(PREVIEW_WIDTH)
+import {
+  ASIDE_HEIGHT_KEY,
+  ASIDE_WIDTH_KEY,
+  DEFAULT_ASIDE_HEIGHT,
+  DEFAULT_ASIDE_WIDTH,
+  DEFAULT_PRESET,
+  ASIDE_MIN_WIDTH,
+  ASIDE_MIN_HEIGHT,
+  ASIDE_MAX_HEIGHT,
+  ASIDE_MAX_WIDTH,
+  OVERLAY_STATE,
+  PREVIEW_WIDTH
+} from '@/constants'
 
 const updateQuery = debounce(({ setQuery, code, queryVariables }) => {
   let newQuery = {}
@@ -79,6 +74,7 @@ const nextMode = () => cycledMode.next()
 
 export default () => {
   const isLoading = useLoading()
+  const size = useWindowSize()
   const [query, setQuery] = useQueryState()
   const { theme, colorMode, setColorMode } = useThemeUI()
   const [isOverlay, setOverlay] = useState('')
@@ -341,17 +337,15 @@ export default () => {
   const OverlayPreview = () => {
     return (
       <>
-        <OverlayHeader
-          sx={{
-            height: PREVIEW_HEIGHT
-          }}
-        >
-          <LivePreview
-            isThumbnail
-            thumbnailHeight={`calc(${toPx(PREVIEW_HEIGHT)} + 2px)`}
-            thumbnailWidth={`calc(${toPx(PREVIEW_WIDTH)} + 2px)`}
-            onClick={() => toClipboard(screenshotUrl, 'URL')}
-          />
+        <OverlayHeader>
+          <AspectRatio ratio='16/9' style={{ width: PREVIEW_WIDTH }}>
+            <LivePreview
+              css={`
+                zoom: 0.5;
+              `}
+              onClick={() => toClipboard(screenshotUrl, 'URL')}
+            />
+          </AspectRatio>
         </OverlayHeader>
 
         <Text sx={{ color, my: 3, fontSize: 2, fontWeight: 'normal' }}>
@@ -439,11 +433,18 @@ export default () => {
       </Overlay>
       <Flex sx={{ bg: 'plain.backgroundColor', height: '100vh' }}>
         <Main>
-          <LivePreview
-            onClick={showOverlay(OVERLAY_STATE.PREVIEW)}
-            isEditor={isEditor}
-          />
-          <LiveError />
+          <Box>
+            <AspectRatio
+              ratio='16/9'
+              style={{ margin: 'auto', maxWidth: '843px' }}
+            >
+              <LivePreview
+                onClick={showOverlay(OVERLAY_STATE.PREVIEW)}
+                isEditor={isEditor}
+              />
+              <LiveError />
+            </AspectRatio>
+          </Box>
         </Main>
         {isEditor && (
           <Flex
@@ -460,7 +461,7 @@ export default () => {
               fontSize: 2,
               fontWeight: 'light',
               height: 'calc(100vh - 32px)',
-              maxWidth: ASIDE_MAX_WIDTH,
+              maxWidth: ASIDE_MAX_WIDTH(size),
               minWidth: ASIDE_MIN_WIDTH,
               position: 'relative',
               width: asideWidth,

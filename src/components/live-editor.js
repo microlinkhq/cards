@@ -9,30 +9,20 @@ import {
   LivePreview as BasePreview
 } from 'react-live'
 
-const BASE_HEIGHT = 441
-const BASE_WIDTH = 843
-const ratios = [1, 1, 1, 1]
+export const BASE_HEIGHT = 441
+export const BASE_WIDTH = 843
+export const RATIOS = [1, 1, 1, 1]
 
 const LivePreviewWrapper = styled('div')`
   cursor: pointer;
   height: 100%;
   width: 100%;
   margin: auto;
-  padding: ${({ isEditor }) => (isEditor ? theme.space[3] : 0)};
 
-  ${({ isThumbnail }) =>
-    isThumbnail &&
-    `
-    height: ${props => props.thumbnailHeight};
-    width: ${props => props.thumbnailWidth};
-    zoom: 0.5;
-    `}
-
-  ${({ isEditor, isThumbnail }) =>
+  ${({ isEditor }) =>
     !isEditor &&
-    !isThumbnail &&
     `
-    ${ratios.reduce(
+    ${RATIOS.reduce(
       (acc, ratio, index) =>
         acc +
         `
