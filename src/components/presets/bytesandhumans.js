@@ -53,4 +53,4 @@ const query = {
   primaryColor: '#85FFE0'
 }
 
-export default { name: 'BytesAndHumans', code, query }
+export default { name: 'bytesandhumans', code, query }
