@@ -122,7 +122,7 @@ export default () => {
     Escape: { fn: hideOverlay },
     KeyJ: { ctrl: true, fn: showOverlay(OVERLAY_STATE.KEYBINDINGS) },
     KeyK: { ctrl: true, fn: showOverlay(OVERLAY_STATE.ABOUT) },
-    KeyL: { ctrl: true, fn: changeTheme },
+    KeyP: { ctrl: true, fn: changeTheme },
     KeyS: { ctrl: true, fn: showOverlay(OVERLAY_STATE.PREVIEW) }
   })
 
@@ -223,7 +223,7 @@ export default () => {
               description: 'Edit the selected value on query variables'
             },
             {
-              combination: [ctrl, ' + ', 'l'],
+              combination: [ctrl, ' + ', 'p'],
               description: 'Change the editor theme'
             },
             {
