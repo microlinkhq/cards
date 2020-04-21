@@ -48,9 +48,9 @@ import pkg from '@/package.json'
 const DEFAULT_PRESET = 'rauchg'
 const ASIDE_HEIGHT_KEY = 'sidebar-json-height'
 const ASIDE_WIDTH_KEY = 'sidebar-width'
-const DEFAULT_ASIDE_WIDTH = '30%'
+const DEFAULT_ASIDE_WIDTH = '45%'
 const DEFAULT_ASIDE_HEIGHT = '25%'
-const ASIDE_MIN_WIDTH = '20%'
+const ASIDE_MIN_WIDTH = '45%'
 const ASIDE_MAX_WIDTH = '60%'
 const ASIDE_MIN_HEIGHT = '15%'
 const ASIDE_MAX_HEIGHT = '70%'
@@ -485,7 +485,7 @@ export default () => {
               <Flex sx={{ alignItems: 'center' }}>
                 <Box
                   sx={{
-                    width: '200px'
+                    width: ['150px', '150px', '150px', '200px']
                   }}
                 >
                   <SearchableSelect
@@ -499,7 +499,7 @@ export default () => {
                     onChange={handleSelectChange}
                   />
                 </Box>
-                <Box sx={{ ml: 2 }}>
+                <Box sx={{ ml: [1, 1, 1, 2] }}>
                   <Button
                     sx={{ color: bg, bg: color }}
                     onClick={showOverlay(OVERLAY_STATE.PREVIEW)}
@@ -521,7 +521,7 @@ export default () => {
                 >
                   <KeyboardIcon />
                 </ButtonIcon>
-                <Box sx={{ ml: 2 }}>
+                <Box sx={{ ml: [1, 1, 1, 2] }}>
                   <ButtonIcon
                     as='button'
                     title='Learn more about the project'
@@ -532,7 +532,7 @@ export default () => {
                     <InfoIcon />
                   </ButtonIcon>
                 </Box>
-                <Box sx={{ ml: 2 }}>
+                <Box sx={{ ml: [1, 1, 1, 2] }}>
                   <ButtonIcon
                     as='a'
                     href={pkg.homepage}
@@ -545,7 +545,7 @@ export default () => {
                     <GitHubIcon />
                   </ButtonIcon>
                 </Box>
-                <Box sx={{ ml: 2 }}>
+                <Box sx={{ ml: [1, 1, 1, 2] }}>
                   <ButtonIcon
                     as='button'
                     title='Change color mode'

@@ -5,8 +5,9 @@ export default ({ sx, ...props }) => (
     sx={{
       cursor: 'pointer',
       borderRadius: 2,
+      py: ['4px', '4px', '8px', '8px'],
+      px: ['6px', '6px', '12px', '12px'],
       outline: 0,
-      padding: '8px 12px',
       fontSize: 1,
       ...sx
     }}
