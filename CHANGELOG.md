@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.39](https://github.com/microlinkhq/cards/compare/v0.0.38...v0.0.39) (2020-04-21)
+
+
+### Bug Fixes
+
+* linter ([78bab8d](https://github.com/microlinkhq/cards/commit/78bab8ddc2d90cefc4ea3333b12bb1b899c60bd7))
+
 ### [0.0.38](https://github.com/microlinkhq/cards/compare/v0.0.37...v0.0.38) (2020-04-21)
 
 
