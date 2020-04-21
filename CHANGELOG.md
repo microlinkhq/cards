@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.30](https://github.com/microlinkhq/cards/compare/v0.0.29...v0.0.30) (2020-04-21)
+
+
+### Bug Fixes
+
+* select options font style ([038f1cb](https://github.com/microlinkhq/cards/commit/038f1cb5a5aec2b144249f95e5852c7505ef7e63))
+
 ### [0.0.29](https://github.com/microlinkhq/cards/compare/v0.0.28...v0.0.29) (2020-04-19)
 
 ### [0.0.28](https://github.com/microlinkhq/cards/compare/v0.0.27...v0.0.28) (2020-04-18)
