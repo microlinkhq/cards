@@ -11,6 +11,7 @@ export default ({ sx, ...props }) => (
       py: 1,
       borderLeft: 1,
       borderRight: 1,
+      fontFamily: 'mono',
       borderBottom: 1,
       mr: 3,
       fontSize: 0,
