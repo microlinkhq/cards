@@ -170,9 +170,21 @@ export default () => {
 
   const OverlayHeader = ({ sx, children }) => {
     return (
-      <Box as='header' sx={{ borderRadius: 2, border: 1, borderColor, ...sx }}>
+      <Flex
+        as='header'
+        sx={{
+          mx: 'auto',
+          width: '100%',
+          borderRadius: 2,
+          border: 1,
+          borderColor,
+          flexDirection: 'column',
+          p: '36px',
+          ...sx
+        }}
+      >
         {children}
-      </Box>
+      </Flex>
     )
   }
 
