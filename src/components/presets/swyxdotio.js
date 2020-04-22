@@ -17,7 +17,7 @@ const code = (
           padding: ${query.border};
         `}
       >
-        <Flex sx={{ position: 'relative', width: '100%' }}>
+        <Flex sx={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
           <Flex
             css={`
               ::after {
