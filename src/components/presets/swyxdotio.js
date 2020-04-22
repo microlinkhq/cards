@@ -11,11 +11,7 @@ const code = (
         rel='stylesheet'
       />
       <Flex
-        css={`
-          position: relative;
-          background: ${query.gradient};
-          padding: ${query.border};
-        `}
+        sx={{ position: 'relative', background: query.gradient, padding: query.border }}
       >
         <Flex sx={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
           <Flex
