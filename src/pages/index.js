@@ -167,7 +167,7 @@ export default () => {
       if (document.getElementById('screenshot')) {
         clearInterval(checkExist)
         domtoimage
-          .toSvg(document.getElementById('screenshot'))
+          .toPng(document.getElementById('screenshot'))
           .then(dataUrl => {
             const link = document.createElement('a')
             link.download = Date.now()
@@ -436,7 +436,7 @@ export default () => {
       </Overlay>
       <Flex sx={{ bg, height: '100vh' }}>
         <Main>
-          <Box sx={{ mb: 5 }}>
+          <Box sx={{ mb: 4 }}>
             <AspectRatio
               ratio='16/9'
               style={{ margin: 'auto', maxWidth: '843px' }}
