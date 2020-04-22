@@ -25,6 +25,7 @@ import Choose from '@/components/choose'
 import { diff } from 'deep-object-diff'
 import store from '@/lib/local-storage'
 import clipboard from '@/lib/clipboard'
+import Label from '@/components/label'
 import debounce from '@/lib/debounce'
 import Main from '@/components/main'
 import Code from '@/components/code'
@@ -177,6 +178,8 @@ export default () => {
           mx: 'auto',
           width: '100%',
           borderRadius: 2,
+          borderBottomLeftRadius: 2,
+          borderBottomRightRadius: 2,
           border: 1,
           borderColor,
           flexDirection: 'column',
@@ -433,7 +436,7 @@ export default () => {
           <OverlayKeyBindings />
         </Choose.When>
       </Overlay>
-      <Flex sx={{ bg: 'plain.backgroundColor', height: '100vh' }}>
+      <Flex sx={{ bg, height: '100vh' }}>
         <Main>
           <Box>
             <AspectRatio
@@ -457,7 +460,7 @@ export default () => {
               pl: 3,
               borderLeft: 1,
               borderColor,
-              bg: 'plain.backgroundColor',
+              bg,
               flexDirection: 'column',
               fontFamily: 'mono',
               fontSize: 2,
@@ -476,12 +479,12 @@ export default () => {
               as='header'
               sx={{
                 alignItems: 'center',
-                bg: 'plain.backgroundColor',
+                bg,
                 borderBottom: 1,
                 borderColor,
                 py: 3,
                 mr: 3,
-                color: 'plain.color',
+                color,
                 justifyContent: 'space-between'
               }}
             >
@@ -562,6 +565,15 @@ export default () => {
               </Flex>
             </Flex>
             <Flex sx={{ flex: 1, minHeight: 0, flexDirection: 'column' }}>
+              <Box sx={{ position: 'relative' }}>
+                <Label
+                  children='editor'
+                  sx={{
+                    color,
+                    borderColor
+                  }}
+                />
+              </Box>
               <Box
                 as='section'
                 sx={{
@@ -589,11 +601,18 @@ export default () => {
                 <Box
                   as='section'
                   sx={{
-                    bg: 'plain.backgroundColor',
+                    bg,
                     py: 3,
                     mr: 3
                   }}
                 >
+                  <Label
+                    children='query variables'
+                    sx={{
+                      color,
+                      borderColor
+                    }}
+                  />
                   <JSONViewer
                     theme={editorTheme}
                     children={queryVariables}
