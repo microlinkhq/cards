@@ -1,6 +1,6 @@
 import { HorizontalDragBar, VerticalDragBar } from '@/components/drag-bars'
 import { Tab, Tabs, TabList, TabPanel } from '@/components/tabs'
-import { Image, Text, Box, Flex, useThemeUI } from 'theme-ui'
+import { Link, Image, Text, Box, Flex, useThemeUI } from 'theme-ui'
 import SearchableSelect from '@/components/searchable-select'
 import { marshall, unmarshall } from '@/lib/compress-json'
 import useScreenshotUrl from '@/hooks/use-screenshot-url'
@@ -18,6 +18,7 @@ import notification from '@/lib/notification'
 import AspectRatio from 'react-aspect-ratio'
 import useLoading from '@/hooks/use-loading'
 import presets from '@/components/presets'
+import domtoimage from 'dom-to-image-more'
 import Overlay from '@/components/overlay'
 import Button from '@/components/button'
 import shareCode from '@/lib/share-code'
@@ -160,6 +161,24 @@ export default () => {
   if (isLoading) return null
 
   const isEditor = Router.asPath.startsWith('/editor')
+
+  if (!isEditor && query.download) {
+    const checkExist = setInterval(() => {
+      if (document.getElementById('screenshot')) {
+        clearInterval(checkExist)
+        domtoimage
+          .toSvg(document.getElementById('screenshot'))
+          .then(dataUrl => {
+            const link = document.createElement('a')
+            link.download = Date.now()
+            link.href = dataUrl
+            link.click()
+            setTimeout(window.close, 100)
+          })
+      }
+    }, 100)
+  }
+
   const editorTheme = theme.colors.modes[colorMode]
   const color = editorTheme.plain.color
   const bg = editorTheme.plain.backgroundColor
@@ -170,39 +189,17 @@ export default () => {
     item.types.includes('string')
   ).style.color
 
-  const OverlayHeader = ({ sx, children }) => {
-    return (
-      <Flex
-        as='header'
-        sx={{
-          mx: 'auto',
-          width: '100%',
-          borderRadius: 2,
-          borderBottomLeftRadius: 2,
-          borderBottomRightRadius: 2,
-          border: 1,
-          borderColor,
-          flexDirection: 'column',
-          p: '36px',
-          ...sx
-        }}
-      >
-        {children}
-      </Flex>
-    )
-  }
+  const OverlayHeader = props => <Box as='header' {...props} />
 
-  const OverlayFooter = () => {
-    return (
-      <Flex as='footer' sx={{ justifyContent: 'flex-end', pt: 4 }}>
-        <Button
-          sx={{ bg: color, color: bg }}
-          onClick={hideOverlay}
-          children='Got it'
-        />
-      </Flex>
-    )
-  }
+  const OverlayFooter = () => (
+    <Flex as='footer' sx={{ justifyContent: 'flex-end', pt: 4 }}>
+      <Button
+        sx={{ bg: color, color: bg }}
+        onClick={hideOverlay}
+        children='Got it'
+      />
+    </Flex>
+  )
 
   const OverlayKeyBindings = () => {
     const ctrl = isMac ? 'cmd' : 'ctrl'
@@ -345,8 +342,9 @@ export default () => {
         <OverlayHeader>
           <AspectRatio ratio='16/9'>
             <LivePreview
+              isEditor={isEditor}
               css={`
-                zoom: 0.5;
+                zoom: 0.6;
               `}
               onClick={() => toClipboard(screenshotUrl, 'URL')}
             />
@@ -438,7 +436,7 @@ export default () => {
       </Overlay>
       <Flex sx={{ bg, height: '100vh' }}>
         <Main>
-          <Box>
+          <Box sx={{ mb: 5 }}>
             <AspectRatio
               ratio='16/9'
               style={{ margin: 'auto', maxWidth: '843px' }}
@@ -450,6 +448,29 @@ export default () => {
               <LiveError />
             </AspectRatio>
           </Box>
+          {isEditor && (
+            <Flex sx={{ alignItems: 'center', justifyContent: 'center' }}>
+              <Link
+                href='#'
+                sx={{ color }}
+                onClick={() => {
+                  const downloadUrl = new URL(window.location)
+                  downloadUrl.pathname = ''
+                  downloadUrl.searchParams.set('download', true)
+                  window.open(downloadUrl.toString())
+                }}
+              >
+                Download
+              </Link>
+              <Box sx={{ ml: 3 }}>
+                <Button
+                  sx={{ color: bg, bg: color }}
+                  onClick={showOverlay(OVERLAY_STATE.PREVIEW)}
+                  children='Embed'
+                />
+              </Box>
+            </Flex>
+          )}
         </Main>
         {isEditor && (
           <Flex
@@ -503,13 +524,6 @@ export default () => {
                       label: presets[key].name
                     }))}
                     onChange={handleSelectChange}
-                  />
-                </Box>
-                <Box sx={{ ml: '6px' }}>
-                  <Button
-                    sx={{ color: bg, bg: color }}
-                    onClick={showOverlay(OVERLAY_STATE.PREVIEW)}
-                    children='Get URL'
                   />
                 </Box>
               </Flex>

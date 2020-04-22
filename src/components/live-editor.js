@@ -20,6 +20,11 @@ const LivePreviewWrapper = styled('div')`
   margin: auto;
 
   ${({ isEditor }) =>
+    isEditor &&
+    `
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 5px 10px 0px;`}
+
+  ${({ isEditor }) =>
     !isEditor &&
     `
     ${RATIOS.reduce(

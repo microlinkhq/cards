@@ -24,7 +24,7 @@ export const ASIDE_MAX_WIDTH = size =>
     theme.space[4]
   })`
 
-export const SEARCH_WIDTH = '150px'
+export const SEARCH_WIDTH = '200px'
 
 export const OVERLAY_STATE = {
   PREVIEW: 'preview',
