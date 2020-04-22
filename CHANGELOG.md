@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.49](https://github.com/microlinkhq/cards/compare/v0.0.48...v0.0.49) (2020-04-22)
+
+
+### Bug Fixes
+
+* add overflow property to swyxdotio preset ([3111381](https://github.com/microlinkhq/cards/commit/3111381f95a3e064a97c673e06b3bc9eae021991))
+* remove unnecessary `css` prop ([7ba4dbb](https://github.com/microlinkhq/cards/commit/7ba4dbb9267ad020aa725ed9be2aef7cbd2e8256))
+
 ### [0.0.48](https://github.com/microlinkhq/cards/compare/v0.0.47...v0.0.48) (2020-04-22)
 
 ### [0.0.47](https://github.com/microlinkhq/cards/compare/v0.0.46...v0.0.47) (2020-04-22)
