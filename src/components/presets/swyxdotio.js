@@ -11,28 +11,30 @@ const code = (
         rel='stylesheet'
       />
       <Flex
-        sx={{ position: 'relative', background: query.gradient, padding: query.border }}
+        sx={{
+          position: 'relative',
+          background: query.gradient,
+          padding: query.border
+        }}
       >
         <Flex sx={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
           <Flex
-            css={`
-              ::after {
-                position: absolute;
-                content: '';
-                top: 0;
-                right: calc(56% -${query.divider});
-                background-color: transparent;
-                border-right: ${query.divider} solid transparent;
-                border-top: calc(470px - ${query.border}) solid white;
-              }
-            `}
             sx={{
               width: '50%',
               flexDirection: 'column',
               justifyContent: 'space-around',
               bg: query.bg,
               p: 5,
-              pr: 0
+              pr: 0,
+              '::after': {
+                position: 'absolute',
+                content: '""',
+                top: 0,
+                right: `calc(56% + -${query.divider})`,
+                backgroundColor: 'transparent',
+                borderRight: `${query.divider} solid transparent`,
+                borderTop: `calc(470px - ${query.border}) solid white`
+              }
             }}
           >
             <Text
