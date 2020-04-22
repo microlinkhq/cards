@@ -18,7 +18,6 @@ import notification from '@/lib/notification'
 import AspectRatio from 'react-aspect-ratio'
 import useLoading from '@/hooks/use-loading'
 import presets from '@/components/presets'
-import domtoimage from 'dom-to-image-more'
 import Overlay from '@/components/overlay'
 import Button from '@/components/button'
 import shareCode from '@/lib/share-code'
@@ -166,8 +165,10 @@ export default () => {
     const checkExist = setInterval(() => {
       if (document.getElementById('screenshot')) {
         clearInterval(checkExist)
-        domtoimage
-          .toPng(document.getElementById('screenshot'))
+        import('dom-to-image-more')
+          .then(domtoimage =>
+            domtoimage.toPng(document.getElementById('screenshot'))
+          )
           .then(dataUrl => {
             const link = document.createElement('a')
             link.download = Date.now()
