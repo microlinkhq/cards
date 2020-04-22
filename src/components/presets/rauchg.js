@@ -8,7 +8,13 @@ const code = (
     <>
       <Box
         as='header'
-        sx={{ position: 'absolute', pt: '42px', pl: '42px', bg: query.bg }}
+        sx={{
+          position: 'absolute',
+          pt: '42px',
+          pl: '42px',
+          bg: query.bg,
+          color: query.color
+        }}
       >
         <Flex
           sx={{

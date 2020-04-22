@@ -27,7 +27,7 @@ const code = (
                 right: calc(56% + -${query.divider});
                 background-color: transparent;
                 border-right: ${query.divider} solid transparent;
-                border-top: calc(437px - ${query.border}) solid white;
+                border-top: calc(470px - ${query.border}) solid white;
               }
             `}
             sx={{
@@ -44,7 +44,8 @@ const code = (
                 lineHeight: 1.25,
                 fontFamily: 'Inter',
                 fontSize: 6,
-                fontWeight: '700'
+                fontWeight: '700',
+                color: query.color
               }}
               children={query.title}
             />
@@ -53,7 +54,8 @@ const code = (
                 lineHeight: 1.5,
                 fontFamily: 'Inter',
                 fontSize: 3,
-                fontWeight: '400'
+                fontWeight: '400',
+                color: query.color
               }}
               children={query.description}
             />
