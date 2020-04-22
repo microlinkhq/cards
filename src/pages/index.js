@@ -161,25 +161,6 @@ export default () => {
 
   const isEditor = Router.asPath.startsWith('/editor')
 
-  if (!isEditor && query.download) {
-    const checkExist = setInterval(() => {
-      if (document.getElementById('screenshot')) {
-        clearInterval(checkExist)
-        import('dom-to-image-more')
-          .then(domtoimage =>
-            domtoimage.toPng(document.getElementById('screenshot'))
-          )
-          .then(dataUrl => {
-            const link = document.createElement('a')
-            link.download = Date.now()
-            link.href = dataUrl
-            link.click()
-            setTimeout(window.close, 100)
-          })
-      }
-    }, 100)
-  }
-
   const editorTheme = theme.colors.modes[colorMode]
   const color = editorTheme.plain.color
   const bg = editorTheme.plain.backgroundColor
@@ -455,10 +436,10 @@ export default () => {
                 href='#'
                 sx={{ color }}
                 onClick={() => {
-                  const downloadUrl = new URL(window.location)
-                  downloadUrl.pathname = ''
-                  downloadUrl.searchParams.set('download', true)
-                  window.open(downloadUrl.toString())
+                  const link = document.createElement('a')
+                  link.download = Date.now()
+                  link.href = screenshotUrl
+                  window.open(link)
                 }}
               >
                 Download
