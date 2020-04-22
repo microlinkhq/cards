@@ -119,15 +119,15 @@ const code = (
 
 const query = {
   title: 'Learn Web Development for Free',
-  avatar: 'https://kikobeats.com/images/avatar-glitch.jpg',
+  avatar: 'https://unavatar.now.sh/github/kikobeats',
   author: 'Kiko Beats',
   date: '29 Apr',
   bg: '#EAF1F7',
   color: '#000',
   logos: [
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/490px-Unofficial_JavaScript_logo_2.svg.png',
-    'https://miro.medium.com/max/1024/1*dOizsWycMALIUfqbpNvaMQ.png',
-    'https://vuejs.org/images/logo.png'
+    'https://i.imgur.com/M1A7IrK.png',
+    'https://i.imgur.com/zD03CcS.png',
+    'https://i.imgur.com/GbtU2sH.png'
   ]
 }
 

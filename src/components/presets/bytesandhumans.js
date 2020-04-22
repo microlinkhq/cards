@@ -47,7 +47,7 @@ const code = (
 
 const query = {
   title: 'Paradigmas con emoji',
-  image: 'https://bytesandhumans.netlify.app/assets/img/posts/paradigmas.png',
+  image: 'https://i.imgur.com/mt12ihX.png',
   textColor: 'black',
   bgColor: 'white',
   primaryColor: '#85FFE0'
