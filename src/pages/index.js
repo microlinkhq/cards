@@ -56,7 +56,8 @@ import {
   ASIDE_MIN_HEIGHT,
   ASIDE_MAX_HEIGHT,
   ASIDE_MAX_WIDTH,
-  OVERLAY_STATE
+  OVERLAY_STATE,
+  SEARCH_WIDTH
 } from '@/constants'
 
 const updateQuery = debounce(({ setQuery, code, queryVariables }) => {
@@ -487,7 +488,7 @@ export default () => {
               <Flex sx={{ alignItems: 'center' }}>
                 <Box
                   sx={{
-                    width: ['150px', '150px', '150px', '200px']
+                    width: SEARCH_WIDTH
                   }}
                 >
                   <SearchableSelect
@@ -501,7 +502,7 @@ export default () => {
                     onChange={handleSelectChange}
                   />
                 </Box>
-                <Box sx={{ ml: [1, 1, 1, 2] }}>
+                <Box sx={{ ml: '6px' }}>
                   <Button
                     sx={{ color: bg, bg: color }}
                     onClick={showOverlay(OVERLAY_STATE.PREVIEW)}
@@ -523,7 +524,7 @@ export default () => {
                 >
                   <KeyboardIcon />
                 </ButtonIcon>
-                <Box sx={{ ml: [1, 1, 1, 2] }}>
+                <Box sx={{ ml: '6px' }}>
                   <ButtonIcon
                     as='button'
                     title='Learn more about the project'
@@ -534,7 +535,7 @@ export default () => {
                     <InfoIcon />
                   </ButtonIcon>
                 </Box>
-                <Box sx={{ ml: [1, 1, 1, 2] }}>
+                <Box sx={{ ml: '6px' }}>
                   <ButtonIcon
                     as='a'
                     href={pkg.homepage}
@@ -547,7 +548,7 @@ export default () => {
                     <GitHubIcon />
                   </ButtonIcon>
                 </Box>
-                <Box sx={{ ml: [1, 1, 1, 2] }}>
+                <Box sx={{ ml: '6px' }}>
                   <ButtonIcon
                     as='button'
                     title='Change color mode'
