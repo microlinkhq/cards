@@ -12,10 +12,11 @@ const getUrl = () => {
   return urlObj.toString()
 }
 
-const getCardUrl = ({ endpoint }) => {
+const getCardUrl = ({ endpoint, ...props }) => {
   if (!isDev && !endpoint) {
     return `${shortenUrl}${encodeURIComponent(getUrl())}`
   }
+
   return getScreenshotUrl(getUrl(), {
     force: !!isDev,
     endpoint: isDev ? 'http://localhost:3000' : endpoint,
@@ -24,7 +25,8 @@ const getCardUrl = ({ endpoint }) => {
     embed: 'screenshot.url',
     meta: false,
     screenshot: true,
-    waitUntil: ['load', 'networkidle0']
+    waitUntil: ['load', 'networkidle0'],
+    'screenshot.type': props['screenshot.type']
   })
 }
 

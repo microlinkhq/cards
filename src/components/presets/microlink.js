@@ -12,6 +12,10 @@ const code = (
       />
       <Flex
         sx={{
+          bg:
+            query.screenshot && query.screenshot.type === 'png'
+              ? 'transparent'
+              : 'white',
           alignItems: 'center',
           justifyContent: 'center',
           flexDirection: 'column'
@@ -53,7 +57,10 @@ const query = {
   color: '#313b53',
   bg: '#313B53',
   title: 'Microlink Cards',
-  logo: 'https://cdn.microlink.io/logo/logo.svg'
+  logo: 'https://cdn.microlink.io/logo/logo.svg',
+  screenshot: {
+    type: 'png'
+  }
 }
 
 export default { name: 'microlink', code, query }
