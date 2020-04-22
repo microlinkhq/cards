@@ -20,7 +20,7 @@ const code = (
                 position: absolute;
                 content: '';
                 top: 0;
-                right: calc(56% + -${query.divider});
+                right: calc(56% -${query.divider});
                 background-color: transparent;
                 border-right: ${query.divider} solid transparent;
                 border-top: calc(470px - ${query.border}) solid white;
