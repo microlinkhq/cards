@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.57](https://github.com/microlinkhq/cards/compare/v0.0.56...v0.0.57) (2020-04-23)
+
+
+### Features
+
+* add adobe preset ([04b81a1](https://github.com/microlinkhq/cards/commit/04b81a1363312c8836b9e5f9543a4382fe2a5993))
+* add chrisbiscardi ([b1e3af9](https://github.com/microlinkhq/cards/commit/b1e3af957ac3001ed4e31d8986ff09e2b47c184d))
+
+
+### Bug Fixes
+
+* adobe flex empty ([0cb93f9](https://github.com/microlinkhq/cards/commit/0cb93f92e8d946e624f5d01880ab3cd4f81ffb85))
+* comments from PR ([af955d6](https://github.com/microlinkhq/cards/commit/af955d61e81ea35f0111800c8c29e613a573a98d))
+* gradient color ([64c5c74](https://github.com/microlinkhq/cards/commit/64c5c74bce48d0413040b4bbf42e8b8c15531812))
+* linter ([cc5ccc7](https://github.com/microlinkhq/cards/commit/cc5ccc7b9441c095354f6012774df3c0bda4d291))
+
 ### [0.0.56](https://github.com/microlinkhq/cards/compare/v0.0.55...v0.0.56) (2020-04-23)
 
 
