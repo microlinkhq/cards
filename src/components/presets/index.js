@@ -1,4 +1,5 @@
 import article from './article'
+import adobe from './adobe'
 import bytesandhumans from './bytesandhumans'
 import fauna from './fauna'
 import microlink from './microlink'
@@ -9,10 +10,10 @@ import simple from './simple'
 import swyxdotio from './swyxdotio'
 import thePracticalDev from './thepracticaldev'
 import vercell from './vercell'
-import adobe from './adobe'
 
 export default {
   article,
+  adobe,
   bytesandhumans,
   fauna,
   microlink,
@@ -22,6 +23,5 @@ export default {
   simple,
   swyxdotio,
   thePracticalDev,
-  adobe,
   vercell
 }

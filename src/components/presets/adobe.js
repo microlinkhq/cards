@@ -14,7 +14,6 @@ const code = (
       >
         <Box
           css={`
-            border: 10px solid;
             border-image-source: linear-gradient(
               to right,
               rgb(247, 102, 152) 0%,
@@ -24,7 +23,8 @@ const code = (
             border-image-slice: 1;
           `}
           sx={{
-            bg: 'white',
+            border: '10px solid',
+            bg: `${query.bg}`,
             padding: '30px'
           }}
         >
@@ -44,10 +44,10 @@ const code = (
               background:
                 'linear-gradient(to right, rgb(247, 102, 152) 0%, rgb(234, 64, 123) 29%, rgb(101, 78, 163) 100%);',
               lineHeight: 1.4,
-              fontWeight: '900',
+              fontWeight: 'bold',
               fontFamily: 'Merriweather',
               maxWidth: '36rem',
-              bg: 'white'
+              bg: `${query.bg}`
             }}
             children={query.title}
           />
@@ -63,7 +63,8 @@ const code = (
 )
 
 const query = {
-  title: 'Craft quality editorial flows in Premier Pro'
+  title: 'Craft quality editorial flows in Premier Pro',
+  bg: 'black'
 }
 
 export default { name: 'adobe', code, query }
