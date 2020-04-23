@@ -20,7 +20,9 @@ const code = (
           sx={{
             border: '10px solid',
             bg: `${query.bg}`,
-            padding: '30px'
+            padding: '30px',
+            width: '100%',
+            height: '100%'
           }}
         >
           <Link
@@ -45,11 +47,6 @@ const code = (
             }}
             children={query.title}
           />
-          <Flex
-            sx={{
-              justifyContent: 'space-between'
-            }}
-          ></Flex>
         </Box>
       </Box>
     </>
