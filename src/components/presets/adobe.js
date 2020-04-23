@@ -1,53 +1,46 @@
 /* eslint-disable no-use-before-define */
 
 import Inline from '../inline.macro'
-import { Link, Box, Text } from './scope'
+import { Text, Flex, Link, Box } from './scope'
 
 const code = (
   <Inline>
     <>
+      <Link
+        href='https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap'
+        rel='stylesheet'
+      />
       <Box
         sx={{
-          display: 'grid',
-          placeItems: 'center'
+          background: query.gradient,
+          borderRadius: 4,
+          padding: query.border
         }}
       >
-        <Box
-          css={`
-            border-image-source: linear-gradient(to right, #ed4264, #ffedbc);
-            border-image-slice: 1;
-          `}
+        <Flex
           sx={{
-            border: '10px solid',
-            bg: `${query.bg}`,
-            padding: '30px',
-            width: '100%',
+            bg: query.bg,
             height: '100%'
           }}
         >
-          <Link
-            href='https://fonts.googleapis.com/css2?family=Merriweather:wght@400;900&display=swap'
-            rel='stylesheet'
-          />
           <Text
             css={`
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent;
             `}
             sx={{
-              pt: 4,
-              pb: 5,
+              pt: 5,
+              pl: 5,
               fontSize: 7,
-              background: 'linear-gradient(to right, #ed4264, #ffedbc);;',
-              lineHeight: 1.4,
-              fontWeight: 'bold',
-              fontFamily: 'Merriweather',
-              maxWidth: '36rem',
-              bg: `${query.bg}`
+              background: query.gradient,
+              fontWeight: '800',
+              fontFamily: 'Open Sans',
+              bg: query.bg,
+              maxWidth: '36rem'
             }}
             children={query.title}
           />
-        </Box>
+        </Flex>
       </Box>
     </>
   </Inline>
@@ -55,6 +48,8 @@ const code = (
 
 const query = {
   title: 'Craft quality editorial flows in Premier Pro',
+  gradient: 'linear-gradient(to right, #ed4264, #ffedbc)',
+  border: '10px',
   bg: 'black'
 }
 
