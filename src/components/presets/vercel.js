@@ -33,7 +33,7 @@ const code = (
           fontSize: 6,
           mt: 5,
           textAlign: 'center',
-          fontWeight: '700',
+          fontWeight: 700,
           lineHeight: 1
         }}
         children={query.headline}
@@ -44,7 +44,7 @@ const code = (
           fontSize: 6,
           mt: 2,
           textAlign: 'center',
-          fontWeight: '300'
+          fontWeight: 300
         }}
         children={query.caption}
       />
