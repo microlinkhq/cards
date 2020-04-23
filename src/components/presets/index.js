@@ -1,6 +1,7 @@
 import article from './article'
 import adobe from './adobe'
 import bytesandhumans from './bytesandhumans'
+import chrisbiscardi from './chrisbiscardi'
 import fauna from './fauna'
 import microlink from './microlink'
 import midudev from './midudev'
@@ -15,6 +16,7 @@ export default {
   article,
   adobe,
   bytesandhumans,
+  chrisbiscardi,
   fauna,
   microlink,
   midudev,
