@@ -12,77 +12,75 @@ const code = (
           placeItems: 'center'
         }}
       >
-        <Box
+        <Flex
           css={`
-            border-image-source: linear-gradient(
-              to right,
-              orange,
-              yellow,
-              green,
-              cyan,
-              blue,
-              violet
-            );
+            border-image-source: ${query.gradient};
             border-image-slice: 1;
           `}
           sx={{
-            border: '10px solid',
-            bg: `${query.bg}`,
+            border: '14px solid',
+            bg: query.bg,
             padding: 5,
             width: '100%',
-            height: '100%'
+            height: '100%',
+            flexDirection: 'column'
           }}
         >
           <Link
-            href='https://fonts.googleapis.com/css2?family=Merriweather:wght@400;900&display=swap'
+            href='https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap'
             rel='stylesheet'
           />
           <Text
             sx={{
-              pt: 4,
-              pb: 5,
-              fontSize: 5,
-              lineHeight: 1.4,
-              fontWeight: 'bold',
-              fontFamily: 'Merriweather',
-              maxWidth: '36rem',
-              bg: `${query.bg}`,
-              color: 'white',
-              marginTop: 4
+              display: 'flex',
+              alignItems: 'center',
+              fontSize: '40px',
+              fontWeight: 700,
+              fontFamily: 'Open Sans',
+              maxWidth: '30rem',
+              bg: query.bg,
+              flexGrow: 1,
+              color: query.primary
             }}
             children={query.title}
           />
-          <Box
-            sx={{
-              width: '50px',
-              height: '5px',
-              borderRadius: '5px',
-              marginBottom: 3,
-              background:
-                'linear-gradient(to right,orange,yellow,green,cyan,blue,violet);'
-            }}
-          />
-          <Flex
-            sx={{
-              justifyContent: 'space-between'
-            }}
-          >
-            <Text
+          <Box as='footer'>
+            <Box
               sx={{
-                fontSize: 2,
-                color: '#D3D3D3'
+                mb: 3,
+                flexShrink: 0,
+                width: '60px',
+                height: '5px',
+                borderRadius: '5px',
+                background: query.complementary
               }}
-              children={query.subtitle}
             />
-            <Text
+            <Flex
               sx={{
-                fontSize: 1,
-                color: '#D3D3D3'
+                justifyContent: 'space-between'
               }}
-              children={query.name}
-            />
-          </Flex>
-        </Box>
+            >
+              <Text
+                sx={{
+                  fontFamily: 'Open Sans',
+                  fontWeight: 400,
+                  fontSize: 2,
+                  color: query.secondary
+                }}
+                children={query.subtitle}
+              />
+              <Text
+                sx={{
+                  fontFamily: 'Open Sans',
+                  fontWeight: 400,
+                  fontSize: 2,
+                  color: query.secondary
+                }}
+                children={query.name}
+              />
+            </Flex>
+          </Box>
+        </Flex>
       </Box>
     </>
   </Inline>
@@ -91,8 +89,23 @@ const code = (
 const query = {
   title: 'Cloudinary as a write throught serverless image generation cache',
   bg: '#181D28',
+  primary: '#fff',
+  secondary: '#D3D3D3',
   name: 'Chris Biscardi',
-  subtitle: 'custom CSS based opengraph images'
+  subtitle: 'custom CSS based opengraph images',
+  gradient: `linear-gradient(
+    135deg,
+    rgb(243, 31, 38),
+    hsl(12, 90%, 59%),
+    hsl(57, 90%, 59%),
+    hsl(102, 90%, 59%),
+    hsl(147, 90%, 59%),
+    hsl(192, 90%, 59%),
+    hsl(237, 90%, 59%),
+    hsl(282, 90%, 59%)
+  )`,
+  complementary:
+    'linear-gradient(90deg, hsl(316,81%,64%),hsl(1,81%,64%),hsl(46,81%,64%),hsl(91,81%,64%),hsl(136,81%,64%),hsl(181,81%,64%))'
 }
 
 export default { name: 'chrisbiscardi', code, query }
