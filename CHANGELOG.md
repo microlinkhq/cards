@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.56](https://github.com/microlinkhq/cards/compare/v0.0.55...v0.0.56) (2020-04-23)
+
+
+### Bug Fixes
+
+* my stupidness ([dff3cff](https://github.com/microlinkhq/cards/commit/dff3cffa876042799bf4250b6ed5c189d3779264))
+
 ### [0.0.55](https://github.com/microlinkhq/cards/compare/v0.0.54...v0.0.55) (2020-04-22)
 
 ### [0.0.54](https://github.com/microlinkhq/cards/compare/v0.0.53...v0.0.54) (2020-04-22)
