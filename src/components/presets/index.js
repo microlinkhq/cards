@@ -10,7 +10,7 @@ import rauchg from './rauchg'
 import simple from './simple'
 import swyxdotio from './swyxdotio'
 import thePracticalDev from './thepracticaldev'
-import vercell from './vercell'
+import vercel from './vercel'
 
 export default {
   article,
@@ -25,5 +25,5 @@ export default {
   simple,
   swyxdotio,
   thePracticalDev,
-  vercell
+  vercel
 }

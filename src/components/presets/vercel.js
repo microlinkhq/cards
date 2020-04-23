@@ -54,8 +54,8 @@ const code = (
 
 const query = {
   headline: 'Serverless Deployments',
-  caption: 'with Vercell',
-  logo: 'vercell',
+  caption: 'with Vercel',
+  logo: 'vercel',
   theme: 'dark',
   bg: {
     light: 'white',
@@ -71,7 +71,7 @@ const query = {
   },
   logos: {
     light: {
-      vercell:
+      vercel:
         'https://assets.zeit.co/image/upload/front/assets/design/zeit-black-triangle.svg',
       next:
         'https://assets.zeit.co/image/upload/front/assets/design/nextjs-black-logo.svg',
@@ -79,7 +79,7 @@ const query = {
         'https://assets.zeit.co/image/upload/front/assets/design/hyper-color-logo.svg'
     },
     dark: {
-      vercell:
+      vercel:
         'https://assets.zeit.co/image/upload/front/assets/design/zeit-white-triangle.svg',
       next:
         'https://assets.zeit.co/image/upload/front/assets/design/nextjs-white-logo.svg',
@@ -90,7 +90,7 @@ const query = {
 }
 
 export default {
-  name: 'vercell',
+  name: 'vercel',
   code,
   query
 }
