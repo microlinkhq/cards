@@ -14,12 +14,7 @@ const code = (
       >
         <Box
           css={`
-            border-image-source: linear-gradient(
-              to right,
-              rgb(247, 102, 152) 0%,
-              rgb(234, 64, 123) 29%,
-              rgb(101, 78, 163) 100%
-            );
+            border-image-source: linear-gradient(to right, #ed4264, #ffedbc);
             border-image-slice: 1;
           `}
           sx={{
@@ -41,8 +36,7 @@ const code = (
               pt: 4,
               pb: 5,
               fontSize: 7,
-              background:
-                'linear-gradient(to right, rgb(247, 102, 152) 0%, rgb(234, 64, 123) 29%, rgb(101, 78, 163) 100%);',
+              background: 'linear-gradient(to right, #ed4264, #ffedbc);;',
               lineHeight: 1.4,
               fontWeight: 'bold',
               fontFamily: 'Merriweather',
