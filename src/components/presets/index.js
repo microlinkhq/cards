@@ -13,8 +13,8 @@ import thePracticalDev from './thepracticaldev'
 import vercel from './vercel'
 
 export default {
-  article,
   adobe,
+  article,
   bytesandhumans,
   chrisbiscardi,
   fauna,
