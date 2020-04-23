@@ -46,7 +46,7 @@ const code = (
                 fontSize: 6,
                 lineHeight: 1,
                 marginBottom: 3,
-                fontWeight: '700'
+                fontWeight: 700
               }}
             >
               What NOT to do when remote working

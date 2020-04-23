@@ -6,10 +6,6 @@ import { Text, Flex, Link, Box } from './scope'
 const code = (
   <Inline>
     <>
-      <Link
-        href='https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap'
-        rel='stylesheet'
-      />
       <Box
         sx={{
           background: query.gradient,
@@ -23,6 +19,10 @@ const code = (
             height: '100%'
           }}
         >
+          <Link
+            href='https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap'
+            rel='stylesheet'
+          />
           <Text
             css={`
               -webkit-background-clip: text;

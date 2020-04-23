@@ -25,7 +25,7 @@ const code = (
           sx={{
             fontFamily: 'Roboto',
             fontSize: 3,
-            fontWeight: '300'
+            fontWeight: 300
           }}
           children='21 January'
         />
@@ -33,7 +33,7 @@ const code = (
           sx={{
             fontFamily: 'Roboto',
             fontSize: 7,
-            fontWeight: '700',
+            fontWeight: 700,
             textTransform: 'uppercase'
           }}
           children='STARSIGHT'
@@ -42,7 +42,7 @@ const code = (
           sx={{
             fontFamily: 'Roboto',
             fontSize: 4,
-            fontWeight: '300',
+            fontWeight: 300,
             borderBottom: 1,
             paddingBottom: 5
           }}

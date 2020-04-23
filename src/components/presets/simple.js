@@ -23,7 +23,7 @@ const code = (
           sx={{
             fontFamily: 'Roboto',
             fontSize: 6,
-            fontWeight: '700'
+            fontWeight: 700
           }}
           children={query.headline}
         />
@@ -31,7 +31,7 @@ const code = (
           sx={{
             fontFamily: 'Roboto',
             fontSize: 3,
-            fontWeight: '300'
+            fontWeight: 300
           }}
           children={query.caption}
         />

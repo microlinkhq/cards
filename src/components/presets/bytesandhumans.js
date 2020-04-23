@@ -35,7 +35,7 @@ const code = (
               fontSize: 7,
               px: '60px',
               py: 4,
-              fontWeight: '700'
+              fontWeight: 700
             }}
             children={query.title}
           />

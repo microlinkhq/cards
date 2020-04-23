@@ -36,7 +36,7 @@ const code = (
               pb: 5,
               fontSize: 6,
               lineHeight: 1.4,
-              fontWeight: '900',
+              fontWeight: 900,
               fontFamily: 'Merriweather',
               maxWidth: '36rem'
             }}
@@ -65,7 +65,7 @@ const code = (
               <Text
                 sx={{
                   fontSize: 3,
-                  fontWeight: '400',
+                  fontWeight: 400,
                   fontFamily: 'Merriweather'
                 }}
                 children={query.author}
@@ -74,7 +74,7 @@ const code = (
                 sx={{
                   fontSize: 3,
                   px: 2,
-                  fontWeight: '400',
+                  fontWeight: 400,
                   fontFamily: 'Merriweather'
                 }}
                 children='•'
@@ -82,7 +82,7 @@ const code = (
               <Text
                 sx={{
                   fontSize: 3,
-                  fontWeight: '400',
+                  fontWeight: 400,
                   fontFamily: 'Merriweather'
                 }}
                 children={query.date}

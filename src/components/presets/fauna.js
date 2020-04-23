@@ -38,7 +38,7 @@ const code = (
                 sx={{
                   fontFamily: 'Roboto',
                   fontSize: 7,
-                  fontWeight: '700',
+                  fontWeight: 700,
                   width: '40px',
                   lineHeight: 1
                 }}
@@ -50,7 +50,7 @@ const code = (
                   sx={{
                     fontFamily: 'Roboto',
                     fontSize: 2,
-                    fontWeight: '300',
+                    fontWeight: 300,
                     display: 'inline-block',
                     color: 'white',
                     bg: '#323FCB',
@@ -65,7 +65,7 @@ const code = (
                   sx={{
                     fontFamily: 'Roboto',
                     fontSize: 3,
-                    fontWeight: '300',
+                    fontWeight: 300,
                     display: 'inline-block'
                   }}
                 >
@@ -78,7 +78,7 @@ const code = (
                 sx={{
                   fontFamily: 'Roboto',
                   fontSize: 5,
-                  fontWeight: '700'
+                  fontWeight: 700
                 }}
               >
                 Disscenting Static.fun

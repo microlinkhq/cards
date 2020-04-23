@@ -6,10 +6,6 @@ import { Link, Box, Flex, Text } from './scope'
 const code = (
   <Inline>
     <>
-      <Link
-        href='https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap'
-        rel='stylesheet'
-      />
       <Flex
         sx={{
           position: 'relative',
@@ -37,12 +33,16 @@ const code = (
               }
             }}
           >
+            <Link
+              href='https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap'
+              rel='stylesheet'
+            />
             <Text
               sx={{
                 lineHeight: 1.25,
                 fontFamily: 'Inter',
                 fontSize: 6,
-                fontWeight: '700',
+                fontWeight: 700,
                 color: query.color
               }}
               children={query.title}
@@ -52,7 +52,7 @@ const code = (
                 lineHeight: 1.5,
                 fontFamily: 'Inter',
                 fontSize: 3,
-                fontWeight: '400',
+                fontWeight: 400,
                 color: query.color
               }}
               children={query.description}

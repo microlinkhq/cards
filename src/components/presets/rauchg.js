@@ -29,7 +29,7 @@ const code = (
               letterSpacing: '-.03m',
               fontFamily: 'sans-serif',
               fontSize: 4,
-              fontWeight: '700'
+              fontWeight: 700
             }}
           >
             {query.domain}
@@ -51,7 +51,7 @@ const code = (
             letterSpacing: '-.03m',
             fontFamily: 'sans-serif',
             fontSize: 6,
-            fontWeight: '700',
+            fontWeight: 700,
             bg: query.color,
             color: query.bg
           }}

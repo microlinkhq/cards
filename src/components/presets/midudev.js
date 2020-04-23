@@ -50,7 +50,7 @@ const code = (
             <Text
               sx={{
                 fontSize: '62px',
-                fontWeight: '700',
+                fontWeight: 700,
                 lineHeight: 1,
                 marginBottom: 3
               }}
@@ -84,7 +84,7 @@ const code = (
                 color: 'black',
                 fontFamily: 'Inter',
                 fontSize: 5,
-                fontWeight: '500',
+                fontWeight: 500,
                 letterSpacing: '-.03m',
                 ml: 2,
                 textAlign: 'center'
