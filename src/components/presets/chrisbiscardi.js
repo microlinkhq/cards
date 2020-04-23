@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 
 import Inline from '../inline.macro'
-import { Link, Flex, Image, Box, Text } from './scope'
+import { Link, Flex, Box, Text } from './scope'
 
 const code = (
   <Inline>
@@ -61,7 +61,7 @@ const code = (
               background:
                 'linear-gradient(to right,orange,yellow,green,cyan,blue,violet);'
             }}
-          ></Box>
+          />
           <Flex
             sx={{
               justifyContent: 'space-between'
