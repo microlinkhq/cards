@@ -274,7 +274,6 @@ export default () => {
             alt='microlink cards'
           />
         </OverlayHeader>
-
         <Text sx={{ color, my: 3, fontSize: 2, fontWeight: 'normal' }}>
           <b>Microlink Cards</b> generates social images on demand, ready to be
           embed in your{' '}
@@ -284,24 +283,20 @@ export default () => {
           tags.
         </Text>
         <Text sx={{ color, my: 3, fontSize: 2, fontWeight: 'normal' }}>
-          The tool is an interactive editor that allows generate your images
-          writing them with code and feed with dynamic content.
-        </Text>
-        <Text sx={{ color, my: 3, fontSize: 2, fontWeight: 'normal' }}>
-          It's powered by{' '}
+          Just write your preset once, feed with dynamic content and reuse
+          forever. Read more into{' '}
           <Text
             as='a'
             sx={{ textDecoration: 'none', color: stringColor }}
-            href='https://microlink.io'
+            href='https://microlink.io/docs/cards/getting-started/overview'
             target='_blank'
             rel='noopener noreferrer'
-          >
-            Microlink API
-          </Text>
-          , the fastest and scalable headless browser platform on the cloud.
+            children='documentation'
+          />{' '}
+          portal.
         </Text>
         <Text sx={{ my: 3, fontSize: 2, fontWeight: 'normal' }}>
-          It starts from <b>free</b> and code is available on{' '}
+          Starts from <b>free</b> and code is available on{' '}
           <Text
             as='a'
             sx={{ textDecoration: 'none', color: stringColor }}
