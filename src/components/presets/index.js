@@ -22,10 +22,10 @@ export default {
   microlink,
   midudev,
   news,
+  pedro,
   rauchg,
   simple,
   swyxdotio,
   thePracticalDev,
-  vercel,
-  pedro
+  vercel
 }
