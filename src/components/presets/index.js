@@ -11,6 +11,7 @@ import simple from './simple'
 import swyxdotio from './swyxdotio'
 import thePracticalDev from './thepracticaldev'
 import vercel from './vercel'
+import pedro from './pedro'
 
 export default {
   adobe,
@@ -25,5 +26,6 @@ export default {
   simple,
   swyxdotio,
   thePracticalDev,
-  vercel
+  vercel,
+  pedro
 }
