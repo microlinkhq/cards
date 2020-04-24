@@ -1,11 +1,11 @@
 /* eslint-disable no-use-before-define */
 
 import Inline from '../inline.macro'
-import { Image, Box, Flex, Text, Link } from './scope'
+import { ThemeProvider, Image, Box, Flex, Text, Link } from './scope'
 
 const code = (
   <Inline>
-    <>
+    <ThemeProvider theme={query.theme}>
       <Link
         href='https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap'
         rel='stylesheet'
@@ -17,29 +17,29 @@ const code = (
 
       <Flex
         sx={{
-          bg: query.theme.colors.accent,
-          color: query.theme.colors.foreground,
+          bg: 'accent',
+          color: 'foreground',
           fontFamily: 'Inter',
           fontWeight: 500,
-          fontSize: query.theme.fontSizes[2],
+          fontSize: 2,
           flexDirection: 'column'
         }}
       >
         <Box
           as='header'
           sx={{
-            bg: query.theme.colors.background,
-            py: query.theme.space[2],
-            px: query.theme.space[3],
+            bg: 'background',
+            py: 2,
+            px: 3,
             borderBottomWidth: query.theme.space[2],
-            borderBottomColor: query.theme.colors.background,
+            borderBottomColor: 'background',
             borderBottomStyle: 'solid',
             flex: 0
           }}
         >
           <Text>
             {query.heading}{' '}
-            <Text as='span' sx={{ color: query.theme.colors.faded }}>
+            <Text as='span' sx={{ color: 'faded' }}>
               {query.subHeading}
             </Text>
           </Text>
@@ -47,20 +47,20 @@ const code = (
 
         <Flex
           sx={{
-            bg: query.theme.colors.foreground,
-            color: query.theme.colors.background,
-            pt: query.theme.space[2],
-            pb: query.theme.space[1],
-            px: query.theme.space[3],
-            mx: query.theme.space[3],
-            mt: -query.theme.space[2],
+            bg: 'foreground',
+            color: 'background',
+            pt: 2,
+            pb: 1,
+            px: 3,
+            mx: 3,
+            mt: -2,
             flex: 1,
             flexDirection: 'column'
           }}
         >
           <Image
             sx={{
-              size: query.theme.space[2],
+              size: 2,
               mx: 'auto',
               display: 'block'
             }}
@@ -69,7 +69,7 @@ const code = (
 
           <Text
             sx={{
-              mt: query.theme.space[2]
+              mt: 2
             }}
           >
             {query.title}
@@ -79,8 +79,8 @@ const code = (
             sx={{
               fontFamily: 'Fira Mono',
               fontWeight: '400',
-              color: query.theme.colors.faded,
-              fontSize: query.theme.fontSizes[1],
+              color: 'faded',
+              fontSize: 1,
               mt: 'auto'
             }}
           >
@@ -88,7 +88,7 @@ const code = (
           </Text>
         </Flex>
       </Flex>
-    </>
+    </ThemeProvider>
   </Inline>
 )
 
@@ -107,6 +107,7 @@ const query = {
       faded: 'rgba(128, 128, 128, 1)'
     },
     space: [0, 32, 48, 64],
+    sizes: [0, 32, 48, 64],
     fontSizes: [0, 16, 24]
   }
 }
