@@ -9,8 +9,8 @@ import {
   LivePreview as BasePreview
 } from 'react-live'
 
-export const BASE_HEIGHT = 441
-export const BASE_WIDTH = 843
+export const BASE_WIDTH = 844
+export const BASE_HEIGHT = BASE_WIDTH / 2
 export const RATIOS = [1, 1, 1, 1]
 
 const LivePreviewWrapper = styled('div')`
