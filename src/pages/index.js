@@ -576,7 +576,7 @@ export default () => {
                   flex: 1
                 }}
               >
-                <LiveEditor onChange={handleCode} />
+                <LiveEditor code={code} onChange={handleCode} />
               </Box>
               <Box
                 sx={{

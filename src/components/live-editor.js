@@ -1,13 +1,14 @@
+import { useRef } from 'react'
 import styled from 'styled-components'
 import theme from '@/theme'
 import * as scope from '@/components/presets/scope'
 
 import {
   LiveProvider as BaseProvider,
-  LiveEditor as BaseEditor,
   LiveError as BaseError,
   LivePreview as BasePreview
 } from 'react-live'
+import Monaco from '@monaco-editor/react'
 
 export const BASE_HEIGHT = 441
 export const BASE_WIDTH = 843
@@ -89,14 +90,32 @@ export const LiveProvider = ({ queryVariables: query, ...props }) => {
   return <LiveProviderBase {...props} scope={extendedScope} />
 }
 
-export const LiveEditor = styled(BaseEditor)`
-  pre,
-  textarea {
-    padding: 0 !important;
-    font-family: ${theme.fonts.mono} !important;
-    font-weight: ${theme.fontWeights.light} !important;
+const LiveEditorBase = styled(Monaco)``
+
+export const LiveEditor = ({ code: code, onChange: onChange, ...props }) => {
+  const editorRef = useRef(null)
+
+  const handleEditorDidMount = (_, editor) => {
+    editorRef.current = editor
+
+    editorRef.current.onDidChangeModelContent(ev => {
+      onChange(editorRef.current.getValue())
+    })
   }
-  textarea:focus {
-    outline: none;
-  }
-`
+
+  return (
+    <LiveEditorBase
+      value={code}
+      language='javascript'
+      editorDidMount={handleEditorDidMount}
+      options={{
+        minimap: {
+          enabled: false
+        },
+        scrollbar: {
+          vertical: 'hidden'
+        }
+      }}
+    />
+  )
+}
