@@ -9,10 +9,6 @@ import {
   LivePreview as BasePreview
 } from 'react-live'
 
-export const BASE_WIDTH = 844
-export const BASE_HEIGHT = BASE_WIDTH / 2
-export const RATIOS = [1, 1, 1, 1]
-
 const LivePreviewWrapper = styled('div')`
   cursor: pointer;
   height: 100%;
@@ -23,22 +19,6 @@ const LivePreviewWrapper = styled('div')`
     isEditor &&
     `
   box-shadow: rgba(0, 0, 0, 0.12) 0px 5px 10px 0px;`}
-
-  ${({ isEditor }) =>
-    !isEditor &&
-    `
-    ${RATIOS.reduce(
-      (acc, ratio, index) =>
-        acc +
-        `
-      @media screen and (min-width: ${theme.breakpoints[index]}) {
-        height: ${ratio * BASE_HEIGHT}px;
-        width: ${ratio * BASE_WIDTH}px;
-      }
-    `,
-      ''
-    )}
-  `}
 `
 
 LivePreviewWrapper.defaultProps = {

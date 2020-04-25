@@ -19,10 +19,10 @@ export const ASIDE_MIN_HEIGHT = '15%'
 
 export const ASIDE_MAX_HEIGHT = '70%'
 
+export const PREVIEW_CARD_WIDTH = 843
+
 export const ASIDE_MAX_WIDTH = size =>
-  `calc(${toPx(size.width - BASE_WIDTH * RATIOS[RATIOS.length - 1])} - ${
-    theme.space[4]
-  })`
+  `calc(${toPx(size.width - PREVIEW_CARD_WIDTH)} - ${theme.space[4]})`
 
 export const SEARCH_WIDTH = '200px'
 
