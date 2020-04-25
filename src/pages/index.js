@@ -49,15 +49,16 @@ import pkg from '@/package.json'
 
 import {
   ASIDE_HEIGHT_KEY,
+  ASIDE_MAX_HEIGHT,
+  ASIDE_MAX_WIDTH,
+  ASIDE_MIN_HEIGHT,
+  ASIDE_MIN_WIDTH,
   ASIDE_WIDTH_KEY,
   DEFAULT_ASIDE_HEIGHT,
   DEFAULT_ASIDE_WIDTH,
   DEFAULT_PRESET,
-  ASIDE_MIN_WIDTH,
-  ASIDE_MIN_HEIGHT,
-  ASIDE_MAX_HEIGHT,
-  ASIDE_MAX_WIDTH,
   OVERLAY_STATE,
+  PREVIEW_CARD_WIDTH,
   SEARCH_WIDTH
 } from '@/constants'
 
@@ -416,7 +417,7 @@ export default () => {
           <Box sx={{ mb: 4 }}>
             <AspectRatio
               ratio='16/9'
-              style={{ margin: 'auto', maxWidth: '843px' }}
+              style={{ margin: 'auto', maxWidth: PREVIEW_CARD_WIDTH }}
             >
               <LivePreview
                 onClick={showOverlay(OVERLAY_STATE.PREVIEW)}
