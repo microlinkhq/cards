@@ -47,6 +47,7 @@
   "dependencies": {
     "@mdx-js/loader": "~1.5.8",
     "@microlink/mql": "~0.6.11",
+    "@monaco-editor/react": "^3.3.0",
     "@next/mdx": "~9.3.4",
     "@snackbar/core": "~1.7.0",
     "babel-plugin-macros": "~2.8.0",
