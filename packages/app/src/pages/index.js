@@ -434,9 +434,18 @@ export default () => {
                 onClick={showOverlay(OVERLAY_STATE.PREVIEW)}
                 isEditor={isEditor}
               />
-              <LiveError />
             </AspectRatio>
           </Box>
+          <Box
+            sx={{
+              bottom: 0,
+              position: 'absolute',
+              width: '100%'
+            }}
+          >
+            <LiveError />
+          </Box>
+
           {isEditor && (
             <Flex sx={{ alignItems: 'center', justifyContent: 'center' }}>
               <Link
@@ -465,8 +474,6 @@ export default () => {
           <Flex
             as='aside'
             sx={{
-              mt: 3,
-              mb: 3,
               pl: 3,
               borderLeft: 1,
               borderColor,
@@ -475,7 +482,7 @@ export default () => {
               fontFamily: 'mono',
               fontSize: 2,
               fontWeight: 'light',
-              height: 'calc(100vh - 32px)',
+              height: '100%',
               maxWidth: ASIDE_MAX_WIDTH(size),
               minWidth: ASIDE_MIN_WIDTH,
               position: 'relative',

@@ -26,23 +26,14 @@ LivePreviewWrapper.defaultProps = {
 }
 
 export const LiveError = styled(BaseError)`
-  position: relative;
-  margin: auto;
-  padding: ${theme.space[3]};
-  display: block;
   background: #ff5555;
   color: #f8f8f2;
-  white-space: pre-wrap;
-  text-align: left;
-  font-size: ${theme.fontSizes[2]};
   font-family: ${theme.fonts.mono};
-  bottom: 0;
-  width: calc(100% - ${theme.space[5]});
-
-  @media screen and (min-width: ${theme.breakpoints[2]}) {
-    position: absolute;
-    width: 70%;
-  }
+  font-size: ${theme.fontSizes[2]};
+  margin: 0;
+  padding: ${theme.space[3]};
+  text-align: left;
+  white-space: pre-wrap;
 `
 
 export const LivePreview = styled(BasePreview)`
