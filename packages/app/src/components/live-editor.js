@@ -1,14 +1,14 @@
-import { useRef } from 'react'
-import styled from 'styled-components'
-import theme from '@/theme'
 import * as scope from '@/components/presets/scope'
+import Monaco from '@monaco-editor/react'
+import styled from 'styled-components'
+import { useRef } from 'react'
+import theme from '@/theme'
 
 import {
   LiveProvider as BaseProvider,
   LiveError as BaseError,
   LivePreview as BasePreview
 } from 'react-live'
-import Monaco from '@monaco-editor/react'
 
 const LivePreviewWrapper = styled('div')`
   cursor: pointer;
@@ -72,7 +72,7 @@ export const LiveProvider = ({ queryVariables: query, ...props }) => {
 
 const LiveEditorBase = styled(Monaco)``
 
-export const LiveEditor = ({ code: code, onChange: onChange, ...props }) => {
+export const LiveEditor = ({ code, onChange, ...props }) => {
   const editorRef = useRef(null)
 
   const handleEditorDidMount = (_, editor) => {
