@@ -82,7 +82,6 @@
     "git-authors-cli": "latest",
     "git-dirty": "latest",
     "husky": "latest",
-    "lerna": "^3.20.2",
     "lint-staged": "latest",
     "npm-check-updates": "latest",
     "prettier-standard": "latest",
