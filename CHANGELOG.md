@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.61](https://github.com/microlinkhq/cards/compare/v0.0.60...v0.0.61) (2020-04-26)
+
+
+### Bug Fixes
+
+* ensure aspect ratio is 2:1 ([9e9a2eb](https://github.com/microlinkhq/cards/commit/9e9a2eb3c90dd0562899d86e3e3715701efa3039))
+* linter ([4009d11](https://github.com/microlinkhq/cards/commit/4009d11707c640dd0d7d76b63732e18284e8ad91))
+
 ### [0.0.60](https://github.com/microlinkhq/cards/compare/v0.0.59...v0.0.60) (2020-04-24)
 
 

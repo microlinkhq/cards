@@ -1,8 +1,6 @@
 import toPx from '@/lib/to-px'
 import theme from '@/theme'
 
-import { BASE_WIDTH, RATIOS } from '@/components/live-editor'
-
 export const ASIDE_HEIGHT_KEY = 'sidebar-json-height'
 
 export const ASIDE_WIDTH_KEY = 'sidebar-width'
