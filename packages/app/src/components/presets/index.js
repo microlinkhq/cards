@@ -1,31 +1,13 @@
-import article from './article'
-import adobe from './adobe'
-import bytesandhumans from './bytesandhumans'
-import chrisbiscardi from './chrisbiscardi'
-import fauna from './fauna'
-import microlink from './microlink'
-import midudev from './midudev'
-import news from './news'
-import rauchg from './rauchg'
-import simple from './simple'
-import swyxdotio from './swyxdotio'
-import thePracticalDev from './thepracticaldev'
-import vercel from './vercel'
-import pedro from './pedro'
-
-export default {
-  adobe,
-  article,
-  bytesandhumans,
-  chrisbiscardi,
-  fauna,
-  microlink,
-  midudev,
-  news,
-  pedro,
-  rauchg,
-  simple,
-  swyxdotio,
-  thePracticalDev,
-  vercel
-}
+export { article } from './article'
+export { adobe } from './adobe'
+export { bytesandhumans } from './bytesandhumans'
+export { chrisbiscardi } from './chrisbiscardi'
+export { microlink } from './microlink'
+export { midudev } from './midudev'
+export { news } from './news'
+export { rauchg } from './rauchg'
+export { simple } from './simple'
+export { swyxdotio } from './swyxdotio'
+export { thepracticaldev } from './thepracticaldev'
+export { vercel } from './vercel'
+export { pedro } from './pedro'

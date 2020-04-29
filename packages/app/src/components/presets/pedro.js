@@ -112,4 +112,4 @@ const query = {
   }
 }
 
-export default { name: 'pedro', code, query }
+export const pedro = { name: 'pedro', code, query }

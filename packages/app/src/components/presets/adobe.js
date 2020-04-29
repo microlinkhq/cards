@@ -53,4 +53,4 @@ const query = {
   bg: 'black'
 }
 
-export default { name: 'adobe', code, query }
+export const adobe = { name: 'adobe', code, query }

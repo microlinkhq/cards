@@ -70,4 +70,4 @@ const query = {
   title: '2020 in Review'
 }
 
-export default { name: 'rauchg', code, query }
+export const rauchg = { name: 'rauchg', code, query }
