@@ -84,4 +84,4 @@ const query = {
   border: '5px'
 }
 
-export default { name: 'swyxdotio', code, query }
+export const swyxdotio = { name: 'swyxdotio', code, query }

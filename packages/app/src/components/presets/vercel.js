@@ -89,7 +89,7 @@ const query = {
   }
 }
 
-export default {
+export const vercel = {
   name: 'vercel',
   code,
   query

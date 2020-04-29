@@ -131,4 +131,4 @@ const query = {
   ]
 }
 
-export default { name: 'thepracticaldev', code, query }
+export const thepracticaldev = { name: 'thepracticaldev', code, query }

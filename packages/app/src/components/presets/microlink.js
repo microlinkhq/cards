@@ -63,4 +63,4 @@ const query = {
   }
 }
 
-export default { name: 'microlink', code, query }
+export const microlink = { name: 'microlink', code, query }

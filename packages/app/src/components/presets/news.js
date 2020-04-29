@@ -67,4 +67,4 @@ const query = {
   foo: 'bar'
 }
 
-export default { name: 'news', code, query }
+export const news = { name: 'news', code, query }

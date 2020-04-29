@@ -105,4 +105,4 @@ const query = {
   tag: 'node'
 }
 
-export default { name: 'midudev', code, query }
+export const midudev = { name: 'midudev', code, query }
