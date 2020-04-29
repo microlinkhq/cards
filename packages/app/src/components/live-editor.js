@@ -87,10 +87,12 @@ export const LiveEditor = ({ code, onChange, ...props }) => {
     <LiveEditorBase
       value={code}
       language='javascript'
+      theme='dark'
       editorDidMount={handleEditorDidMount}
       options={{
         minimap: {
-          enabled: false
+          enabled: true,
+          lineNumbers: 'off'
         },
         scrollbar: {
           vertical: 'hidden'
