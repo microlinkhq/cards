@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { flatten, unflatten } from 'flat'
-import { encode } from 'qss'
 import isSSR from '@/lib/is-ssr'
+import { encode } from 'qss'
 import eq from '@/lib/eq'
 
 const fromLocation = isSSR
