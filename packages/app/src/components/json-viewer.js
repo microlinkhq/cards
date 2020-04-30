@@ -4,8 +4,17 @@ import styled from 'styled-components'
 const DynamicReactJson = dynamic(import('react-json-view'), { ssr: false })
 
 const ThemeWrapper = styled.div`
-  div.key-modal-request > div > span {
+  .key-modal-request > div {
+    border: 1px solid ${props => props.theme.borderColor};
+  }
+  .key-modal-request > div > span {
     background: transparent !important;
+  }
+
+  .key-modal-request > div > span > span > svg {
+    font-size: 12px !important;
+    right: 10px;
+    position: relative;
   }
 
   textarea,
@@ -79,7 +88,7 @@ export default ({ onChange, children, theme }) => {
           base02: borderColor, // line
           base03: color,
           base04: color,
-          base05: color,
+          base05: bg, /// new key bg
           base06: color,
           base07: color, // key
           base08: color,
