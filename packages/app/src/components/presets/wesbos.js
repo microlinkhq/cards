@@ -11,7 +11,8 @@ const code = (
           justifyContent: 'center',
           flexDirection: 'column',
           backgroundImage: `url(${query.backgroundImage})`,
-          backgroundSize: query.backgroundSize
+          backgroundSize: query.backgroundSize,
+          bg: query.bg
         }}
       >
         <Flex
@@ -90,6 +91,7 @@ const query = {
   url: 'wesbos.com',
   secondary: '#F8C30C',
   primary: '#000',
+  bg: '#fff',
   path: '/drone-javascript',
   backgroundImage:
     'https://wesbos.com/static/blackgrit-15c168539fb7109ce300574e7b4b0732.png',
