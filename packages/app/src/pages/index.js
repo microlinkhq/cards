@@ -129,11 +129,13 @@ export default () => {
     KeyS: { ctrl: true, fn: showOverlay(OVERLAY_STATE.PREVIEW) }
   })
 
-  const handleCode = newCode => {
-    if (newCode !== presetRef.current.code) {
-      setCode(newCode)
-      updateQuery({ setQuery, code: newCode })
+  const handleCode = code => {
+    setCode(code)
+    const updateQueryOpts = { setQuery, code }
+    if (code === presetRef.current.code) {
+      updateQueryOpts.queryVariables = { p: undefined }
     }
+    updateQuery(updateQueryOpts)
   }
 
   const handleQueryVariables = newJSON => {
