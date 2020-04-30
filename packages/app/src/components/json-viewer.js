@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic'
 import styled from 'styled-components'
-import * as polished from 'polished'
 
 const DynamicReactJson = dynamic(import('react-json-view'), { ssr: false })
 
@@ -14,15 +13,15 @@ const ThemeWrapper = styled.div`
     border-radius: 4px;
     outline: 0;
     background: transparent !important;
-    border: 1px solid ${props => props.color} !important;
-    color: ${props => props.color} !important;
+    border: 1px solid ${props => props.theme.contrast} !important;
+    color: ${props => props.theme.color} !important;
   }
   .key-modal-submit {
     position: relative;
     right: 4px;
   }
   .key-modal-submit svg {
-    color: ${props => props.addColor} !important;
+    color: ${props => props.theme.iconColor} !important;
   }
 
   .click-to-add-icon {
@@ -37,38 +36,24 @@ const ThemeWrapper = styled.div`
   }
 
   .click-to-add-icon svg {
-    color: ${props => props.plusColor} !important;
+    color: ${props => props.theme.iconColor} !important;
   }
 
   .edit-check svg {
-    color: ${props => props.editColor} !important;
+    color: ${props => props.theme.iconColor} !important;
   }
 
   .edit-cancel svg,
   .click-to-remove svg {
-    color: ${props => props.removeColor} !important;
+    color: ${props => props.theme.iconColor} !important;
   }
 `
 
-export default ({ onChange, children, theme, ...props }) => {
-  const stringColor = theme.styles.find(item => item.types.includes('string'))
-    .style.color
-  const secondaryColor = polished.lighten(0.1, theme.plain.backgroundColor)
-  const terciaryColor = polished.rgba(theme.plain.color, 0.6)
-  const removeColor = theme.styles.find(item => item.types.includes('tag'))
-    .style.color
-  const editColor = theme.styles.find(item => item.types.includes('operator'))
-  const plusColor = theme.styles.find(item => item.types.includes('attr-name'))
-    .style.color
+export default ({ onChange, children, theme }) => {
+  const { borderColor, color, bg } = theme
 
   return (
-    <ThemeWrapper
-      plusColor={plusColor}
-      editColor={editColor}
-      removeColor={removeColor}
-      stringColor={stringColor}
-      color={theme.plain.color}
-    >
+    <ThemeWrapper theme={theme}>
       <DynamicReactJson
         displayDataTypes={false}
         enableClipboard={false}
@@ -89,22 +74,22 @@ export default ({ onChange, children, theme, ...props }) => {
           return true
         }}
         theme={{
-          base00: theme.plain.backgroundColor,
-          base01: theme.plain.color,
-          base02: terciaryColor, // line
-          base03: secondaryColor,
-          base04: secondaryColor,
-          base05: secondaryColor,
-          base06: theme.plain.color,
-          base07: stringColor, // key
-          base08: theme.plain.color,
-          base09: stringColor, // value, close bg
-          base0A: theme.plain.color,
-          base0B: theme.plain.color,
-          base0C: theme.plain.color,
-          base0D: terciaryColor, // arrow
-          base0E: theme.plain.color,
-          base0F: theme.plain.color
+          base00: bg,
+          base01: color,
+          base02: borderColor, // line
+          base03: color,
+          base04: color,
+          base05: color,
+          base06: color,
+          base07: color, // key
+          base08: color,
+          base09: color, // value, close bg
+          base0A: color,
+          base0B: color,
+          base0C: color,
+          base0D: color, // arrow
+          base0E: color,
+          base0F: color
         }}
       />
     </ThemeWrapper>

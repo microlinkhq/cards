@@ -1,8 +1,8 @@
 import * as scope from '@/components/presets/scope'
+import { editorThemes, theme } from '@/theme'
 import Monaco from '@monaco-editor/react'
 import styled from 'styled-components'
 import { useRef } from 'react'
-import theme from '@/theme'
 
 import {
   LiveProvider as BaseProvider,
@@ -63,12 +63,16 @@ export const LiveProvider = ({ queryVariables: query, ...props }) => {
 
 const LiveEditorBase = styled(Monaco)``
 
-export const LiveEditor = ({ code, onChange, ...props }) => {
+export const LiveEditor = ({ code, onChange, themeKey }) => {
   const editorRef = useRef(null)
 
-  const handleEditorDidMount = (_, editor) => {
-    editorRef.current = editor
+  const handleEditorDidMount = (getEditorValue, monaco) => {
+    Object.keys(editorThemes).forEach(key => {
+      const value = editorThemes[key]
+      monaco._themeService.defineTheme(key, value)
+    })
 
+    editorRef.current = monaco
     editorRef.current.onDidChangeModelContent(ev => {
       onChange(editorRef.current.getValue())
     })
@@ -78,15 +82,19 @@ export const LiveEditor = ({ code, onChange, ...props }) => {
     <LiveEditorBase
       value={code}
       language='javascript'
-      theme='dark'
+      theme={themeKey}
       editorDidMount={handleEditorDidMount}
       options={{
+        fontSize: 14,
+        scrollBeyondLastLine: false,
+        wordWrapColumn: 'on',
+        hideCursorInOverviewRuler: true,
         minimap: {
-          enabled: true,
-          lineNumbers: 'off'
+          enabled: false
         },
+        lineNumbersMinChars: 0,
         scrollbar: {
-          vertical: 'hidden'
+          useShadows: false
         }
       }}
     />
