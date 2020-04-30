@@ -1,22 +1,15 @@
-import nightOwlLight from 'prism-react-renderer/themes/nightOwlLight'
-import palenight from 'prism-react-renderer/themes/palenight'
-import nightOwl from 'prism-react-renderer/themes/nightOwl'
-import ultramin from 'prism-react-renderer/themes/ultramin'
-import dracula from 'prism-react-renderer/themes/dracula'
-import github from 'prism-react-renderer/themes/github'
-
+import themelist from 'monaco-themes/themes/themelist.json'
 import toPx from '@/lib/to-px'
 
-const defaultTheme = ultramin
-
-export const editorTheme = {
-  dracula,
-  github,
-  nightOwl,
-  nightOwlLight,
-  palenight,
-  default: defaultTheme
-}
+export const editorThemes = Object.keys(themelist).reduce((acc, id) => {
+  const name = themelist[id]
+  return {
+    ...acc,
+    [id === 'github'
+      ? 'default'
+      : id]: require(`monaco-themes/themes/${name}.json`)
+  }
+}, {})
 
 const speed = {
   quickly: 150,
@@ -26,9 +19,7 @@ const speed = {
 
 export const theme = {
   borders: [0, '1px solid'],
-  colors: {
-    modes: editorTheme
-  },
+  colors: { modes: editorThemes },
   fonts: {
     sans:
       'Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Oxygen, Ubuntu, Cantarell, "Open Sans", sans-serif',

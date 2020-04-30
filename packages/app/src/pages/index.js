@@ -3,6 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from '@/components/tabs'
 import { Link, Image, Text, Box, Flex, useThemeUI } from 'theme-ui'
 import SearchableSelect from '@/components/searchable-select'
 import { marshall, unmarshall } from '@/lib/compress-json'
+import { theme as themeBase, editorThemes } from '@/theme'
 import useScreenshotUrl from '@/hooks/use-screenshot-url'
 import KeyboardIcon from '@/components/icons/keyboard'
 import useKeyBindings from '@/hooks/use-key-bindings'
@@ -34,7 +35,6 @@ import * as polished from 'polished'
 import isMac from '@/lib/is-mac'
 import Router from 'next/router'
 import { useState } from 'react'
-import themeBase from '@/theme'
 import defer from 'tickedoff'
 import Cycled from 'cycled'
 
@@ -78,7 +78,7 @@ export default () => {
   const isLoading = useLoading()
   const size = useWindowSize()
   const [query, setQuery] = useQueryState()
-  const { theme, colorMode, setColorMode } = useThemeUI()
+  const { colorMode, setColorMode } = useThemeUI()
   const [isOverlay, setOverlay] = useState('')
   const [asideWidth, setAsideWidth] = useState(
     store.get(ASIDE_WIDTH_KEY) || DEFAULT_ASIDE_WIDTH
@@ -162,15 +162,18 @@ export default () => {
 
   const isEditor = Router.asPath.startsWith('/editor')
 
-  const editorTheme = theme.colors.modes[colorMode]
-  const color = editorTheme.plain.color
-  const bg = editorTheme.plain.backgroundColor
-  const borderColor = polished.rgba(color, 0.1)
-  const iconColor = polished.rgba(color, 0.75)
+  const theme = (() => {
+    const editorTheme = editorThemes[colorMode].colors
+    const color = editorTheme['editor.foreground']
+    const bg = editorTheme['editor.background']
+    const borderColor = polished.rgba(color, 0.1)
+    const iconColor = polished.rgba(color, 0.75)
+    const contrast = editorTheme['editorCursor.foreground']
 
-  const stringColor = theme.colors.styles.find(item =>
-    item.types.includes('string')
-  ).style.color
+    return { color, contrast, bg, borderColor, iconColor }
+  })()
+
+  const { contrast, color, bg, borderColor, iconColor } = theme
 
   const OverlayHeader = props => <Box as='header' {...props} />
 
@@ -288,7 +291,7 @@ export default () => {
           forever. Read more into{' '}
           <Text
             as='a'
-            sx={{ textDecoration: 'none', color: stringColor }}
+            sx={{ textDecoration: 'none', color: contrast }}
             href='https://microlink.io/docs/cards/getting-started/overview'
             target='_blank'
             rel='noopener noreferrer'
@@ -300,7 +303,7 @@ export default () => {
           Starts from <b>free</b> and code is available on{' '}
           <Text
             as='a'
-            sx={{ textDecoration: 'none', color: stringColor }}
+            sx={{ textDecoration: 'none', color: contrast }}
             href={pkg.homepage}
             target='_blank'
             rel='noopener noreferrer'
@@ -334,7 +337,7 @@ export default () => {
         </Text>
 
         <Box as='section' sx={{ overflow: 'scroll' }}>
-          <Tabs theme={{ borderColor, color, bg }}>
+          <Tabs theme={theme}>
             <TabList>
               <Tab>SEO tags</Tab>
               <Tab>HTML</Tab>
@@ -347,7 +350,7 @@ export default () => {
               <Code
                 sx={{
                   borderColor,
-                  color: stringColor
+                  color: contrast
                 }}
                 onClick={e => toClipboard(e.target.textContent, 'SEO Tags')}
                 children={shareCode.seo(screenshotUrl)}
@@ -357,7 +360,7 @@ export default () => {
               <Code
                 sx={{
                   borderColor,
-                  color: stringColor
+                  color: contrast
                 }}
                 children={shareCode.html(screenshotUrl)}
                 onClick={e => toClipboard(e.target.textContent, 'HTML')}
@@ -367,7 +370,7 @@ export default () => {
               <Code
                 sx={{
                   borderColor,
-                  color: stringColor
+                  color: contrast
                 }}
                 children={shareCode.markdown(screenshotUrl)}
                 onClick={e => toClipboard(e.target.textContent, 'Markdown')}
@@ -377,7 +380,7 @@ export default () => {
               <Code
                 sx={{
                   borderColor,
-                  color: stringColor
+                  color: contrast
                 }}
                 children={shareCode.javascript(query)}
                 onClick={e => toClipboard(e.target.textContent, 'Javascript')}
@@ -387,7 +390,7 @@ export default () => {
               <Code
                 sx={{
                   borderColor,
-                  color: stringColor
+                  color: contrast
                 }}
                 children={screenshotUrl}
                 onClick={e => toClipboard(e.target.textContent, 'URL')}
@@ -401,11 +404,7 @@ export default () => {
   }
 
   return (
-    <LiveProvider
-      theme={editorTheme}
-      queryVariables={queryVariables}
-      code={code}
-    >
+    <LiveProvider queryVariables={queryVariables} code={code}>
       <Overlay
         aria-hidden={isOverlay === ''}
         backgroundColor={bg}
@@ -589,13 +588,18 @@ export default () => {
                 sx={{
                   borderBottom: 1,
                   borderColor,
-                  p: 3,
-                  mr: 3,
+                  py: 4,
+                  pr: 3,
                   overflow: 'auto',
                   flex: 1
                 }}
               >
-                <LiveEditor onChange={handleCode} />
+                <LiveEditor
+                  theme={theme}
+                  themeKey={colorMode}
+                  code={code}
+                  onChange={handleCode}
+                />
               </Box>
               <Box
                 sx={{
@@ -624,7 +628,7 @@ export default () => {
                     }}
                   />
                   <JSONViewer
-                    theme={editorTheme}
+                    theme={theme}
                     children={queryVariables}
                     onChange={handleQueryVariables}
                   />

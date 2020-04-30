@@ -14,7 +14,7 @@ const PRETTIER_CONFIG = {
   semi: true,
   singleQuote: true,
   jsxSingleQuote: true,
-  printWidth: 30,
+  printWidth: 60,
   tabWidth: 2
 }
 
