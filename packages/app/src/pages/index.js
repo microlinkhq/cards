@@ -7,6 +7,7 @@ import { theme as themeBase, editorThemes } from '@/theme'
 import useScreenshotUrl from '@/hooks/use-screenshot-url'
 import KeyboardIcon from '@/components/icons/keyboard'
 import useKeyBindings from '@/hooks/use-key-bindings'
+import { useRef, useState, useCallback } from 'react'
 import useQueryState from '@/hooks/use-query-state'
 import useWindowSize from '@/hooks/use-window-size'
 import GitHubIcon from '@/components/icons/github'
@@ -34,7 +35,6 @@ import isEmpty from '@/lib/is-empty'
 import * as polished from 'polished'
 import isMac from '@/lib/is-mac'
 import Router from 'next/router'
-import { useState } from 'react'
 import defer from 'tickedoff'
 import Cycled from 'cycled'
 
@@ -88,20 +88,20 @@ export default () => {
     store.get(ASIDE_HEIGHT_KEY) || DEFAULT_ASIDE_HEIGHT
   )
 
-  const [preset, setPreset] = useState(presets[query.preset || DEFAULT_PRESET])
+  const presetRef = useRef(presets[query.preset || DEFAULT_PRESET])
 
   const [code, setCode] = useState(() => {
-    if (isEmpty(query)) return preset.code
+    if (isEmpty(query)) return presetRef.current.code
     const { p } = query
-    if (isEmpty(p)) return preset.code
+    if (isEmpty(p)) return presetRef.current.code
     return unmarshall(p)
   })
 
   const [queryVariables, setQueryVariables] = useState(() => {
-    if (isEmpty(query)) return preset.query
+    if (isEmpty(query)) return presetRef.current.query
     const { p, preset: queryPreset, ...queryVariables } = query
-    if (isEmpty(queryVariables)) return preset.query
-    return { ...preset.query, ...queryVariables }
+    if (isEmpty(queryVariables)) return presetRef.current.query
+    return { ...presetRef.current.query, ...queryVariables }
   })
 
   const [screenshotUrl, syncScreenshotUrl] = useScreenshotUrl(queryVariables)
@@ -130,13 +130,18 @@ export default () => {
   })
 
   const handleCode = newCode => {
-    setCode(newCode)
-    updateQuery({ setQuery, code: newCode })
+    if (newCode !== presetRef.current.code) {
+      setCode(newCode)
+      updateQuery({ setQuery, code: newCode })
+    }
   }
 
   const handleQueryVariables = newJSON => {
     setQueryVariables(newJSON)
-    updateQuery({ setQuery, queryVariables: diff(preset.query, newJSON) })
+    updateQuery({
+      setQuery,
+      queryVariables: diff(presetRef.current.query, newJSON)
+    })
   }
 
   const handleAsideWidthReize = width => {
@@ -152,9 +157,9 @@ export default () => {
   const handleSelectChange = event => {
     const presetName = event.value
     const newPreset = presets[presetName]
-    setPreset(newPreset)
-    setCode(newPreset.code)
-    setQueryVariables(newPreset.query)
+    presetRef.current = newPreset
+    setCode(presetRef.current.code)
+    setQueryVariables(presetRef.current.query)
     setQuery({ p: undefined, preset: presetName }, { replace: true })
   }
 
@@ -513,7 +518,10 @@ export default () => {
                   <SearchableSelect
                     color={color}
                     bg={bg}
-                    value={{ value: preset.name, label: preset.name }}
+                    value={{
+                      value: presetRef.current.name,
+                      label: presetRef.current.name
+                    }}
                     options={Object.keys(presets).map(key => ({
                       value: key,
                       label: presets[key].name

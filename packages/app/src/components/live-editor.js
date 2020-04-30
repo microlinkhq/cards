@@ -73,7 +73,7 @@ export const LiveEditor = ({ code, onChange, themeKey, theme }) => {
       monaco._themeService.defineTheme(key, value)
     })
 
-    monaco.onDidChangeModelContent(ev => onChange(editorRef.current.getValue()))
+    monaco.onDidChangeModelContent(() => onChange(getEditorValue()))
     editorRef.current = monaco
   }
 
