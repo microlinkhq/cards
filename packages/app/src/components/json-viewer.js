@@ -64,6 +64,7 @@ export default ({ onChange, children, theme }) => {
   return (
     <ThemeWrapper theme={theme}>
       <DynamicReactJson
+        sortKeys
         displayDataTypes={false}
         enableClipboard={false}
         displayObjectSize={false}
