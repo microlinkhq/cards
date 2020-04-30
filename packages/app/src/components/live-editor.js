@@ -3,6 +3,7 @@ import { editorThemes, theme } from '@/theme'
 import Monaco from '@monaco-editor/react'
 import styled from 'styled-components'
 import { useRef } from 'react'
+import { Text } from 'theme-ui'
 
 import {
   LiveProvider as BaseProvider,
@@ -63,7 +64,7 @@ export const LiveProvider = ({ queryVariables: query, ...props }) => {
 
 const LiveEditorBase = styled(Monaco)``
 
-export const LiveEditor = ({ code, onChange, themeKey }) => {
+export const LiveEditor = ({ code, onChange, themeKey, theme }) => {
   const editorRef = useRef(null)
 
   const handleEditorDidMount = (getEditorValue, monaco) => {
@@ -72,10 +73,8 @@ export const LiveEditor = ({ code, onChange, themeKey }) => {
       monaco._themeService.defineTheme(key, value)
     })
 
+    monaco.onDidChangeModelContent(ev => onChange(editorRef.current.getValue()))
     editorRef.current = monaco
-    editorRef.current.onDidChangeModelContent(ev => {
-      onChange(editorRef.current.getValue())
-    })
   }
 
   return (
@@ -84,6 +83,9 @@ export const LiveEditor = ({ code, onChange, themeKey }) => {
       language='javascript'
       theme={themeKey}
       editorDidMount={handleEditorDidMount}
+      loading={
+        <Text sx={{ fontFamily: 'mono', color: theme.color }}>Loading...</Text>
+      }
       options={{
         fontSize: 14,
         scrollBeyondLastLine: false,

@@ -595,6 +595,7 @@ export default () => {
                 }}
               >
                 <LiveEditor
+                  theme={theme}
                   themeKey={colorMode}
                   code={code}
                   onChange={handleCode}
