@@ -1,4 +1,6 @@
-module.exports = {
+const withOffline = require('next-offline')
+
+const nextConfig = {
   experimental: {
     jsconfigPaths: true
   },
@@ -10,3 +12,5 @@ module.exports = {
     }
   }
 }
+
+module.exports = withOffline(nextConfig)
