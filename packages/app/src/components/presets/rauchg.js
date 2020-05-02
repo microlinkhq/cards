@@ -53,7 +53,9 @@ const code = (
             fontSize: 6,
             fontWeight: 700,
             bg: query.color,
-            color: query.bg
+            color: query.bg,
+            maxWidth: '38rem',
+            textAlign: 'center'
           }}
           children={query.title}
         />
