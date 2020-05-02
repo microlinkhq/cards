@@ -2,7 +2,7 @@
   "name": "@microlink/cards",
   "description": "The easiest way to create and share dynamic images at scale.",
   "homepage": "https://nicedoc.io/microlinkhq/microlink-cards",
-  "version": "0.0.66",
+  "version": "0.0.67",
   "main": "src/index.js",
   "author": {
     "email": "hello@microlink.io",
