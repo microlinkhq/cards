@@ -1,9 +1,12 @@
 'use strict'
 
+const debug = require('debug-logfmt')('microlink-cards')
+const existsFile = require('exists-file')
 const mql = require('@microlink/mql')
 const { promisify } = require('util')
 const makeDir = require('make-dir')
 const stream = require('stream')
+const pAll = require('p-all')
 const path = require('path')
 const get = require('dlv')
 const fs = require('fs')
@@ -22,7 +25,13 @@ const takeScreenshot = async (url, mqlOpts) => {
   return data.screenshot.url
 }
 
-module.exports = async ({ mqlOpts = {}, entries = [], output = {} } = {}) => {
+module.exports = async ({
+  mqlOpts = {},
+  entries = [],
+  output = {},
+  overwrite = false,
+  concurrency = 2
+} = {}) => {
   if (!get(output, 'path')) {
     throw new TypeError(
       'Missing `output.path`, need to specify an output directory.'
@@ -38,19 +47,24 @@ module.exports = async ({ mqlOpts = {}, entries = [], output = {} } = {}) => {
   const outputPath = path.resolve(output.path)
   await makeDir(outputPath)
 
-  const promises = entries.map(async query => {
-    const payload = new URLSearchParams(query).toString()
-    const cardUrl = `https://cards.microlink.io/?${payload}`
+  const actions = entries.map(query => {
+    return async () => {
+      const hash = output.filename(query)
+      const ext = get(mqlOpts, 'screenshot.type', 'png')
+      const filepath = path.resolve(output.path, `${hash}.${ext}`)
 
-    const ext = get(mqlOpts, 'screenshot.type', 'png')
-    const hash = output.filename(query)
-    const filepath = path.resolve(output.path, `${hash}.${ext}`)
+      if ((await existsFile(filepath)) && !overwrite) return
 
-    const url = await takeScreenshot(cardUrl, mqlOpts)
-    await pipeline(mql.stream(url), fs.createWriteStream(filepath))
+      const payload = new URLSearchParams(query).toString()
+      const cardUrl = `https://cards.microlink.io/?${payload}`
 
-    return filepath
+      const url = await takeScreenshot(cardUrl, mqlOpts)
+      await pipeline(mql.stream(url), fs.createWriteStream(filepath))
+
+      debug('create', filepath)
+      return filepath
+    }
   })
 
-  return Promise.all(promises)
+  return pAll(actions, { concurrency })
 }
