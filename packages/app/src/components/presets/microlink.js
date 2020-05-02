@@ -12,10 +12,7 @@ const code = (
       />
       <Flex
         sx={{
-          bg:
-            query.screenshot && query.screenshot.type === 'png'
-              ? 'transparent'
-              : 'white',
+          bg: query.bg,
           alignItems: 'center',
           justifyContent: 'center',
           flexDirection: 'column'
@@ -28,7 +25,7 @@ const code = (
           />
           <Box
             sx={{
-              background: query.bg,
+              bg: query.color,
               width: '2px',
               mx: 3,
               my: '4px'
@@ -55,12 +52,9 @@ const code = (
 
 const query = {
   color: '#313b53',
-  bg: '#313B53',
+  bg: 'white',
   title: 'Microlink Cards',
-  logo: 'https://cdn.microlink.io/logo/logo.svg',
-  screenshot: {
-    type: 'png'
-  }
+  logo: 'https://cdn.microlink.io/logo/logo.svg'
 }
 
 export const microlink = { name: 'microlink', code, query }
