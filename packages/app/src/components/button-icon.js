@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Button } from 'theme-ui'
 
-import themeBase from '@/theme'
+import { theme } from '@/theme'
 
 export const ButtonIcon = styled(Button)`
   display: flex;
@@ -12,8 +12,8 @@ export const ButtonIcon = styled(Button)`
   padding: 0;
 
   svg {
-    transition: fill ${themeBase.transition.medium},
-      stroke ${themeBase.transition.medium};
+    transition: fill ${theme.transition.medium},
+      stroke ${theme.transition.medium};
     stroke: ${({ color }) => color};
     fill: ${({ color }) => color};
   }

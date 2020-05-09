@@ -4,7 +4,7 @@ import { createGlobalStyle } from 'styled-components'
 import { ThemeProvider } from 'theme-ui'
 import 'react-aspect-ratio/aspect-ratio.css'
 
-import theme from '@/theme'
+import { theme } from '@/theme'
 import pkg from '@/package.json'
 
 const GlobalStylesheet = createGlobalStyle`

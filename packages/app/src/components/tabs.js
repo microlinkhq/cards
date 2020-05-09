@@ -1,7 +1,7 @@
 import { Tab, Tabs as TabsBase, TabList, TabPanel } from 'react-tabs'
 import styled from 'styled-components'
 
-import themeBase from '@/theme'
+import { theme } from '@/theme'
 
 export const Tabs = styled(TabsBase)`
   .react-tabs {
@@ -10,7 +10,7 @@ export const Tabs = styled(TabsBase)`
 
   .react-tabs__tab-list {
     border-bottom: 1px solid ${props => props.theme.borderColor};
-    margin: 0 0 ${themeBase.space[3]};
+    margin: 0 0 ${theme.space[3]};
     padding: 0;
   }
 

@@ -1,7 +1,7 @@
 import ReactSelect from 'react-select'
 import { lighten } from 'polished'
 
-import themeBase from '@/theme'
+import { theme as themeBase } from '@/theme'
 
 export const SearchableSelect = ({ bg, color, ...props }) => {
   const secondaryColor = lighten(0.1, bg)
