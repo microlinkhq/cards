@@ -1,0 +1,54 @@
+import { useContext, useMemo } from 'react'
+
+import Overlay from '@/components/overlay'
+import Choose from '@/components/choose'
+
+import { OVERLAY_STATE } from '@/constants'
+import { AppContext } from '@/context'
+
+import OverlayAbout from './overlay-about'
+import OverlayKeyBindings from './overlay-key-bindings'
+import OverlayPreview from './overlay-preview'
+
+const Overlays = () => {
+  const {
+    isOverlay,
+    hideOverlay,
+    theme: { color, bg }
+  } = useContext(AppContext)
+
+  const showPreview = useMemo(() => isOverlay === OVERLAY_STATE.PREVIEW, [
+    isOverlay
+  ])
+  const showAbout = useMemo(() => isOverlay === OVERLAY_STATE.ABOUT, [
+    isOverlay
+  ])
+  const showKeyBindings = useMemo(
+    () => isOverlay === OVERLAY_STATE.KEYBINDINGS,
+    [isOverlay]
+  )
+
+  return (
+    <Overlay
+      aria-hidden={isOverlay === ''}
+      backgroundColor={bg}
+      color={color}
+      isOpen={isOverlay !== ''}
+      onClose={hideOverlay}
+    >
+      <Choose.When condition={showPreview}>
+        <OverlayPreview />
+      </Choose.When>
+
+      <Choose.When condition={showAbout}>
+        <OverlayAbout />
+      </Choose.When>
+
+      <Choose.When condition={showKeyBindings}>
+        <OverlayKeyBindings />
+      </Choose.When>
+    </Overlay>
+  )
+}
+
+export default Overlays
