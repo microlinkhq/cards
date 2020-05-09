@@ -1,6 +1,6 @@
 import { Box } from 'theme-ui'
 
-export default ({ sx, ...props }) => (
+export const Label = ({ sx, ...props }) => (
   <Box
     sx={{
       position: 'absolute',

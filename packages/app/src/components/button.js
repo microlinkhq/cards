@@ -1,7 +1,7 @@
-import { Button } from 'theme-ui'
+import { Button as UIButton } from 'theme-ui'
 
-export default ({ sx, ...props }) => (
-  <Button
+export const Button = ({ sx, ...props }) => (
+  <UIButton
     sx={{
       cursor: 'pointer',
       borderRadius: 4,

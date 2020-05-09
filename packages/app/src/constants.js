@@ -1,4 +1,4 @@
-import toPx from '@/lib/to-px'
+import { toPx } from '@/lib'
 import theme from '@/theme'
 
 export const ASIDE_HEIGHT_KEY = 'sidebar-json-height'

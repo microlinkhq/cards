@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import If from './if'
 
-const Choose = props => {
+import { If } from './if'
+
+export const Choose = (props) => {
   let when = null
   let otherwise = null
 
-  React.Children.forEach(props.children, children => {
+  React.Children.forEach(props.children, (children) => {
     if (children.props.condition === undefined) {
       otherwise = children
     } else if (!when && children.props.condition === true) {
@@ -29,5 +30,3 @@ Choose.Otherwise.propTypes = {
   children: PropTypes.node,
   render: PropTypes.func
 }
-
-export default Choose

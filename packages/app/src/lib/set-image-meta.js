@@ -3,7 +3,7 @@ const setContent = (selector, newContent) => {
   if (el) el.content = newContent
 }
 
-export default imageUrl => {
+export const setImageMeta = imageUrl => {
   if (imageUrl) {
     setContent('meta[property="og:image"]', imageUrl)
     setContent('meta[name="twitter:image"]', imageUrl)

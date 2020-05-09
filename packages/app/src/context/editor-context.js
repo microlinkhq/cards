@@ -1,9 +1,7 @@
 import { useCallback, useState } from 'react'
 import { diff } from 'deep-object-diff'
 
-import debounce from '@/lib/debounce'
-import isEmpty from '@/lib/is-empty'
-import { marshall, unmarshall } from '@/lib/compress-json'
+import { debounce, isEmpty, marshall, unmarshall } from '@/lib'
 
 const updateQuery = debounce(({ setQuery, code, queryVariables }) => {
   let newQuery = {}

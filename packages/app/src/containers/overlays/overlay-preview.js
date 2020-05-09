@@ -2,16 +2,17 @@ import { useContext } from 'react'
 import { Text, Box, Flex } from 'theme-ui'
 import AspectRatio from 'react-aspect-ratio'
 
-import { Tab, Tabs, TabList, TabPanel } from '@/components/tabs'
-import Button from '@/components/button'
-import Code from '@/components/code'
-import { LivePreview } from '@/components/live-editor'
-
+import {
+  Button,
+  Code,
+  LivePreview,
+  Tab,
+  Tabs,
+  TabList,
+  TabPanel
+} from '@/components'
 import { AppContext } from '@/context'
-
-import clipboard from '@/lib/clipboard'
-import notification from '@/lib/notification'
-import shareCode from '@/lib/share-code'
+import { clipboard, notification, shareCode } from '@/lib'
 
 const toClipboard = async (text, name) => {
   await clipboard.write(text)

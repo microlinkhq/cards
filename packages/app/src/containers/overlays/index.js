@@ -1,8 +1,6 @@
 import { useContext, useMemo } from 'react'
 
-import Overlay from '@/components/overlay'
-import Choose from '@/components/choose'
-
+import { Choose, Overlay } from '@/components'
 import { OVERLAY_STATE } from '@/constants'
 import { AppContext } from '@/context'
 
@@ -10,7 +8,7 @@ import OverlayAbout from './overlay-about'
 import OverlayKeyBindings from './overlay-key-bindings'
 import OverlayPreview from './overlay-preview'
 
-const Overlays = () => {
+export const Overlays = () => {
   const {
     isOverlay,
     hideOverlay,
@@ -50,5 +48,3 @@ const Overlays = () => {
     </Overlay>
   )
 }
-
-export default Overlays

@@ -1,6 +1,6 @@
-import getScreenshotUrl from '@/lib/screenshot-url'
 import { useState, useEffect } from 'react'
-import isDev from '@/lib/is-dev'
+
+import { getScreenshotUrl, isDev } from '@/lib'
 
 const shortenUrl = isDev
   ? 'http://localhost:3000/?adblock=false&element=%23screenshot&embed=screenshot.url&meta=false&screenshot&waitUntil.0=load&waitUntil.1=networkidle0&url='
@@ -30,7 +30,7 @@ const getCardUrl = ({ endpoint, ...props }) => {
   })
 }
 
-export default queryVariables => {
+export const useScreenshotUrl = queryVariables => {
   const [screenshotUrl, setScreenshotUrl] = useState('')
 
   const sync = queryVariables => setScreenshotUrl(getCardUrl(queryVariables))

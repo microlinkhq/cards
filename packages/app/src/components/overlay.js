@@ -1,6 +1,6 @@
 import { Box } from 'theme-ui'
 
-export default ({
+export const Overlay = ({
   backgroundColor,
   color,
   children,

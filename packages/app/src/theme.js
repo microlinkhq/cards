@@ -1,5 +1,6 @@
 import themelist from 'monaco-themes/themes/themelist.json'
-import toPx from '@/lib/to-px'
+
+import { toPx } from '@/lib'
 
 export const editorThemes = Object.keys(themelist).reduce((acc, id) => {
   const name = themelist[id]

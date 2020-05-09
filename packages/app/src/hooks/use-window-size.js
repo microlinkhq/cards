@@ -7,7 +7,7 @@ const getSize = () => ({
   height: window.innerHeight
 })
 
-export default () => {
+export const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState(DEFAULT_SIZE)
 
   useLayoutEffect(() => {

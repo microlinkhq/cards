@@ -1,18 +1,21 @@
 import { useCallback, useContext, useMemo, useState } from 'react'
 import { Box, Flex } from 'theme-ui'
 
-import { HorizontalDragBar, VerticalDragBar } from '@/components/drag-bars'
-import JSONViewer from '@/components/json-viewer'
-import Label from '@/components/label'
-import { LiveEditor } from '@/components/live-editor'
-import SearchableSelect from '@/components/searchable-select'
-
-import ButtonIcon from '@/components/button-icon'
-import GitHubIcon from '@/components/icons/github'
-import InfoIcon from '@/components/icons/info'
-import KeyboardIcon from '@/components/icons/keyboard'
-import ThemeIcon from '@/components/icons/theme'
-
+import {
+  ButtonIcon,
+  HorizontalDragBar,
+  JSONViewer,
+  Label,
+  LiveEditor,
+  SearchableSelect,
+  VerticalDragBar
+} from '@/components'
+import {
+  GitHubIcon,
+  InfoIcon,
+  KeyboardIcon,
+  ThemeIcon
+} from '@/components/icons'
 import {
   ASIDE_MAX_HEIGHT,
   ASIDE_MAX_WIDTH,
@@ -25,13 +28,12 @@ import {
   OVERLAY_STATE,
   SEARCH_WIDTH
 } from '@/constants'
-
-import useWindowSize from '@/hooks/use-window-size'
-import store from '@/lib/local-storage'
+import { useWindowSize } from '@/hooks'
+import { store } from '@/lib'
 import { AppContext } from '@/context'
 import pkg from '@/package.json'
 
-const Sidebar = () => {
+export const Sidebar = () => {
   const size = useWindowSize()
   const {
     changeTheme,
@@ -236,5 +238,3 @@ const Sidebar = () => {
     </Flex>
   )
 }
-
-export default Sidebar

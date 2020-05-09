@@ -1,3 +1,4 @@
-export const read = async () => navigator.clipboard.readText()
-export const write = async text => navigator.clipboard.writeText(text)
-export default { read, write }
+const read = async () => navigator.clipboard.readText()
+const write = async text => navigator.clipboard.writeText(text)
+
+export const clipboard = { read, write }

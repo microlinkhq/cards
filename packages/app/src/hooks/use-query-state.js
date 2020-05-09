@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { flatten, unflatten } from 'flat'
-import isSSR from '@/lib/is-ssr'
 import { encode } from 'qss'
-import eq from '@/lib/eq'
+
+import { eq, isSSR } from '@/lib'
 
 const fromLocation = isSSR
   ? () => ({})
@@ -18,7 +18,7 @@ const fromLocation = isSSR
 
 const condition = isSSR ? [] : [window.location.search]
 
-export default () => {
+export const useQueryState = () => {
   const [query, setQuery] = useState(unflatten(fromLocation()))
 
   useEffect(() => {

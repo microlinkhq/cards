@@ -1,10 +1,8 @@
 import { useContext } from 'react'
 import { Image, Text, Box, Flex } from 'theme-ui'
 
-import Button from '@/components/button'
-
+import { Button } from '@/components'
 import { AppContext } from '@/context'
-
 import pkg from '@/package.json'
 
 const OverlayAbout = () => {

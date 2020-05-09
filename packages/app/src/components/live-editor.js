@@ -1,15 +1,16 @@
-import * as scope from '@/components/presets/scope'
-import { editorThemes, theme } from '@/theme'
+import { useRef } from 'react'
 import Monaco from '@monaco-editor/react'
 import styled from 'styled-components'
-import { useRef } from 'react'
 import { Text } from 'theme-ui'
-
 import {
   LiveProvider as BaseProvider,
   LiveError as BaseError,
   LivePreview as BasePreview
 } from 'react-live'
+
+import { editorThemes, theme } from '@/theme'
+
+import * as scope from './presets/scope'
 
 const LivePreviewWrapper = styled('div')`
   cursor: pointer;

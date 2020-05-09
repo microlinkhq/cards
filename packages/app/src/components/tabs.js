@@ -1,5 +1,6 @@
 import { Tab, Tabs as TabsBase, TabList, TabPanel } from 'react-tabs'
 import styled from 'styled-components'
+
 import themeBase from '@/theme'
 
 export const Tabs = styled(TabsBase)`

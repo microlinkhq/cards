@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
-import isEditor from '@/lib/is-editor'
-import isEmpty from '@/lib/is-empty'
 import Router from 'next/router'
 
-export default () => {
+import { isEditor, isEmpty } from '@/lib'
+
+export const useLoading = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {

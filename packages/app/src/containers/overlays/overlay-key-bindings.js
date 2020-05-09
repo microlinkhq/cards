@@ -1,9 +1,9 @@
 import { useContext } from 'react'
 import { Text, Box, Flex } from 'theme-ui'
 
-import Button from '@/components/button'
+import { Button } from '@/components'
 import { AppContext } from '@/context'
-import isMac from '@/lib/is-mac'
+import { isMac } from '@/lib'
 
 const ctrl = isMac ? 'cmd' : 'ctrl'
 

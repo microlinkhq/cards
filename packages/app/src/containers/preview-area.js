@@ -2,15 +2,11 @@ import { useContext } from 'react'
 import { Link, Box, Flex } from 'theme-ui'
 import AspectRatio from 'react-aspect-ratio'
 
-import Button from '@/components/button'
-import Main from '@/components/main'
-import { LiveError, LivePreview } from '@/components/live-editor'
-
+import { Button, LiveError, LivePreview, Main } from '@/components'
 import { OVERLAY_STATE, PREVIEW_CARD_WIDTH } from '@/constants'
-
 import { AppContext } from '@/context'
 
-export default ({ isEditor }) => {
+export const PreviewArea = ({ isEditor }) => {
   const {
     showOverlay,
     screenshotUrl,

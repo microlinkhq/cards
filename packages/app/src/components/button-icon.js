@@ -1,8 +1,9 @@
-import themeBase from '@/theme'
 import styled from 'styled-components'
 import { Button } from 'theme-ui'
 
-const ButtonIcon = styled(Button)`
+import themeBase from '@/theme'
+
+export const ButtonIcon = styled(Button)`
   display: flex;
   cursor: pointer;
   background: none;
@@ -22,5 +23,3 @@ const ButtonIcon = styled(Button)`
     fill: ${({ hoverColor }) => hoverColor};
   }
 `
-
-export default ButtonIcon

@@ -2,13 +2,9 @@ import { useMemo, useContext } from 'react'
 import { Flex } from 'theme-ui'
 import { useRouter } from 'next/router'
 
-import PreviewArea from '@/containers/preview-area'
-import Sidebar from '@/containers/sidebar'
-import Overlays from '@/containers/overlays'
-
-import useKeyBindings from '@/hooks/use-key-bindings'
-import useLoading from '@/hooks/use-loading'
-import setImageMeta from '@/lib/set-image-meta'
+import { Overlays, PreviewArea, Sidebar } from '@/containers'
+import { useKeyBindings, useLoading } from '@/hooks'
+import { setImageMeta } from '@/lib'
 import { OVERLAY_STATE } from '@/constants'
 import AppContextProvider, { AppContext } from '@/context'
 

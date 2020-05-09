@@ -1,6 +1,6 @@
 import { createSnackbar } from '@snackbar/core'
 
-export default (text, props) =>
+export const notification = (text, props) =>
   createSnackbar(text, {
     actions: [
       {

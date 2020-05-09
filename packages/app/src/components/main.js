@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Box } from 'theme-ui'
 
-const Main = styled(Box)`
+export const Main = styled(Box).attrs(() => ({ as: 'main' }))`
   /* Take the remaining width */
   flex: 1;
 
@@ -12,9 +12,3 @@ const Main = styled(Box)`
   flex-direction: column;
   justify-content: center;
 `
-
-Main.defaultProps = {
-  as: 'main'
-}
-
-export default Main

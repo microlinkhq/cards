@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import * as presets from '@/components/presets'
+import { presets } from '@/components'
 
 const presetOptions = Object.keys(presets).map((key) => ({
   value: key,
