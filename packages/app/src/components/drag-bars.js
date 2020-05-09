@@ -1,5 +1,13 @@
+/* global Event */
+
 import { useCallback, useState } from 'react'
 import styled, { css } from 'styled-components'
+
+const dispatchResize = () => {
+  if (typeof Event === 'function') {
+    window.dispatchEvent(new Event('resize'))
+  }
+}
 
 const Dragger = styled('div').attrs(({ isDrag, isHorizontal }) => ({
   style: {
@@ -23,6 +31,7 @@ const Dragger = styled('div').attrs(({ isDrag, isHorizontal }) => ({
 
 const DragBar = ({ isHorizontal = false, onDrag = () => {} }) => {
   const [isDrag, setIsDrag] = useState(false)
+
   const onMouseMove = useCallback(e => {
     const vw = Math.max(
       document.documentElement[!isHorizontal ? 'clientWidth' : 'clientHeight'],
@@ -30,6 +39,8 @@ const DragBar = ({ isHorizontal = false, onDrag = () => {} }) => {
     )
     const cursorPos = e[!isHorizontal ? 'clientX' : 'clientY']
     const percent = Math.round(100 - (cursorPos / vw) * 100)
+
+    dispatchResize()
     return onDrag(`${percent}%`)
   }, [])
 
@@ -39,6 +50,7 @@ const DragBar = ({ isHorizontal = false, onDrag = () => {} }) => {
   }, [onMouseMove])
 
   const removeListener = useCallback(() => {
+    dispatchResize()
     setIsDrag(false)
     return document.removeEventListener('mousemove', onMouseMove)
   }, [onMouseMove])
