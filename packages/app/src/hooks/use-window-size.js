@@ -1,17 +1,21 @@
-import { useState, useEffect } from 'react'
-import isSSR from '@/lib/is-ssr'
+import { useState, useLayoutEffect } from 'react'
 
-const getSize = isSSR
-  ? () => ({})
-  : () => ({ width: window.innerWidth, height: window.innerHeight })
+const DEFAULT_SIZE = { width: 0, height: 0 }
+
+const getSize = () => ({
+  width: window.innerWidth,
+  height: window.innerHeight
+})
 
 export default () => {
-  const [windowSize, setWindowSize] = useState(getSize)
+  const [windowSize, setWindowSize] = useState(DEFAULT_SIZE)
 
-  useEffect(() => {
-    if (isSSR) return false
+  useLayoutEffect(() => {
+    setWindowSize(getSize())
+
     const handleResize = () => setWindowSize(getSize())
     window.addEventListener('resize', handleResize)
+
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
