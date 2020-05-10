@@ -57,6 +57,7 @@ export const Overlay = ({
           exit='exit'
         >
           <Box
+            data-overlay-action='close'
             sx={{
               display: 'flex',
               p: [2, '', 4],
