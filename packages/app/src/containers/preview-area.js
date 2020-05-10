@@ -20,7 +20,7 @@ const getWidth = (el) => {
   return width
 }
 
-const DEFAULT_MAIN_WIDTH = PREVIEW_CARD_WIDTH + (parseInt(theme.space[4]) * 2)
+const DEFAULT_MAIN_WIDTH = PREVIEW_CARD_WIDTH + parseInt(theme.space[4]) * 2
 
 export const PreviewArea = ({ isEditor }) => {
   const {
@@ -71,6 +71,7 @@ export const PreviewArea = ({ isEditor }) => {
         flexDirection: 'column',
         justifyContent: 'center',
         mb: [4, '', 0],
+        mt: [-4, 3, 0],
         minHeight: 0
       }}
     >
@@ -91,6 +92,24 @@ export const PreviewArea = ({ isEditor }) => {
           </motion.div>
         </AspectRatio>
       </Box>
+
+      {isEditor && (
+        <Box
+          as='a'
+          href='https://microlink.io'
+          title='Microlink – Browser as API'
+          target='_blank'
+          rel='noopener'
+          sx={{
+            width: '26px',
+            height: '26px',
+            background: 'url(\'https://cdn.microlink.io/logo/logo.svg\') no-repeat center center / 22px',
+            position: 'absolute',
+            left: 3,
+            top: 3
+          }}
+        />
+      )}
 
       {isEditor && (
         <Flex
