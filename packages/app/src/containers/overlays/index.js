@@ -1,6 +1,7 @@
 import { useContext, useMemo } from 'react'
+import { Flex } from 'theme-ui'
 
-import { Choose, Overlay } from '@/components'
+import { Button, Choose, Overlay } from '@/components'
 import { OVERLAY_STATE } from '@/constants'
 import { AppContext } from '@/context'
 
@@ -45,6 +46,14 @@ export const Overlays = () => {
       <Choose.When condition={showKeyBindings}>
         <OverlayKeyBindings />
       </Choose.When>
+
+      <Flex as='footer' sx={{ justifyContent: 'flex-end', pt: 4 }}>
+        <Button
+          sx={{ bg: color, color: bg }}
+          onClick={hideOverlay}
+          children='Got it'
+        />
+      </Flex>
     </Overlay>
   )
 }

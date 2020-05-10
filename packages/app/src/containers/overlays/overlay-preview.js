@@ -1,16 +1,8 @@
 import { useContext } from 'react'
-import { Text, Box, Flex } from 'theme-ui'
+import { Text, Box } from 'theme-ui'
 import AspectRatio from 'react-aspect-ratio'
 
-import {
-  Button,
-  Code,
-  LivePreview,
-  Tab,
-  Tabs,
-  TabList,
-  TabPanel
-} from '@/components'
+import { Code, LivePreview, Tab, Tabs, TabList, TabPanel } from '@/components'
 import { AppContext } from '@/context'
 import { clipboard, notification, shareCode } from '@/lib'
 
@@ -20,8 +12,8 @@ const toClipboard = async (text, name) => {
 }
 
 const OverlayPreview = () => {
-  const { hideOverlay, query, screenshotUrl, theme } = useContext(AppContext)
-  const { bg, borderColor, color, contrast } = theme
+  const { query, screenshotUrl, theme } = useContext(AppContext)
+  const { borderColor, color, contrast } = theme
 
   return (
     <>
@@ -103,14 +95,6 @@ const OverlayPreview = () => {
           </TabPanel>
         </Tabs>
       </Box>
-
-      <Flex as='footer' sx={{ justifyContent: 'flex-end', pt: 4 }}>
-        <Button
-          sx={{ bg: color, color: bg }}
-          onClick={hideOverlay}
-          children='Got it'
-        />
-      </Flex>
     </>
   )
 }

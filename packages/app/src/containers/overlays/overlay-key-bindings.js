@@ -1,17 +1,14 @@
 import { useContext } from 'react'
 import { Text, Box, Flex } from 'theme-ui'
 
-import { Button } from '@/components'
 import { AppContext } from '@/context'
 import { isMac } from '@/lib'
 
 const ctrl = isMac ? 'cmd' : 'ctrl'
 
 const OverlayKeyBindings = () => {
-  const {
-    hideOverlay,
-    theme: { bg, borderColor, color }
-  } = useContext(AppContext)
+  const { theme } = useContext(AppContext)
+  const { borderColor, color } = theme
 
   return (
     <>
@@ -88,14 +85,6 @@ const OverlayKeyBindings = () => {
           </Flex>
         ))}
       </Box>
-
-      <Flex as='footer' sx={{ justifyContent: 'flex-end', pt: 4 }}>
-        <Button
-          sx={{ bg: color, color: bg }}
-          onClick={hideOverlay}
-          children='Got it'
-        />
-      </Flex>
     </>
   )
 }

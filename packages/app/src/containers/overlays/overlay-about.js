@@ -1,15 +1,12 @@
 import { useContext } from 'react'
-import { Image, Text, Box, Flex } from 'theme-ui'
+import { Image, Text, Box } from 'theme-ui'
 
-import { Button } from '@/components'
 import { AppContext } from '@/context'
 import pkg from '@/package.json'
 
 const OverlayAbout = () => {
-  const {
-    hideOverlay,
-    theme: { bg, color, contrast }
-  } = useContext(AppContext)
+  const { theme } = useContext(AppContext)
+  const { color, contrast } = theme
 
   return (
     <>
@@ -56,14 +53,6 @@ const OverlayAbout = () => {
         </Text>
         .
       </Text>
-
-      <Flex as='footer' sx={{ justifyContent: 'flex-end', pt: 4 }}>
-        <Button
-          sx={{ bg: color, color: bg }}
-          onClick={hideOverlay}
-          children='Got it'
-        />
-      </Flex>
     </>
   )
 }
