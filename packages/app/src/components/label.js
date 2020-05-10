@@ -13,8 +13,9 @@ export const Label = ({ sx, ...props }) => (
       borderRight: 1,
       fontFamily: 'mono',
       borderBottom: 1,
-      mr: 3,
+      mr: 4,
       fontSize: 0,
+      pointerEvents: 'none',
       ...sx
     }}
     {...props}

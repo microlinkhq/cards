@@ -2,19 +2,32 @@
 
 import { useCallback, useState } from 'react'
 import styled, { css } from 'styled-components'
+import { Box } from 'theme-ui'
+
+import { useWindowSize } from '@/hooks'
 
 const dispatchResize = () => {
   if (typeof Event === 'function') {
-    window.dispatchEvent(new Event('resize'))
+    window.requestAnimationFrame(() => {
+      window.dispatchEvent(new Event('resize'))
+    })
   }
 }
 
-const Dragger = styled('div').attrs(({ isDrag, isHorizontal }) => ({
+const fullScreenStyle = {
+  left: 0,
+  top: 0,
+  right: 0,
+  bottom: 0
+}
+
+const Dragger = styled(Box).attrs(({ isDrag, isHorizontal }) => ({
   style: {
-    [!isHorizontal ? 'width' : 'height']: !isDrag ? '10px' : '100vw',
+    [!isHorizontal ? 'width' : 'height']: !isDrag ? '10px' : 'initial',
     position: !isDrag ? 'absolute' : 'fixed',
-    zIndex: !isDrag ? 'initial' : 9999,
-    transform: !isDrag ? `translate${!isHorizontal ? 'X' : 'Y'}(-50%)` : 'none'
+    zIndex: !isDrag ? 1 : 9999,
+    transform: !isDrag ? `translate${!isHorizontal ? 'X' : 'Y'}(-50%)` : 'none',
+    ...(!isDrag ? {} : fullScreenStyle)
   }
 }))`
   left: 0;
@@ -31,41 +44,49 @@ const Dragger = styled('div').attrs(({ isDrag, isHorizontal }) => ({
 
 const DragBar = ({ isHorizontal = false, onDrag = () => {} }) => {
   const [isDrag, setIsDrag] = useState(false)
+  const { height, width } = useWindowSize()
 
-  const onMouseMove = useCallback(e => {
-    const vw = Math.max(
-      document.documentElement[!isHorizontal ? 'clientWidth' : 'clientHeight'],
-      window[!isHorizontal ? 'innerWidth' : 'innerHeight'] || 0
-    )
-    const cursorPos = e[!isHorizontal ? 'clientX' : 'clientY']
-    const percent = Math.round(100 - (cursorPos / vw) * 100)
+  const onMove = useCallback(
+    (e) => {
+      const size = !isHorizontal ? width : height
 
-    dispatchResize()
-    return onDrag(`${percent}%`)
-  }, [])
+      const cursorPos = e[!isHorizontal ? 'pageX' : 'pageY']
+      const percent = 100 - (cursorPos / size) * 100
 
-  const addListener = useCallback(() => {
+      dispatchResize()
+      return onDrag(`${percent}%`)
+    },
+    [height, isHorizontal, onDrag, width]
+  )
+
+  const addListener = useCallback((e) => {
     setIsDrag(true)
-    return document.addEventListener('mousemove', onMouseMove)
-  }, [onMouseMove])
+    document.addEventListener('mousemove', onMove)
+    document.addEventListener('touchmove', onMove)
+  }, [onMove])
 
   const removeListener = useCallback(() => {
     dispatchResize()
     setIsDrag(false)
-    return document.removeEventListener('mousemove', onMouseMove)
-  }, [onMouseMove])
+    document.removeEventListener('mousemove', onMove)
+    document.removeEventListener('touchmove', onMove)
+  }, [onMove])
 
   return (
     <Dragger
+      sx={{ display: ['none', '', 'block'] }}
       isDrag={isDrag}
       isHorizontal={isHorizontal}
       onMouseDown={addListener}
       onMouseUp={removeListener}
       onMouseOut={removeListener}
+      onTouchStart={addListener}
+      onTouchEnd={removeListener}
+      onTouchCancel={removeListener}
     />
   )
 }
 
-export const VerticalDragBar = props => <DragBar {...props} />
+export const VerticalDragBar = (props) => <DragBar {...props} />
 
-export const HorizontalDragBar = props => <DragBar isHorizontal {...props} />
+export const HorizontalDragBar = (props) => <DragBar isHorizontal {...props} />

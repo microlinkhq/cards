@@ -13,7 +13,6 @@ export {
   LivePreview,
   LiveProvider
 } from './live-editor'
-export { Main } from './main'
 export { Overlay } from './overlay'
 export { SearchableSelect } from './searchable-select'
 export { Tab, Tabs, TabList, TabPanel } from './tabs'

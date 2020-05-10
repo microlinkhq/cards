@@ -20,7 +20,7 @@ export const Overlay = ({
       id='overlay'
       data-overlay-action='close'
       sx={{
-        p: 4,
+        p: [2, '', 4],
         position: 'fixed',
         top: 0,
         right: 0,
@@ -46,6 +46,7 @@ export const Overlay = ({
           position: 'relative',
           zIndex: 999,
           width: fullWidth ? '100%' : 560,
+          maxWidth: '100%',
           overflow: 'auto',
           p: 4
         }}

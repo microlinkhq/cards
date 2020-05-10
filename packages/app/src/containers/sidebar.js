@@ -88,7 +88,6 @@ export const Sidebar = () => {
     <Flex
       as='aside'
       sx={{
-        pl: 3,
         borderLeft: 1,
         borderColor,
         bg,
@@ -96,11 +95,11 @@ export const Sidebar = () => {
         fontFamily: 'mono',
         fontSize: 2,
         fontWeight: 'light',
-        height: '100%',
-        maxWidth: ASIDE_MAX_WIDTH(size),
+        height: ['auto', '', '100%'],
+        maxWidth: ['100%', '', ASIDE_MAX_WIDTH(size)],
         minWidth: ASIDE_MIN_WIDTH,
         position: 'relative',
-        width: asideWidth,
+        width: ['100%', '', asideWidth],
         willChange: 'width'
       }}
     >
@@ -112,11 +111,12 @@ export const Sidebar = () => {
           alignItems: 'center',
           bg,
           borderBottom: 1,
+          borderTop: [1, '', 0],
           borderColor,
-          py: 3,
-          mr: 3,
+          p: 3,
           color,
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
+          flex: '0 0 auto'
         }}
       >
         <Flex sx={{ alignItems: 'center' }}>
@@ -182,7 +182,16 @@ export const Sidebar = () => {
         </Flex>
       </Flex>
 
-      <Flex sx={{ flex: 1, minHeight: 0, flexDirection: 'column' }}>
+      <Box
+        sx={{
+          borderBottom: 1,
+          borderColor,
+          pl: 3,
+          overflow: 'hidden',
+          flex: ['none', '', 1],
+          height: ['68vh', '', 'auto']
+        }}
+      >
         <Box sx={{ position: 'relative' }}>
           <Label
             children='Editor'
@@ -190,51 +199,47 @@ export const Sidebar = () => {
           />
         </Box>
 
+        <LiveEditor
+          theme={theme}
+          themeKey={colorMode}
+          code={code}
+          onChange={handleCode}
+        />
+      </Box>
+
+      <Box
+        sx={{
+          height: ['auto', '', jsonHeight],
+          maxHeight: ['initial', '', ASIDE_MAX_HEIGHT],
+          minHeight: ['initial', '', ASIDE_MIN_HEIGHT],
+          position: 'relative',
+          willChange: 'height',
+          overflow: ['initial', '', 'hidden']
+        }}
+      >
+        <HorizontalDragBar onDrag={handleHeightResize} />
+
+        <Label
+          children='Query Variables'
+          sx={{ color, borderColor, textTransform: 'lowercase' }}
+        />
+
         <Box
           as='section'
           sx={{
-            borderBottom: 1,
-            borderColor,
-            py: 4,
-            pr: 3,
-            overflow: 'auto',
-            flex: 1
+            bg,
+            p: 3,
+            height: ['auto', '', '100%'],
+            overflow: ['scroll']
           }}
         >
-          <LiveEditor
+          <JSONViewer
             theme={theme}
-            themeKey={colorMode}
-            code={code}
-            onChange={handleCode}
+            children={queryVariables}
+            onChange={handleQueryVariables}
           />
         </Box>
-
-        <Box
-          sx={{
-            height: jsonHeight,
-            maxHeight: ASIDE_MAX_HEIGHT,
-            minHeight: ASIDE_MIN_HEIGHT,
-            position: 'relative',
-            willChange: 'height',
-            overflow: 'auto'
-          }}
-        >
-          <HorizontalDragBar onDrag={handleHeightResize} />
-
-          <Box as='section' sx={{ bg, py: 3, mr: 3 }}>
-            <Label
-              children='Query Variables'
-              sx={{ color, borderColor, textTransform: 'lowercase' }}
-            />
-
-            <JSONViewer
-              theme={theme}
-              children={queryVariables}
-              onChange={handleQueryVariables}
-            />
-          </Box>
-        </Box>
-      </Flex>
+      </Box>
     </Flex>
   )
 }

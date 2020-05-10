@@ -36,7 +36,19 @@ const Editor = () => {
 
   return (
     <>
-      <Flex sx={{ bg, height: '100vh' }}>
+      <Flex
+        sx={{
+          bg,
+          height: '100vh',
+          flexDirection: ['column', '', 'row'],
+          position: 'fixed',
+          left: 0,
+          top: 0,
+          right: 0,
+          bottom: 0,
+          overflow: ['scroll', '', 'hidden']
+        }}
+      >
         <PreviewArea isEditor={isEditor} />
 
         {isEditor && <Sidebar />}
