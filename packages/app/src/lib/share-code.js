@@ -16,7 +16,7 @@ const javascript = query => {
 
   return `const api = '${endpoint}';
 const cardUrl = 'https://cards.microlink.io/?${payload}';
-const image = \`\${api}\${encodeURIComponent(cardUrl)}\``
+const image = \`\${api}\${encodeURIComponent(cardUrl)}\`;`
 }
 
 export const shareCode = {
