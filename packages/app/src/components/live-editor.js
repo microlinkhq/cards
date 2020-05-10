@@ -18,6 +18,11 @@ const LivePreviewWrapper = styled('div')`
   width: 100%;
   margin: auto;
   overflow: hidden;
+  user-select: none;
+
+  > * {
+    pointer-events: none;
+  }
 
   ${({ shadow }) =>
     shadow &&

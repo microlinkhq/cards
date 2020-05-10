@@ -29,7 +29,6 @@ export const Overlays = () => {
 
   return (
     <Overlay
-      aria-hidden={isOverlay === ''}
       backgroundColor={bg}
       color={color}
       isOpen={isOverlay !== ''}
