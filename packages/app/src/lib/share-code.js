@@ -14,9 +14,9 @@ const javascript = query => {
   const endpoint = query.endpoint ? query.endpoint : 'https://i.microlink.io/'
   const payload = new URLSearchParams(query).toString()
 
-  return `const screenshotUrl = ${endpoint}
-const cardUrl = 'https://cards.microlink.io/?${payload}'
-const image = \`\${screenshotUrl}\${encodeURIComponent(cardUrl)}\``
+  return `const api = '${endpoint}';
+const cardUrl = 'https://cards.microlink.io/?${payload}';
+const image = \`\${api}\${encodeURIComponent(cardUrl)}\``
 }
 
 export const shareCode = {
