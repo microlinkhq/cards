@@ -154,7 +154,11 @@ export const PreviewArea = ({ isEditor }) => {
                 children: 'Twitter'
               }
             ].map((props, key) => (
-              <ExternalLink key={key} {...props} sx={{ fontSize: 0, mr: 2 }} />
+              <ExternalLink
+                {...props}
+                key={key}
+                sx={{ color, fontSize: 0, mr: 2 }}
+              />
             ))}
           </Flex>
 
