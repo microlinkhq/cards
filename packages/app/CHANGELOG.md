@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.69](https://github.com/microlinkhq/cards/compare/v0.0.68...v0.0.69) (2020-05-11)
+
+
+### Bug Fixes
+
+* add missing semicolon to example ([de833e7](https://github.com/microlinkhq/cards/commit/de833e7fb372c6a90a06866b67dd5da8383cf848))
+* improve initial render ([d637787](https://github.com/microlinkhq/cards/commit/d63778707fe90aef8db25ea924d1886e6ce2b0d9))
+* setup external links color ([7c02066](https://github.com/microlinkhq/cards/commit/7c02066114e12c40f255fb4be037f0313b2c3dca))
+* sidebar header styles ([e9a1ca0](https://github.com/microlinkhq/cards/commit/e9a1ca0f5287af7cf67549cf615226d9b90d7743))
+
+
+
+
+
 ## [0.0.68](https://github.com/microlinkhq/cards/compare/v0.0.67...v0.0.68) (2020-05-09)
 
 **Note:** Version bump only for package @microlink/cards-app
