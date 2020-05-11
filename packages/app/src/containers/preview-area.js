@@ -2,10 +2,16 @@
 
 import { motion, useTransform, useMotionValue, useSpring } from 'framer-motion'
 import { useContext, useEffect, useRef, useMemo, Fragment } from 'react'
-import { Link, Box, Flex } from 'theme-ui'
 import AspectRatio from 'react-aspect-ratio'
+import { Box, Flex } from 'theme-ui'
 
-import { ExternalLink, Button, LiveError, LivePreview } from '@/components'
+import {
+  InternalLink,
+  ExternalLink,
+  Button,
+  LiveError,
+  LivePreview
+} from '@/components'
 import { OVERLAY_STATE, PREVIEW_CARD_WIDTH } from '@/constants'
 import { AppContext } from '@/context'
 import { theme } from '@/theme'
@@ -161,7 +167,7 @@ export const PreviewArea = ({ isEditor }) => {
               position: 'relative'
             }}
           >
-            <Link
+            <InternalLink
               href='#'
               sx={{ color }}
               onClick={() => {
@@ -172,7 +178,7 @@ export const PreviewArea = ({ isEditor }) => {
               }}
             >
               Download
-            </Link>
+            </InternalLink>
             <Box sx={{ ml: 3 }}>
               <Button
                 sx={{ color: bg, bg: color }}
