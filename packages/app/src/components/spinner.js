@@ -24,27 +24,20 @@ const dash = keyframes`
 const StyledSpinner = styled.svg`
   animation: ${rotate} 2s linear infinite;
   will-change: stroke-dasharray, stroke-dashoffset;
+  margin: auto;
+  height: 28px;
 
   .path {
+    fill: none;
     stroke: black;
     stroke-linecap: round;
+    stroke-width: 4px;
     animation: ${dash} 1.5s ease-in-out infinite;
   }
 `
 
 export const Spinner = (props) => (
   <StyledSpinner viewBox='0 0 50 50' {...props}>
-    <circle
-      className='path'
-      cx='25'
-      cy='25'
-      r='20'
-      fill='none'
-      strokeWidth='4'
-    />
+    <circle className='path' cx='25' cy='25' r='20' />
   </StyledSpinner>
 )
-
-Spinner.defaultProps = {
-  height: '28px'
-}

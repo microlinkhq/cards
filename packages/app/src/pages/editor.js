@@ -1,13 +1,14 @@
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import { Overlays, PreviewArea, Sidebar } from '@/containers'
-import { AppFrame } from '@/components'
+import { AppFrame, Spinner } from '@/components'
 import { useKeyBindings } from '@/hooks'
 import { setImageMeta } from '@/lib'
 import { OVERLAY_STATE } from '@/constants'
 import { AppContext } from '@/context'
 
 export default () => {
+  const [render, setRender] = useState(false)
   const {
     changeTheme,
     hideOverlay,
@@ -26,13 +27,21 @@ export default () => {
     KeyS: { ctrl: true, fn: showOverlay(OVERLAY_STATE.PREVIEW) }
   })
 
+  useEffect(() => {
+    setRender(true)
+  }, [])
+
+  if (!render) {
+    return (
+      <AppFrame>
+        <Spinner />
+      </AppFrame>
+    )
+  }
+
   return (
     <>
-      <AppFrame
-        sx={{
-          bg
-        }}
-      >
+      <AppFrame sx={{ bg }}>
         <PreviewArea isEditor />
 
         <Sidebar />

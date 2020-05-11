@@ -18,11 +18,7 @@ export default () => {
 
   return (
     <AppFrame>
-      {isLoading ? (
-        <Spinner style={{ margin: 'auto' }} />
-      ) : (
-        <PreviewArea isEditor={false} />
-      )}
+      {isLoading ? <Spinner /> : <PreviewArea isEditor={false} />}
     </AppFrame>
   )
 }
