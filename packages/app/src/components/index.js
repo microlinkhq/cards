@@ -1,5 +1,6 @@
 import * as presets from './presets'
 
+export { AppFrame } from './app-frame'
 export { Button } from './button'
 export { ButtonIcon } from './button-icon'
 export { Choose } from './choose'
@@ -15,6 +16,7 @@ export {
 } from './live-editor'
 export { Overlay } from './overlay'
 export { SearchableSelect } from './searchable-select'
+export { Spinner } from './spinner'
 export { Tab, Tabs, TabList, TabPanel } from './tabs'
 
 export { presets }

@@ -1,6 +1,6 @@
 /* globals ResizeObserver */
 
-import { useContext, useEffect, useRef } from 'react'
+import { useContext, useEffect, useRef, useMemo, Fragment } from 'react'
 import { Link, Box, Flex } from 'theme-ui'
 import AspectRatio from 'react-aspect-ratio'
 import { motion, useTransform, useMotionValue, useSpring } from 'framer-motion'
@@ -22,14 +22,7 @@ const getWidth = (el) => {
 
 const DEFAULT_MAIN_WIDTH = PREVIEW_CARD_WIDTH + parseInt(theme.space[4]) * 2
 
-export const PreviewArea = ({ isEditor }) => {
-  const {
-    showOverlay,
-    screenshotUrl,
-    theme: { bg, color }
-  } = useContext(AppContext)
-  const mainRef = useRef()
-
+const PreviewScaler = ({ mainRef, ...props }) => {
   const motionMainWidth = useMotionValue(DEFAULT_MAIN_WIDTH)
   const springMainWidth = useTransform(
     motionMainWidth,
@@ -60,6 +53,25 @@ export const PreviewArea = ({ isEditor }) => {
     }
   }, [mainRef])
 
+  return <motion.div style={{ scale }} {...props} />
+}
+
+export const PreviewArea = ({ isEditor }) => {
+  const {
+    showOverlay,
+    screenshotUrl,
+    theme: { bg, color }
+  } = useContext(AppContext)
+  const mainRef = useRef()
+
+  const PreviewWrap = useMemo(() => (isEditor ? PreviewScaler : Fragment), [
+    isEditor
+  ])
+  const wrapProps = useMemo(() => (isEditor ? { mainRef } : {}), [
+    isEditor,
+    mainRef
+  ])
+
   return (
     <Box
       as='main'
@@ -84,68 +96,69 @@ export const PreviewArea = ({ isEditor }) => {
         }}
       >
         <AspectRatio ratio='16/9' style={{ minWidth: PREVIEW_CARD_WIDTH }}>
-          <motion.div style={{ scale }}>
+          <PreviewWrap {...wrapProps}>
             <LivePreview
-              onClick={showOverlay(OVERLAY_STATE.PREVIEW)}
-              shadow={isEditor}
+              onClick={isEditor ? showOverlay(OVERLAY_STATE.PREVIEW) : undefined}
+              isEditor={isEditor}
             />
-          </motion.div>
+          </PreviewWrap>
         </AspectRatio>
       </Box>
 
       {isEditor && (
-        <Box
-          as='a'
-          href='https://microlink.io'
-          title='Microlink – Browser as API'
-          target='_blank'
-          rel='noopener'
-          sx={{
-            width: '26px',
-            height: '26px',
-            background: 'url(\'https://cdn.microlink.io/logo/logo.svg\') no-repeat center center / 22px',
-            position: 'absolute',
-            left: 3,
-            top: 3
-          }}
-        />
-      )}
+        <>
+          <Box
+            as='a'
+            href='https://microlink.io'
+            title='Microlink – Browser as API'
+            target='_blank'
+            rel='noopener'
+            sx={{
+              width: '26px',
+              height: '26px',
+              background:
+                "url('https://cdn.microlink.io/logo/logo.svg') no-repeat center center / 22px",
+              position: 'absolute',
+              left: 3,
+              top: 3
+            }}
+          />
 
-      {isEditor && (
-        <Flex
-          sx={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            mt: ['-18vw', '-6vw', 0],
-            mb: [3, '', 0],
-            position: 'relative'
-          }}
-        >
-          <Link
-            href='#'
-            sx={{ color }}
-            onClick={() => {
-              const link = document.createElement('a')
-              link.download = Date.now()
-              link.href = screenshotUrl
-              window.open(link)
+          <Flex
+            sx={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              mt: ['-18vw', '-6vw', 0],
+              mb: [3, '', 0],
+              position: 'relative'
             }}
           >
-            Download
-          </Link>
-          <Box sx={{ ml: 3 }}>
-            <Button
-              sx={{ color: bg, bg: color }}
-              onClick={showOverlay(OVERLAY_STATE.PREVIEW)}
-              children='Embed'
-            />
-          </Box>
-        </Flex>
-      )}
+            <Link
+              href='#'
+              sx={{ color }}
+              onClick={() => {
+                const link = document.createElement('a')
+                link.download = Date.now()
+                link.href = screenshotUrl
+                window.open(link)
+              }}
+            >
+              Download
+            </Link>
+            <Box sx={{ ml: 3 }}>
+              <Button
+                sx={{ color: bg, bg: color }}
+                onClick={showOverlay(OVERLAY_STATE.PREVIEW)}
+                children='Embed'
+              />
+            </Box>
+          </Flex>
 
-      <Box sx={{ bottom: 0, position: 'absolute', width: '100%' }}>
-        <LiveError />
-      </Box>
+          <Box sx={{ bottom: 0, position: 'absolute', width: '100%' }}>
+            <LiveError />
+          </Box>
+        </>
+      )}
     </Box>
   )
 }

@@ -4,6 +4,7 @@ import { createGlobalStyle } from 'styled-components'
 import { ThemeProvider } from 'theme-ui'
 import 'react-aspect-ratio/aspect-ratio.css'
 
+import AppContextProvider from '@/context'
 import { theme } from '@/theme'
 import { notificationStyles } from '@/lib/notification'
 import pkg from '@/package.json'
@@ -147,7 +148,9 @@ export default class App extends NextApp {
             rel='stylesheet'
           />
         </Head>
-        <Component {...pageProps} />
+        <AppContextProvider>
+          <Component {...pageProps} />
+        </AppContextProvider>
       </ThemeProvider>
     )
   }

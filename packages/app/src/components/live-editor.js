@@ -13,7 +13,6 @@ import { editorThemes, theme } from '@/theme'
 import * as scope from './presets/scope'
 
 const LivePreviewWrapper = styled('div')`
-  cursor: pointer;
   height: 100%;
   width: 100%;
   margin: auto;
@@ -24,10 +23,11 @@ const LivePreviewWrapper = styled('div')`
     pointer-events: none;
   }
 
-  ${({ shadow }) =>
-    shadow &&
+  ${({ isEditor }) =>
+    isEditor &&
     `
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 5px 10px 0px;`}
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 5px 10px 0px;
+  cursor: pointer;`}
 `
 
 LivePreviewWrapper.defaultProps = {
