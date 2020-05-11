@@ -1,7 +1,8 @@
 import { useState, createElement, useEffect } from 'react'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import { Image } from 'theme-ui'
-import noop from '@/lib/noop'
+
+import { noop } from '@/lib'
 
 const Placeholder = ({ sx, theme, ...props }) => (
   <SkeletonTheme {...theme}>
@@ -9,7 +10,7 @@ const Placeholder = ({ sx, theme, ...props }) => (
   </SkeletonTheme>
 )
 
-const LazyImage = ({ onError, ...props }) => {
+export const LazyImage = ({ onError, ...props }) => {
   const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -30,5 +31,3 @@ const LazyImage = ({ onError, ...props }) => {
 LazyImage.defaultProps = {
   onError: noop
 }
-
-export default LazyImage

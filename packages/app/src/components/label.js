@@ -1,6 +1,6 @@
 import { Box } from 'theme-ui'
 
-export default ({ sx, ...props }) => (
+export const Label = ({ sx, ...props }) => (
   <Box
     sx={{
       position: 'absolute',
@@ -13,8 +13,9 @@ export default ({ sx, ...props }) => (
       borderRight: 1,
       fontFamily: 'mono',
       borderBottom: 1,
-      mr: 3,
+      mr: 4,
       fontSize: 0,
+      pointerEvents: 'none',
       ...sx
     }}
     {...props}

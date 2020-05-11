@@ -58,7 +58,7 @@ const ThemeWrapper = styled.div`
   }
 `
 
-export default ({ onChange, children, theme }) => {
+export const JSONViewer = ({ onChange, children, theme }) => {
   const { borderColor, color, bg } = theme
 
   return (

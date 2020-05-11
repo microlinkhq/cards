@@ -1,5 +1,5 @@
-import toPx from '@/lib/to-px'
-import theme from '@/theme'
+import { toPx } from '@/lib'
+import { theme } from '@/theme'
 
 export const ASIDE_HEIGHT_KEY = 'sidebar-json-height'
 
@@ -20,7 +20,7 @@ export const ASIDE_MAX_HEIGHT = '70%'
 export const PREVIEW_CARD_WIDTH = 843
 
 export const ASIDE_MAX_WIDTH = size =>
-  `calc(${toPx(size.width - PREVIEW_CARD_WIDTH)} - ${theme.space[4]})`
+  `calc(${toPx(size.width * 0.85)} - ${theme.space[4]})`
 
 export const SEARCH_WIDTH = '200px'
 

@@ -1,1 +1,1 @@
-export default n => `${n}px`
+export const toPx = n => `${n}px`

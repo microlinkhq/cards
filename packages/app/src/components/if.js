@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-const If = props =>
+export const If = props =>
   props.condition ? (props.render ? props.render() : props.children) : null
 
 If.propTypes = {
@@ -8,5 +8,3 @@ If.propTypes = {
   children: PropTypes.node,
   render: PropTypes.func
 }
-
-export default If

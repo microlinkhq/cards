@@ -1,16 +1,12 @@
 import { useState, useEffect } from 'react'
-import isEditor from '@/lib/is-editor'
-import Router from 'next/router'
 
 const isCtrl = e => e.metaKey || e.ctrlKey
 
 // https://keycode.info
-export default (initialKeyBindings = {}, eventListener = 'keydown') => {
+export const useKeyBindings = (initialKeyBindings = {}, eventListener = 'keydown') => {
   const [keyBindings] = useState(initialKeyBindings)
 
   useEffect(() => {
-    if (!isEditor(Router)) return
-
     document.addEventListener(
       eventListener,
       event => {

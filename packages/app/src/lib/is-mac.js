@@ -1,2 +1,3 @@
-import isSSR from './is-ssr'
-export default !isSSR && window.navigator.platform.match('Mac')
+import { isSSR } from './is-ssr'
+
+export const isMac = !isSSR && window.navigator.platform.match('Mac')

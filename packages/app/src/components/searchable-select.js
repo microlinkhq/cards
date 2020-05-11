@@ -1,9 +1,10 @@
-import SearchableSelect from 'react-select'
-import * as polished from 'polished'
-import themeBase from '@/theme'
+import ReactSelect from 'react-select'
+import { lighten } from 'polished'
 
-export default ({ bg, color, ...props }) => {
-  const secondaryColor = polished.lighten(0.1, bg)
+import { theme as themeBase } from '@/theme'
+
+export const SearchableSelect = ({ bg, color, ...props }) => {
+  const secondaryColor = lighten(0.1, bg)
   const theme = () => {
     return {
       borderRadius: 4,
@@ -36,17 +37,19 @@ export default ({ bg, color, ...props }) => {
   }
 
   const styles = {
-    singleValue: provided => ({
+    singleValue: (provided) => ({
       ...provided,
       ...fontStyle
     }),
-    valueContainer: provided => ({
+    valueContainer: (provided) => ({
       ...provided,
       padding: '2px 8px'
     }),
-    menu: provided => ({
+    menu: (provided) => ({
       ...provided,
-      ...fontStyle
+      ...fontStyle,
+      minWidth: '170px',
+      zIndex: 3
     }),
     indicatorSeparator: () => ({ display: 'none' }),
     control: (provided, { isFocused }) => ({
@@ -57,5 +60,5 @@ export default ({ bg, color, ...props }) => {
     })
   }
 
-  return <SearchableSelect styles={styles} theme={theme} {...props} />
+  return <ReactSelect styles={styles} theme={theme} {...props} />
 }

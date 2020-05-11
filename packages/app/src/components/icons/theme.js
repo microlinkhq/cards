@@ -1,6 +1,6 @@
 import Svg from './svg'
 
-export default ({ size = '24', ...props }) => (
+export const ThemeIcon = ({ size = '24', ...props }) => (
   <Svg
     xmlns='http://www.w3.org/2000/svg'
     strokeWidth='0'
