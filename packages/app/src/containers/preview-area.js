@@ -1,16 +1,16 @@
 /* globals ResizeObserver */
 
+import { motion, useTransform, useMotionValue, useSpring } from 'framer-motion'
 import { useContext, useEffect, useRef, useMemo, Fragment } from 'react'
 import { Link, Box, Flex } from 'theme-ui'
 import AspectRatio from 'react-aspect-ratio'
-import { motion, useTransform, useMotionValue, useSpring } from 'framer-motion'
 
-import { Button, LiveError, LivePreview } from '@/components'
+import { ExternalLink, Button, LiveError, LivePreview } from '@/components'
 import { OVERLAY_STATE, PREVIEW_CARD_WIDTH } from '@/constants'
 import { AppContext } from '@/context'
 import { theme } from '@/theme'
 
-const getWidth = (el) => {
+const getWidth = el => {
   if (!el) {
     return 0
   }
@@ -62,6 +62,7 @@ export const PreviewArea = ({ isEditor }) => {
     screenshotUrl,
     theme: { bg, color }
   } = useContext(AppContext)
+
   const mainRef = useRef()
 
   const PreviewWrap = useMemo(() => (isEditor ? PreviewScaler : Fragment), [
@@ -98,7 +99,9 @@ export const PreviewArea = ({ isEditor }) => {
         <AspectRatio ratio='16/9' style={{ minWidth: PREVIEW_CARD_WIDTH }}>
           <PreviewWrap {...wrapProps}>
             <LivePreview
-              onClick={isEditor ? showOverlay(OVERLAY_STATE.PREVIEW) : undefined}
+              onClick={
+                isEditor ? showOverlay(OVERLAY_STATE.PREVIEW) : undefined
+              }
               isEditor={isEditor}
             />
           </PreviewWrap>
@@ -107,22 +110,47 @@ export const PreviewArea = ({ isEditor }) => {
 
       {isEditor && (
         <>
-          <Box
-            as='a'
-            href='https://microlink.io'
-            title='Microlink – Browser as API'
-            target='_blank'
-            rel='noopener'
+          <Flex
             sx={{
-              width: '26px',
-              height: '26px',
-              background:
-                "url('https://cdn.microlink.io/logo/logo.svg') no-repeat center center / 22px",
+              alignItems: 'center',
               position: 'absolute',
+              width: '100%',
               left: 3,
               top: 3
             }}
-          />
+          >
+            <ExternalLink
+              href='https://microlink.io'
+              title='Microlink – Browser as API'
+              sx={{
+                mr: 2,
+                width: '24px',
+                height: '24px',
+                background:
+                  "url('https://cdn.microlink.io/logo/logo.svg') no-repeat center center / 22px"
+              }}
+            />
+            {[
+              {
+                href:
+                  'https://microlink.io/docs/cards/getting-started/overview',
+                children: 'Docs',
+                title: 'Read documentation'
+              },
+              {
+                href: 'https://github.com/microlinkhq/cards',
+                title: 'See source code on GitHub',
+                children: 'GitHub'
+              },
+              {
+                href: 'https://twitter.com/microlinkhq',
+                title: 'Follow us on Twitter',
+                children: 'Twitter'
+              }
+            ].map((props, key) => (
+              <ExternalLink key={key} {...props} sx={{ fontSize: 0, mr: 2 }} />
+            ))}
+          </Flex>
 
           <Flex
             sx={{

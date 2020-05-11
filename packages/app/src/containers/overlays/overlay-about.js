@@ -1,5 +1,6 @@
-import { useContext } from 'react'
 import { Image, Text, Box } from 'theme-ui'
+import { ExternalLink } from '@/components'
+import { useContext } from 'react'
 
 import { AppContext } from '@/context'
 import pkg from '@/package.json'
@@ -29,12 +30,9 @@ const OverlayAbout = () => {
       <Text sx={{ color, my: 3, fontSize: 2, fontWeight: 'normal' }}>
         Just write your preset once, feed it with dynamic content and reuse
         forever. Read more into{' '}
-        <Text
-          as='a'
+        <ExternalLink
           sx={{ textDecoration: 'none', color: contrast }}
           href='https://microlink.io/docs/cards/getting-started/overview'
-          target='_blank'
-          rel='noopener noreferrer'
           children='documentation'
         />{' '}
         portal.
@@ -42,15 +40,12 @@ const OverlayAbout = () => {
 
       <Text sx={{ my: 3, fontSize: 2, fontWeight: 'normal' }}>
         Starts from <b>free</b> and code is available on{' '}
-        <Text
-          as='a'
+        <ExternalLink
           sx={{ textDecoration: 'none', color: contrast }}
           href={pkg.homepage}
-          target='_blank'
-          rel='noopener noreferrer'
         >
           GitHub
-        </Text>
+        </ExternalLink>
         .
       </Text>
     </>
