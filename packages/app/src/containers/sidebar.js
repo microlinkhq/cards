@@ -119,20 +119,20 @@ export const Sidebar = () => {
           flex: '0 0 auto'
         }}
       >
-        <Flex sx={{ alignItems: 'center' }}>
-          <Box sx={{ width: SEARCH_WIDTH }}>
-            <SearchableSelect
-              color={color}
-              bg={bg}
-              value={presetSelectValue}
-              options={presetOptions}
-              onChange={handleSelectChange}
-            />
-          </Box>
-        </Flex>
+        <Box sx={{ flex: `0 1 ${SEARCH_WIDTH}`, mr: 3 }}>
+          <SearchableSelect
+            color={color}
+            bg={bg}
+            value={presetSelectValue}
+            options={presetOptions}
+            onChange={handleSelectChange}
+          />
+        </Box>
+
         <Flex
           sx={{
-            alignItems: 'center'
+            alignItems: 'center',
+            flex: '0 0 auto'
           }}
         >
           <ButtonIcon

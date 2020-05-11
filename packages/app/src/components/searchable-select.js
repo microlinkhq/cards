@@ -47,7 +47,9 @@ export const SearchableSelect = ({ bg, color, ...props }) => {
     }),
     menu: (provided) => ({
       ...provided,
-      ...fontStyle
+      ...fontStyle,
+      minWidth: '170px',
+      zIndex: 3
     }),
     indicatorSeparator: () => ({ display: 'none' }),
     control: (provided, { isFocused }) => ({
