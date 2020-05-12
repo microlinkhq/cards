@@ -37,7 +37,8 @@ const meta = {
 
 export default class App extends NextApp {
   render () {
-    const { Component, pageProps } = this.props
+    const { Component, pageProps, router } = this.props
+    const isEditor = router.asPath.startsWith('/editor')
 
     return (
       <ThemeProvider theme={theme}>
@@ -151,6 +152,13 @@ export default class App extends NextApp {
         <AppContextProvider>
           <Component {...pageProps} />
         </AppContextProvider>
+
+        {isEditor && (
+          <script
+            crossOrigin='anonymous'
+            src='https://polyfill.io/v3/polyfill.min.js?features=ResizeObserver'
+          />
+        )}
       </ThemeProvider>
     )
   }
