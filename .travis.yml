@@ -17,7 +17,8 @@ jobs:
     - stage: Test
       script: npm run test
       after_success:
-        - curl "https://api.microlink.io?url=https://cards.microlink.io&meta=false&insights&embed=insights.lighthouse&force" > ".lighthouseci/lhr-$(date +"%s").json
+        - mkdir -p .lighthouseci
+        - curl -sL "https://api.microlink.io?url=https://cards.microlink.io&meta=false&insights&embed=insights.lighthouse" > ".lighthouseci/lhr-$(date +"%s").json"
         - lhci upload --upload.token="$LHCI_SERVER_TOKEN"
     - stage: Release
       before_deploy:
