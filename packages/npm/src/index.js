@@ -19,7 +19,6 @@ const takeScreenshot = async (url, mqlOpts) => {
     element: '#screenshot',
     meta: false,
     screenshot: true,
-    waitUntil: ['load', 'networkidle0'],
     ...mqlOpts
   })
   return data.screenshot.url
