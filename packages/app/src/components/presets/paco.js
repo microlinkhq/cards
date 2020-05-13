@@ -40,7 +40,7 @@ const query = {
   color: '#fff',
   bg: '#000',
   logo: 'https://svgur.com/i/L4d.svgnull',
-  domain: 'https://paco.com',
+  domain: 'https://paco.im',
   title: 'Shared Hook State with SWR'
 }
 
