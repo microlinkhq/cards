@@ -51,6 +51,7 @@
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
+    "@lhci/cli": "latest",
     "finepack": "latest",
     "git-authors-cli": "latest",
     "husky": "latest",
