@@ -36,3 +36,4 @@ coverage
 .envrc
 .next
 .now
+.lighthouseci
