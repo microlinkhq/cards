@@ -3,6 +3,122 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.73](https://github.com/microlinkhq/cards/compare/v0.0.72...v0.0.73) (2020-05-13)
+
+
+### Bug Fixes
+
+* lint ([2c55f94](https://github.com/microlinkhq/cards/commit/2c55f94f3942fd52ec130fc8a663748218de0c1f))
+
+
+
+## [0.0.59](https://github.com/microlinkhq/cards/compare/v0.0.58...v0.0.59) (2020-04-24)
+
+
+
+## [0.0.58](https://github.com/microlinkhq/cards/compare/v0.0.57...v0.0.58) (2020-04-24)
+
+
+
+## [0.0.57](https://github.com/microlinkhq/cards/compare/v0.0.56...v0.0.57) (2020-04-23)
+
+
+### Bug Fixes
+
+* adobe flex empty ([0cb93f9](https://github.com/microlinkhq/cards/commit/0cb93f92e8d946e624f5d01880ab3cd4f81ffb85))
+* comments from PR ([af955d6](https://github.com/microlinkhq/cards/commit/af955d61e81ea35f0111800c8c29e613a573a98d))
+* gradient color ([64c5c74](https://github.com/microlinkhq/cards/commit/64c5c74bce48d0413040b4bbf42e8b8c15531812))
+* linter ([cc5ccc7](https://github.com/microlinkhq/cards/commit/cc5ccc7b9441c095354f6012774df3c0bda4d291))
+
+
+### Features
+
+* add adobe preset ([04b81a1](https://github.com/microlinkhq/cards/commit/04b81a1363312c8836b9e5f9543a4382fe2a5993))
+* add chrisbiscardi ([b1e3af9](https://github.com/microlinkhq/cards/commit/b1e3af957ac3001ed4e31d8986ff09e2b47c184d))
+
+
+
+## [0.0.56](https://github.com/microlinkhq/cards/compare/v0.0.55...v0.0.56) (2020-04-23)
+
+
+### Bug Fixes
+
+* my stupidness ([dff3cff](https://github.com/microlinkhq/cards/commit/dff3cffa876042799bf4250b6ed5c189d3779264))
+
+
+
+## [0.0.55](https://github.com/microlinkhq/cards/compare/v0.0.54...v0.0.55) (2020-04-22)
+
+
+
+## [0.0.54](https://github.com/microlinkhq/cards/compare/v0.0.53...v0.0.54) (2020-04-22)
+
+
+
+## [0.0.53](https://github.com/microlinkhq/cards/compare/v0.0.52...v0.0.53) (2020-04-22)
+
+
+
+## [0.0.52](https://github.com/microlinkhq/cards/compare/v0.0.51...v0.0.52) (2020-04-22)
+
+
+
+## [0.0.51](https://github.com/microlinkhq/cards/compare/v0.0.50...v0.0.51) (2020-04-22)
+
+
+
+## [0.0.50](https://github.com/microlinkhq/cards/compare/v0.0.49...v0.0.50) (2020-04-22)
+
+
+
+## [0.0.49](https://github.com/microlinkhq/cards/compare/v0.0.48...v0.0.49) (2020-04-22)
+
+
+### Bug Fixes
+
+* add overflow property to swyxdotio preset ([3111381](https://github.com/microlinkhq/cards/commit/3111381f95a3e064a97c673e06b3bc9eae021991))
+* remove unnecessary `css` prop ([7ba4dbb](https://github.com/microlinkhq/cards/commit/7ba4dbb9267ad020aa725ed9be2aef7cbd2e8256))
+
+
+
+## [0.0.48](https://github.com/microlinkhq/cards/compare/v0.0.47...v0.0.48) (2020-04-22)
+
+
+
+## [0.0.47](https://github.com/microlinkhq/cards/compare/v0.0.46...v0.0.47) (2020-04-22)
+
+
+
+## [0.0.46](https://github.com/microlinkhq/cards/compare/v0.0.45...v0.0.46) (2020-04-22)
+
+
+
+## [0.0.45](https://github.com/microlinkhq/cards/compare/v0.0.44...v0.0.45) (2020-04-22)
+
+
+
+## [0.0.44](https://github.com/microlinkhq/cards/compare/v0.0.43...v0.0.44) (2020-04-22)
+
+
+
+## [0.0.43](https://github.com/microlinkhq/cards/compare/v0.0.42...v0.0.43) (2020-04-21)
+
+
+
+## [0.0.42](https://github.com/microlinkhq/cards/compare/v0.0.41...v0.0.42) (2020-04-21)
+
+
+
+## [0.0.41](https://github.com/microlinkhq/cards/compare/v0.0.40...v0.0.41) (2020-04-21)
+
+
+
+## 0.0.40 (2020-04-21)
+
+
+
+
+
 ## [0.0.72](https://github.com/microlinkhq/cards/compare/v0.0.71...v0.0.72) (2020-05-13)
 
 **Note:** Version bump only for package @microlink/cards-root
