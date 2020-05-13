@@ -29,8 +29,9 @@ const code = (
           as='header'
           sx={{
             bg: 'background',
-            py: 2,
+            pt: 2,
             px: 3,
+            pb: 1,
             borderBottomWidth: query.theme.space[2],
             borderBottomColor: 'background',
             borderBottomStyle: 'solid',
@@ -53,7 +54,7 @@ const code = (
             pb: 1,
             px: 3,
             mx: 3,
-            mt: -2,
+            mt: -3,
             flex: 1,
             flexDirection: 'column'
           }}
@@ -61,7 +62,7 @@ const code = (
           <Text
             sx={{
               fontSize: 4,
-              lineHeight: 1.3
+              lineHeight: 1.2
             }}
           >
             {query.title}
@@ -72,7 +73,7 @@ const code = (
               fontFamily: 'Fira Mono',
               fontWeight: '400',
               color: 'faded',
-              fontSize: 1,
+              fontSize: 2,
               mt: 'auto'
             }}
           >
@@ -87,8 +88,7 @@ const code = (
 const query = {
   heading: 'Pedro',
   subHeading: 'Duarte',
-  title:
-    'UI developer interested in design systems, jamstack, user/dev experience and under engineering.',
+  title: 'User interface.',
   domain: 'ped.ro',
   theme: {
     colors: {
@@ -97,8 +97,8 @@ const query = {
       accent: 'rgba(255, 221, 0, 1)',
       faded: 'rgba(128, 128, 128, 1)'
     },
-    space: [0, 32, 48, 64],
-    sizes: [0, 32, 48, 64],
+    space: [0, 32, 40, 48],
+    sizes: [0, 32, 40, 48],
     fontSizes: [0, 16, 24, 32, 48]
   }
 }
