@@ -1,0 +1,139 @@
+{
+  "name": "@microlink/cards-app",
+  "description": "The easiest way to generate dynamic social images at scale.",
+  "homepage": "https://github.com/microlinkhq/cards",
+  "version": "0.0.72",
+  "author": {
+    "email": "hello@microlink.io",
+    "name": "microlink.io",
+    "url": "https://microlink.io"
+  },
+  "contributors": [
+    {
+      "name": "Kiko Beats",
+      "email": "josefrancisco.verdu@gmail.com"
+    },
+    {
+      "name": "GermanRodrickson",
+      "email": "germanrodrickson@gmail.com"
+    },
+    {
+      "name": "Pedro Duarte",
+      "email": "contact@peduarte.com"
+    },
+    {
+      "name": "Brad Adams",
+      "email": "hi@breadadams.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/microlinkhq/cards.git"
+  },
+  "bugs": {
+    "url": "https://github.com/microlinkhq/cards/issues"
+  },
+  "keywords": [
+    "cards",
+    "img",
+    "meta",
+    "metatags",
+    "microlink",
+    "og-image",
+    "opengraph",
+    "seo",
+    "share"
+  ],
+  "dependencies": {
+    "@microlink/mql": "~0.6.13",
+    "@monaco-editor/react": "~3.3.0",
+    "@snackbar/core": "~1.7.0",
+    "babel-plugin-macros": "~2.8.0",
+    "cycled": "~1.1.0",
+    "deep-object-diff": "~1.1.0",
+    "fast-safe-stringify": "~2.0.7",
+    "flat": "~5.0.0",
+    "framer-motion": "^1.10.3",
+    "monaco-themes": "~0.3.3",
+    "msgpack5": "~4.2.1",
+    "next": "~9.4.0",
+    "next-offline": "~5.0.2",
+    "polished": "~3.6.3",
+    "prettier": "~2.0.5",
+    "qss": "~2.0.3",
+    "react": "~16.13.1",
+    "react-aspect-ratio": "~1.0.42",
+    "react-dom": "~16.13.1",
+    "react-json-view": "~1.19.1",
+    "react-live": "~2.2.2",
+    "react-loading-skeleton": "~2.0.1",
+    "react-select": "~3.1.0",
+    "react-tabs": "~3.1.0",
+    "styled-components": "~5.1.0",
+    "theme-ui": "~0.3.1",
+    "throttle-debounce": "~2.1.0",
+    "tickedoff": "~1.0.2",
+    "urlsafe-base64": "~1.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "latest",
+    "@commitlint/config-conventional": "latest",
+    "babel-plugin-styled-components": "latest",
+    "conventional-github-releaser": "latest",
+    "finepack": "latest",
+    "git-authors-cli": "latest",
+    "git-dirty": "latest",
+    "husky": "latest",
+    "lint-staged": "latest",
+    "npm-check-updates": "latest",
+    "prettier-standard": "latest",
+    "standard": "latest",
+    "standard-markdown": "latest",
+    "standard-version": "latest"
+  },
+  "engines": {
+    "node": "12.x"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production next build",
+    "clean": "rm -rf node_modules",
+    "contributors": "(git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
+    "dev": "NODE_ENV=development next -p 3001",
+    "export": "next export",
+    "lint": "standard-markdown README.md && standard",
+    "postrelease": "npm run release:tags && npm run release:github",
+    "prerelease": "npm run update:check && npm run contributors",
+    "pretest": "npm run lint",
+    "release": "standard-version -a",
+    "release:github": "conventional-github-releaser -p angular",
+    "release:tags": "git push --follow-tags origin HEAD:master",
+    "start": "next start",
+    "test": "exit 0",
+    "update": "ncu -u",
+    "update:check": "ncu -- --error-level 2"
+  },
+  "private": true,
+  "license": "MIT",
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "package.json": [
+      "finepack"
+    ],
+    "*.js": [
+      "prettier-standard"
+    ],
+    "*.md": [
+      "standard-markdown"
+    ]
+  }
+}
