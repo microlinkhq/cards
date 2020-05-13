@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 
 import Inline from '../inline.macro'
-import { ThemeProvider, Image, Box, Flex, Text, Link } from './scope'
+import { ThemeProvider, Box, Flex, Text, Link } from './scope'
 
 const code = (
   <Inline>
@@ -58,18 +58,10 @@ const code = (
             flexDirection: 'column'
           }}
         >
-          <Image
-            sx={{
-              size: 2,
-              mx: 'auto',
-              display: 'block'
-            }}
-            src={query.logo}
-          />
-
           <Text
             sx={{
-              mt: 2
+              fontSize: 4,
+              lineHeight: 1.3
             }}
           >
             {query.title}
@@ -96,9 +88,8 @@ const query = {
   heading: 'Pedro',
   subHeading: 'Duarte',
   title:
-    "I'm a UI developer interested in design systems, jamstack, user/dev experience and under engineering.",
-  domain: 'https://ped.ro',
-  logo: 'https://svgur.com/i/KSQ.svg',
+    'UI developer interested in design systems, jamstack, user/dev experience and under engineering.',
+  domain: 'ped.ro',
   theme: {
     colors: {
       background: 'rgba(255, 255, 255, 1)',
@@ -108,7 +99,7 @@ const query = {
     },
     space: [0, 32, 48, 64],
     sizes: [0, 32, 48, 64],
-    fontSizes: [0, 16, 24]
+    fontSizes: [0, 16, 24, 32, 48]
   }
 }
 
