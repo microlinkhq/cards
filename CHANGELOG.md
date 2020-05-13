@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.74](https://github.com/microlinkhq/cards/compare/v0.0.73...v0.0.74) (2020-05-13)
+
+
+### Bug Fixes
+
+* pedro preset ([efe3e6b](https://github.com/microlinkhq/cards/commit/efe3e6b5c5c371c1eebec5dea61c8a3ca8d6448d))
+
+
+
+
+
 ## [0.0.73](https://github.com/microlinkhq/cards/compare/v0.0.72...v0.0.73) (2020-05-13)
 
 
