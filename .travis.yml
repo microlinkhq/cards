@@ -14,8 +14,12 @@ install:
 
 jobs:
   include:
+    - stage: Test
+      script: npm run test
+      after_success:
+        - curl "https://api.microlink.io?url=https://cards.microlink.io&meta=false&insights&embed=insights.lighthouse&force" > ".lighthouseci/lhr-$(date +"%s").json
+        - lhci upload --upload.token="$LHCI_SERVER_TOKEN"
     - stage: Release
-      install: npm install --no-package-lock
       before_deploy:
         - git config user.email ${GITHUB_EMAIL:-"travis@travis-ci.org"}
         - git config user.name ${GITHUB_USER:-"Travis CI"}
