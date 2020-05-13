@@ -48,7 +48,7 @@ export const theme = {
       fontFamily: 'sans',
       lineHeight: 1.5,
       margin: 0,
-      overflow: 'hidden'
+      overflow: ['initial', '', 'hidden']
     }
   }
 }
