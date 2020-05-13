@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.71](https://github.com/microlinkhq/cards/compare/v0.0.70...v0.0.71) (2020-05-13)
+
+
+### Bug Fixes
+
+* update Paco's url ([5952449](https://github.com/microlinkhq/cards/commit/59524492dfc53a72b71b41b3282ad145c59c242f))
+
+
+
+
+
 ## [0.0.70](https://github.com/microlinkhq/cards/compare/v0.0.69...v0.0.70) (2020-05-13)
 
 **Note:** Version bump only for package @microlink/cards-root
