@@ -1,9 +1,5 @@
 # @microlink/cards
 
-![Last version](https://img.shields.io/github/tag/Kikobeats/jsonsort.svg?style=flat-square)
-[![Build Status](https://img.shields.io/travis/Kikobeats/jsonsort/master.svg?style=flat-square)](https://travis-ci.org/Kikobeats/jsonsort)
-[![NPM Status](https://img.shields.io/npm/dm/@microlink/cards.svg?style=flat-square)](https://www.npmjs.org/package/@microlink/cards)
-
 > Generate [Microlink Cards](https://cards.microlink.io) on build time.
 
 ## Install
