@@ -19,7 +19,7 @@ jobs:
       after_success:
         - mkdir -p .lighthouseci
         - curl -sL "https://api.microlink.io?url=https://cards.microlink.io&meta=false&insights&embed=insights.lighthouse" > ".lighthouseci/lhr-$(date +"%s").json"
-        - lhci upload --upload.token="$LHCI_SERVER_TOKEN"
+        - lhci upload --token="$LHCI_SERVER_TOKEN"
     - stage: Release
       before_deploy:
         - git config user.email ${GITHUB_EMAIL:-"travis@travis-ci.org"}
