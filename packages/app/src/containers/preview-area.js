@@ -120,7 +120,6 @@ export const PreviewArea = ({ isEditor }) => {
             sx={{
               alignItems: 'center',
               position: 'absolute',
-              width: '100%',
               left: 3,
               top: 3
             }}
