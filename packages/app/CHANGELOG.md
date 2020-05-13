@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.75](https://github.com/microlinkhq/cards/compare/v0.0.74...v0.0.75) (2020-05-13)
+
+
+### Bug Fixes
+
+* improve mobile scrolling ([9d03c24](https://github.com/microlinkhq/cards/commit/9d03c245ea0907aa6e55775df73122a13df1ed6d))
+* remove unwanted x axis overflow ([dd3cb36](https://github.com/microlinkhq/cards/commit/dd3cb362c4b1cc9a75c400f6a8af33452d81ed7b))
+
+
+
+
+
 ## [0.0.74](https://github.com/microlinkhq/cards/compare/v0.0.73...v0.0.74) (2020-05-13)
 
 
