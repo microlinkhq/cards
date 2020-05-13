@@ -52,7 +52,7 @@ module.exports = async ({
       const ext = get(mqlOpts, 'screenshot.type', 'png')
       const filepath = path.resolve(output.path, `${hash}.${ext}`)
 
-      if ((await existsFile(filepath)) && !output.overwrite) return
+      if ((await existsFile(filepath)) && output.incremental) return
 
       const payload = new URLSearchParams(query).toString()
       const cardUrl = `https://cards.microlink.io/?${payload}`
