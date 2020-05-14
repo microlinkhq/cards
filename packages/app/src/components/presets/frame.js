@@ -10,7 +10,7 @@ const code = (
         justifyContent: 'flex-end',
         flexDirection: 'column',
         alignItems: 'center',
-        bg: query.bg
+        bg: query.bg[query.theme]
       }}
     >
       <Flex
@@ -19,7 +19,11 @@ const code = (
           alignItems: 'center',
           flexDirection: 'column',
           width: '75%',
-          boxShadow: 'rgba(0, 0, 0, 0.12) 0px 5px 10px 0px'
+          boxShadow: 'rgba(0, 0, 0, 0.5) 0px 30px 60px',
+          border: '1px solid',
+          borderColor: query.borderColor[query.theme],
+          borderBottom: 0,
+          borderRadius: '4px'
         }}
       >
         <Image src={query.overlay[query.theme].safari} />
@@ -30,17 +34,24 @@ const code = (
 )
 
 const query = {
-  bg: '#333333',
-  theme: 'dark',
+  bg: {
+    dark: '#222222',
+    light: '#F7F7F7'
+  },
+  borderColor: {
+    dark: '#333333',
+    light: '#EAEAEA'
+  },
+  image: 'https://i.imgur.com/J86MSbd.png',
   overlay: {
     dark: {
-      safari: 'https://i.imgur.com/qvwzZTX.png'
+      safari: 'https://svgshare.com/i/L8w.svg'
     },
     light: {
-      safari: 'https://i.imgur.com/PVEmpbK.png'
+      safari: 'https://svgshare.com/i/L7Z.svg'
     }
   },
-  image: 'https://i.imgur.com/J86MSbd.png'
+  theme: 'dark'
 }
 
 export const frame = {
