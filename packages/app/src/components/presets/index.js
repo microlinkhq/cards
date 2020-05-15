@@ -2,6 +2,7 @@ export { adobe } from './adobe'
 export { article } from './article'
 export { bytesandhumans } from './bytesandhumans'
 export { chrisbiscardi } from './chrisbiscardi'
+export { contentz } from "./contentz"
 export { frame } from './frame'
 export { jxnblk } from './jxnblk'
 export { microlink } from './microlink'
