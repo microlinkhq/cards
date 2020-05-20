@@ -86,7 +86,7 @@ const code = (
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            mt: 4
+            mt: '4rem'
           }}
         >
           <Text
