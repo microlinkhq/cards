@@ -26,7 +26,7 @@ const code = (
           borderRadius: '4px'
         }}
       >
-        <Image src={query.overlay[query.theme].safari} />
+        <Image src={query.frames[query.theme][query.frame]} />
         <Image src={query.image} />
       </Flex>
     </Flex>
@@ -43,7 +43,7 @@ const query = {
     light: '#EAEAEA'
   },
   image: 'https://i.imgur.com/J86MSbd.png',
-  overlay: {
+  frames: {
     dark: {
       safari: 'https://svgshare.com/i/L8w.svg'
     },
@@ -51,6 +51,7 @@ const query = {
       safari: 'https://svgshare.com/i/L7Z.svg'
     }
   },
+  frames: 'safari',
   theme: 'dark'
 }
 
