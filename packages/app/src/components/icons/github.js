@@ -1,4 +1,4 @@
-import Svg from './svg'
+import { Svg } from './svg'
 
 export const GitHubIcon = ({ size = '20', ...props }) => (
   <Svg

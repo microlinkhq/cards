@@ -8,7 +8,7 @@ import { theme as themeBase, editorThemes } from '@/theme'
 const cycledMode = new Cycled(Object.keys(themeBase.colors.modes))
 const nextMode = () => cycledMode.next()
 
-const themeContext = () => {
+export default function ThemeContext () {
   const { colorMode, setColorMode } = useThemeUI()
 
   const changeTheme = useCallback(() => setColorMode(nextMode()), [])
@@ -27,5 +27,3 @@ const themeContext = () => {
 
   return { colorMode, changeTheme, theme }
 }
-
-export default themeContext

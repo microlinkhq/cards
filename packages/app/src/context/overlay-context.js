@@ -1,11 +1,11 @@
 import { useCallback, useState } from 'react'
 import defer from 'tickedoff'
 
-const overlayContext = (onShow) => {
+export default function OverlayContext (onShow) {
   const [isOverlay, setOverlay] = useState('')
 
   const showOverlay = useCallback(
-    (state) => () => {
+    state => () => {
       if (onShow) {
         onShow()
       }
@@ -19,5 +19,3 @@ const overlayContext = (onShow) => {
 
   return { isOverlay, showOverlay, hideOverlay }
 }
-
-export default overlayContext

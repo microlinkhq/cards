@@ -6,7 +6,7 @@ import { isMac } from '@/lib'
 
 const ctrl = isMac ? 'cmd' : 'ctrl'
 
-const OverlayKeyBindings = () => {
+export default function OverlayKeyBindings () {
   const { theme } = useContext(AppContext)
   const { borderColor, color } = theme
 
@@ -67,7 +67,7 @@ const OverlayKeyBindings = () => {
                   borderRadius: 4
                 }}
               >
-                {combination.map((key) => (
+                {combination.map(key => (
                   <Text
                     sx={{
                       fontSize: 0,
@@ -88,5 +88,3 @@ const OverlayKeyBindings = () => {
     </>
   )
 }
-
-export default OverlayKeyBindings

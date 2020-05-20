@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-const Svg = styled('svg')``
+const StyledSvg = styled('svg')``
 
-export default ({ color, size, ...props }) => (
-  <Svg
+export const Svg = ({ color, size, ...props }) => (
+  <StyledSvg
     xmlns='http://www.w3.org/2000/svg'
     fill={color}
     stroke={color}

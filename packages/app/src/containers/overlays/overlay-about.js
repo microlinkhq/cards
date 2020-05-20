@@ -5,7 +5,7 @@ import { useContext } from 'react'
 import { AppContext } from '@/context'
 import pkg from '@/package.json'
 
-const OverlayAbout = () => {
+export default function OverlayAbout () {
   const { theme } = useContext(AppContext)
   const { color, contrast } = theme
 
@@ -51,5 +51,3 @@ const OverlayAbout = () => {
     </>
   )
 }
-
-export default OverlayAbout

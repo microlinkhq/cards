@@ -11,7 +11,7 @@ const toClipboard = async (text, name) => {
   notification(`Copied ${name} to clipboard`)
 }
 
-const OverlayPreview = () => {
+export default function OverlayPreview () {
   const { query, screenshotUrl, theme } = useContext(AppContext)
   const { borderColor, color, contrast } = theme
 
@@ -49,7 +49,7 @@ const OverlayPreview = () => {
                 borderColor,
                 color: contrast
               }}
-              onClick={(e) => toClipboard(e.target.textContent, 'SEO Tags')}
+              onClick={e => toClipboard(e.target.textContent, 'SEO Tags')}
               children={shareCode.seo(screenshotUrl)}
             />
           </TabPanel>
@@ -60,7 +60,7 @@ const OverlayPreview = () => {
                 color: contrast
               }}
               children={shareCode.html(screenshotUrl)}
-              onClick={(e) => toClipboard(e.target.textContent, 'HTML')}
+              onClick={e => toClipboard(e.target.textContent, 'HTML')}
             />
           </TabPanel>
           <TabPanel>
@@ -70,7 +70,7 @@ const OverlayPreview = () => {
                 color: contrast
               }}
               children={shareCode.markdown(screenshotUrl)}
-              onClick={(e) => toClipboard(e.target.textContent, 'Markdown')}
+              onClick={e => toClipboard(e.target.textContent, 'Markdown')}
             />
           </TabPanel>
           <TabPanel>
@@ -80,7 +80,7 @@ const OverlayPreview = () => {
                 color: contrast
               }}
               children={shareCode.javascript(query)}
-              onClick={(e) => toClipboard(e.target.textContent, 'Javascript')}
+              onClick={e => toClipboard(e.target.textContent, 'Javascript')}
             />
           </TabPanel>
           <TabPanel>
@@ -90,7 +90,7 @@ const OverlayPreview = () => {
                 color: contrast
               }}
               children={screenshotUrl}
-              onClick={(e) => toClipboard(e.target.textContent, 'URL')}
+              onClick={e => toClipboard(e.target.textContent, 'URL')}
             />
           </TabPanel>
         </Tabs>
@@ -98,5 +98,3 @@ const OverlayPreview = () => {
     </>
   )
 }
-
-export default OverlayPreview
