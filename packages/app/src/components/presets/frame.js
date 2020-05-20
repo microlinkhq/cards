@@ -51,7 +51,7 @@ const query = {
       safari: 'https://svgshare.com/i/L7Z.svg'
     }
   },
-  frames: 'safari',
+  frame: 'safari',
   theme: 'dark'
 }
 
