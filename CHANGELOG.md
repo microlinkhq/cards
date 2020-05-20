@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.80](https://github.com/microlinkhq/cards/compare/v0.0.79...v0.0.80) (2020-05-20)
+
+
+### Bug Fixes
+
+* avoid top level fat arrow ([68cc11c](https://github.com/microlinkhq/cards/commit/68cc11c52c530e6a4766bdba00d0b2274032d3ad)), closes [/github.com/zeit/next.js/issues/12891#issuecomment-628846848](https://github.com//github.com/zeit/next.js/issues/12891/issues/issuecomment-628846848)
+* linter ([838a5fb](https://github.com/microlinkhq/cards/commit/838a5fb6dd51e4dd8450ad76bdb91caa0521ac3b))
+
+
+
+
+
 ## [0.0.79](https://github.com/microlinkhq/cards/compare/v0.0.78...v0.0.79) (2020-05-20)
 
 **Note:** Version bump only for package @microlink/cards-root
