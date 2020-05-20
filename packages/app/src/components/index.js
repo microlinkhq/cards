@@ -14,6 +14,7 @@ export { LiveEditor, LiveError, LivePreview, LiveProvider } from './live-editor'
 export { Overlay } from './overlay'
 export { SearchableSelect } from './searchable-select'
 export { Spinner } from './spinner'
+export { Lighthouse } from './lighthouse'
 export { Tab, Tabs, TabList, TabPanel } from './tabs'
 
 export { presets }
