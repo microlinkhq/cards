@@ -20,7 +20,8 @@ const code = (
           alignItems: 'center',
           flexDirection: 'column',
           width: '75%',
-          height: '90%'
+          height: '90%',
+          margin: 'auto'
         }}
       >
         <Image
