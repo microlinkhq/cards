@@ -23,6 +23,7 @@ export default function OverlayPreview () {
             shadow
             css={`
               zoom: 0.6;
+              cursor: pointer;
             `}
             onClick={() => toClipboard(screenshotUrl, 'URL')}
           />
