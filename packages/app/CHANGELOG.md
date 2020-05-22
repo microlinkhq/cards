@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.83](https://github.com/microlinkhq/cards/compare/v0.0.82...v0.0.83) (2020-05-22)
+
+
+### Bug Fixes
+
+* light image ([a1e048b](https://github.com/microlinkhq/cards/commit/a1e048b97edbb98f082bde32d3f51c33b0ca6967))
+
+
+
+
+
 ## [0.0.82](https://github.com/microlinkhq/cards/compare/v0.0.81...v0.0.82) (2020-05-22)
 
 **Note:** Version bump only for package @microlink/cards-app
