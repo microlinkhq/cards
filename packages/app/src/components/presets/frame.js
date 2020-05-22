@@ -19,7 +19,7 @@ const code = (
           alignItems: 'center',
           flexDirection: 'column',
           width: '75%',
-          boxShadow: 'rgba(0, 0, 0, 0.5) 0px 30px 60px',
+          boxShadow: 'rgba(0, 0, 0, 0.25) 0px 30px 60px',
           border: '1px solid',
           borderColor: query.borderColor[query.theme],
           borderBottom: 0,
@@ -48,7 +48,7 @@ const query = {
       safari: 'https://svgshare.com/i/LMB.svg'
     },
     light: {
-      safari: 'https://svgshare.com/i/LLm.svg'
+      safari: 'https://svgshare.com/i/LNE.svg'
     }
   },
   frame: 'safari',
