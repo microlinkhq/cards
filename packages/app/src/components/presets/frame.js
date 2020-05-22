@@ -45,10 +45,10 @@ const query = {
   image: 'https://i.imgur.com/J86MSbd.png',
   frames: {
     dark: {
-      safari: 'https://svgshare.com/i/L8w.svg'
+      safari: 'https://svgshare.com/i/LMB.svg'
     },
     light: {
-      safari: 'https://svgshare.com/i/L7Z.svg'
+      safari: 'https://svgshare.com/i/LLm.svg'
     }
   },
   frame: 'safari',
