@@ -56,7 +56,7 @@
     "framer-motion": "~1.11.0",
     "monaco-themes": "~0.3.3",
     "msgpack5": "~4.2.1",
-    "next": "~9.4.1",
+    "next": "~9.4.2",
     "next-offline": "~5.0.2",
     "polished": "~3.6.3",
     "prettier": "~2.0.5",
