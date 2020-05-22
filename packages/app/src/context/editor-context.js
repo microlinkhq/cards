@@ -10,7 +10,7 @@ const updateQuery = debounce(({ setQuery, code, queryVariables }) => {
   setQuery(newQuery)
 })
 
-const editorContext = (presetRef, query, setQuery) => {
+export default function EditorContext (presetRef, query, setQuery) {
   const [code, setCode] = useState(() => {
     if (isEmpty(query)) return presetRef.current.code
     const { p } = query
@@ -26,7 +26,7 @@ const editorContext = (presetRef, query, setQuery) => {
   })
 
   const handleCode = useCallback(
-    (newCode) => {
+    newCode => {
       setCode(newCode)
       const updateQueryOpts = { code: newCode, setQuery }
 
@@ -40,7 +40,7 @@ const editorContext = (presetRef, query, setQuery) => {
   )
 
   const handleQueryVariables = useCallback(
-    (newJSON) => {
+    newJSON => {
       setQueryVariables(newJSON)
       updateQuery({
         setQuery,
@@ -60,5 +60,3 @@ const editorContext = (presetRef, query, setQuery) => {
     setQueryVariables
   }
 }
-
-export default editorContext

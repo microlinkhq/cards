@@ -19,14 +19,14 @@ const code = (
           alignItems: 'center',
           flexDirection: 'column',
           width: '75%',
-          boxShadow: 'rgba(0, 0, 0, 0.5) 0px 30px 60px',
+          boxShadow: 'rgba(0, 0, 0, 0.25) 0px 30px 60px',
           border: '1px solid',
           borderColor: query.borderColor[query.theme],
           borderBottom: 0,
           borderRadius: '4px'
         }}
       >
-        <Image src={query.overlay[query.theme].safari} />
+        <Image src={query.frames[query.theme][query.frame]} />
         <Image src={query.image} />
       </Flex>
     </Flex>
@@ -43,14 +43,15 @@ const query = {
     light: '#EAEAEA'
   },
   image: 'https://i.imgur.com/J86MSbd.png',
-  overlay: {
+  frames: {
     dark: {
-      safari: 'https://svgshare.com/i/L8w.svg'
+      safari: 'https://svgshare.com/i/LMB.svg'
     },
     light: {
-      safari: 'https://svgshare.com/i/L7Z.svg'
+      safari: 'https://svgshare.com/i/LNE.svg'
     }
   },
+  frame: 'safari',
   theme: 'dark'
 }
 

@@ -7,7 +7,7 @@ import { setImageMeta } from '@/lib'
 import { OVERLAY_STATE } from '@/constants'
 import { AppContext } from '@/context'
 
-export default () => {
+export default function Editor () {
   const [render, setRender] = useState(false)
   const {
     changeTheme,

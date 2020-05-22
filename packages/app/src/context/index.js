@@ -11,7 +11,7 @@ import themeContext from './theme-context'
 
 export const AppContext = createContext({})
 
-const AppContextProvider = ({ children }) => {
+export default function AppContextProvider ({ children }) {
   const [query, setQuery] = useQueryState()
 
   const presetRef = useRef(presets[(query && query.preset) || DEFAULT_PRESET])
@@ -93,5 +93,3 @@ const AppContextProvider = ({ children }) => {
     </AppContext.Provider>
   )
 }
-
-export default AppContextProvider

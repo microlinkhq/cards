@@ -1,4 +1,4 @@
-import Svg from './svg'
+import { Svg } from './svg'
 
 export const KeyboardIcon = ({ size = '24', ...props }) => (
   <Svg

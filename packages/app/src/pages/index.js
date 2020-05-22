@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { PreviewArea } from '@/containers'
 import { AppFrame, Spinner } from '@/components'
 
-export default () => {
+export default function Index () {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(true)
 
