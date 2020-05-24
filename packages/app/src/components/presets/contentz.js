@@ -35,6 +35,7 @@ const code = (
           fontWeight: 200,
           borderLeft: '3px solid black',
           paddingLeft: 'calc(0.5em - 3px)',
+          letterSpacing: '-0.028em',
           margin: '-1em 0 1em -0.5em'
         }}
       >
