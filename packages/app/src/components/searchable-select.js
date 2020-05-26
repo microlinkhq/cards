@@ -1,7 +1,26 @@
-import ReactSelect from 'react-select'
+import ReactSelect, { components } from 'react-select'
 import { lighten } from 'polished'
+import { Flex } from 'theme-ui'
 
 import { theme as themeBase } from '@/theme'
+
+const Option = (props) => (
+  <components.Option {...props}>
+    <Flex
+      sx={{
+        alignItems: 'center',
+        justifyContent: 'space-between'
+      }}
+    >
+      {props.children}
+
+      <img
+        src={`https://i.microlink.io/https%3A%2F%2Fcards.microlink.io%2F%3Fpreset%3D${props.value}`}
+        style={{ width: 130, marginLeft: 10 }}
+      />
+    </Flex>
+  </components.Option>
+)
 
 export const SearchableSelect = ({ bg, color, ...props }) => {
   const secondaryColor = lighten(0.1, bg)
@@ -48,7 +67,7 @@ export const SearchableSelect = ({ bg, color, ...props }) => {
     menu: (provided) => ({
       ...provided,
       ...fontStyle,
-      minWidth: '170px',
+      minWidth: '300px',
       zIndex: 3
     }),
     indicatorSeparator: () => ({ display: 'none' }),
@@ -60,5 +79,12 @@ export const SearchableSelect = ({ bg, color, ...props }) => {
     })
   }
 
-  return <ReactSelect styles={styles} theme={theme} {...props} />
+  return (
+    <ReactSelect
+      components={{ Option }}
+      styles={styles}
+      theme={theme}
+      {...props}
+    />
+  )
 }
