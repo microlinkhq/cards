@@ -87,7 +87,7 @@ const code = (
 )
 
 const query = {
-  title: 'Cloudinary as a write throught serverless image generation cache',
+  title: 'Cloudinary as a write through serverless image generation cache',
   bg: '#181D28',
   primary: '#fff',
   secondary: '#D3D3D3',
