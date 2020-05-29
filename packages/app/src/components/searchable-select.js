@@ -14,10 +14,7 @@ const Option = props => (
     >
       {props.children}
 
-      <img
-        src={`/preview/${props.value}.png`}
-        style={{ width: 130, marginLeft: 10 }}
-      />
+      <img src={`/preview/${props.value}.png`} style={{ width: 128 }} />
     </Flex>
   </components.Option>
 )
@@ -69,6 +66,12 @@ export const SearchableSelect = ({ bg, color, ...props }) => {
       ...fontStyle,
       minWidth: '300px',
       zIndex: 3
+    }),
+    option: (provided, { isFocused }) => ({
+      ...provided,
+      cursor: 'pointer',
+      background: isFocused ? color : 'inherit',
+      color: isFocused ? bg : 'inherit'
     }),
     indicatorSeparator: () => ({ display: 'none' }),
     control: (provided, { isFocused }) => ({
