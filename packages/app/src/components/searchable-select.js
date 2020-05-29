@@ -1,7 +1,23 @@
-import ReactSelect from 'react-select'
+import ReactSelect, { components } from 'react-select'
 import { lighten } from 'polished'
+import { Flex } from 'theme-ui'
 
 import { theme as themeBase } from '@/theme'
+
+const Option = props => (
+  <components.Option {...props}>
+    <Flex
+      sx={{
+        alignItems: 'center',
+        justifyContent: 'space-between'
+      }}
+    >
+      {props.children}
+
+      <img src={`/preview/${props.value}.png`} style={{ width: 128 }} />
+    </Flex>
+  </components.Option>
+)
 
 export const SearchableSelect = ({ bg, color, ...props }) => {
   const secondaryColor = lighten(0.1, bg)
@@ -37,19 +53,25 @@ export const SearchableSelect = ({ bg, color, ...props }) => {
   }
 
   const styles = {
-    singleValue: (provided) => ({
+    singleValue: provided => ({
       ...provided,
       ...fontStyle
     }),
-    valueContainer: (provided) => ({
+    valueContainer: provided => ({
       ...provided,
       padding: '2px 8px'
     }),
-    menu: (provided) => ({
+    menu: provided => ({
       ...provided,
       ...fontStyle,
-      minWidth: '170px',
+      minWidth: '300px',
       zIndex: 3
+    }),
+    option: (provided, { isFocused }) => ({
+      ...provided,
+      cursor: 'pointer',
+      background: isFocused ? color : 'inherit',
+      color: isFocused ? bg : 'inherit'
     }),
     indicatorSeparator: () => ({ display: 'none' }),
     control: (provided, { isFocused }) => ({
@@ -60,5 +82,12 @@ export const SearchableSelect = ({ bg, color, ...props }) => {
     })
   }
 
-  return <ReactSelect styles={styles} theme={theme} {...props} />
+  return (
+    <ReactSelect
+      components={{ Option }}
+      styles={styles}
+      theme={theme}
+      {...props}
+    />
+  )
 }
