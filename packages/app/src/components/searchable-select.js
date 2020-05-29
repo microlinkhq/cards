@@ -4,7 +4,7 @@ import { Flex } from 'theme-ui'
 
 import { theme as themeBase } from '@/theme'
 
-const Option = (props) => (
+const Option = props => (
   <components.Option {...props}>
     <Flex
       sx={{
@@ -15,7 +15,7 @@ const Option = (props) => (
       {props.children}
 
       <img
-        src={`https://i.microlink.io/https%3A%2F%2Fcards.microlink.io%2F%3Fpreset%3D${props.value}`}
+        src={`/preview/${props.value}.png`}
         style={{ width: 130, marginLeft: 10 }}
       />
     </Flex>
@@ -56,15 +56,15 @@ export const SearchableSelect = ({ bg, color, ...props }) => {
   }
 
   const styles = {
-    singleValue: (provided) => ({
+    singleValue: provided => ({
       ...provided,
       ...fontStyle
     }),
-    valueContainer: (provided) => ({
+    valueContainer: provided => ({
       ...provided,
       padding: '2px 8px'
     }),
-    menu: (provided) => ({
+    menu: provided => ({
       ...provided,
       ...fontStyle,
       minWidth: '300px',
