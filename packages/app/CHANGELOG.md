@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.87](https://github.com/microlinkhq/cards/compare/v0.0.86...v0.0.87) (2020-05-29)
+
+
+### Bug Fixes
+
+* preset typo ([311c379](https://github.com/microlinkhq/cards/commit/311c379677c1a3b76b83fd7fbe8edd8296160a39))
+* remove unnecessary waitUntil ([bf2b7c3](https://github.com/microlinkhq/cards/commit/bf2b7c35353ace6607e3493195ea10edd32c6992))
+
+
+
+
+
 ## [0.0.86](https://github.com/microlinkhq/cards/compare/v0.0.85...v0.0.86) (2020-05-26)
 
 **Note:** Version bump only for package @microlink/cards-app
