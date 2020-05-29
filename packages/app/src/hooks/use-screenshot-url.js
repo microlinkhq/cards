@@ -25,7 +25,6 @@ const getCardUrl = ({ endpoint, ...props }) => {
     embed: 'screenshot.url',
     meta: false,
     screenshot: true,
-    waitUntil: ['load', 'networkidle0'],
     'screenshot.type': props['screenshot.type']
   })
 }
