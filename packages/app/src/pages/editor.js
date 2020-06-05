@@ -7,6 +7,11 @@ import { setImageMeta } from '@/lib'
 import { OVERLAY_STATE } from '@/constants'
 import { AppContext } from '@/context'
 
+const addCmdClassName = (e) =>
+  e.metaKey && document.body.classList.add('cmd-pressed')
+
+const removeCmdClassName = () => document.body.classList.remove('cmd-pressed')
+
 export default function Editor () {
   const [render, setRender] = useState(false)
   const {
@@ -29,6 +34,14 @@ export default function Editor () {
 
   useEffect(() => {
     setRender(true)
+
+    document.addEventListener('keydown', addCmdClassName)
+    document.addEventListener('keyup', removeCmdClassName)
+
+    return () => {
+      document.removeEventListener('keydown', addCmdClassName)
+      document.removeEventListener('keyup', removeCmdClassName)
+    }
   }, [])
 
   if (!render) {

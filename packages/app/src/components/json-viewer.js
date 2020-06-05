@@ -56,6 +56,12 @@ const ThemeWrapper = styled.div`
   .click-to-remove svg {
     color: ${props => props.theme.iconColor} !important;
   }
+
+  body.cmd-pressed & {
+    .variable-value .string-value {
+      cursor: pointer !important;
+    }
+  }
 `
 
 export const JSONViewer = ({ onChange, children, theme }) => {
@@ -64,6 +70,7 @@ export const JSONViewer = ({ onChange, children, theme }) => {
   return (
     <ThemeWrapper theme={theme}>
       <DynamicReactJson
+        selectOnFocus
         sortKeys
         displayDataTypes={false}
         enableClipboard={false}
