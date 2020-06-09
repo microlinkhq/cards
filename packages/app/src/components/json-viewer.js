@@ -57,10 +57,8 @@ const ThemeWrapper = styled.div`
     color: ${props => props.theme.iconColor} !important;
   }
 
-  body.cmd-pressed & {
-    .variable-value .string-value {
-      cursor: pointer !important;
-    }
+  .variable-value .string-value {
+    cursor: text !important;
   }
 `
 
@@ -71,6 +69,7 @@ export const JSONViewer = ({ onChange, children, theme }) => {
     <ThemeWrapper theme={theme}>
       <DynamicReactJson
         selectOnFocus
+        keyModifier={() => true}
         sortKeys
         displayDataTypes={false}
         enableClipboard={false}
