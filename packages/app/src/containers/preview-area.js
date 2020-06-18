@@ -64,8 +64,8 @@ const PreviewScaler = ({ mainRef, ...props }) => {
 
 export const PreviewArea = ({ isEditor }) => {
   const {
+    downloadScreenshot,
     showOverlay,
-    screenshotUrl,
     theme: { bg, color }
   } = useContext(AppContext)
 
@@ -74,6 +74,7 @@ export const PreviewArea = ({ isEditor }) => {
   const PreviewWrap = useMemo(() => (isEditor ? PreviewScaler : Fragment), [
     isEditor
   ])
+
   const wrapProps = useMemo(() => (isEditor ? { mainRef } : {}), [
     isEditor,
     mainRef
@@ -173,12 +174,7 @@ export const PreviewArea = ({ isEditor }) => {
             <InternalLink
               href='#'
               sx={{ color }}
-              onClick={() => {
-                const link = document.createElement('a')
-                link.download = Date.now()
-                link.href = screenshotUrl
-                window.open(link)
-              }}
+              onClick={downloadScreenshot}
             >
               Download
             </InternalLink>

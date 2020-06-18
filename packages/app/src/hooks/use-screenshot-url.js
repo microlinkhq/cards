@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 import { getScreenshotUrl, isDev } from '@/lib'
 
@@ -31,10 +31,28 @@ const getCardUrl = ({ endpoint, ...props }) => {
 
 export const useScreenshotUrl = queryVariables => {
   const [screenshotUrl, setScreenshotUrl] = useState('')
+  const [runDownload, setRunDownload] = useState(false)
 
-  const sync = queryVariables => setScreenshotUrl(getCardUrl(queryVariables))
+  const sync = useCallback(queryVariables => setScreenshotUrl(getCardUrl(queryVariables)), [])
 
-  useEffect(() => sync(queryVariables), [])
+  const downloadScreenshot = useCallback(() => {
+    sync(queryVariables)
+    setRunDownload(true)
+  }, [queryVariables, sync])
 
-  return [screenshotUrl, sync]
+  useEffect(() => sync(queryVariables), [sync])
+
+  useEffect(() => {
+    if (runDownload) {
+      setRunDownload(false)
+
+      const link = document.createElement('a')
+      link.download = Date.now()
+      link.href = screenshotUrl
+
+      window.open(link)
+    }
+  }, [runDownload, screenshotUrl])
+
+  return [screenshotUrl, sync, downloadScreenshot]
 }
