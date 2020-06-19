@@ -25,7 +25,7 @@ export default function AppContextProvider ({ children }) {
     setQueryVariables
   } = editorContext(presetRef, query, setQuery)
 
-  const [screenshotUrl, syncScreenshotUrl] = useScreenshotUrl(queryVariables)
+  const [screenshotUrl, syncScreenshotUrl, downloadScreenshot] = useScreenshotUrl(queryVariables)
 
   const onOverlayShow = useCallback(() => syncScreenshotUrl(queryVariables), [
     queryVariables,
@@ -53,6 +53,7 @@ export default function AppContextProvider ({ children }) {
       changeTheme,
       code,
       colorMode,
+      downloadScreenshot,
       handleCode,
       handlePresetChange,
       handleQueryVariables,
@@ -70,6 +71,7 @@ export default function AppContextProvider ({ children }) {
       changeTheme,
       code,
       colorMode,
+      downloadScreenshot,
       handleCode,
       handlePresetChange,
       handleQueryVariables,
