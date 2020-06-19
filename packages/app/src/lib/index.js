@@ -1,6 +1,6 @@
 export { clipboard } from './clipboard'
 export { debounce } from './debounce'
-export { eq } from './eq'
+export { isEqual } from './is-equal'
 export { getScreenshotUrl } from './screenshot-url'
 export { isDev } from './is-dev'
 export { isEmpty } from './is-empty'

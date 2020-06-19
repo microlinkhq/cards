@@ -2,19 +2,19 @@ import { useState, useEffect } from 'react'
 import { flatten, unflatten } from 'flat'
 import { encode } from 'qss'
 
-import { eq, isSSR } from '@/lib'
+import { isEqual, isSSR } from '@/lib'
 
 const fromLocation = isSSR
   ? () => ({})
   : () => {
-    const urlObj = new URL(window.location)
-    const query = Object.fromEntries(urlObj.searchParams.entries())
-    const decodeQuery = Object.keys(query).reduce(
-      (acc, key) => ({ ...acc, [key]: decodeURIComponent(query[key]) }),
-      {}
-    )
-    return decodeQuery
-  }
+      const urlObj = new URL(window.location)
+      const query = Object.fromEntries(urlObj.searchParams.entries())
+      const decodeQuery = Object.keys(query).reduce(
+        (acc, key) => ({ ...acc, [key]: decodeURIComponent(query[key]) }),
+        {}
+      )
+      return decodeQuery
+    }
 
 const condition = isSSR ? [] : [window.location.search]
 
@@ -23,7 +23,7 @@ export const useQueryState = () => {
 
   useEffect(() => {
     const newQuery = fromLocation()
-    if (!eq(query, newQuery)) setQuery(newQuery)
+    if (!isEqual(query, newQuery)) setQuery(newQuery)
   }, condition)
 
   const set = (obj, { replace = false } = {}) => {
