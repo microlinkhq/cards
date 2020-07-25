@@ -49,7 +49,6 @@ const query = {
   title: 'Paradigmas con emoji',
   image: 'https://i.imgur.com/mt12ihX.png',
   textColor: 'black',
-  bgColor: 'white',
   primaryColor: '#85FFE0'
 }
 
