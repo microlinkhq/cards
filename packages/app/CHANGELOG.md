@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4](https://github.com/microlinkhq/cards/compare/v1.0.3...v1.0.4) (2020-07-25)
+
+
+### Bug Fixes
+
+* setup font weight ([cbd0a4a](https://github.com/microlinkhq/cards/commit/cbd0a4abd3326da113f8ac9a6756b20187922cb9))
+
+
+
+
+
 ## [1.0.3](https://github.com/microlinkhq/cards/compare/v1.0.2...v1.0.3) (2020-07-20)
 
 **Note:** Version bump only for package @microlink/cards-app
