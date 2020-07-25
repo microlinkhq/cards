@@ -49,7 +49,8 @@ export const SearchableSelect = ({ bg, color, ...props }) => {
 
   const fontStyle = {
     fontFamily: themeBase.fonts.sans,
-    fontSize: themeBase.fontSizes[1]
+    fontSize: themeBase.fontSizes[1],
+    fontWeight: themeBase.fontWeights.normal
   }
 
   const styles = {
