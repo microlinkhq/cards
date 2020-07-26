@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/microlinkhq/cards/compare/v1.0.5...v1.1.0) (2020-07-26)
+
+
+### Bug Fixes
+
+* midudev template - rollback usage of inline macro ([2474792](https://github.com/microlinkhq/cards/commit/247479270dc8353a3cdbb3abfaaa035673e529ab))
+
+
+### Features
+
+* midudev template - use new layout and logo ([8f6a867](https://github.com/microlinkhq/cards/commit/8f6a8678e2aafd717a82e387ef893f4f7fbe76e7))
+
+
+
+
+
 ## [1.0.5](https://github.com/microlinkhq/cards/compare/v1.0.4...v1.0.5) (2020-07-25)
 
 **Note:** Version bump only for package @microlink/cards-root
