@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/microlinkhq/cards/compare/v1.1.2...v1.2.0) (2020-07-29)
+
+
+### Features
+
+* add spotify preset ([5cd2760](https://github.com/microlinkhq/cards/commit/5cd2760336695b41b5979480f8e90f0b5c9dea37))
+
+
+
+
+
 ## [1.1.2](https://github.com/microlinkhq/cards/compare/v1.1.1...v1.1.2) (2020-07-29)
 
 **Note:** Version bump only for package @microlink/cards-app
