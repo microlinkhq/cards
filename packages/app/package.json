@@ -107,7 +107,6 @@
     "generate-previews": "DEBUG=microlink-cards* node scripts/generate-previews.js",
     "lint": "standard-markdown README.md && standard",
     "postrelease": "npm run release:tags && npm run release:github",
-    "predev": "npm run generate-previews",
     "prerelease": "npm run update:check && npm run contributors",
     "pretest": "npm run lint",
     "release": "standard-version -a",
