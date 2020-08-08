@@ -1,4 +1,5 @@
 export { adobe } from './adobe'
+export { ajames } from './ajames'
 export { article } from './article'
 export { bytesandhumans } from './bytesandhumans'
 export { chrisbiscardi } from './chrisbiscardi'
