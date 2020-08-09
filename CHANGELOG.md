@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.6](https://github.com/microlinkhq/cards/compare/v1.2.5...v1.2.6) (2020-08-09)
+
+
+### Bug Fixes
+
+* added url decode to bg img on ajames preset ([3f96239](https://github.com/microlinkhq/cards/commit/3f962397c227f063dc5272fdee0ccaa2fc4abaad))
+
+
+
+
+
 ## [1.2.5](https://github.com/microlinkhq/cards/compare/v1.2.4...v1.2.5) (2020-08-09)
 
 **Note:** Version bump only for package @microlink/cards-root
