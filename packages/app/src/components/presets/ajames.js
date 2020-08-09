@@ -12,8 +12,8 @@ const code = (
       <Box
         sx={{
           position: 'relative',
-          backgroundColor: query.bg.secondary,
-          backgroundImage: `url(${query.bg.image})`,
+          backgroundColor: query.bgBase,
+          backgroundImage: `url(${query.image})`,
           backgroundSize: 'cover',
           zIndex: 1,
           '::before': {
@@ -23,7 +23,7 @@ const code = (
             right: 0,
             bottom: 0,
             left: 0,
-            background: query.bg.mask,
+            background: query.imageMask,
             zIndex: 2
           }
         }}
@@ -36,22 +36,17 @@ const code = (
             width: '90%',
             height: '100%',
             padding: 30,
-            background: query.bg.primary,
-            color: query.color.primary,
+            background: query.bgMask,
+            color: query.colorPrimary,
             zIndex: 3
           }}
         >
           <Flex sx={{ alignItems: 'center' }}>
-            <Image
-              sx={{
-                width: '50px'
-              }}
-              src={query.logo}
-            />
+            <Image sx={{ width: '50px' }} src={query.logo} />
             <Text
               sx={{
                 marginLeft: 3,
-                color: query.color.secondary,
+                color: query.colorSecondary,
                 textTransform: 'uppercase'
               }}
             >
@@ -79,7 +74,7 @@ const code = (
                 fontSize: 2,
                 fontWeight: query.font.secondary.weight,
                 lineHeight: 'normal',
-                color: query.color.secondary
+                color: query.colorSecondary
               }}
             >
               {query.subtitle}
@@ -96,18 +91,13 @@ const query = {
   title: 'Multiple entry points in Create React App without ejecting',
   subtitle: 'June 02, 2020 | 6 min read',
   logo: 'https://i.imgur.com/EMrjD2G.png',
-  bg: {
-    primary:
-      'linear-gradient(75deg, rgb(255,255,255) 0%, rgba(255,255,255, 0.95) 70%, transparent 0%)',
-    secondary: 'rgb(0,0,0)',
-    mask:
-      'linear-gradient(75deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.5) 75%, rgba(0,0,0,0.25) 100%);',
-    image: 'https://i.imgur.com/yPaaNRB.jpg'
-  },
-  color: {
-    primary: 'rgb(0,0,0)',
-    secondary: 'rgb(74,85,104)'
-  },
+  image: 'https://i.imgur.com/wDn5ifZ.png',
+  imageMask: 'linear-gradient(75deg,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.75) 100%)',
+  bgBase: 'rgb(255,255,255)',
+  bgMask:
+    'linear-gradient(75deg,rgb(255,255,255) 69%,rgb(66,153,225) 69%,rgb(229,62,62) 70%,transparent 0%)',
+  colorPrimary: 'rgb(0,0,0)',
+  colorSecondary: 'rgb(74,85,104)',
   font: {
     primary: {
       name: 'Rubik',
