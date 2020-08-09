@@ -13,7 +13,7 @@ const code = (
         sx={{
           position: 'relative',
           backgroundColor: query.bgBase,
-          backgroundImage: `url(${query.image})`,
+          backgroundImage: `url(${decodeURIComponent(query.image)})`,
           backgroundSize: 'cover',
           zIndex: 1,
           '::before': {
@@ -58,7 +58,7 @@ const code = (
             <Text
               sx={{
                 marginBottom: 3,
-                width: '75%',
+                width: '70%',
                 fontFamily: query.font.primary.name,
                 fontSize: 6,
                 fontWeight: query.font.primary.weight,
