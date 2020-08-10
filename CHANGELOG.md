@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.7](https://github.com/microlinkhq/cards/compare/v1.2.6...v1.2.7) (2020-08-10)
+
+
+### Bug Fixes
+
+* ajames updated default img src position and mask ([c5444be](https://github.com/microlinkhq/cards/commit/c5444be4bb5d9a61e8c2532f3dc4ca4d2183d57f))
+
+
+
+
+
 ## [1.2.6](https://github.com/microlinkhq/cards/compare/v1.2.5...v1.2.6) (2020-08-09)
 
 
