@@ -12,9 +12,10 @@ const code = (
       <Box
         sx={{
           position: 'relative',
+          border: '1px solid black',
           backgroundColor: query.bgBase,
-          backgroundImage: `url(${decodeURIComponent(query.image)})`,
-          backgroundSize: 'cover',
+          backgroundImage: `url(${query.image})`,
+          backgroundSize: 'contain',
           zIndex: 1,
           '::before': {
             content: '""',
@@ -91,8 +92,8 @@ const query = {
   title: 'Multiple entry points in Create React App without ejecting',
   subtitle: 'June 02, 2020 | 6 min read',
   logo: 'https://i.imgur.com/EMrjD2G.png',
-  image: 'https://i.imgur.com/wDn5ifZ.png',
-  imageMask: 'linear-gradient(75deg,rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.75) 100%)',
+  image: 'https://i.imgur.com/unfZ8Bw.jpg',
+  imageMask: 'rgba(0,0,0,0)',
   bgBase: 'rgb(255,255,255)',
   bgMask:
     'linear-gradient(75deg,rgb(255,255,255) 69%,rgb(66,153,225) 69%,rgb(229,62,62) 70%,transparent 0%)',
