@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/microlinkhq/cards/compare/v1.2.7...v1.3.0) (2020-08-11)
+
+
+### Features
+
+* add first version of CKGrafico template ([2adc935](https://github.com/microlinkhq/cards/commit/2adc935f5bb53082211242d99ed65e6c1865b407))
+
+
+
+
+
 ## [1.2.7](https://github.com/microlinkhq/cards/compare/v1.2.6...v1.2.7) (2020-08-10)
 
 
