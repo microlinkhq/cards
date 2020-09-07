@@ -69,7 +69,7 @@
     "react-loading-skeleton": "~2.1.1",
     "react-select": "~3.1.0",
     "react-tabs": "~3.1.1",
-    "styled-components": "~5.1.1",
+    "styled-components": "~5.2.0",
     "theme-ui": "~0.3.1",
     "throttle-debounce": "~2.3.0",
     "tickedoff": "~1.0.2",
