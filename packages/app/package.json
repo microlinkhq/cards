@@ -58,7 +58,7 @@
     "msgpack5": "~4.2.1",
     "next": "~9.5.2",
     "next-offline": "~5.0.2",
-    "polished": "~3.6.5",
+    "polished": "~4.0.1",
     "prettier": "~2.1.0",
     "qss": "~2.0.3",
     "react": "~16.13.1",
