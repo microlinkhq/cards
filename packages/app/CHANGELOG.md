@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/microlinkhq/cards/compare/v1.3.14...v1.4.0) (2020-10-13)
+
+
+### Features
+
+* add SMHutch preset ([6cca3d3](https://github.com/microlinkhq/cards/commit/6cca3d3e55ea2fd5f47fdf9e2102b2f3d7a1126f))
+
+
+
+
+
 ## [1.3.14](https://github.com/microlinkhq/cards/compare/v1.3.13...v1.3.14) (2020-10-12)
 
 **Note:** Version bump only for package @microlink/cards-app
