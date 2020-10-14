@@ -18,12 +18,17 @@ const code = (
         href='https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@800'
         rel='stylesheet'
       />
-      <Flex sx={{ justifyContent: 'space-between', height: '100%' }}>
+      <Flex
+        sx={{
+          alignItems: 'flex-end',
+          justifyContent: 'space-between',
+          height: '100%'
+        }}
+      >
         <Flex
           sx={{
             flexDirection: 'column',
             height: '100%',
-            justifyContent: 'flex-end',
             flex: '1 0 50%'
           }}
         >
@@ -63,9 +68,7 @@ const code = (
         <Image
           src={query.logo}
           sx={{
-            alignSelf: 'flex-end',
-            flex: '0 1 40px',
-            mt: 1
+            width: '50px'
           }}
         />
       </Flex>
