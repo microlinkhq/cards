@@ -61,7 +61,7 @@
     "polished": "~4.0.1",
     "prettier": "~2.1.0",
     "qss": "~2.0.3",
-    "react": "~16.13.1",
+    "react": "~16.14.0",
     "react-aspect-ratio": "~1.0.42",
     "react-dom": "~16.13.1",
     "react-json-view": "github:microlinkhq/react-json-view#feat-allow-textarea-select",
