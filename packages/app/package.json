@@ -63,7 +63,7 @@
     "qss": "~2.0.3",
     "react": "~16.14.0",
     "react-aspect-ratio": "~1.0.42",
-    "react-dom": "~16.13.1",
+    "react-dom": "~16.14.0",
     "react-json-view": "github:microlinkhq/react-json-view#feat-allow-textarea-select",
     "react-live": "~2.2.2",
     "react-loading-skeleton": "~2.1.1",
