@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.5](https://github.com/microlinkhq/cards/compare/v1.4.4...v1.4.5) (2020-10-18)
+
+
+### Bug Fixes
+
+* improve layout for short titles in SMHutch preset ([a133387](https://github.com/microlinkhq/cards/commit/a133387e9368a19894d2f378301666ce7a19b991))
+
+
+
+
+
 ## [1.4.4](https://github.com/microlinkhq/cards/compare/v1.4.3...v1.4.4) (2020-10-16)
 
 **Note:** Version bump only for package @microlink/cards-app
