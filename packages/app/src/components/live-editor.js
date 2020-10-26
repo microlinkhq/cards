@@ -18,6 +18,7 @@ const LivePreviewWrapper = styled('div')`
   margin: auto;
   overflow: hidden;
   user-select: none;
+  position: relative;
 
   > * {
     pointer-events: none;
