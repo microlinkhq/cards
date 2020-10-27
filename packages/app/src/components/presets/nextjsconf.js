@@ -19,7 +19,7 @@ const code = (
           right: 0
         }}
       >
-        <Image sx={{ width: 96 }} src={query.logo} />
+        <Image sx={{ width: 128 }} src={query.logo} />
       </Box>
       <Box
         as='header'
