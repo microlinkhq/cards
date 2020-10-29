@@ -71,7 +71,7 @@
     "react-tabs": "~3.1.1",
     "styled-components": "~5.2.0",
     "theme-ui": "~0.3.1",
-    "throttle-debounce": "~2.3.0",
+    "throttle-debounce": "~3.0.0",
     "tickedoff": "~1.0.2",
     "urlsafe-base64": "~1.0.0"
   },
