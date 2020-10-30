@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.10](https://github.com/microlinkhq/cards/compare/v1.4.9...v1.4.10) (2020-10-30)
+
+
+### Bug Fixes
+
+* lint ([2cf9c45](https://github.com/microlinkhq/cards/commit/2cf9c45688068975b99dd8d30c6c4d69c1b530a7))
+
+
+
+
+
 ## [1.4.9](https://github.com/microlinkhq/cards/compare/v1.4.8...v1.4.9) (2020-10-28)
 
 **Note:** Version bump only for package @microlink/cards-root
