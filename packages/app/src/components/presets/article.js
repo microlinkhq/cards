@@ -27,8 +27,9 @@ const code = (
             fontSize: 3,
             fontWeight: 300
           }}
-          children='21 January'
-        />
+        >
+          21 January
+        </Text>
         <Text
           sx={{
             fontFamily: 'Roboto',
@@ -36,8 +37,9 @@ const code = (
             fontWeight: 700,
             textTransform: 'uppercase'
           }}
-          children='STARSIGHT'
-        />
+        >
+          STARSIGHT
+        </Text>
         <Text
           sx={{
             fontFamily: 'Roboto',
@@ -46,8 +48,9 @@ const code = (
             borderBottom: 1,
             paddingBottom: 5
           }}
-          children='The highly-anticipated sequel to Skyward.'
-        />
+        >
+          The highly-anticipated sequel to Skyward.
+        </Text>
       </Box>
     </>
   </Inline>

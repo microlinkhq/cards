@@ -42,8 +42,9 @@ const code = (
               flexGrow: 1,
               color: query.primary
             }}
-            children={query.title}
-          />
+          >
+            {query.title}
+          </Text>
           <Box as='footer'>
             <Box
               sx={{
@@ -67,8 +68,9 @@ const code = (
                   fontSize: 2,
                   color: query.secondary
                 }}
-                children={query.subtitle}
-              />
+              >
+                {query.subtitle}
+              </Text>
               <Text
                 sx={{
                   fontFamily: 'Open Sans',
@@ -76,8 +78,9 @@ const code = (
                   fontSize: 2,
                   color: query.secondary
                 }}
-                children={query.name}
-              />
+              >
+                {query.name}
+              </Text>
             </Flex>
           </Box>
         </Flex>

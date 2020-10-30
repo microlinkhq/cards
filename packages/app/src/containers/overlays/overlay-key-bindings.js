@@ -76,8 +76,9 @@ export default function OverlayKeyBindings () {
                       display: 'inherit'
                     }}
                     key={key}
-                    children={key}
-                  />
+                  >
+                    {key}
+                  </Text>
                 ))}
               </Box>
             </Box>

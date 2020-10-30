@@ -171,19 +171,16 @@ export const PreviewArea = ({ isEditor }) => {
               position: 'relative'
             }}
           >
-            <InternalLink
-              href='#'
-              sx={{ color }}
-              onClick={downloadScreenshot}
-            >
+            <InternalLink href='#' sx={{ color }} onClick={downloadScreenshot}>
               Download
             </InternalLink>
             <Box sx={{ ml: 3 }}>
               <Button
                 sx={{ color: bg, bg: color }}
                 onClick={showOverlay(OVERLAY_STATE.PREVIEW)}
-                children='Embed'
-              />
+              >
+                Embed
+              </Button>
             </Box>
           </Flex>
 

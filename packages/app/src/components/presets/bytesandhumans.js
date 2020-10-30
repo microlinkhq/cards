@@ -37,8 +37,9 @@ const code = (
               py: 4,
               fontWeight: 700
             }}
-            children={query.title}
-          />
+          >
+            {query.title}
+          </Text>
         </Box>
       </Flex>
     </>

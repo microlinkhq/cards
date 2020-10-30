@@ -57,12 +57,12 @@ export const Sidebar = () => {
     store.get(ASIDE_HEIGHT_KEY) || DEFAULT_ASIDE_HEIGHT
   )
 
-  const handleWidthResize = useCallback((width) => {
+  const handleWidthResize = useCallback(width => {
     setAsideWidth(width)
     store.set(ASIDE_WIDTH_KEY, width)
   }, [])
 
-  const handleHeightResize = useCallback((height) => {
+  const handleHeightResize = useCallback(height => {
     setJsonHeight(height)
     store.set(ASIDE_HEIGHT_KEY, height)
   }, [])
@@ -77,7 +77,7 @@ export const Sidebar = () => {
   }, [presetRef.current])
 
   const handleSelectChange = useCallback(
-    (event) => {
+    event => {
       const presetName = event.value
       handlePresetChange(presetName)
     },
@@ -193,10 +193,9 @@ export const Sidebar = () => {
         }}
       >
         <Box sx={{ position: 'relative' }}>
-          <Label
-            children='Editor'
-            sx={{ color, borderColor, textTransform: 'lowercase' }}
-          />
+          <Label sx={{ color, borderColor, textTransform: 'lowercase' }}>
+            Editor
+          </Label>
         </Box>
 
         <LiveEditor
@@ -219,10 +218,9 @@ export const Sidebar = () => {
       >
         <HorizontalDragBar onDrag={handleHeightResize} />
 
-        <Label
-          children='Query Variables'
-          sx={{ color, borderColor, textTransform: 'lowercase' }}
-        />
+        <Label sx={{ color, borderColor, textTransform: 'lowercase' }}>
+          Query Variables
+        </Label>
 
         <Box
           as='section'
@@ -233,11 +231,9 @@ export const Sidebar = () => {
             overflow: ['scroll']
           }}
         >
-          <JSONViewer
-            theme={theme}
-            children={queryVariables}
-            onChange={handleQueryVariables}
-          />
+          <JSONViewer theme={theme} onChange={handleQueryVariables}>
+            {queryVariables}
+          </JSONViewer>
         </Box>
       </Box>
     </Flex>

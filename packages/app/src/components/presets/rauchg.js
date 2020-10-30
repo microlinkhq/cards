@@ -57,8 +57,9 @@ const code = (
             maxWidth: '38rem',
             textAlign: 'center'
           }}
-          children={query.title}
-        />
+        >
+          {query.title}
+        </Text>
       </Flex>
     </>
   </Inline>

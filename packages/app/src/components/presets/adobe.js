@@ -38,8 +38,9 @@ const code = (
               bg: query.bg,
               maxWidth: '36rem'
             }}
-            children={query.title}
-          />
+          >
+            {query.title}
+          </Text>
         </Flex>
       </Box>
     </>

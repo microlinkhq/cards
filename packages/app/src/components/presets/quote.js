@@ -43,8 +43,9 @@ const code = (
                 fontSize: `calc(${query.font}*1.5)`
               }
             }}
-            children={query.text}
-          />
+          >
+            {query.text}
+          </Text>
         </Flex>
         <Flex
           as='footer'
@@ -75,8 +76,9 @@ const code = (
                 fontSize: 5,
                 color: query.color
               }}
-              children={query.job}
-            />
+            >
+              {query.job}
+            </Text>
             <Text
               sx={{
                 fontWeight: 400,
@@ -85,8 +87,9 @@ const code = (
                 color: query.color,
                 fontSize: 3
               }}
-              children={query.author}
-            />
+            >
+              {query.author}
+            </Text>
           </Flex>
           <Avatar
             sx={{

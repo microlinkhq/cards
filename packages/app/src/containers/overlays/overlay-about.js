@@ -33,8 +33,9 @@ export default function OverlayAbout () {
         <ExternalLink
           sx={{ textDecoration: 'none', color: contrast }}
           href='https://microlink.io/docs/cards/getting-started/overview'
-          children='documentation'
-        />{' '}
+        >
+          documentation
+        </ExternalLink>
         portal.
       </Text>
 

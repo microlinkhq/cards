@@ -25,16 +25,18 @@ const code = (
             fontSize: 6,
             fontWeight: 700
           }}
-          children={query.headline}
-        />
+        >
+          {query.headline}
+        </Text>
         <Text
           sx={{
             fontFamily: 'Roboto',
             fontSize: 3,
             fontWeight: 300
           }}
-          children={query.caption}
-        />
+        >
+          {query.caption}
+        </Text>
       </Flex>
     </>
   </Inline>

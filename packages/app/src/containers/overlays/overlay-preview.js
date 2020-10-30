@@ -51,8 +51,9 @@ export default function OverlayPreview () {
                 color: contrast
               }}
               onClick={e => toClipboard(e.target.textContent, 'SEO Tags')}
-              children={shareCode.seo(screenshotUrl)}
-            />
+            >
+              {shareCode.seo(screenshotUrl)}
+            </Code>
           </TabPanel>
           <TabPanel>
             <Code
@@ -60,9 +61,10 @@ export default function OverlayPreview () {
                 borderColor,
                 color: contrast
               }}
-              children={shareCode.html(screenshotUrl)}
               onClick={e => toClipboard(e.target.textContent, 'HTML')}
-            />
+            >
+              {shareCode.html(screenshotUrl)}
+            </Code>
           </TabPanel>
           <TabPanel>
             <Code
@@ -70,9 +72,10 @@ export default function OverlayPreview () {
                 borderColor,
                 color: contrast
               }}
-              children={shareCode.markdown(screenshotUrl)}
               onClick={e => toClipboard(e.target.textContent, 'Markdown')}
-            />
+            >
+              {shareCode.markdown(screenshotUrl)}
+            </Code>
           </TabPanel>
           <TabPanel>
             <Code
@@ -80,9 +83,10 @@ export default function OverlayPreview () {
                 borderColor,
                 color: contrast
               }}
-              children={shareCode.javascript(query)}
               onClick={e => toClipboard(e.target.textContent, 'Javascript')}
-            />
+            >
+              {shareCode.javascript(query)}
+            </Code>
           </TabPanel>
           <TabPanel>
             <Code
@@ -90,9 +94,10 @@ export default function OverlayPreview () {
                 borderColor,
                 color: contrast
               }}
-              children={screenshotUrl}
               onClick={e => toClipboard(e.target.textContent, 'URL')}
-            />
+            >
+              {screenshotUrl}
+            </Code>
           </TabPanel>
         </Tabs>
       </Box>

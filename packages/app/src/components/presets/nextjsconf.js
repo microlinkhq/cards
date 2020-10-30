@@ -75,8 +75,9 @@ const code = (
               textAlign: 'center',
               lineHeight: '100%'
             }}
-            children={query.name}
-          />
+          >
+            {query.name}
+          </Text>
           <Text
             as='span'
             sx={{
