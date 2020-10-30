@@ -45,8 +45,9 @@ const code = (
               fontFamily: 'Montserrat',
               position: 'relative'
             }}
-            children={query.title}
-          />
+          >
+            {query.title}
+          </Text>
           <Text
             sx={{
               mt: '-9rem',
@@ -57,8 +58,9 @@ const code = (
               fontFamily: 'Montserrat',
               position: 'relative'
             }}
-            children={query.subtitle}
-          />
+          >
+            {query.subtitle}
+          </Text>
           <Box
             sx={{
               height: '50%',
@@ -96,8 +98,9 @@ const code = (
                   fontFamily: 'Montserrat',
                   position: 'relative'
                 }}
-                children={query.twitter}
-              />
+              >
+                {query.twitter}
+              </Text>
             </Flex>
           </Box>
         </Flex>

@@ -33,8 +33,9 @@ const code = (
               fontWeight: query.fontWeight,
               textTransform: 'uppercase'
             }}
-            children={`“${query.quote}”`}
-          />
+          >
+            “{query.quote}”
+          </Text>
         </Box>
 
         <Text
@@ -46,8 +47,9 @@ const code = (
             width: '100%',
             textAlign: query.textAlign
           }}
-          children={query.author}
-        />
+        >
+          {query.author}
+        </Text>
       </Flex>
     </>
   </Inline>

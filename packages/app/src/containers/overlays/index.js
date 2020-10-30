@@ -47,11 +47,9 @@ export const Overlays = () => {
       </Choose.When>
 
       <Flex as='footer' sx={{ justifyContent: 'flex-end', pt: 4 }}>
-        <Button
-          sx={{ bg: color, color: bg }}
-          onClick={hideOverlay}
-          children='Got it'
-        />
+        <Button sx={{ bg: color, color: bg }} onClick={hideOverlay}>
+          Got it
+        </Button>
       </Flex>
     </Overlay>
   )

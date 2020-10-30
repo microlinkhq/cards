@@ -36,8 +36,9 @@ const code = (
           fontWeight: 700,
           lineHeight: 1
         }}
-        children={query.headline}
-      />
+      >
+        {query.headline}
+      </Text>
       <Text
         sx={{
           fontFamily: 'Inter',
@@ -46,8 +47,9 @@ const code = (
           textAlign: 'center',
           fontWeight: 300
         }}
-        children={query.caption}
-      />
+      >
+        {query.caption}
+      </Text>
     </Box>
   </Inline>
 )

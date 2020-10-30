@@ -45,8 +45,9 @@ const code = (
                 fontWeight: 700,
                 color: query.color
               }}
-              children={query.title}
-            />
+            >
+              {query.title}
+            </Text>
             <Text
               sx={{
                 lineHeight: 1.5,
@@ -55,8 +56,9 @@ const code = (
                 fontWeight: 400,
                 color: query.color
               }}
-              children={query.description}
-            />
+            >
+              {query.description}
+            </Text>
           </Flex>
           <Box
             sx={{

@@ -39,8 +39,9 @@ const code = (
                 mb: '-45px'
               }
             }}
-            children={query.title}
-          />
+          >
+            {query.title}
+          </Text>
           <Box as='footer'>
             <Flex
               sx={{
@@ -64,8 +65,9 @@ const code = (
                     fontFamily: 'Fira Code',
                     fontSize: '40px'
                   }}
-                  children={query.url}
-                />
+                >
+                  {query.url}
+                </Text>
                 <Text
                   sx={{
                     p: 2,
@@ -74,8 +76,9 @@ const code = (
                     fontFamily: 'Fira Code',
                     fontSize: 5
                   }}
-                  children={query.path}
-                />
+                >
+                  {query.path}
+                </Text>
               </Flex>
             </Flex>
           </Box>

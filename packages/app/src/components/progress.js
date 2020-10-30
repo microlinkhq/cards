@@ -67,12 +67,10 @@ export const Progress = ({
       />
 
       {textVisible && (
-        <text
-          x='100'
-          y='100'
-          dominantBaseline={dominantBaseline}
-          children={`${value}${unit}`}
-        />
+        <text x='100' y='100' dominantBaseline={dominantBaseline}>
+          {value}
+          {unit}
+        </text>
       )}
     </Svg>
   )

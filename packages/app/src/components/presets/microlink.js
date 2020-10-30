@@ -42,8 +42,9 @@ const code = (
               textTransform: 'uppercase',
               wordSpacing: '8px'
             }}
-            children={query.title}
-          />
+          >
+            {query.title}
+          </Text>
         </Flex>
       </Flex>
     </>

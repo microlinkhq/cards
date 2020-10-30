@@ -69,9 +69,9 @@
     "react-loading-skeleton": "~2.1.1",
     "react-select": "~3.1.0",
     "react-tabs": "~3.1.1",
-    "styled-components": "~5.2.0",
+    "styled-components": "~5.2.1",
     "theme-ui": "~0.3.1",
-    "throttle-debounce": "~2.3.0",
+    "throttle-debounce": "~3.0.0",
     "tickedoff": "~1.0.2",
     "urlsafe-base64": "~1.0.0"
   },

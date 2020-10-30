@@ -39,8 +39,9 @@ export const Lighthouse = ({ value, label, theme }) => {
           color: theme === 'dark' ? '#F5F5F5' : '#212121',
           fontSize: '24px'
         }}
-        children={label}
-      />
+      >
+        {label}
+      </Text>
     </Flex>
   )
 }

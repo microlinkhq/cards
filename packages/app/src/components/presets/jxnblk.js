@@ -27,16 +27,18 @@ const code = (
             fontSize: 4,
             color: query.color
           }}
-          children={query.title}
-        />
+        >
+          {query.title}
+        </Text>
         <Text
           sx={{
             fontWeight: 500,
             fontSize: 3,
             color: query.color
           }}
-          children={query.subtitle}
-        />
+        >
+          {query.subtitle}
+        </Text>
       </Flex>
     </>
   </Inline>

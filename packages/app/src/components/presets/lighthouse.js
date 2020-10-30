@@ -41,8 +41,9 @@ const Lighthouse = ({ value, label, theme }) => {
           color: theme === 'dark' ? '#F5F5F5' : '#212121',
           fontSize: '24px'
         }}
-        children={label}
-      />
+      >
+        {label}
+      </Text>
     </Flex>
   )
 }
@@ -89,14 +90,12 @@ const code = (
             mt: '4rem'
           }}
         >
-          <Text
-            sx={{ fontFamily: 'Roboto', fontWeight: 400, fontSize: 4 }}
-            children={query.url}
-          />
-          <Text
-            sx={{ opacity: 0.8, fontFamily: 'Roboto', fontSize: 1, mt: 1 }}
-            children={query.date}
-          />
+          <Text sx={{ fontFamily: 'Roboto', fontWeight: 400, fontSize: 4 }}>
+            {query.url}
+          </Text>
+          <Text sx={{ opacity: 0.8, fontFamily: 'Roboto', fontSize: 1, mt: 1 }}>
+            {query.date}
+          </Text>
         </Flex>
       </Flex>
     </>

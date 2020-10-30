@@ -40,8 +40,9 @@ const code = (
               fontFamily: 'Merriweather',
               maxWidth: '36rem'
             }}
-            children={query.title}
-          />
+          >
+            {query.title}
+          </Text>
           <Flex
             sx={{
               justifyContent: 'space-between'
@@ -68,8 +69,10 @@ const code = (
                   fontWeight: 400,
                   fontFamily: 'Merriweather'
                 }}
-                children={query.author}
-              />
+              >
+                {query.author}
+              </Text>
+
               <Text
                 sx={{
                   fontSize: 3,
@@ -77,16 +80,18 @@ const code = (
                   fontWeight: 400,
                   fontFamily: 'Merriweather'
                 }}
-                children='•'
-              />
+              >
+                •
+              </Text>
               <Text
                 sx={{
                   fontSize: 3,
                   fontWeight: 400,
                   fontFamily: 'Merriweather'
                 }}
-                children={query.date}
-              />
+              >
+                {query.date}
+              </Text>
             </Flex>
 
             <Flex
