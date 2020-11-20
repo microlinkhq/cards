@@ -59,7 +59,7 @@
     "next": "~10.0.0",
     "next-offline": "~5.0.2",
     "polished": "~4.0.3",
-    "prettier": "~2.1.2",
+    "prettier": "~2.2.0",
     "qss": "~2.0.3",
     "react": "~17.0.1",
     "react-aspect-ratio": "~1.0.46",
