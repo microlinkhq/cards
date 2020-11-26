@@ -52,7 +52,7 @@ const code = (
           >
             Tinybird
             {query.subtitle && (
-              <span
+              <Text
                 style={{
                   display: 'inline',
                   fontWeight: 400,
@@ -63,7 +63,7 @@ const code = (
                 }}
               >
                 /{query.subtitle}
-              </span>
+              </Text>
             )}
           </Text>
         </Flex>
