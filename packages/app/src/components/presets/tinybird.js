@@ -39,22 +39,24 @@ const code = (
             }}
             src='https://storage.googleapis.com/tinybird-assets/img/logo-inverted.svg'
           />
-          <Text
-            sx={{
-              pl: 3,
-              display: 'inline',
-              fontWeight: 400,
-              fontSize: '22px',
-              fontFamily: 'Inter',
-              color: '#FFF',
-              lineHeight: '140%'
-            }}
-          >
-            Tinybird
+          <Flex>
+            <Text
+              sx={{
+                pl: 3,
+                display: 'inline-block',
+                fontWeight: 400,
+                fontSize: '22px',
+                fontFamily: 'Inter',
+                color: '#FFF',
+                lineHeight: '140%'
+              }}
+            >
+              Tinybird
+            </Text>
             {query.subtitle && (
               <Text
                 style={{
-                  display: 'inline',
+                  display: 'inline-block',
                   fontWeight: 400,
                   fontSize: '22px',
                   fontFamily: 'Inter',
@@ -65,7 +67,7 @@ const code = (
                 /{query.subtitle}
               </Text>
             )}
-          </Text>
+          </Flex>
         </Flex>
 
         <Flex as='content'>
