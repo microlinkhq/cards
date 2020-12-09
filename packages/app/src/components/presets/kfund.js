@@ -21,6 +21,7 @@ const code = (
           }}
         >
           <Image sx={{ width: query.logoSize }} src={query.logoUrl} />
+          <Text>#114</Text>
           <Text
             css={`
               padding-top: 36px;
@@ -39,6 +40,7 @@ const code = (
 )
 
 const query = {
+  chapter: 115,
   title: 'Invertimos en las <b>mejores startups seed</b> de España',
   logoSize: '200px',
   logoUrl:
