@@ -46,7 +46,7 @@
   ],
   "dependencies": {
     "@microlink/mql": "~0.8.0",
-    "@monaco-editor/react": "~3.7.0",
+    "@monaco-editor/react": "~3.8.2",
     "@snackbar/core": "~1.7.0",
     "babel-plugin-macros": "~3.0.0",
     "cycled": "~1.2.0",
