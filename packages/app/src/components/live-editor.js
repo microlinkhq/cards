@@ -1,5 +1,5 @@
-import { useRef } from 'react'
-import Monaco from '@monaco-editor/react'
+import { useState, useEffect, useRef } from 'react'
+import Monaco, { monaco } from '@monaco-editor/react'
 import styled from 'styled-components'
 import { Text } from 'theme-ui'
 import {
@@ -72,18 +72,30 @@ export const LiveProvider = ({ queryVariables: query, ...props }) => {
 
 const LiveEditorBase = styled(Monaco)``
 
+const Loading = () => (
+  <Text sx={{ fontFamily: 'mono', color: theme.color }}>Loading...</Text>
+)
+
 export const LiveEditor = ({ code, onChange, themeKey, theme }) => {
   const editorRef = useRef(null)
+  const [isReady, setIsReady] = useState(false)
+
+  useEffect(() => {
+    monaco.init().then(monaco => {
+      Object.keys(editorThemes).forEach(key => {
+        const value = editorThemes[key]
+        monaco.editor.defineTheme(key, value)
+      })
+      setIsReady(true)
+    })
+  }, [])
 
   const handleEditorDidMount = (getEditorValue, monaco) => {
-    Object.keys(editorThemes).forEach(key => {
-      const value = editorThemes[key]
-      monaco._themeService.defineTheme(key, value)
-    })
-
     monaco.onDidChangeModelContent(() => onChange(getEditorValue()))
     editorRef.current = monaco
   }
+
+  if (!isReady) return <Loading theme={theme} />
 
   return (
     <LiveEditorBase
@@ -91,9 +103,7 @@ export const LiveEditor = ({ code, onChange, themeKey, theme }) => {
       language='javascript'
       theme={themeKey}
       editorDidMount={handleEditorDidMount}
-      loading={
-        <Text sx={{ fontFamily: 'mono', color: theme.color }}>Loading...</Text>
-      }
+      loading={<Loading theme={theme} />}
       options={{
         fontSize: 14,
         scrollBeyondLastLine: false,
