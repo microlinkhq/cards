@@ -1,5 +1,4 @@
-import Monaco, { loader } from '@monaco-editor/react'
-import { useState, useEffect } from 'react'
+import Monaco from '@monaco-editor/react'
 import styled from 'styled-components'
 import { Text } from 'theme-ui'
 import {
@@ -77,25 +76,17 @@ const Loading = () => (
 )
 
 export const LiveEditor = ({ code, onChange, themeKey, theme }) => {
-  const [isReady, setIsReady] = useState(false)
-
-  useEffect(() => {
-    loader.init().then(monaco => {
-      Object.keys(editorThemes).forEach(key => {
-        const value = editorThemes[key]
-        monaco.editor.defineTheme(key, value)
-      })
-      setIsReady(true)
-    })
-  }, [])
-
-  if (!isReady) return <Loading theme={theme} />
-
   return (
     <LiveEditorBase
       value={code}
       language='javascript'
       theme={themeKey}
+      beforeMount={monaco => {
+        Object.keys(editorThemes).forEach(key => {
+          const value = editorThemes[key]
+          monaco.editor.defineTheme(key, value)
+        })
+      }}
       onChange={onChange}
       loading={<Loading theme={theme} />}
       options={{
