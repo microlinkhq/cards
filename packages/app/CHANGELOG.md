@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/microlinkhq/cards/compare/v1.4.15...v1.5.0) (2021-01-17)
+
+
+### Bug Fixes
+
+* ensure editor themes are loaded ([39ff74e](https://github.com/microlinkhq/cards/commit/39ff74e392aff5e574192e5ae565345448f4b692))
+
+
+### Features
+
+* add conference preset ([1c557cd](https://github.com/microlinkhq/cards/commit/1c557cd40ea8c0abbc38dea7e6e7f85fd61f73be))
+
+
+
+
+
 ## [1.4.15](https://github.com/microlinkhq/cards/compare/v1.4.14...v1.4.15) (2020-11-27)
 
 **Note:** Version bump only for package @microlink/cards-app
