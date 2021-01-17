@@ -110,7 +110,7 @@ const query = {
   color: 'black',
   symbol: '“',
   text: 'My goal is no longer to get more done, but to have less to do.',
-  avatar: 'https://unavatar.now.sh/twitter/keyvanakbary',
+  avatar: 'https://i.imgur.com/vPSW2ZD.jpg',
   author: 'Head of Engineering at Cabify',
   job: 'Keyvan Akbary',
   font: '50px'
