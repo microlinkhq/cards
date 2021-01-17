@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react'
-import Monaco, { monaco } from '@monaco-editor/react'
+import Monaco, { loader } from '@monaco-editor/react'
+import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Text } from 'theme-ui'
 import {
@@ -77,11 +77,10 @@ const Loading = () => (
 )
 
 export const LiveEditor = ({ code, onChange, themeKey, theme }) => {
-  const editorRef = useRef(null)
   const [isReady, setIsReady] = useState(false)
 
   useEffect(() => {
-    monaco.init().then(monaco => {
+    loader.init().then(monaco => {
       Object.keys(editorThemes).forEach(key => {
         const value = editorThemes[key]
         monaco.editor.defineTheme(key, value)
@@ -90,11 +89,6 @@ export const LiveEditor = ({ code, onChange, themeKey, theme }) => {
     })
   }, [])
 
-  const handleEditorDidMount = (getEditorValue, monaco) => {
-    monaco.onDidChangeModelContent(() => onChange(getEditorValue()))
-    editorRef.current = monaco
-  }
-
   if (!isReady) return <Loading theme={theme} />
 
   return (
@@ -102,7 +96,7 @@ export const LiveEditor = ({ code, onChange, themeKey, theme }) => {
       value={code}
       language='javascript'
       theme={themeKey}
-      editorDidMount={handleEditorDidMount}
+      onChange={onChange}
       loading={<Loading theme={theme} />}
       options={{
         fontSize: 14,
