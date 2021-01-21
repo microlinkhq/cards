@@ -15,6 +15,10 @@ const code = (
           bg: query.themes[query.theme].bg
         }}
       >
+        <Link
+          href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap'
+          rel='stylesheet'
+        />
         <MQL url={query.url}>
           {payload => {
             if (payload === null) return
@@ -44,8 +48,7 @@ const code = (
               <Flex
                 sx={{
                   flexDirection: 'column',
-                  fontFamily:
-                    '-apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif'
+                  fontFamily: 'Roboto'
                 }}
               >
                 <Flex as='header' sx={{ width: '100%' }}>
