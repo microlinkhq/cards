@@ -45,9 +45,9 @@
     "share"
   ],
   "dependencies": {
-    "@kikobeats/use-query-state": "1.0.1",
+    "@kikobeats/use-query-state": "1.0.2",
     "@microlink/mql": "~0.8.1",
-    "@monaco-editor/react": "~4.0.0",
+    "@monaco-editor/react": "~4.0.7",
     "@snackbar/core": "~1.7.0",
     "babel-plugin-macros": "~3.0.1",
     "cycled": "~1.2.0",
