@@ -6,7 +6,7 @@ export const editorThemes = Object.keys(themelist).reduce((acc, id) => {
   const name = themelist[id]
   return {
     ...acc,
-    [id === 'github'
+    [id === 'chrome-devtools'
       ? 'default'
       : id]: require(`monaco-themes/themes/${name}.json`)
   }
