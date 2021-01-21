@@ -20,7 +20,7 @@ const code = (
           }}
         >
           <Link
-            href='https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap'
+            href='https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=block'
             rel='stylesheet'
           />
           <Text

@@ -52,7 +52,7 @@ const code = (
   <Inline>
     <>
       <Link
-        href='https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:wght@300;400&display=swap'
+        href='https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Roboto:wght@300;400&display=block'
         rel='stylesheet'
       />
       <Flex

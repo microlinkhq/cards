@@ -145,7 +145,7 @@ export default class App extends NextApp {
             sizes='128x128'
           />
           <link
-            href='https://fonts.googleapis.com/css2?family=Inter&display=swap'
+            href='https://fonts.googleapis.com/css2?family=Inter&display=block'
             rel='stylesheet'
           />
         </Head>

@@ -27,7 +27,7 @@ const code = (
           }}
         >
           <Link
-            href='https://fonts.googleapis.com/css2?family=Merriweather:wght@400;900&display=swap'
+            href='https://fonts.googleapis.com/css2?family=Merriweather:wght@400;900&display=block'
             rel='stylesheet'
           />
           <Text

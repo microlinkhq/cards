@@ -7,7 +7,7 @@ const code = (
   <Inline>
     <>
       <Link
-        href='https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap'
+        href='https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=block'
         rel='stylesheet'
       />
       <Flex

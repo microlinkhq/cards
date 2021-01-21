@@ -104,13 +104,13 @@ const query = {
       name: 'Rubik',
       weight: 300,
       url:
-        'https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap'
+        'https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=block'
     },
     secondary: {
       name: 'Roboto',
       weight: 400,
       url:
-        'https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap'
+        'https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=block'
     }
   }
 }

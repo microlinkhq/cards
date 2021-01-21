@@ -16,7 +16,7 @@ const code = (
       }}
     >
       <Link
-        href='https://fonts.googleapis.com/css2?family=Inter:wght@200;700&display=swap'
+        href='https://fonts.googleapis.com/css2?family=Inter:wght@200;700&display=block'
         rel='stylesheet'
       />
       <Text

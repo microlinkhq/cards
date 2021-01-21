@@ -22,7 +22,7 @@ const code = (
           style={{ display: 'inline' }}
         >
           <Link
-            href='https://fonts.googleapis.com/css2?family=Lora:wght@400&display=swap'
+            href='https://fonts.googleapis.com/css2?family=Lora:wght@400&display=block'
             rel='stylesheet'
           />
           <Text
@@ -66,7 +66,7 @@ const code = (
             }}
           >
             <Link
-              href='https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,400&display=swap'
+              href='https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,400&display=block'
               rel='stylesheet'
             />
             <Text

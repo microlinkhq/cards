@@ -9,7 +9,7 @@ const code = (
       <Link
         href={`https://fonts.googleapis.com/css2?family=${encodeURI(
           query.fontFamily
-        )}:wght@600&display=swap`}
+        )}:wght@600&display=block`}
         rel='stylesheet'
       />
       <Flex

@@ -7,11 +7,11 @@ const code = (
   <Inline>
     <ThemeProvider theme={query.theme}>
       <Link
-        href='https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=swap'
+        href='https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=block'
         rel='stylesheet'
       />
       <Link
-        href='https://fonts.googleapis.com/css?family=Fira+Mono&display=swap'
+        href='https://fonts.googleapis.com/css?family=Fira+Mono&display=block'
         rel='stylesheet'
       />
 
