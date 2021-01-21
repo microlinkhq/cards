@@ -1,7 +1,13 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.6.0](https://github.com/microlinkhq/cards/compare/v1.5.0...v1.6.0) (2021-01-21)
+
+
+### Features
+
+* add twitter preset ([032e7f4](https://github.com/microlinkhq/cards/commit/032e7f42bcddad8ce4333f5b0d6ed4b94f5d93f4))
 
 # [1.5.0](https://github.com/microlinkhq/cards/compare/v1.4.15...v1.5.0) (2021-01-17)
 
