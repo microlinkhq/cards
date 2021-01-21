@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import Inline from '../inline.macro'
-import { MQL, Avatar, Flex, Text } from './scope'
+import { MQL, Avatar, Flex, Text, Spinner } from './scope'
 
 const code = (
   <Inline>
@@ -9,6 +9,7 @@ const code = (
       <Flex
         style={{ zoom: query.zoom }}
         sx={{
+          p: 5,
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
@@ -19,30 +20,54 @@ const code = (
           href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=block'
           rel='stylesheet'
         />
-        <MQL url={query.url}>
+        <MQL
+          url={query.url}
+          data={{
+            tweetImage: {
+              selector: 'a[href*="status"] img',
+              type: 'url'
+            },
+            date: {
+              selector: 'div [dir="auto"] a[href*="status"] span',
+              type: 'text'
+            }
+          }}
+        >
           {payload => {
-            if (payload === null) return
+            if (payload === null) return <Spinner />
             const { data } = payload
 
             const displayName = data.title.replace(' on Twitter', '')
             const tweetUrl = new URL(query.url)
             const username = tweetUrl.pathname.split('/')[1].toLowerCase()
+            const theme = query.themes[query.theme]
 
-            const tweetDate = new Date(data.date)
+            const REGEX_USER = /\B@([a-zA-Z0-9_]+)/g // regex for @users
+            const REGEX_URL = /(?:\s)(f|ht)tps?:\/\/([^\s\t\r\n<]*[^\s\t\r\n<)*_,\.])/g // regex for urls
+            const REGEX_HASHTAG = /\B(#[á-úÁ-Úä-üÄ-Üa-zA-Z0-9_]+)/g // regex for #hashtags
 
-            const clockTime = new Intl.DateTimeFormat(query.locale, {
-              hour: 'numeric',
-              minute: 'numeric'
-            }).format(tweetDate)
-
-            const dayTime = new Date(data.date).toLocaleDateString(
-              query.locale,
-              {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric'
-              }
-            )
+            const tweet = (() => {
+              let tweet = data.description
+              tweet = tweet.replace(REGEX_USER, user =>
+                user.replace(
+                  user,
+                  `<span style="color: ${theme.link}">${user}</span>`
+                )
+              )
+              tweet = tweet.replace(REGEX_URL, url =>
+                url.replace(
+                  url,
+                  `<span style="color: ${theme.link}">${url}</span>`
+                )
+              )
+              tweet = tweet.replace(REGEX_HASHTAG, hashtag =>
+                hashtag.replace(
+                  hashtag,
+                  `<span style="color: ${theme.link}">${hashtag}</span>`
+                )
+              )
+              return tweet
+            })()
 
             return (
               <Flex
@@ -82,9 +107,8 @@ const code = (
                       fontWeight: 400,
                       fontSize: 4
                     }}
-                  >
-                    {data.description}
-                  </Text>
+                    dangerouslySetInnerHTML={{ __html: tweet }}
+                  />
                 </Flex>
 
                 <Flex as='footer' sx={{ pt: 3, width: '100%' }}>
@@ -95,7 +119,7 @@ const code = (
                       color: query.themes[query.theme].secondary
                     }}
                   >
-                    {clockTime} · {dayTime}
+                    {data.date}
                   </Text>
                 </Flex>
               </Flex>
@@ -108,12 +132,12 @@ const code = (
 )
 
 const query = {
-  url: 'https://twitter.com/Kikobeats/status/1345407790114856965',
-  locale: 'en-US',
+  url: 'https://twitter.com/klaufel/status/1351885812594593795',
   zoom: '100%',
   theme: 'light',
   themes: {
     light: {
+      link: 'rgb(27, 149, 224)',
       secondary: 'rgb(91, 112, 131)',
       primary: '#000',
       bg: '#fff'
