@@ -16,7 +16,7 @@ const code = (
         }}
       >
         <Link
-          href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap'
+          href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=block'
           rel='stylesheet'
         />
         <MQL url={query.url}>
