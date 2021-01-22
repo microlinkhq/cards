@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 
 import { getScreenshotUrl, isDev } from '@/lib'
+import { DEFAULT_PRESET } from '@/constants'
 
 const shortenUrl = isDev
   ? 'http://localhost:3000/?adblock=false&element=%23screenshot&embed=screenshot.url&meta=false&screenshot&waitUntil.0=load&waitUntil.1=networkidle0&url='
@@ -9,6 +10,11 @@ const shortenUrl = isDev
 const getUrl = () => {
   const urlObj = new URL(window.location)
   urlObj.pathname = ''
+
+  if (!urlObj.searchParams.has('preset')) {
+    urlObj.searchParams.set('preset', DEFAULT_PRESET)
+  }
+
   return urlObj.toString()
 }
 
@@ -33,7 +39,10 @@ export const useScreenshotUrl = queryVariables => {
   const [screenshotUrl, setScreenshotUrl] = useState('')
   const [runDownload, setRunDownload] = useState(false)
 
-  const sync = useCallback(queryVariables => setScreenshotUrl(getCardUrl(queryVariables)), [])
+  const sync = useCallback(
+    queryVariables => setScreenshotUrl(getCardUrl(queryVariables)),
+    []
+  )
 
   const downloadScreenshot = useCallback(() => {
     sync(queryVariables)
