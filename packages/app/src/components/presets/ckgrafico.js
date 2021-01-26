@@ -14,7 +14,7 @@ const code = (
           justifyContent: 'center',
           flexDirection: 'column',
           backgroundImage: query.bg,
-          backgroundColor: `#${query.bgColor}55`
+          backgroundColor: `#${query.bgColor}`
         }}
       >
         <Flex
