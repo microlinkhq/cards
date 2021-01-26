@@ -132,7 +132,7 @@ const code = (
 )
 
 const query = {
-  url: 'https://twitter.com/klaufel/status/1351885812594593795',
+  url: 'https://twitter.com/Kikobeats/status/1345407790114856965',
   zoom: '100%',
   theme: 'light',
   themes: {
