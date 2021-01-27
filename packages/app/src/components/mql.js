@@ -13,6 +13,5 @@ export const MQL = ({ children, url, ...opts }) => {
     fetchData()
   }, [])
 
-  if (result === null) return null
   return children(result)
 }
