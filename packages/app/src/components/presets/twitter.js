@@ -27,6 +27,14 @@ const code = (
               selector: 'a[href*="status"] img',
               type: 'url'
             },
+            retweets: {
+              selector: 'a[href*="retweets"]',
+              attr: 'text'
+            },
+            likes: {
+              selector: 'a[href*="likes"]',
+              attr: 'text'
+            },
             date: {
               selector: 'div [dir="auto"] a[href*="status"] span',
               type: 'text'
@@ -111,7 +119,10 @@ const code = (
                   />
                 </Flex>
 
-                <Flex as='footer' sx={{ pt: 3, width: '100%' }}>
+                <Flex
+                  as='footer'
+                  sx={{ flexDirection: 'column', pt: 3, width: '100%' }}
+                >
                   <Text
                     sx={{
                       fontWeight: 400,
@@ -119,7 +130,7 @@ const code = (
                       color: query.themes[query.theme].secondary
                     }}
                   >
-                    {data.date}
+                    {data.retweets} {data.likes} · {data.date.replace('·', '')}
                   </Text>
                 </Flex>
               </Flex>
@@ -141,6 +152,18 @@ const query = {
       secondary: 'rgb(91, 112, 131)',
       primary: '#000',
       bg: '#fff'
+    },
+    deep: {
+      link: 'rgb(27, 149, 224)',
+      secondary: 'rgb(136, 153, 166)',
+      primary: '#fff',
+      bg: 'rgb(21, 33, 43)'
+    },
+    dark: {
+      link: 'rgb(27, 149, 224)',
+      secondary: 'rgb(110, 118, 125)',
+      primary: '#fff',
+      bg: '#000'
     }
   }
 }
