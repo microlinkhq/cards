@@ -1,58 +1,68 @@
 /* eslint-disable no-use-before-define */
 
 import Inline from '../inline.macro'
-import { Image, Flex } from './scope'
+import { Link, Text, Flex } from './scope'
 
 const code = (
   <Inline>
     <Flex
+      style={{ zoom: query.zoom }}
       sx={{
-        justifyContent: 'flex-end',
         flexDirection: 'column',
+        justifyContent: 'center',
         alignItems: 'center',
-        bg: query.bg[query.theme]
+        backgroundImage: `url(${query.frames[query.frame]})`,
+        backgroundSize: '50%',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
       }}
     >
+      <Link
+        href='https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400&display=block'
+        rel='stylesheet'
+      />
       <Flex
         sx={{
+          ...query.innerFrame[query.frame],
           justifyContent: 'center',
           alignItems: 'center',
-          flexDirection: 'column',
-          width: '75%',
-          boxShadow: 'rgba(0, 0, 0, 0.25) 0px 30px 60px',
-          border: '1px solid',
-          borderColor: query.borderColor[query.theme],
-          borderBottom: 0,
-          borderRadius: '4px'
+          bg: query.bg || query.innerFrame[query.frame].bg
         }}
       >
-        <Image src={query.frames[query.theme][query.frame]} />
-        <Image src={query.image} />
+        <Text
+          sx={{
+            color: query.color || query.innerFrame[query.frame].color,
+            lineHeight: query.lineHeight,
+            fontFamily: query.fontFamily,
+            fontSize: query.fontSize
+          }}
+          dangerouslySetInnerHTML={{ __html: query.text }}
+        />
       </Flex>
     </Flex>
   </Inline>
 )
 
 const query = {
-  bg: {
-    dark: '#222222',
-    light: '#F7F7F7'
-  },
-  borderColor: {
-    dark: '#333333',
-    light: '#EAEAEA'
-  },
-  image: 'https://i.imgur.com/J86MSbd.png',
-  frames: {
+  frame: 'dark',
+  text: "Roses are red <br/> Violets are blue <br/> Unexpected '{' on line 32",
+  fontFamily: 'Fira Mono',
+  fontSize: 1,
+  lineHeight: 1.8,
+  innerFrame: {
     dark: {
-      safari: 'https://svgshare.com/i/LMB.svg'
-    },
-    light: {
-      safari: 'https://svgshare.com/i/LNE.svg'
+      height: '242px',
+      width: '240px',
+      bottom: '2px',
+      position: 'relative',
+      bg: '#222222',
+      color: '#EB635B'
     }
   },
-  frame: 'safari',
-  theme: 'dark'
+  frames: {
+    light: 'https://i.imgur.com/cke4dF7.png',
+    dark: 'https://i.imgur.com/rJZjRFw.png'
+  }
 }
 
 export const frame = {
