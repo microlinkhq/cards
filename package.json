@@ -101,7 +101,6 @@
     "node": "12.x"
   },
   "scripts": {
-    "build": "gulp build",
     "clean": "lerna clean --yes && rm -rf node_modules",
     "contributors": "(lerna exec finepack --parallel && git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
     "install": "lerna bootstrap --no-ci --force-local",
