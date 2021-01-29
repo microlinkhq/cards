@@ -11,7 +11,7 @@ const code = (
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundImage: `url(${query.frames[query.frame]})`,
+        backgroundImage: `url(${query.themes[query.theme]})`,
         backgroundSize: '50%',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
@@ -23,15 +23,15 @@ const code = (
       />
       <Flex
         sx={{
-          ...query.innerFrame[query.frame],
+          ...query.innerFrame,
           justifyContent: 'center',
           alignItems: 'center',
-          bg: query.bg || query.innerFrame[query.frame].bg
+          bg: query.bg || query.innerFrame.bg
         }}
       >
         <Text
           sx={{
-            color: query.color || query.innerFrame[query.frame].color,
+            color: query.color || query.innerFrame.color,
             lineHeight: query.lineHeight,
             fontFamily: query.fontFamily,
             fontSize: query.fontSize
@@ -44,24 +44,23 @@ const code = (
 )
 
 const query = {
-  frame: 'dark',
+  theme: 'dark',
   text: "Roses are red <br/> Violets are blue <br/> Unexpected '{' on line 32",
   fontFamily: 'Fira Mono',
   fontSize: 1,
   lineHeight: 1.8,
   innerFrame: {
-    dark: {
-      height: '242px',
-      width: '240px',
-      bottom: '2px',
-      position: 'relative',
-      bg: '#222222',
-      color: '#EB635B'
-    }
+    height: '242px',
+    width: '240px',
+    bottom: '2px',
+    position: 'relative',
+    bg: '#222222',
+    color: '#EB635B'
   },
-  frames: {
+  themes: {
     light: 'https://i.imgur.com/cke4dF7.png',
-    dark: 'https://i.imgur.com/rJZjRFw.png'
+    dark: 'https://i.imgur.com/rJZjRFw.png',
+    metal: 'https://i.imgur.com/74oC80E.png'
   }
 }
 
