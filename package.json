@@ -98,7 +98,7 @@
     "standard-markdown": "latest"
   },
   "engines": {
-    "node": "14.x"
+    "node": ">= 12"
   },
   "scripts": {
     "clean": "lerna clean --yes && rm -rf node_modules",
