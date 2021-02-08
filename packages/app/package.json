@@ -94,7 +94,7 @@
     "standard-version": "latest"
   },
   "engines": {
-    "node": "14.x"
+    "node": ">= 12"
   },
   "scripts": {
     "build": "NODE_ENV=production next build",
