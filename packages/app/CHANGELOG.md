@@ -1,3 +1,26 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [1.7.0](https://github.com/microlinkhq/cards/compare/v1.6.0...v1.7.0) (2021-02-20)
+
+
+### Bug Fixes
+
+* background size ([b0366fa](https://github.com/microlinkhq/cards/commit/b0366faf473b945462587316e4940162919d18b0)), closes [#154](https://github.com/microlinkhq/cards/issues/154)
+* ensure preset query param is present ([8253ebe](https://github.com/microlinkhq/cards/commit/8253ebeae208fdd3763e3854707539746523755c)), closes [#136](https://github.com/microlinkhq/cards/issues/136)
+* show twitter spinner ([285e8e6](https://github.com/microlinkhq/cards/commit/285e8e60d00e8bd72165ff215baf87e5dc96a502))
+
+
+### Features
+
+* add meta preset ([37ee988](https://github.com/microlinkhq/cards/commit/37ee9888a53184b1dd949d936b71fd3660cf4208))
+
+
+
+
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
