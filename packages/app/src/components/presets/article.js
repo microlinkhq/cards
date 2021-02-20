@@ -18,7 +18,8 @@ const code = (
           backgroundImage:
             'url(https://w.wallhaven.cc/full/2e/wallhaven-2exmm9.jpg)',
           color: 'white',
-          padding: 50
+          padding: 50,
+          backgroundSize: 'contain'
         }}
       >
         <Text
