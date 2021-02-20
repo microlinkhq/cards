@@ -1,7 +1,7 @@
-/* eslint-disable */
+/* eslint-disable no-use-before-define,react/jsx-pascal-case */
 
 import Inline from '../inline.macro'
-import { MQL, Avatar, Flex, Text, Spinner } from './scope'
+import { Box, Link, MQL, Avatar, Flex, Text, Spinner } from './scope'
 
 const code = (
   <Inline>
@@ -51,7 +51,7 @@ const code = (
             const theme = query.themes[query.theme]
 
             const REGEX_USER = /\B@([a-zA-Z0-9_]+)/g // regex for @users
-            const REGEX_URL = /(?:\s)(f|ht)tps?:\/\/([^\s\t\r\n<]*[^\s\t\r\n<)*_,\.])/g // regex for urls
+            const REGEX_URL = /(?:\s)(f|ht)tps?:\/\/([^\s\t\r\n<]*[^\s\t\r\n<)*_,.])/g // regex for urls
             const REGEX_HASHTAG = /\B(#[á-úÁ-Úä-üÄ-Üa-zA-Z0-9_]+)/g // regex for #hashtags
 
             const tweet = (() => {
