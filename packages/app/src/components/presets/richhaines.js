@@ -54,8 +54,7 @@ const code = (
       justifyContent: 'center',
       flexDirection: 'column',
       color: query.color,
-      p: 3,
-      position: 'relative'
+      p: 3
     }}
   >
   <Flex
@@ -64,11 +63,9 @@ const code = (
     width: '90%',
     p: 2,
     transform: 'rotate(-7deg)',
-    position: 'absolute',
-    top: -10,
-    left: 4,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginBottom: 5
   }}
   >
     <Text
