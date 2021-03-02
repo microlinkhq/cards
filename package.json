@@ -38,12 +38,16 @@
       "email": "johnletey@gmail.com"
     },
     {
+      "name": "Andrew James",
+      "email": "andrew.james@bcgdv.com"
+    },
+    {
       "name": "Kiko",
       "email": "travis@travis-ci.org"
     },
     {
-      "name": "Andrew James",
-      "email": "andrew.james@bcgdv.com"
+      "name": "Rich Haines",
+      "email": "hello@richardhaines.dev"
     },
     {
       "name": "Scott Hutcheson",
@@ -54,16 +58,20 @@
       "email": "cristian.granda.pastor@gmail.com"
     },
     {
+      "name": "Miguel Piedrafita",
+      "email": "github@miguelpiedrafita.com"
+    },
+    {
       "name": "Quique Fdez Guerra",
       "email": "quique@ckgrafico.com"
     },
     {
-      "name": "Rubén",
-      "email": "rmoyarodriguez@gmail.com"
-    },
-    {
       "name": "Lee Robinson",
       "email": "me@leerob.io"
+    },
+    {
+      "name": "Rubén",
+      "email": "rmoyarodriguez@gmail.com"
     }
   ],
   "repository": {
