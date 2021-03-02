@@ -26,6 +26,7 @@ const pipeline = promisify(stream.pipeline)
 const generatePreview = async preset => {
   const { data } = await mql(`https://cards.microlink.io/?preset=${preset}`, {
     apiKey: process.env.MICROLINK_API_KEY,
+    waitUntil: ['load', 'networkidle0'],
     force: true,
     adblock: false,
     element: '#screenshot',
