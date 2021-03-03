@@ -12,10 +12,12 @@ const code = (
     />
   <Grid 
   sx={{
-    gridTemplateRows: '1fr 100px 50px',
+    gridTemplateRows: '70% 20% 10%',
     gap: 0,
     bg: '#e2a114',
     backgroundImage: `url(${query.backgroundImage})`,
+    height: '157px',
+    width: '300px',
   }}
   >
   <Flex
@@ -23,7 +25,6 @@ const code = (
       alignItems: 'center',
       justifyContent: 'center',
       flexDirection: 'column',
-      color: query.color,
       p: 3
     }}
   >
@@ -54,7 +55,6 @@ const code = (
       alignItems: 'center',
       justifyContent: 'center',
       flexDirection: 'column',
-      color: query.color,
       p: 3
     }}
   >
@@ -87,7 +87,6 @@ const code = (
       justifyContent: 'space-between',
       flexDirection: 'row',
       p: 4,
-      height: '50px',
     }}
   >
       <Text
