@@ -24,6 +24,14 @@ const takeScreenshot = async (url, mqlOpts) => {
   return data.screenshot.url
 }
 
+const codepen = (url, mqlOpts) =>
+  mql(url, {
+    meta: false,
+    screenshot: true,
+    styles: ['.main-header, .oldie-header {display: none}'],
+    ...mqlOpts
+  })
+
 module.exports = async ({
   mqlOpts = {},
   entries = [],
@@ -66,3 +74,5 @@ module.exports = async ({
 
   return pAll(actions, { concurrency })
 }
+
+module.exports.codepen = codepen

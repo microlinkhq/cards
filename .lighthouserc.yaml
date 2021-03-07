@@ -1,5 +1,0 @@
-ci:
-  upload:
-    serverBaseUrl: https://microlink-lighthouse.herokuapp.com/
-  wizard:
-    serverBaseUrl: https://microlink-lighthouse.herokuapp.com/
