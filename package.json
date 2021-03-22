@@ -97,7 +97,7 @@
     "@commitlint/config-conventional": "latest",
     "finepack": "latest",
     "git-authors-cli": "latest",
-    "husky": "latest",
+    "husky": "~5.2.0",
     "lerna": "latest",
     "lint-staged": "latest",
     "npm-check-updates": "latest",
@@ -113,6 +113,7 @@
     "contributors": "(lerna exec finepack --parallel && git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
     "install": "lerna bootstrap --no-ci --force-local",
     "lint": "standard-markdown README.md && standard",
+    "postinstall": "husky install",
     "prerelease": "npm run update:check && npm run contributors",
     "pretest": "npm run lint",
     "release": "lerna publish --yes --sort --conventional-commits -m \"chore(release): %s\" --create-release github",
@@ -126,12 +127,6 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "package.json": [
