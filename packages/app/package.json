@@ -46,7 +46,7 @@
   ],
   "dependencies": {
     "@kikobeats/use-query-state": "~1.0.3",
-    "@microlink/mql": "~0.8.2",
+    "@microlink/mql": "~0.9.3",
     "@microlink/react": "~5.5.4",
     "@monaco-editor/react": "~4.1.0",
     "@snackbar/core": "~1.7.0",
