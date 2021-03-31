@@ -123,7 +123,7 @@ export const Sidebar = () => {
           <SearchableSelect
             color={color}
             bg={bg}
-            value={presetSelectValue}
+            selectedValue={presetSelectValue}
             options={presetOptions}
             onChange={handleSelectChange}
           />
