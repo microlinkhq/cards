@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 
 import Inline from '../inline.macro'
-import { Link, Flex, Box, Text, Image } from './scope'
+import { Link, Flex, Box, Paragraph, Image } from './scope'
 
 const code = (
   <Inline>
@@ -44,7 +44,7 @@ const code = (
         >
           <Flex sx={{ alignItems: 'center' }}>
             <Image sx={{ width: '50px' }} src={query.logo} />
-            <Text
+            <Paragraph
               sx={{
                 marginLeft: 3,
                 color: query.colorSecondary,
@@ -52,11 +52,11 @@ const code = (
               }}
             >
               {query.domain}
-            </Text>
+            </Paragraph>
           </Flex>
 
           <Box>
-            <Text
+            <Paragraph
               sx={{
                 marginBottom: 3,
                 width: '70%',
@@ -67,8 +67,8 @@ const code = (
               }}
             >
               {query.title}
-            </Text>
-            <Text
+            </Paragraph>
+            <Paragraph
               sx={{
                 marginBottom: 3,
                 fontFamily: query.font.secondary.name,
@@ -79,7 +79,7 @@ const code = (
               }}
             >
               {query.subtitle}
-            </Text>
+            </Paragraph>
           </Box>
         </Flex>
       </Box>

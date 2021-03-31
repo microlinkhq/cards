@@ -34,13 +34,14 @@ const code = (
             fontSize: 48,
             fontWeight: 700,
             lineHeight: 1.1,
-            marginBottom: 5
+            marginBottom: 5,
+            maxWidth: '14em'
           }}
         >
           {query.title}
         </Text>
 
-        <Image sx={{ width: 200 }} src='https://midu.dev/logo.png' />
+        <Image sx={{ width: 200 }} src={query.logo} />
       </Flex>
     </>
   </Inline>
@@ -48,6 +49,7 @@ const code = (
 
 const query = {
   title: 'Cómo eliminar un fichero con Node.js',
+  logo: 'https://midu.dev/logo.png',
   tag: 'node'
 }
 

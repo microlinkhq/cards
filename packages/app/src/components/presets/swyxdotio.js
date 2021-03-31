@@ -76,7 +76,7 @@ const code = (
 const query = {
   bg: 'white',
   color: 'black',
-  image: 'https://unavatar.now.sh/twitter/swyx',
+  image: 'https://i.imgur.com/ghLNicJ.jpg',
   title: "Your Site's Calling Card",
   description: '5 ways to add `og:image`s to your JAMstack site',
   split: '65%',

@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 
 import Inline from '../inline.macro'
-import { Link, Box, Flex, Text } from './scope'
+import { Link, Box, Flex, Paragraph } from './scope'
 
 const code = (
   <Inline>
@@ -26,7 +26,7 @@ const code = (
             textAlign: 'center'
           }}
         >
-          <Text
+          <Paragraph
             sx={{
               lineHeight: 1.25,
               bg: query.primaryColor,
@@ -39,7 +39,7 @@ const code = (
             }}
           >
             {query.title}
-          </Text>
+          </Paragraph>
         </Box>
       </Flex>
     </>
