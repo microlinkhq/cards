@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 
 import Inline from '../inline.macro'
-import { Link, Flex, Image, Box, Text } from './scope'
+import { Link, Flex, Image, Box, Paragraph } from './scope'
 
 const code = (
   <Inline>
@@ -30,7 +30,7 @@ const code = (
             href='https://fonts.googleapis.com/css2?family=Merriweather:wght@400;900&display=block'
             rel='stylesheet'
           />
-          <Text
+          <Paragraph
             sx={{
               pt: 4,
               pb: 5,
@@ -42,7 +42,7 @@ const code = (
             }}
           >
             {query.title}
-          </Text>
+          </Paragraph>
           <Flex
             sx={{
               justifyContent: 'space-between'
@@ -63,7 +63,7 @@ const code = (
                 }}
                 src={query.avatar}
               />
-              <Text
+              <Paragraph
                 sx={{
                   fontSize: 3,
                   fontWeight: 400,
@@ -71,9 +71,9 @@ const code = (
                 }}
               >
                 {query.author}
-              </Text>
+              </Paragraph>
 
-              <Text
+              <Paragraph
                 sx={{
                   fontSize: 3,
                   px: 2,
@@ -82,8 +82,8 @@ const code = (
                 }}
               >
                 •
-              </Text>
-              <Text
+              </Paragraph>
+              <Paragraph
                 sx={{
                   fontSize: 3,
                   fontWeight: 400,
@@ -91,7 +91,7 @@ const code = (
                 }}
               >
                 {query.date}
-              </Text>
+              </Paragraph>
             </Flex>
 
             <Flex

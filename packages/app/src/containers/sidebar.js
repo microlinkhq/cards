@@ -29,8 +29,8 @@ import {
   SEARCH_WIDTH
 } from '@/constants'
 import { useWindowSize } from '@/hooks'
-import { store } from '@/lib'
 import { AppContext } from '@/context'
+import { store } from '@/lib'
 import pkg from '@/package.json'
 
 export const Sidebar = () => {
@@ -123,7 +123,7 @@ export const Sidebar = () => {
           <SearchableSelect
             color={color}
             bg={bg}
-            value={presetSelectValue}
+            selectedValue={presetSelectValue}
             options={presetOptions}
             onChange={handleSelectChange}
           />

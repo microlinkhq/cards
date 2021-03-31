@@ -1,26 +1,28 @@
 import ReactSelect, { components } from 'react-select'
+import { theme as themeBase } from '@/theme'
+import { useRef, useMemo } from 'react'
 import { lighten } from 'polished'
 import { Flex } from 'theme-ui'
 
-import { theme as themeBase } from '@/theme'
-
-const Option = props => (
+const Option = ({ innerRef, innerProps, children, value, ...props }) => (
   <components.Option {...props}>
     <Flex
+      ref={innerRef}
       sx={{
         alignItems: 'center',
         justifyContent: 'space-between'
       }}
+      {...innerProps}
     >
-      {props.children}
-
-      <img src={`/preview/${props.value}.png`} style={{ width: 128 }} />
+      {children}
+      <img src={`/preview/${value}.png`} style={{ height: 72, width: 128 }} />
     </Flex>
   </components.Option>
 )
 
-export const SearchableSelect = ({ bg, color, ...props }) => {
+const getStyles = ({ bg, color }) => {
   const secondaryColor = lighten(0.1, bg)
+
   const theme = () => {
     return {
       borderRadius: 4,
@@ -83,11 +85,39 @@ export const SearchableSelect = ({ bg, color, ...props }) => {
     })
   }
 
+  return { theme, styles }
+}
+
+export const SearchableSelect = ({ bg, color, selectedValue, ...props }) => {
+  const selectRef = useRef()
+
+  const { styles, theme } = useMemo(() => getStyles({ bg, color }), [bg, color])
+
+  const value = useMemo(
+    () =>
+      props.options.find(
+        ({ value, label }) =>
+          value === selectedValue.value && label === selectedValue.label
+      ),
+    [selectedValue]
+  )
+
+  const onMenuOpen = () =>
+    setTimeout(() => {
+      const { focusedOptionRef } = selectRef.current.select
+      if (focusedOptionRef) {
+        focusedOptionRef.scrollIntoView({ behavior: 'smooth' })
+      }
+    }, themeBase.speed.quickly)
+
   return (
     <ReactSelect
+      onMenuOpen={onMenuOpen}
+      ref={selectRef}
       components={{ Option }}
       styles={styles}
       theme={theme}
+      value={value}
       {...props}
     />
   )

@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 
 import Inline from '../inline.macro'
-import { Link, Flex, Text } from './scope'
+import { Link, Flex, Paragraph } from './scope'
 
 const code = (
   <Inline>
@@ -10,7 +10,7 @@ const code = (
         fontSize: 40,
         justifyContent: 'center',
         flexDirection: 'column',
-        padding: '1em',
+        padding: '2em',
         backgroundColor: query.bg,
         color: query.color
       }}
@@ -19,17 +19,17 @@ const code = (
         href='https://fonts.googleapis.com/css2?family=Inter:wght@200;700&display=block'
         rel='stylesheet'
       />
-      <Text
+      <Paragraph
         sx={{
           fontFamily: 'Inter',
           fontWeight: 700,
           letterSpacing: '-0.028em',
-          margin: '1em 0'
+          margin: '1.5em 0'
         }}
       >
         {query.title}
-      </Text>
-      <Text
+      </Paragraph>
+      <Paragraph
         sx={{
           fontFamily: 'Inter',
           fontWeight: 200,
@@ -40,7 +40,7 @@ const code = (
         }}
       >
         {query.description}
-      </Text>
+      </Paragraph>
     </Flex>
   </Inline>
 )

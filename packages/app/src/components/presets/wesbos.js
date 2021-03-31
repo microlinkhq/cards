@@ -90,7 +90,7 @@ const code = (
 
 const query = {
   title: 'Flying a DJI Tello Drone with React and Node.js',
-  avatar: 'https://unavatar.now.sh/twitter/wesbos',
+  avatar: 'https://i.imgur.com/MlQOs33.jpg',
   url: 'wesbos.com',
   secondary: '#F8C30C',
   primary: '#000',

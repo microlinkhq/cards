@@ -90,6 +90,7 @@ const code = (
                   <Box sx={{ lineHeight: '1.25', pl: 2 }}>
                     <Text
                       sx={{
+                        display: 'block',
                         color: query.themes[query.theme].primary,
                         fontSize: 2,
                         fontWeight: 'bold'
@@ -99,6 +100,7 @@ const code = (
                     </Text>
                     <Text
                       sx={{
+                        display: 'block',
                         fontSize: 2,
                         color: query.themes[query.theme].secondary
                       }}

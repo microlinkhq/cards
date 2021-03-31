@@ -7,7 +7,8 @@ import {
   LivePreview as BasePreview
 } from 'react-live'
 
-import { editorThemes, theme } from '@/theme'
+import { editorThemes } from '@/context/theme-context'
+import { theme } from '@/theme'
 
 import * as scope from './presets/scope'
 

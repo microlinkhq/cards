@@ -1,16 +1,4 @@
-import themelist from 'monaco-themes/themes/themelist.json'
-
 import { toPx } from '@/lib'
-
-export const editorThemes = Object.keys(themelist).reduce((acc, id) => {
-  const name = themelist[id]
-  return {
-    ...acc,
-    [id === 'chrome-devtools'
-      ? 'default'
-      : id]: require(`monaco-themes/themes/${name}.json`)
-  }
-}, {})
 
 const speed = {
   quickly: 150,
@@ -20,7 +8,6 @@ const speed = {
 
 export const theme = {
   borders: [0, '1px solid'],
-  colors: { modes: editorThemes },
   fonts: {
     sans:
       'Inter, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Oxygen, Ubuntu, Cantarell, "Open Sans", sans-serif',

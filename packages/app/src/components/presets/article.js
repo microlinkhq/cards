@@ -15,8 +15,7 @@ const code = (
           display: 'flex',
           justifyContent: 'center',
           flexDirection: 'column',
-          backgroundImage:
-            'url(https://w.wallhaven.cc/full/2e/wallhaven-2exmm9.jpg)',
+          backgroundImage: `url(${query.image})`,
           color: 'white',
           padding: 50,
           backgroundSize: 'contain'
@@ -29,7 +28,7 @@ const code = (
             fontWeight: 300
           }}
         >
-          21 January
+          {query.date}
         </Text>
         <Text
           sx={{
@@ -39,7 +38,7 @@ const code = (
             textTransform: 'uppercase'
           }}
         >
-          STARSIGHT
+          {query.headline}
         </Text>
         <Text
           sx={{
@@ -50,7 +49,7 @@ const code = (
             paddingBottom: 5
           }}
         >
-          The highly-anticipated sequel to Skyward.
+          {query.caption}
         </Text>
       </Box>
     </>
@@ -58,7 +57,10 @@ const code = (
 )
 
 const query = {
-  foo: 'bar'
+  headline: 'STARSIGHT',
+  caption: 'The highly-anticipated sequel to Skyward.',
+  date: '21 January',
+  image: 'https://i.imgur.com/o0dYDfK.jpg'
 }
 
 export const article = { name: 'article', code, query }

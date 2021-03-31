@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 
 import Inline from '../inline.macro'
-import { Image, Box, Flex, Text } from './scope'
+import { Image, Box, Flex, Paragraph } from './scope'
 
 const code = (
   <Inline>
@@ -21,15 +21,15 @@ const code = (
           }}
         >
           <Image sx={{ width: query.logoSize }} src={query.logoUrl} />
-          <Text>#114</Text>
-          <Text
+
+          <Paragraph
             css={`
-              padding-top: 36px;
-              font-family: Canela, sans-serif;
+              font-size: ${query.title.length > 56 ? '32px' : '48px'};
               color: ${query.color};
-              font-size: 48px;
-              line-height: 52px;
+              font-family: Canela, sans-serif;
               font-weight: 100;
+              line-height: 52px;
+              padding-top: 36px;
             `}
             dangerouslySetInnerHTML={{ __html: query.title }}
           />
@@ -40,7 +40,6 @@ const code = (
 )
 
 const query = {
-  chapter: 115,
   title: 'Invertimos en las <b>mejores startups seed</b> de España',
   logoSize: '200px',
   logoUrl:
