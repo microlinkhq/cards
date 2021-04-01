@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import Inline from '../inline.macro'
-import { Box, Avatar, Flex, Link, Paragraph, Text } from './scope'
+import { Box, Avatar, Flex, Link, Paragraph, Text, Image } from './scope'
 
 const code = (
   <Inline>
@@ -76,15 +76,14 @@ const code = (
             </Text>
           )}
         </Box>
-        <Box
+        <Image
           sx={{
-            height: '50%',
-            width: '65%',
-            backgroundImage: `url(${query.thumbnail})`,
-            backgroundSize: 'cover',
-            position: 'absolute',
-            bottom: '-10%'
+            bottom: '-15%',
+            height: '55%',
+            objectFit: 'contain',
+            position: 'absolute'
           }}
+          src={query.thumbnail}
         />
       </Flex>
     </>
