@@ -8,24 +8,6 @@
     "name": "microlink.io",
     "url": "https://microlink.io"
   },
-  "contributors": [
-    {
-      "name": "Kiko Beats",
-      "email": "josefrancisco.verdu@gmail.com"
-    },
-    {
-      "name": "GermanRodrickson",
-      "email": "germanrodrickson@gmail.com"
-    },
-    {
-      "name": "Pedro Duarte",
-      "email": "contact@peduarte.com"
-    },
-    {
-      "name": "Brad Adams",
-      "email": "hi@breadadams.com"
-    }
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/microlinkhq/cards.git"
@@ -75,24 +57,11 @@
     "urlsafe-base64": "~1.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "latest",
-    "@commitlint/config-conventional": "latest",
     "babel-plugin-styled-components": "latest",
-    "conventional-github-releaser": "latest",
     "debug-logfmt": "latest",
     "download": "latest",
     "exists-file": "latest",
-    "finepack": "latest",
-    "git-authors-cli": "latest",
-    "git-dirty": "latest",
-    "husky": "latest",
-    "lint-staged": "latest",
-    "make-dir": "latest",
-    "npm-check-updates": "latest",
-    "prettier-standard": "latest",
-    "standard": "latest",
-    "standard-markdown": "latest",
-    "standard-version": "latest"
+    "make-dir": "latest"
   },
   "engines": {
     "node": ">= 12"
@@ -100,44 +69,14 @@
   "scripts": {
     "build": "NODE_ENV=production next build",
     "clean": "rm -rf node_modules",
-    "contributors": "(git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
     "dev": "NODE_ENV=development next -p 3001",
     "export": "next export",
     "generate-previews": "DEBUG=microlink-cards* node scripts/generate-previews.js",
-    "lint": "standard-markdown README.md && standard",
-    "postrelease": "npm run release:tags && npm run release:github",
-    "prerelease": "npm run update:check && npm run contributors",
-    "pretest": "npm run lint",
-    "release": "standard-version -a",
-    "release:github": "conventional-github-releaser -p angular",
-    "release:tags": "git push --follow-tags origin HEAD:master",
     "start": "next start",
     "test": "exit 0",
     "update": "ncu -u",
     "update:check": "ncu -- --error-level 2"
   },
   "private": true,
-  "license": "MIT",
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "package.json": [
-      "finepack"
-    ],
-    "*.js": [
-      "prettier-standard"
-    ],
-    "*.md": [
-      "standard-markdown"
-    ]
-  }
+  "license": "MIT"
 }
