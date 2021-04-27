@@ -1,5 +1,6 @@
 export { adobe } from './adobe'
 export { ajames } from './ajames'
+export { arcade } from './arcade'
 export { article } from './article'
 export { browser } from './browser'
 export { bytesandhumans } from './bytesandhumans'
