@@ -1,21 +1,11 @@
 version: 2
 updates:
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 99
-  ignore:
-  - dependency-name: cycled
-    versions:
-    - 2.0.0
-  - dependency-name: theme-ui
-    versions:
-    - 0.6.0
-    - 0.6.1
-  - dependency-name: react
-    versions:
-    - 16.14.0
-  - dependency-name: react-select
-    versions:
-    - 4.2.0
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: daily
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      # Check for updates to GitHub Actions every weekday
+      interval: "daily"
