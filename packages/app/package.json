@@ -33,7 +33,7 @@
     "@monaco-editor/react": "~4.1.0",
     "@snackbar/core": "~1.7.0",
     "babel-plugin-macros": "~3.0.1",
-    "cycled": "~1.2.0",
+    "cycled": "~2.0.0",
     "deep-object-diff": "~1.1.0",
     "framer-motion": "~4.1.0",
     "monaco-themes": "~0.3.3",
