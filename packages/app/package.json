@@ -41,7 +41,7 @@
     "next": "~10.2.0",
     "next-transpile-modules": "~7.0.0",
     "polished": "~4.1.2",
-    "prettier": "~2.2.1",
+    "prettier": "~2.3.0",
     "react": "~17.0.2",
     "react-aspect-ratio": "~1.0.49",
     "react-dom": "~17.0.2",
