@@ -27,7 +27,7 @@ const code = (
               font-size: ${query.title.length > 56 ? '32px' : '48px'};
               color: ${query.color};
               font-family: Canela, sans-serif;
-              font-weight: 100;
+              font-weight: 300;
               line-height: 52px;
               padding-top: 36px;
             `}
