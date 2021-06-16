@@ -22,7 +22,7 @@ export const LazyImage = ({ onError, ...props }) => {
       setLoading(false)
     }
     img.src = props.src
-  }, [])
+  }, [props.src, onError])
 
   const Component = isLoading ? Placeholder : Image
   return createElement(Component, props)

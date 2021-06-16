@@ -30,7 +30,7 @@
     "share"
   ],
   "dependencies": {
-    "@microlink/mql": "~0.9.3",
+    "@microlink/mql": "~0.9.5",
     "debug-logfmt": "~1.0.4",
     "dlv": "~1.1.3",
     "exists-file": "~3.0.2",
@@ -50,6 +50,7 @@
     "src"
   ],
   "scripts": {
+    "lint": "exit 0",
     "clean": "rm -rf node_modules",
     "test": "nyc ava",
     "update": "ncu -u",
