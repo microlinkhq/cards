@@ -1,7 +1,8 @@
-import NextApp from 'next/app'
-import Head from 'next/head'
 import { createGlobalStyle } from 'styled-components'
 import { ThemeProvider } from 'theme-ui'
+import NextApp from 'next/app'
+import Head from 'next/head'
+
 import 'react-aspect-ratio/aspect-ratio.css'
 
 import AppContextProvider from '@/context'
@@ -30,23 +31,20 @@ const meta = {
   description: pkg.description,
   image: 'https://cdn.microlink.io/banner/cards.png',
   logo: 'https://cdn.microlink.io/logo/trim.png',
-  url: 'https://cards.microlink.io',
-  siteName: 'Microlink Cards',
-  type: 'website'
+  url: 'https://cards.microlink.io'
 }
 
 export default class App extends NextApp {
   render () {
-    const { Component, pageProps, router } = this.props
-    const isEditor = router.asPath.startsWith('/editor')
-
+    const { Component, pageProps } = this.props
     return (
       <ThemeProvider theme={theme}>
         <GlobalStylesheet />
         <Head>
-          {/* <!-- Basic --> */}
-          <meta charSet='utf-8' />
-          <meta httpEquiv='x-ua-compatible' content='ie=edge' />
+          <meta
+            name='viewport'
+            content='width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0'
+          />
           {/* <!-- Search Engine --> */}
           <meta name='description' content={meta.description} />
           <meta name='image' content={meta.image} />
@@ -71,94 +69,10 @@ export default class App extends NextApp {
           <meta property='og:description' content={meta.description} />
           <meta property='og:image' content={meta.image} />
           <meta property='og:url' content={meta.url} />
-          <meta property='og:site_name' content={meta.siteName} />
-          <meta property='og:type' content={meta.type} />
-          {/* <!-- Favicon --> */}
-          <link
-            rel='apple-touch-icon-precomposed'
-            sizes='57x57'
-            href='https://cdn.microlink.io/logo/apple-touch-icon-57x57.png'
-          />
-          <link
-            rel='apple-touch-icon-precomposed'
-            sizes='114x114'
-            href='https://cdn.microlink.io/logo/apple-touch-icon-114x114.png'
-          />
-          <link
-            rel='apple-touch-icon-precomposed'
-            sizes='72x72'
-            href='https://cdn.microlink.io/logo/apple-touch-icon-72x72.png'
-          />
-          <link
-            rel='apple-touch-icon-precomposed'
-            sizes='144x144'
-            href='https://cdn.microlink.io/logo/apple-touch-icon-144x144.png'
-          />
-          <link
-            rel='apple-touch-icon-precomposed'
-            sizes='60x60'
-            href='https://cdn.microlink.io/logo/apple-touch-icon-60x60.png'
-          />
-          <link
-            rel='apple-touch-icon-precomposed'
-            sizes='120x120'
-            href='https://cdn.microlink.io/logo/apple-touch-icon-120x120.png'
-          />
-          <link
-            rel='apple-touch-icon-precomposed'
-            sizes='76x76'
-            href='https://cdn.microlink.io/logo/apple-touch-icon-76x76.png'
-          />
-          <link
-            rel='apple-touch-icon-precomposed'
-            sizes='152x152'
-            href='https://cdn.microlink.io/logo/apple-touch-icon-152x152.png'
-          />
-          <link
-            rel='icon'
-            type='image/png'
-            href='https://cdn.microlink.io/logo/favicon-196x196.png'
-            sizes='196x196'
-          />
-          <link
-            rel='icon'
-            type='image/png'
-            href='https://cdn.microlink.io/logo/favicon-96x96.png'
-            sizes='96x96'
-          />
-          <link
-            rel='icon'
-            type='image/png'
-            href='https://cdn.microlink.io/logo/favicon-32x32.png'
-            sizes='32x32'
-          />
-          <link
-            rel='icon'
-            type='image/png'
-            href='https://cdn.microlink.io/logo/favicon-16x16.png'
-            sizes='16x16'
-          />
-          <link
-            rel='icon'
-            type='image/png'
-            href='https://cdn.microlink.io/logo/favicon-128.png'
-            sizes='128x128'
-          />
-          <link
-            href='https://fonts.googleapis.com/css2?family=Inter&display=block'
-            rel='stylesheet'
-          />
         </Head>
         <AppContextProvider>
           <Component {...pageProps} />
         </AppContextProvider>
-
-        {isEditor && (
-          <script
-            crossOrigin='anonymous'
-            src='https://polyfill.io/v3/polyfill.min.js?features=ResizeObserver'
-          />
-        )}
       </ThemeProvider>
     )
   }

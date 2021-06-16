@@ -1,12 +1,13 @@
 /* eslint-disable no-use-before-define */
 
 import Inline from '../inline.macro'
-import { Link, Flex, Text } from './scope'
+import { Flex, Text } from './scope'
 
 const code = (
   <Inline>
     <>
-      <style>{`
+      <style>
+        {`
         @font-face {
           font-family: 'CardFont';
           fontWeight: '400';
@@ -14,7 +15,8 @@ const code = (
           fontDisplay: 'swap';
           src: url("{query.fontUrl}") format("woff2");
         }
-      `}</style>
+      `}
+      </style>
       <Flex
         sx={{
           position: 'relative',
@@ -32,7 +34,7 @@ const code = (
             top: 0,
             right: 0,
             left: 0,
-            height: '20px',
+            height: '20px'
           }}
         />
         <Text
@@ -46,7 +48,7 @@ const code = (
             marginBottom: '25px'
           }}
           css={{
-            '-webkit-background-clip': 'text',
+            '-webkit-background-clip': 'text'
           }}
         >
           {query.headline}
@@ -76,7 +78,8 @@ const code = (
 const query = {
   headline: 'Add your headline',
   caption: 'Add your caption',
-  fontUrl: 'https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2',
+  fontUrl:
+    'https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2'
 }
 
 export const m1guelpf = {

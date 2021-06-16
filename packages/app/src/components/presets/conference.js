@@ -131,10 +131,10 @@ const code = (
             y2='163'
             gradientUnits='userSpaceOnUse'
           >
-            <stop stop-color={query.gradient[0]} />
-            <stop offset='0.354167' stop-color={query.gradient[1]} />
-            <stop offset='0.729167' stop-color={query.gradient[2]} />
-            <stop offset='1' stop-color={query.gradient[3]} />
+            <stop stopColor={query.gradient[0]} />
+            <stop offset='0.354167' stopColor={query.gradient[1]} />
+            <stop offset='0.729167' stopColor={query.gradient[2]} />
+            <stop offset='1' stopColor={query.gradient[3]} />
           </linearGradient>
         </defs>
       </svg>

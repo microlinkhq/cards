@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from 'react'
-
 import { Overlays, PreviewArea, Sidebar } from '@/containers'
-import { AppFrame, Spinner } from '@/components'
-import { useKeyBindings } from '@/hooks'
-import { setImageMeta } from '@/lib'
+import { AppFrame, Spinner, Script } from '@/components'
+import { useContext, useEffect, useState } from 'react'
 import { OVERLAY_STATE } from '@/constants'
+import { useKeyBindings } from '@/hooks'
 import { AppContext } from '@/context'
+import { setImageMeta } from '@/lib'
 
 export default function Editor () {
   const [render, setRender] = useState(false)
@@ -43,10 +42,13 @@ export default function Editor () {
     <>
       <AppFrame sx={{ bg }}>
         <PreviewArea isEditor />
-
         <Sidebar />
+        <Script
+          async
+          crossOrigin='anonymous'
+          src='https://polyfill.io/v3/polyfill.min.js?features=ResizeObserver'
+        />
       </AppFrame>
-
       <Overlays />
     </>
   )

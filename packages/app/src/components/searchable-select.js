@@ -3,6 +3,7 @@ import { theme as themeBase } from '@/theme'
 import { useRef, useMemo } from 'react'
 import { lighten } from 'polished'
 import { Flex } from 'theme-ui'
+import Image from 'next/image'
 
 const Option = ({ innerRef, innerProps, children, value, ...props }) => (
   <components.Option {...props}>
@@ -15,7 +16,7 @@ const Option = ({ innerRef, innerProps, children, value, ...props }) => (
       {...innerProps}
     >
       {children}
-      <img src={`/preview/${value}.png`} style={{ height: 72, width: 128 }} />
+      <Image src={`/preview/${value}.png`} width={128} height={72} />
     </Flex>
   </components.Option>
 )
@@ -99,7 +100,7 @@ export const SearchableSelect = ({ bg, color, selectedValue, ...props }) => {
         ({ value, label }) =>
           value === selectedValue.value && label === selectedValue.label
       ),
-    [selectedValue]
+    [selectedValue, props.options]
   )
 
   const onMenuOpen = () =>

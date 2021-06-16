@@ -11,7 +11,7 @@ export const MQL = ({ children, url, ...opts }) => {
     }
 
     fetchData()
-  }, [])
+  }, [url, opts])
 
   return children(result)
 }

@@ -14,7 +14,7 @@ export default function Index () {
     } else {
       setIsLoading(false)
     }
-  }, [])
+  }, [router])
 
   return (
     <AppFrame>

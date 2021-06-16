@@ -6,7 +6,7 @@ export const Script = props => {
     Object.keys(props).forEach(key => (script[key] = props[key]))
     document.body.appendChild(script)
     return () => document.body.removeChild(script)
-  }, [])
+  }, [props])
 
   return null
 }
