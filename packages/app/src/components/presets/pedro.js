@@ -22,7 +22,8 @@ const code = (
           fontFamily: 'Inter',
           fontWeight: 500,
           fontSize: 2,
-          flexDirection: 'column'
+          flexDirection: 'column',
+          height: '100%'            
         }}
       >
         <Box
