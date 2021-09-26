@@ -50,8 +50,8 @@
     "src"
   ],
   "scripts": {
-    "lint": "exit 0",
     "clean": "rm -rf node_modules",
+    "lint": "exit 0",
     "test": "nyc ava",
     "update": "ncu -u",
     "update:check": "ncu -- --error-level 2"
