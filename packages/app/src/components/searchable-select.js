@@ -105,7 +105,7 @@ export const SearchableSelect = ({ bg, color, selectedValue, ...props }) => {
 
   const onMenuOpen = () =>
     setTimeout(() => {
-      const { focusedOptionRef } = selectRef.current.select
+      const { focusedOptionRef } = selectRef.current
       if (focusedOptionRef) {
         focusedOptionRef.scrollIntoView({ behavior: 'smooth' })
       }
