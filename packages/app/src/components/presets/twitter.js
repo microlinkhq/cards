@@ -132,7 +132,9 @@ const code = (
                       color: query.themes[query.theme].secondary
                     }}
                   >
-                    {data.retweets} {data.likes} · {data.date.replace('·', '')}
+                    {data.retweets} {data.likes}
+                    {data.retweets && data.likes ? ' · ' : ''}
+                    {data.date.replace('·', '')}
                   </Text>
                 </Flex>
               </Flex>
