@@ -23,7 +23,7 @@ const code = (
           fontWeight: 500,
           fontSize: 2,
           flexDirection: 'column',
-          height: '100%'            
+          height: '100%'
         }}
       >
         <Box
