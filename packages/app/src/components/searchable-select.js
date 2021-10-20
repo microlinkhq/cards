@@ -5,7 +5,17 @@ import { Flex } from 'theme-ui'
 import Image from 'next/image'
 
 import { theme as themeBase } from '@/theme'
-import { pixelGif } from '@/lib/pixel-gif'
+
+const previews = (() => {
+  const { scope, ...presets } = require('./presets')
+  return Object.keys(presets).reduce(
+    (acc, presetName) => ({
+      ...acc,
+      [presetName]: require(`../../public/preview/${presetName}.png`).default
+    }),
+    {}
+  )
+})()
 
 const Option = ({ innerRef, innerProps, children, value, ...props }) => (
   <components.Option {...props}>
@@ -18,14 +28,7 @@ const Option = ({ innerRef, innerProps, children, value, ...props }) => (
       {...innerProps}
     >
       {children}
-      <Image
-        loader={({ src }) => `/preview/${src}.png`}
-        placeholder='blur'
-        blurDataURL={pixelGif(props.theme.colors.primary)}
-        src={value}
-        width={128}
-        height={72}
-      />
+      <Image placeholder='blur' src={previews[value]} width={128} height={72} />
     </Flex>
   </components.Option>
 )
