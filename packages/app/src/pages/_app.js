@@ -20,10 +20,6 @@ const GlobalStylesheet = createGlobalStyle`
   }
 
   ${notificationStyles(theme)}
-
-  .react-loading-skeleton {
-    display: block !important;
-  }
 `
 
 const meta = {

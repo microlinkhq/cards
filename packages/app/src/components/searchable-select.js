@@ -1,9 +1,11 @@
 import ReactSelect, { components } from 'react-select'
-import { theme as themeBase } from '@/theme'
 import { useRef, useMemo } from 'react'
 import { lighten } from 'polished'
 import { Flex } from 'theme-ui'
 import Image from 'next/image'
+
+import { theme as themeBase } from '@/theme'
+import { pixelGif } from '@/lib/pixel-gif'
 
 const Option = ({ innerRef, innerProps, children, value, ...props }) => (
   <components.Option {...props}>
@@ -16,7 +18,14 @@ const Option = ({ innerRef, innerProps, children, value, ...props }) => (
       {...innerProps}
     >
       {children}
-      <Image src={`/preview/${value}.png`} width={128} height={72} />
+      <Image
+        loader={({ src }) => `/preview/${src}.png`}
+        placeholder='blur'
+        blurDataURL={pixelGif(props.theme.colors.primary)}
+        src={value}
+        width={128}
+        height={72}
+      />
     </Flex>
   </components.Option>
 )
