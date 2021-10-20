@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://github.com/microlinkhq/cards/compare/v1.9.0...v1.10.0) (2021-10-20)
+
+
+### Bug Fixes
+
+* conditional space ([66eb57c](https://github.com/microlinkhq/cards/commit/66eb57cb09354de09c274bfc05e33f6131df1f9f))
+* use image component for images ([eb0152f](https://github.com/microlinkhq/cards/commit/eb0152fc00f0690aab5bba6240b7886309f56032))
+
+
+### Features
+
+* upgrade to Next.js 11 ([60942fa](https://github.com/microlinkhq/cards/commit/60942fa35c128ab8d52ff603c6770b4477d6d660))
+
+
+
+
+
 # [1.9.0](https://github.com/microlinkhq/cards/compare/v1.8.2...v1.9.0) (2021-03-31)
 
 **Note:** Version bump only for package @microlink/cards-root

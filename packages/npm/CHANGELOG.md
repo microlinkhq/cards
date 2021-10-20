@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://github.com/microlinkhq/microlink-cards/compare/v1.9.0...v1.10.0) (2021-10-20)
+
+
+### Features
+
+* upgrade to Next.js 11 ([60942fa](https://github.com/microlinkhq/microlink-cards/commit/60942fa35c128ab8d52ff603c6770b4477d6d660))
+
+
+
+
+
 # [1.9.0](https://github.com/microlinkhq/microlink-cards/compare/v1.8.2...v1.9.0) (2021-03-31)
 
 **Note:** Version bump only for package @microlink/cards
