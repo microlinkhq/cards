@@ -35,7 +35,7 @@
     "babel-plugin-macros": "~3.1.0",
     "cycled": "~2.0.0",
     "deep-object-diff": "~1.1.0",
-    "framer-motion": "~4.1.17",
+    "framer-motion": "~5.0.0",
     "monaco-themes": "~0.3.3",
     "msgpack5": "~5.3.2",
     "next": "~11.1.2",
