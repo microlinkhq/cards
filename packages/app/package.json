@@ -31,7 +31,7 @@
     "@emotion/styled": "~11.6.0",
     "@kikobeats/use-query-state": "~1.0.6",
     "@mdx-js/react": "~1.6.22",
-    "@microlink/mql": "~0.10.11",
+    "@microlink/mql": "~0.10.12",
     "@microlink/react": "~5.5.7",
     "@monaco-editor/react": "~4.3.1",
     "@snackbar/core": "~1.7.0",
