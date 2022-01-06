@@ -118,7 +118,7 @@
   "scripts": {
     "clean": "lerna clean --yes && rm -rf node_modules",
     "contributors": "(lerna exec finepack --parallel && git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
-    "install": "lerna bootstrap --no-ci --force-local",
+    "install": "lerna bootstrap --no-ci --force-local -- --force",
     "lint": "standard-markdown README.md && standard && lerna exec npm run lint",
     "prerelease": "npm run update:check && npm run contributors",
     "pretest": "npm run lint",
@@ -134,14 +134,14 @@
     ]
   },
   "nano-staged": {
-    "package.json": [
-      "finepack"
-    ],
     "*.js,!*.min.js,": [
       "prettier-standard"
     ],
     "*.md": [
       "standard-markdown"
+    ],
+    "package.json": [
+      "finepack"
     ]
   },
   "simple-git-hooks": {
