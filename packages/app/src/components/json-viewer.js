@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 import styled from 'styled-components'
 
-const DynamicReactJson = dynamic(import('react-json-view'), { ssr: false })
+const DynamicReactJson = dynamic(import('@microlink/react-json-view'), { ssr: false })
 
 const ThemeWrapper = styled.div`
   .key-modal-request > div {
