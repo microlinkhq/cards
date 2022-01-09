@@ -5,17 +5,16 @@ import { ThemeProvider, Box, Flex, Text, Link } from "./scope";
 
 const code = (
   <Inline>
-    <ThemeProvider theme={query.theme}>
+    <>
       <Link
-        href="https://fonts.googleapis.com/css?family=Inter:400,500,600,700&display=block"
+        href="https://fonts.googleapis.com/css?family=Inter:400,500&display=block"
         rel="stylesheet"
       />
 
       <Flex
         sx={{
-          color: "foreground",
           fontFamily: "Inter",
-          fontSize: 2,
+          fontSize: 27,
           flexDirection: "column",
           height: "100%",
           padding: "80px 80px",
@@ -28,8 +27,8 @@ const code = (
             sx={{
               borderRadius: "9999px",
               display: "block",
-              width: 40,
-              height: 40,
+              width: 35,
+              height: 35,
             }}
           />
           <Text sx={{ fontWeight: 500 }}>Pedro Duarte</Text>
@@ -37,6 +36,7 @@ const code = (
 
         <Text sx={{ mt: 40, ml: 60 }}>{query.title}</Text>
       </Flex>
+
       <svg
         id="texture"
         style={{
@@ -61,7 +61,7 @@ const code = (
         </filter>
         <rect width="100%" height="100%" filter="url(#noise)"></rect>
       </svg>
-    </ThemeProvider>
+    </>
   </Inline>
 );
 
