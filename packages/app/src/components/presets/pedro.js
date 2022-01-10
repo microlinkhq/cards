@@ -14,7 +14,7 @@ const code = (
       <Flex
         sx={{
           fontFamily: "Inter",
-          fontSize: 27,
+          fontSize: 35,
           flexDirection: "column",
           height: "100%",
           padding: "80px 80px",
