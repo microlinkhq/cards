@@ -37,16 +37,16 @@ const code = (
 
         <Text
           sx={{
-            backgroundColor: query.buttonBg,
+            backgroundColor: query.ctaBg,
             px: 36,
             py: 12,
             borderRadius: 8,
             fontSize: 18,
             fontWeight: 700,
-            color: query.buttonColor
+            color: query.ctaColor
           }}
         >
-          {query.buttonText}
+          {query.ctaText}
         </Text>
       </Flex>
     </>
@@ -54,9 +54,9 @@ const code = (
 )
 
 const query = {
-  buttonBg: '#5cebdf',
-  buttonColor: '#1f495a',
-  buttonText: 'Learn more',
+  ctaBg: '#5cebdf',
+  ctaColor: '#1f495a',
+  ctaText: 'Learn more',
   gradientColors: ['#0d303f', '#0e2a36', '#12212a'],
   logo: 'https://www.netlify.com/v3/img/components/full-logo-dark.svg',
   title:
