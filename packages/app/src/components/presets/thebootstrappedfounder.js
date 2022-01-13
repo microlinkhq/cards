@@ -7,7 +7,7 @@ const code = (
   <Inline>
     <>
       <Link
-        href='https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400,900&family=Noto+Serif:wght@400&display=block'
+        href='https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Noto+Serif:wght@400&display=block'
         rel='stylesheet'
       />
       <Box
@@ -61,10 +61,10 @@ const code = (
                 <Text
                   sx={{
                     display: 'block',
-                    fontSize: 28,
+                    fontSize: 22,
                     fontWeight: 400,
                     fontFamily: 'Noto Serif',
-                    lineHeight: 1.1,
+                    lineHeight: 1.5,
                     color: '#737473',
                     position: 'relative',
                     pl: 20,
