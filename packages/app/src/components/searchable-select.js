@@ -1,7 +1,7 @@
 import ReactSelect, { components } from 'react-select'
+import { Box, Flex, Text } from 'theme-ui'
 import { useRef, useMemo } from 'react'
 import { lighten } from 'polished'
-import { Flex } from 'theme-ui'
 import Image from 'next/image'
 
 import { theme as themeBase } from '@/theme'
@@ -27,8 +27,21 @@ const Option = ({ innerRef, innerProps, children, value, ...props }) => (
       }}
       {...innerProps}
     >
-      {children}
-      <Image placeholder='blur' src={previews[value]} width={128} height={72} />
+      <Text
+        sx={{
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
+          pr: 3,
+          flex: 1
+        }}
+        title={children}
+      >
+        {children}
+      </Text>
+      <Box>
+        <Image placeholder='blur' src={previews[value]} width={128} height={72} />
+      </Box>
     </Flex>
   </components.Option>
 )
