@@ -1,7 +1,7 @@
 import ReactSelect, { components } from 'react-select'
+import { Box, Flex, Text } from 'theme-ui'
 import { useRef, useMemo } from 'react'
 import { lighten } from 'polished'
-import { Box, Flex, Text } from 'theme-ui'
 import Image from 'next/image'
 
 import { theme as themeBase } from '@/theme'
