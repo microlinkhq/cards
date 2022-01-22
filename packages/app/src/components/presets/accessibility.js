@@ -8,8 +8,8 @@ const code = (
     <>
       <Flex
         sx={{
-          background: '##FBFBFE',
-          color: '#101010',
+          background: query.bg,
+          color: query.color,
           fontFamily: '-apple-system, BlinkMacSystemFont, Arial, sans-serif',
           alignItems: 'center',
           justifyContent: 'center'
