@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 
 import Inline from '../inline.macro'
-import { Box, Flex, Text } from './scope'
+import { Box, Flex, polished, Text } from './scope'
 
 const code = (
   <Inline>
@@ -46,7 +46,7 @@ const code = (
               width: 14,
               height: 14,
               borderRadius: 7,
-              background: '#0279FF',
+              background: query.highlight,
               transform: 'translateX(-50%)'
             },
             '::after': {
@@ -57,7 +57,7 @@ const code = (
               width: 14,
               height: 14,
               borderRadius: 7,
-              background: '#0279FF',
+              background: query.highlight,
               transform: 'translateX(50%)'
             }
           }}
@@ -74,9 +74,9 @@ const code = (
                 left: '-8px',
                 right: '-6px',
                 bottom: '-16px',
-                backgroundColor: 'rgba(2, 121, 255, 0.15)',
-                borderLeft: '3px solid #0279FF',
-                borderRight: '3px solid #0279FF'
+                backgroundColor: polished.rgba(query.highlight, 0.15),
+                borderLeft: `3px solid ${query.highlight}`,
+                borderRight: `3px solid ${query.highlight}`,
               }
             }}
           >
@@ -89,8 +89,8 @@ const code = (
               top: -64,
               left: '50%',
               transform: 'translateX(-50%)',
-              background: '#080808',
-              color: '#fff',
+              background: query.color,
+              color: query.bg,
               px: 16,
               py: 10,
               fontSize: 18,
@@ -104,7 +104,7 @@ const code = (
                 height: 0,
                 borderStyle: 'solid',
                 borderWidth: '14px 14px 0 14px',
-                borderColor: '#080808 transparent transparent transparent',
+                borderColor: `${query.color} transparent transparent transparent`,
                 transform: 'translateX(-50%) translateY(100%)'
               }
             }}
@@ -118,6 +118,9 @@ const code = (
 )
 
 const query = {
+  bg: '#FBFBFE',
+  color: '#101010',
+  highlight: '#0279FF',
   logo: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg',
   title1: 'Make',
   title2: 'yours.',
