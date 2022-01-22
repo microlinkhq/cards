@@ -124,4 +124,4 @@ const query = {
   tooltip: 'Speak'
 }
 
-export const appleAccessibility = { name: 'appleAccessibility', code, query }
+export const accessibility = { name: 'accessibility', code, query }
