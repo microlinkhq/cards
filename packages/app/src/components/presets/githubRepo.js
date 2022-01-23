@@ -75,7 +75,13 @@ const code = (
           }}
         >
           {(payload) => {
-            if (payload === null) return <Spinner />
+            if (payload === null) {
+              return (
+                <Flex sx={{ width: '100%', alignItems: 'center', justifyContent: 'center' }}>
+                  <Spinner />
+                </Flex>
+              )
+            }
 
             const { data } = payload
 
@@ -124,7 +130,7 @@ const code = (
                     <Text
                       sx={{ fontSize: 42, letterSpacing: 0.5, fontWeight: 200 }}
                     >
-                      {data.author}{'/'}
+                      {`${data.author}/`}
                       <Text sx={{ fontWeight: 600 }}>{data.name}</Text>
                     </Text>
                   </Box>
@@ -146,8 +152,7 @@ const code = (
                             color: '#0969da',
                             borderRadius: 9999,
                             px: 14,
-                            pt: '4px',
-                            pb: '6px',
+                            py: '4px',
                             mr: '8px',
                             mb: '8px',
                             fontSize: 14,
