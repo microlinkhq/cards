@@ -124,7 +124,7 @@ const code = (
                     <Text
                       sx={{ fontSize: 42, letterSpacing: 0.5, fontWeight: 200 }}
                     >
-                      {data.author}/
+                      {data.author}{'/'}
                       <Text sx={{ fontWeight: 600 }}>{data.name}</Text>
                     </Text>
                   </Box>
