@@ -1,3 +1,4 @@
+export { accessibility } from './accessibility'
 export { adobe } from './adobe'
 export { ajames } from './ajames'
 export { apple } from './apple'
