@@ -219,7 +219,7 @@ const code = (
 )
 
 const query = {
-  url: 'https://github.com/vercel/next.js'
+  url: 'https://github.com/microlinkhq/keyv'
 }
 
 export const githubRepo = { name: 'githubRepo', code, query }
