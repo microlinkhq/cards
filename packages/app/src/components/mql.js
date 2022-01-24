@@ -1,17 +1,30 @@
 import { useState, useEffect } from 'react'
+import { useMountedRef } from '@/hooks'
 import mql from '@microlink/mql'
 
-export const MQL = ({ children, url, ...opts }) => {
+const pending = new Map()
+
+export const MQL = ({ children, url, options } = {}) => {
   const [result, setResult] = useState(null)
+  const isMounted = useMountedRef()
 
   useEffect(() => {
     async function fetchData () {
-      const result = await mql(url, opts)
-      setResult(result)
+      const id = JSON.stringify({ url, ...options })
+
+      let promise = pending.get(id)
+
+      if (!promise) {
+        promise = mql(url, options)
+        pending.set(id, promise)
+      }
+
+      const result = await promise
+      if (isMounted.current) setResult(result)
     }
 
     fetchData()
-  }, [url, opts])
+  }, [url, options])
 
   return children(result)
 }
