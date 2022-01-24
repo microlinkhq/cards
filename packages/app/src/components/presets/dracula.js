@@ -141,7 +141,7 @@ const code = (
 const query = {
   "color": "#ffb86c",
   "contributors": 25,
-  "icon": "pack-1/048-frankenstein.svg",
+  "icon": "used/pack-1/048-frankenstein.svg",
   "repo": "visual-studio-code",
   "title": "Visual Studio Code",
   "views": "238,737",
