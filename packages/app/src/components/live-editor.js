@@ -1,5 +1,6 @@
 import Monaco from '@monaco-editor/react'
 import styled from 'styled-components'
+import { debounce } from '@/lib'
 import { Text } from 'theme-ui'
 import {
   LiveProvider as BaseProvider,
@@ -88,7 +89,7 @@ export const LiveEditor = ({ code, onChange, themeKey, theme }) => {
           monaco.editor.defineTheme(key, value)
         })
       }}
-      onChange={onChange}
+      onChange={debounce(onChange)}
       loading={<Loading theme={theme} />}
       options={{
         fontSize: 14,
