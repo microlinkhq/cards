@@ -1,6 +1,5 @@
 import Monaco from '@monaco-editor/react'
 import styled from 'styled-components'
-import { debounce } from '@/lib'
 import { Text } from 'theme-ui'
 import {
   LiveProvider as BaseProvider,
@@ -9,6 +8,7 @@ import {
 } from 'react-live'
 
 import { editorThemes } from '@/context/theme-context'
+import { debounce } from '@/lib'
 import { theme } from '@/theme'
 
 import * as scope from './presets/scope'
