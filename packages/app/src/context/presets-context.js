@@ -1,17 +1,19 @@
 import { useCallback } from 'react'
 
 import { presets } from '@/components'
+import { getPresetBySlug, getPresetSlug } from '@/lib'
 
-const presetOptions = Object.keys(presets).map(key => ({
-  value: key,
-  label: presets[key].name
+const presetOptions = Object.values(presets).map(({ name }) => ({
+  value: getPresetSlug(name),
+  label: name
 }))
 
 export default function PresetsContext (onChange) {
-  const handlePresetChange = useCallback(presetName => {
-    const newPreset = presets[presetName]
+  const handlePresetChange = useCallback(presetSlug => {
+    const newPreset = getPresetBySlug(presets, presetSlug)
+
     if (onChange) {
-      onChange(presetName, newPreset)
+      onChange(presetSlug, newPreset)
     }
   }, [])
 
