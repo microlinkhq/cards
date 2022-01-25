@@ -36,11 +36,11 @@ export default function AppContextProvider ({ children }) {
   const { isOverlay, showOverlay, hideOverlay } = overlayContext(onOverlayShow)
 
   const onPresetChange = useCallback(
-    (presetName, newPreset) => {
+    (presetSlug, newPreset) => {
       presetRef.current = newPreset
       setCode(presetRef.current.code)
       setQueryVariables(presetRef.current.query)
-      setQuery({ p: undefined, preset: presetName }, { replace: true })
+      setQuery({ p: undefined, preset: presetSlug }, { replace: true })
     },
     []
   )
