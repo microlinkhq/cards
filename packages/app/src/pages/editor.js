@@ -1,18 +1,17 @@
 import { useContext, useEffect, useState } from 'react'
 
 import { Overlays, PreviewArea, Sidebar } from '@/containers'
-import { AppFrame, SeoMeta, Spinner, Script } from '@/components'
-import { META, OVERLAY_STATE } from '@/constants'
+import { AppFrame, presets, SeoMeta, Spinner, Script } from '@/components'
+import { DEFAULT_PRESET, META, OVERLAY_STATE } from '@/constants'
 import { useKeyBindings } from '@/hooks'
 import { AppContext } from '@/context'
-import { getPresetSlug } from '@/lib'
+import { getPresetBySlug } from '@/lib'
 
-export default function Editor () {
+export default function Editor ({ presetName, presetSlug }) {
   const [render, setRender] = useState(false)
   const {
     changeTheme,
     hideOverlay,
-    presetRef,
     screenshotUrl,
     showOverlay,
     theme: { bg }
@@ -38,9 +37,8 @@ export default function Editor () {
     )
   }
 
-  const presetSlug = getPresetSlug(presetRef.current.name)
-  const metaTitle = `${presetRef.current.name} – Presets – ${META.title}`
-  const metaDescription = `Customizable ${presetRef.current.name} preset for Microlink Cards. ${META.description}`
+  const metaTitle = `${presetName} – Presets – ${META.title}`
+  const metaDescription = `Customizable ${presetName} preset for Microlink Cards. ${META.description}`
   const metaUrl = `${META.url}/editor?preset=${presetSlug}`
 
   return (
@@ -64,4 +62,11 @@ export default function Editor () {
       <Overlays />
     </>
   )
+}
+
+export function getServerSideProps (context) {
+  const presetSlug = context?.query?.preset ?? DEFAULT_PRESET
+  const { name: presetName } = getPresetBySlug(presets, presetSlug) || presets[DEFAULT_PRESET]
+
+  return { props: { presetName, presetSlug } }
 }
