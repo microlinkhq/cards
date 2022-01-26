@@ -76,7 +76,7 @@ const code = (
                 bottom: '-16px',
                 backgroundColor: polished.rgba(query.highlight, 0.15),
                 borderLeft: `3px solid ${query.highlight}`,
-                borderRight: `3px solid ${query.highlight}`,
+                borderRight: `3px solid ${query.highlight}`
               }
             }}
           >
