@@ -7,6 +7,7 @@ export const SeoMeta = ({
   image = META.image,
   logo = META.logo,
   title = META.title,
+  twitterCardType = 'summary',
   url = META.url
 }) => (
   <Head>
@@ -20,7 +21,7 @@ export const SeoMeta = ({
     <meta itemProp='description' content={description} key='schema_description' />
     <meta itemProp='image' content={image} key='schema_image' />
     {/* <!-- Twitter --> */}
-    <meta name='twitter:card' content='summary' />
+    <meta name='twitter:card' content={twitterCardType} key='twitter_card' />
     <meta name='twitter:title' content={title} key='twitter_title' />
     <meta name='twitter:description' content={description} key='twitter_description' />
     <meta name='twitter:image' content={image} key='twitter_image' />

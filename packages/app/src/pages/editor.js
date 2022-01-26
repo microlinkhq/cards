@@ -45,7 +45,13 @@ export default function Editor () {
 
   return (
     <>
-      <SeoMeta title={metaTitle} description={metaDescription} image={screenshotUrl} url={metaUrl} />
+      <SeoMeta
+        description={metaDescription}
+        image={screenshotUrl}
+        title={metaTitle}
+        twitterCardType='summary_large_image'
+        url={metaUrl}
+      />
       <AppFrame sx={{ bg }}>
         <PreviewArea isEditor />
         <Sidebar />
