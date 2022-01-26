@@ -104,4 +104,4 @@ const query = {
   jobtitle: 'Solution Architect @ Vercel'
 }
 
-export const nextjsconf = { name: 'nextjsconf', code, query }
+export const nextjsConf = { name: 'Next.js Conf', code, query }

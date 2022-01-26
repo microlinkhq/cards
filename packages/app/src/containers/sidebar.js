@@ -1,4 +1,4 @@
-import { useCallback, useContext, useMemo, useState } from 'react'
+import { useCallback, useContext, useState } from 'react'
 import { Box, Flex } from 'theme-ui'
 
 import {
@@ -30,7 +30,7 @@ import {
 } from '@/constants'
 import { useWindowSize } from '@/hooks'
 import { AppContext } from '@/context'
-import { store } from '@/lib'
+import { getPresetSlug, store } from '@/lib'
 import pkg from '@/package.json'
 
 export const Sidebar = () => {
@@ -67,20 +67,10 @@ export const Sidebar = () => {
     store.set(ASIDE_HEIGHT_KEY, height)
   }, [])
 
-  const presetSelectValue = useMemo(() => {
-    const { name } = presetRef.current
-
-    return {
-      value: name,
-      label: name
-    }
-  }, [presetRef.current])
+  const presetSelectValue = getPresetSlug(presetRef.current.name)
 
   const handleSelectChange = useCallback(
-    event => {
-      const presetName = event.value
-      handlePresetChange(presetName)
-    },
+    event => handlePresetChange(event.value),
     [handlePresetChange]
   )
 

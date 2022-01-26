@@ -123,11 +123,7 @@ export const SearchableSelect = ({ bg, color, selectedValue, ...props }) => {
   const { styles, theme } = useMemo(() => getStyles({ bg, color }), [bg, color])
 
   const value = useMemo(
-    () =>
-      props.options.find(
-        ({ value, label }) =>
-          value === selectedValue.value && label === selectedValue.label
-      ),
+    () => props.options.find(({ value }) => value === selectedValue),
     [selectedValue, props.options]
   )
 
