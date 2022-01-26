@@ -124,4 +124,4 @@ const query = {
   backgroundImage: 'https://richardhaines.dev/diamonds.png'
 }
 
-export const richhaines = { name: 'richhaines', code, query }
+export const richHaines = { name: 'Rich Haines', code, query }

@@ -49,8 +49,4 @@ const query = {
   color: 'white'
 }
 
-export const simple = {
-  name: 'simple',
-  code,
-  query
-}
+export const simple = { name: 'Simple', code, query }

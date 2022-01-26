@@ -64,8 +64,4 @@ const query = {
   }
 }
 
-export const frame = {
-  name: 'frame',
-  code,
-  query
-}
+export const frame = { name: 'Frame', code, query }

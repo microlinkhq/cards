@@ -102,8 +102,4 @@ const query = {
   readTime: '3 minute'
 }
 
-export const thebootstrappedfounder = {
-  name: 'thebootstrappedfounder',
-  code,
-  query
-}
+export const theBootstrappedFounder = { name: 'The Bootstrapped Founder', code, query }

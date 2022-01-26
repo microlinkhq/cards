@@ -48,4 +48,4 @@ const query = {
   bg: 'white'
 }
 
-export const kfund = { name: 'kfund', code, query }
+export const kFund = { name: 'K Fund', code, query }

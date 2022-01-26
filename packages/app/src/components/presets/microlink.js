@@ -58,4 +58,4 @@ const query = {
   logo: 'https://cdn.microlink.io/logo/logo.svg'
 }
 
-export const microlink = { name: 'microlink', code, query }
+export const microlink = { name: 'Microlink', code, query }

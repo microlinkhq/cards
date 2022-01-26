@@ -82,8 +82,4 @@ const query = {
     'https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2'
 }
 
-export const m1guelpf = {
-  name: 'm1guelpf',
-  code,
-  query
-}
+export const m1guelpf = { name: 'm1guelpf', code, query }

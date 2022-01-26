@@ -72,4 +72,4 @@ const query = {
   title: 'Apple Financial Results<br /> Conference Call<br/> Q4 2021'
 }
 
-export const apple = { name: 'apple', code, query }
+export const apple = { name: 'Apple', code, query }

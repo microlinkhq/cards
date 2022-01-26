@@ -64,4 +64,4 @@ const query = {
   titleColor: '#fff'
 }
 
-export const netlify = { name: 'netlify', code, query }
+export const netlify = { name: 'Netlify', code, query }

@@ -172,4 +172,4 @@ const query = {
   }
 }
 
-export const twitter = { name: 'twitter', code, query }
+export const twitter = { name: 'Twitter', code, query }

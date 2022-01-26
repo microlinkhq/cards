@@ -63,4 +63,4 @@ const query = {
   image: 'https://i.imgur.com/o0dYDfK.jpg'
 }
 
-export const article = { name: 'article', code, query }
+export const article = { name: 'Article', code, query }

@@ -113,4 +113,4 @@ const query = {
   "title": "Dracula Snapback Hat"
 }
 
-export const draculashop = { name: 'draculashop', code, query }
+export const draculaShop = { name: 'Dracula Shop', code, query }
