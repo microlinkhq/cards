@@ -1,22 +1,22 @@
-import { Overlays, PreviewArea, Sidebar } from '@/containers'
-import { AppFrame, Spinner, Script } from '@/components'
 import { useContext, useEffect, useState } from 'react'
-import { OVERLAY_STATE } from '@/constants'
+
+import { Overlays, PreviewArea, Sidebar } from '@/containers'
+import { AppFrame, SeoMeta, Spinner, Script } from '@/components'
+import { META, OVERLAY_STATE } from '@/constants'
 import { useKeyBindings } from '@/hooks'
 import { AppContext } from '@/context'
-import { setImageMeta } from '@/lib'
+import { getPresetSlug } from '@/lib'
 
 export default function Editor () {
   const [render, setRender] = useState(false)
   const {
     changeTheme,
     hideOverlay,
+    presetRef,
     screenshotUrl,
     showOverlay,
     theme: { bg }
   } = useContext(AppContext)
-
-  setImageMeta(screenshotUrl)
 
   useKeyBindings({
     Escape: { fn: hideOverlay },
@@ -38,8 +38,14 @@ export default function Editor () {
     )
   }
 
+  const presetSlug = getPresetSlug(presetRef.current.name)
+  const metaTitle = `${presetRef.current.name} – Presets – ${META.title}`
+  const metaDescription = `Customizable ${presetRef.current.name} preset for Microlink Cards. ${META.description}`
+  const metaUrl = `${META.url}/editor?preset=${presetSlug}`
+
   return (
     <>
+      <SeoMeta title={metaTitle} description={metaDescription} image={screenshotUrl} url={metaUrl} />
       <AppFrame sx={{ bg }}>
         <PreviewArea isEditor />
         <Sidebar />

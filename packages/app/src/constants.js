@@ -1,5 +1,6 @@
 import { toPx } from '@/lib'
 import { theme } from '@/theme'
+import pkg from '@/package.json'
 
 export const ASIDE_HEIGHT_KEY = 'sidebar-json-height'
 
@@ -41,4 +42,12 @@ export const FALLBACK_SLUGS = {
   thebootstrappedfounder: 'the-bootstrapped-founder',
   thepracticaldev: 'the-practical-dev',
   wesbos: 'wes-bos'
+}
+
+export const META = {
+  title: 'Microlink Cards',
+  description: pkg.description,
+  image: 'https://cdn.microlink.io/banner/cards.png',
+  logo: 'https://cdn.microlink.io/logo/trim.png',
+  url: 'https://cards.microlink.io'
 }
