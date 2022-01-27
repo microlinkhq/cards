@@ -8,6 +8,7 @@ import {
 } from 'react-live'
 
 import { editorThemes } from '@/context/theme-context'
+import { debounce } from '@/lib'
 import { theme } from '@/theme'
 
 import * as scope from './presets/scope'
@@ -88,7 +89,7 @@ export const LiveEditor = ({ code, onChange, themeKey, theme }) => {
           monaco.editor.defineTheme(key, value)
         })
       }}
-      onChange={onChange}
+      onChange={debounce(onChange)}
       loading={<Loading theme={theme} />}
       options={{
         fontSize: 14,
