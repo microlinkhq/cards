@@ -66,7 +66,7 @@ export default function Editor ({ presetName, presetSlug }) {
 
 export function getServerSideProps (context) {
   const presetSlug = context?.query?.preset ?? DEFAULT_PRESET
-  const { name: presetName } = getPresetBySlug(presets, presetSlug) || presets[DEFAULT_PRESET]
+  const { name: presetName } = getPresetBySlug(presets, presetSlug) || presets[DEFAULT_PRESET]
 
   return { props: { presetName, presetSlug } }
 }
