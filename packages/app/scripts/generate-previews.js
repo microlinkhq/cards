@@ -19,7 +19,7 @@ const outputPreset = preset => path.resolve(PRESET_DIST_PATH, `${preset}.png`)
 
 const PRESETS = readdirSync(PRESETS_ORIGIN_PATH)
   .map(filename => path.basename(filename, '.js'))
-  .filter(preset => preset !== 'scope' && preset !== 'index')
+  .filter(preset => ['index', 'scope'].includes(preset))
 
 const pipeline = promisify(stream.pipeline)
 

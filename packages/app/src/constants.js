@@ -36,5 +36,6 @@ export const META = {
   description: pkg.description,
   image: 'https://cdn.microlink.io/banner/cards.png',
   logo: 'https://cdn.microlink.io/logo/trim.png',
-  url: 'https://cards.microlink.io'
+  url: 'https://cards.microlink.io',
+  twitter: '@microlinkhq'
 }
