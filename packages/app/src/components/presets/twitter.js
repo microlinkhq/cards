@@ -22,22 +22,24 @@ const code = (
         />
         <MQL
           url={query.url}
-          data={{
-            tweetImage: {
-              selector: 'a[href*="status"] img',
-              type: 'url'
-            },
-            retweets: {
-              selector: 'a[href*="retweets"]',
-              attr: 'text'
-            },
-            likes: {
-              selector: 'a[href*="likes"]',
-              attr: 'text'
-            },
-            date: {
-              selector: 'div [dir="auto"] a[href*="status"] span',
-              type: 'text'
+          options={{
+            data: {
+              tweetImage: {
+                selector: 'a[href*="status"] img',
+                type: 'url'
+              },
+              retweets: {
+                selector: 'a[href*="retweets"]',
+                attr: 'text'
+              },
+              likes: {
+                selector: 'a[href*="likes"]',
+                attr: 'text'
+              },
+              date: {
+                selector: 'div [dir="auto"] a[href*="status"] span',
+                type: 'text'
+              }
             }
           }}
         >

@@ -31,19 +31,6 @@ export const OVERLAY_STATE = {
   KEYBINDINGS: 'keybindings'
 }
 
-export const FALLBACK_SLUGS = {
-  bytesandhumans: 'bytes-and-humans',
-  chrisbiscardi: 'chris-biscardi',
-  draculashop: 'dracula-shop',
-  kfund: 'k-fund',
-  meta: 'microlink-sdk',
-  nextjsconf: 'nextjs-conf',
-  richhaines: 'rich-haines',
-  thebootstrappedfounder: 'the-bootstrapped-founder',
-  thepracticaldev: 'the-practical-dev',
-  wesbos: 'wes-bos'
-}
-
 export const META = {
   title: 'Microlink Cards',
   description: pkg.description,
