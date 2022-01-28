@@ -222,4 +222,4 @@ const query = {
   url: 'https://github.com/microlinkhq/keyv'
 }
 
-export const githubRepo = { name: 'githubRepo', code, query }
+export const githubRepo = { name: 'GitHub Repo', code, query }
