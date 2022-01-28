@@ -22,9 +22,13 @@ export default function Editor ({ presetName, presetSlug }) {
   const name = !render ? presetName : presetRef.current.name
   const slug = !render ? presetSlug : getPresetSlug(name)
   const metaTitle = name ? `${name} – Presets – ${META.title}` : undefined
-  const metaDescription = name ? `Customizable ${name} preset for Microlink Cards. ${META.description}` : undefined
+  const metaDescription = name
+    ? `Customizable ${name} preset for Microlink Cards. ${META.description}`
+    : undefined
   const metaUrl = slug ? `${META.url}/editor?preset=${slug}` : undefined
-  const metaImage = slug ? `https://i.microlink.io/https%3A%2F%2Fcards.microlink.io%2F%3Fpreset%3D${slug}` : (screenshotUrl || undefined)
+  const metaImage = !render && slug
+    ? `${META.url}/preview/${slug}.png`
+    : screenshotUrl || undefined
 
   useKeyBindings({
     Escape: { fn: hideOverlay },
@@ -77,16 +81,24 @@ export default function Editor ({ presetName, presetSlug }) {
   )
 }
 
-Editor.getInitialProps = (context) => {
-  const slug = context.query.preset
-
-  if (slug) {
+export async function getStaticProps (ctx) {
+  if (ctx.params?.preset?.length) {
+    const slug = ctx.params?.preset[1]
     const preset = getPresetBySlug(presets, slug)
 
-    if (preset) {
-      return { presetSlug: slug, presetName: preset.name }
-    }
+    return { props: { presetSlug: slug, presetName: preset.name } }
   }
 
-  return { presetSlug: undefined, presetName: undefined }
+  return { props: {} }
+}
+
+export async function getStaticPaths () {
+  const basePath = { params: { preset: [] } } // `/editor`
+
+  // `/editor/preset/{slug}` paths
+  const paths = Object.values(presets).map(({ name }) => ({
+    params: { preset: ['preset', getPresetSlug(name)] }
+  }))
+
+  return { paths: [basePath, ...paths], fallback: false }
 }
