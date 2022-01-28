@@ -2,20 +2,29 @@ import { useContext, useEffect, useState } from 'react'
 
 import { Overlays, PreviewArea, Sidebar } from '@/containers'
 import { AppFrame, presets, SeoMeta, Spinner, Script } from '@/components'
-import { DEFAULT_PRESET, META, OVERLAY_STATE } from '@/constants'
+import { META, OVERLAY_STATE } from '@/constants'
 import { useKeyBindings } from '@/hooks'
 import { AppContext } from '@/context'
-import { getPresetBySlug } from '@/lib'
+import { getPresetBySlug, getPresetSlug } from '@/lib'
 
 export default function Editor ({ presetName, presetSlug }) {
   const [render, setRender] = useState(false)
   const {
     changeTheme,
+    handlePresetChange,
     hideOverlay,
+    presetRef,
     screenshotUrl,
     showOverlay,
     theme: { bg }
   } = useContext(AppContext)
+
+  const name = !render ? presetName : presetRef.current.name
+  const slug = !render ? presetSlug : getPresetSlug(name)
+  const metaTitle = name ? `${name} – Presets – ${META.title}` : undefined
+  const metaDescription = name ? `Customizable ${name} preset for Microlink Cards. ${META.description}` : undefined
+  const metaUrl = slug ? `${META.url}/editor?preset=${slug}` : undefined
+  const metaImage = slug ? `https://i.microlink.io/https%3A%2F%2Fcards.microlink.io%2F%3Fpreset%3D${slug}` : (screenshotUrl || undefined)
 
   useKeyBindings({
     Escape: { fn: hideOverlay },
@@ -26,47 +35,58 @@ export default function Editor ({ presetName, presetSlug }) {
   })
 
   useEffect(() => {
-    setRender(true)
-  }, [])
+    if (!render) {
+      if (presetSlug) {
+        handlePresetChange(presetSlug)
+      }
 
-  if (!render) {
-    return (
-      <AppFrame>
-        <Spinner />
-      </AppFrame>
-    )
-  }
-
-  const metaTitle = `${presetName} – Presets – ${META.title}`
-  const metaDescription = `Customizable ${presetName} preset for Microlink Cards. ${META.description}`
-  const metaUrl = `${META.url}/editor?preset=${presetSlug}`
+      setRender(true)
+    }
+  }, [handlePresetChange, presetSlug, render])
 
   return (
     <>
       <SeoMeta
         description={metaDescription}
-        image={screenshotUrl}
+        image={metaImage}
         title={metaTitle}
         twitterCardType='summary_large_image'
         url={metaUrl}
       />
-      <AppFrame sx={{ bg }}>
-        <PreviewArea isEditor />
-        <Sidebar />
-        <Script
-          async
-          crossOrigin='anonymous'
-          src='https://polyfill.io/v3/polyfill.min.js?features=ResizeObserver'
-        />
-      </AppFrame>
-      <Overlays />
+      {!render
+        ? (
+          <AppFrame>
+            <Spinner />
+          </AppFrame>
+          )
+        : (
+          <>
+            <AppFrame sx={{ bg }}>
+              <PreviewArea isEditor />
+              <Sidebar />
+              <Script
+                async
+                crossOrigin='anonymous'
+                src='https://polyfill.io/v3/polyfill.min.js?features=ResizeObserver'
+              />
+            </AppFrame>
+            <Overlays />
+          </>
+          )}
     </>
   )
 }
 
-export function getServerSideProps (context) {
-  const presetSlug = context?.query?.preset ?? DEFAULT_PRESET
-  const { name: presetName } = getPresetBySlug(presets, presetSlug) || presets[DEFAULT_PRESET]
+Editor.getInitialProps = (context) => {
+  const slug = context.query.preset
 
-  return { props: { presetName, presetSlug } }
+  if (slug) {
+    const preset = getPresetBySlug(presets, slug)
+
+    if (preset) {
+      return { presetSlug: slug, presetName: preset.name }
+    }
+  }
+
+  return { presetSlug: undefined, presetName: undefined }
 }
