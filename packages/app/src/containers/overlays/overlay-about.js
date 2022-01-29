@@ -3,7 +3,6 @@ import { ExternalLink } from '@/components'
 import { useContext } from 'react'
 
 import { AppContext } from '@/context'
-import pkg from '@/package.json'
 
 export default function OverlayAbout () {
   const { theme } = useContext(AppContext)
@@ -43,7 +42,7 @@ export default function OverlayAbout () {
         Starts from <b>free</b> and code is available on{' '}
         <ExternalLink
           sx={{ textDecoration: 'none', color: contrast }}
-          href={pkg.homepage}
+          href='https://github.com/microlinkhq/cards'
         >
           GitHub
         </ExternalLink>

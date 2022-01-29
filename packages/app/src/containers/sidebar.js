@@ -31,7 +31,6 @@ import {
 import { useWindowSize } from '@/hooks'
 import { AppContext } from '@/context'
 import { getPresetSlug, store } from '@/lib'
-import pkg from '@/package.json'
 
 export const Sidebar = () => {
   const size = useWindowSize()
@@ -148,7 +147,7 @@ export const Sidebar = () => {
           <Box sx={{ ml: '6px' }}>
             <ButtonIcon
               as='a'
-              href={pkg.homepage}
+              href='https://github.com/microlinkhq/cards'
               target='_blank'
               rel='noopener noreferrer'
               title='See on GitHub'
