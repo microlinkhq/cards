@@ -19,12 +19,14 @@ const outputPreset = preset => path.resolve(PRESET_DIST_PATH, `${preset}.png`)
 
 const PRESETS = readdirSync(PRESETS_ORIGIN_PATH)
   .map(filename => path.basename(filename, '.js'))
-  .filter(preset => preset !== 'scope' && preset !== 'index')
+  .filter(preset => ['index', 'scope'].includes(preset))
 
 const pipeline = promisify(stream.pipeline)
 
+const { homepage } = require('./package.json')
+
 const generatePreview = async preset => {
-  const { data } = await mql(`https://cards.microlink.io/?preset=${preset}`, {
+  const { data } = await mql(`${homepage}/?preset=${preset}`, {
     apiKey: process.env.MICROLINK_API_KEY,
     waitUntil: ['load', 'networkidle0'],
     force: true,

@@ -133,15 +133,22 @@ export const PreviewArea = ({ isEditor }) => {
                 width: '24px',
                 height: '24px',
                 background:
-                  "url('https://cdn.microlink.io/logo/logo.svg') no-repeat center center / 22px"
+                  "url('https://cdn.microlink.io/logo/logo.svg') no-repeat center center / 22px",
+                fontSize: '0px',
+                color: 'transparent',
+                userSelect: 'none'
               }}
-            />
+              rel=''
+            >
+              Microlink – Browser as API
+            </ExternalLink>
             {[
               {
                 href:
                   'https://microlink.io/docs/cards/getting-started/overview',
                 children: 'Docs',
-                title: 'Read documentation'
+                title: 'Read documentation',
+                rel: ''
               },
               {
                 href: 'https://github.com/microlinkhq/cards',

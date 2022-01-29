@@ -1,5 +1,6 @@
 import { toPx } from '@/lib'
 import { theme } from '@/theme'
+import pkg from '@/package.json'
 
 export const ASIDE_HEIGHT_KEY = 'sidebar-json-height'
 
@@ -9,7 +10,7 @@ export const DEFAULT_ASIDE_HEIGHT = '25%'
 
 export const DEFAULT_ASIDE_WIDTH = '40%'
 
-export const DEFAULT_PRESET = 'accessibility'
+export const DEFAULT_PRESET = 'apple-accessibility'
 
 export const ASIDE_MIN_WIDTH = '32%'
 
@@ -28,4 +29,13 @@ export const OVERLAY_STATE = {
   PREVIEW: 'preview',
   ABOUT: 'about',
   KEYBINDINGS: 'keybindings'
+}
+
+export const META = {
+  description: pkg.description,
+  image: 'https://cdn.microlink.io/banner/cards.png',
+  logo: 'https://cdn.microlink.io/logo/trim.png',
+  title: 'Microlink Cards',
+  twitter: '@microlinkhq',
+  url: pkg.homepage
 }

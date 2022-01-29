@@ -38,9 +38,10 @@
     "p-all": "~3.0.0"
   },
   "devDependencies": {
-    "@sindresorhus/slugify": "latest",
+    "@sindresorhus/slugify": "1",
     "ava": "latest",
     "nyc": "latest",
+    "standard": "latest",
     "temperment": "latest"
   },
   "engines": {
@@ -51,7 +52,7 @@
   ],
   "scripts": {
     "clean": "rm -rf node_modules",
-    "lint": "exit 0",
+    "lint": "standard",
     "test": "nyc ava",
     "update": "ncu -u",
     "update:check": "ncu -- --error-level 2"

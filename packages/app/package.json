@@ -1,7 +1,7 @@
 {
   "name": "@microlink/cards-app",
   "description": "The easiest way to generate dynamic social images at scale.",
-  "homepage": "https://github.com/microlinkhq/cards",
+  "homepage": "https://cards.microlink.io",
   "version": "1.10.0",
   "author": {
     "email": "hello@microlink.io",
@@ -66,6 +66,7 @@
     "eslint-config-next": "latest",
     "exists-file": "latest",
     "make-dir": "latest",
+    "next-sitemap": "latest",
     "standard": "latest"
   },
   "engines": {
@@ -77,7 +78,8 @@
     "dev": "NODE_ENV=development next -p 3001",
     "export": "next export",
     "generate-previews": "DEBUG=microlink-cards* node scripts/generate-previews.js",
-    "lint": "next lint",
+    "lint": "standard && next lint",
+    "postbuild": "NODE_ENV=production next-sitemap",
     "start": "next start",
     "test": "exit 0",
     "update": "ncu -u",

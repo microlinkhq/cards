@@ -1,6 +1,8 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
+import { META } from '@/constants'
+
 export default class MyDocument extends Document {
   static async getInitialProps (ctx) {
     const sheet = new ServerStyleSheet()
@@ -47,7 +49,7 @@ export default class MyDocument extends Document {
           />
           {/* <!-- Basic --> */}
           <meta property='og:type' content='website' />
-          <meta property='og:site_name' content='Microlink Cards' />
+          <meta property='og:site_name' content={META.title} />
           <meta charSet='utf-8' />
           <meta httpEquiv='x-ua-compatible' content='ie=edge' />
           <meta property='apple-mobile-web-app-capable' content='yes' />
