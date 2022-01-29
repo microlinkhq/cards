@@ -153,4 +153,4 @@ const query = {
   logos: 'https://i.imgur.com/rbVQBad.png'
 }
 
-export const conference = { name: 'conference', code, query }
+export const conference = { name: 'Conference', code, query }

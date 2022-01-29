@@ -136,4 +136,4 @@ const query = {
   ]
 }
 
-export const thepracticaldev = { name: 'thepracticaldev', code, query }
+export const thePracticalDev = { name: 'The Practical Dev', code, query }

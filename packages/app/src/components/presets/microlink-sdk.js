@@ -41,4 +41,4 @@ const query = {
   zoom: 1.25
 }
 
-export const meta = { name: 'meta', code, query }
+export const microlinkSdk = { name: 'Microlink SDK', code, query }

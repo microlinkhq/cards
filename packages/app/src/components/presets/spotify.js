@@ -68,4 +68,4 @@ const query = {
   textAlign: 'right'
 }
 
-export const spotify = { name: 'spotify', code, query }
+export const spotify = { name: 'Spotify', code, query }

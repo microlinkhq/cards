@@ -120,8 +120,4 @@ const query = {
   date: 'May 18, 2020 9:08PM'
 }
 
-export const lighthouse = {
-  name: 'lighthouse',
-  code,
-  query
-}
+export const lighthouse = { name: 'Lighthouse', code, query }

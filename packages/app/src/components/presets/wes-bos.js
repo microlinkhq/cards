@@ -101,8 +101,4 @@ const query = {
   backgroundSize: '600px'
 }
 
-export const wesbos = {
-  name: 'wesbos',
-  code,
-  query
-}
+export const wesBos = { name: 'Wes Bos', code, query }

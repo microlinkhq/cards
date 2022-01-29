@@ -147,4 +147,4 @@ const query = {
   "views": "238,737",
 }
 
-export const dracula = { name: 'dracula', code, query }
+export const dracula = { name: 'Dracula', code, query }

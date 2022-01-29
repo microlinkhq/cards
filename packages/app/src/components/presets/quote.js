@@ -116,4 +116,4 @@ const query = {
   font: '50px'
 }
 
-export const quote = { name: 'quote', code, query }
+export const quote = { name: 'Quote', code, query }

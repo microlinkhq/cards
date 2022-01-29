@@ -55,8 +55,4 @@ const query = {
   theme: 'dark'
 }
 
-export const browser = {
-  name: 'browser',
-  code,
-  query
-}
+export const browser = { name: 'Browser', code, query }

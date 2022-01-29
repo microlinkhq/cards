@@ -20,57 +20,59 @@ const code = (
       >
         <MQL
           url={query.url}
-          data={{
-            languages: {
-              selectorAll: '.Layout-sidebar .Progress > span',
-              type: 'text',
-              attr: 'style'
-            },
-            name: {
-              selector:
+          options={{
+            data: {
+              languages: {
+                selectorAll: '.Layout-sidebar .Progress > span',
+                type: 'text',
+                attr: 'style'
+              },
+              name: {
+                selector:
                 '#repository-container-header h1 strong[itemprop=name] a'
-            },
-            contributors: {
-              selector: '.Layout-sidebar a[href$=/contributors] .Counter'
-            },
-            contributorsRaw: {
-              selector: '.Layout-sidebar a[href$=/contributors] .Counter',
-              attr: 'title',
-              type: 'number'
-            },
-            dependants: {
-              selector:
+              },
+              contributors: {
+                selector: '.Layout-sidebar a[href$=/contributors] .Counter'
+              },
+              contributorsRaw: {
+                selector: '.Layout-sidebar a[href$=/contributors] .Counter',
+                attr: 'title',
+                type: 'number'
+              },
+              dependants: {
+                selector:
                 '.Layout-sidebar a[href*=/dependents?package_id] .Counter'
-            },
-            description: {
-              selector: '.Layout-sidebar p:first-of-type'
-            },
-            tags: {
-              selectorAll: '.Layout-sidebar .topic-tag'
-            },
-            forks: {
-              selector: '#repo-network-counter'
-            },
-            forksRaw: {
-              selector: '#repo-network-counter',
-              attr: 'title',
-              type: 'number'
-            },
-            issues: {
-              selector: '#issues-repo-tab-count'
-            },
-            issuesRaw: {
-              selector: '#issues-repo-tab-count',
-              attr: 'title',
-              type: 'number'
-            },
-            stars: {
-              selector: '#repo-stars-counter-star'
-            },
-            starsRaw: {
-              selector: '#repo-stars-counter-star',
-              attr: 'title',
-              type: 'number'
+              },
+              description: {
+                selector: '.Layout-sidebar p:first-of-type'
+              },
+              tags: {
+                selectorAll: '.Layout-sidebar .topic-tag'
+              },
+              forks: {
+                selector: '#repo-network-counter'
+              },
+              forksRaw: {
+                selector: '#repo-network-counter',
+                attr: 'title',
+                type: 'number'
+              },
+              issues: {
+                selector: '#issues-repo-tab-count'
+              },
+              issuesRaw: {
+                selector: '#issues-repo-tab-count',
+                attr: 'title',
+                type: 'number'
+              },
+              stars: {
+                selector: '#repo-stars-counter-star'
+              },
+              starsRaw: {
+                selector: '#repo-stars-counter-star',
+                attr: 'title',
+                type: 'number'
+              }
             }
           }}
         >
@@ -222,4 +224,4 @@ const query = {
   url: 'https://github.com/microlinkhq/keyv'
 }
 
-export const githubRepo = { name: 'githubRepo', code, query }
+export const githubRepo = { name: 'GitHub Repo', code, query }

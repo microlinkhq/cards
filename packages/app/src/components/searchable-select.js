@@ -5,16 +5,19 @@ import { lighten } from 'polished'
 import Image from 'next/image'
 
 import { theme as themeBase } from '@/theme'
+import { getPresetSlug } from '@/lib'
 
 const previews = (() => {
   const { scope, ...presets } = require('./presets')
-  return Object.keys(presets).reduce(
-    (acc, presetName) => ({
+
+  return Object.values(presets).reduce((acc, { name }) => {
+    const slug = getPresetSlug(name)
+
+    return {
       ...acc,
-      [presetName]: require(`../../public/preview/${presetName}.png`).default
-    }),
-    {}
-  )
+      [slug]: require(`../../public/preview/${slug}.png`).default
+    }
+  }, {})
 })()
 
 const Option = ({ innerRef, innerProps, children, value, ...props }) => (
@@ -120,11 +123,7 @@ export const SearchableSelect = ({ bg, color, selectedValue, ...props }) => {
   const { styles, theme } = useMemo(() => getStyles({ bg, color }), [bg, color])
 
   const value = useMemo(
-    () =>
-      props.options.find(
-        ({ value, label }) =>
-          value === selectedValue.value && label === selectedValue.label
-      ),
+    () => props.options.find(({ value }) => value === selectedValue),
     [selectedValue, props.options]
   )
 

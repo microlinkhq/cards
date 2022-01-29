@@ -52,4 +52,4 @@ const query = {
   title: 'Contentz'
 }
 
-export const contentz = { name: 'contentz', code, query }
+export const contentz = { name: 'Contentz', code, query }

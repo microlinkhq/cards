@@ -91,8 +91,4 @@ const query = {
   }
 }
 
-export const vercel = {
-  name: 'vercel',
-  code,
-  query
-}
+export const vercel = { name: 'Vercel', code, query }

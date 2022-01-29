@@ -72,8 +72,4 @@ const query = {
   theme: 'dark'
 }
 
-export const device = {
-  name: 'device',
-  code,
-  query
-}
+export const device = { name: 'Device', code, query }

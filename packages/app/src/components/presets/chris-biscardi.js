@@ -111,4 +111,4 @@ const query = {
     'linear-gradient(90deg, hsl(316,81%,64%),hsl(1,81%,64%),hsl(46,81%,64%),hsl(91,81%,64%),hsl(136,81%,64%),hsl(181,81%,64%))'
 }
 
-export const chrisbiscardi = { name: 'chrisbiscardi', code, query }
+export const chrisBiscardi = { name: 'Chris Biscardi', code, query }

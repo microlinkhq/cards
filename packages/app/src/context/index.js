@@ -2,6 +2,7 @@ import { createContext, useCallback, useMemo, useRef } from 'react'
 
 import { LiveProvider, presets } from '@/components'
 import { useQueryState, useScreenshotUrl } from '@/hooks'
+import { getPresetBySlug } from '@/lib'
 import { DEFAULT_PRESET } from '@/constants'
 
 import editorContext from './editor-context'
@@ -14,7 +15,7 @@ export const AppContext = createContext({})
 export default function AppContextProvider ({ children }) {
   const [query, setQuery] = useQueryState()
 
-  const presetRef = useRef(presets[(query && query.preset) || DEFAULT_PRESET])
+  const presetRef = useRef(getPresetBySlug(presets, query?.preset ?? DEFAULT_PRESET) || presets[DEFAULT_PRESET])
 
   const {
     code,
@@ -35,13 +36,13 @@ export default function AppContextProvider ({ children }) {
   const { isOverlay, showOverlay, hideOverlay } = overlayContext(onOverlayShow)
 
   const onPresetChange = useCallback(
-    (presetName, newPreset) => {
+    (presetSlug, newPreset) => {
       presetRef.current = newPreset
       setCode(presetRef.current.code)
       setQueryVariables(presetRef.current.query)
-      setQuery({ p: undefined, preset: presetName }, { replace: true })
+      setQuery({ p: undefined, preset: presetSlug }, { replace: true })
     },
-    [presetRef]
+    []
   )
 
   const { handlePresetChange, presetOptions } = presetsContext(onPresetChange)

@@ -1,4 +1,5 @@
 /* eslint-disable no-use-before-define */
+
 import Inline from '../inline.macro'
 import { Box, Avatar, Flex, Link, Paragraph, Text, Image } from './scope'
 
@@ -101,4 +102,4 @@ const query = {
   twitter: '@CKGrafico'
 }
 
-export const ckgrafico = { name: 'ckgrafico', code, query }
+export const ckgrafico = { name: 'CKGrafico', code, query }

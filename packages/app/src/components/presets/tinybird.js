@@ -93,4 +93,4 @@ const query = {
   text: 'Learn how to accelerate real-time analytics'
 }
 
-export const tinybird = { name: 'tinybird', code, query }
+export const tinybird = { name: 'Tinybird', code, query }
