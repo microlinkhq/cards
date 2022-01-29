@@ -38,7 +38,7 @@
     "p-all": "~3.0.0"
   },
   "devDependencies": {
-    "@sindresorhus/slugify": "1",
+    "@sindresorhus/slugify": "2",
     "ava": "latest",
     "nyc": "latest",
     "standard": "latest",
