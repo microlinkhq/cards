@@ -21,14 +21,12 @@ export default function Editor ({ presetName, presetSlug }) {
 
   const name = !render ? presetName : presetRef.current.name
   const slug = !render ? presetSlug : getPresetSlug(name)
-  const metaTitle = name ? `${name} – Presets – ${META.title}` : undefined
-  const metaDescription = name
-    ? `Customizable ${name} preset for Microlink Cards. ${META.description}`
-    : undefined
-  const metaUrl = slug ? `${META.url}/editor?preset=${slug}` : undefined
-  const metaImage = !render && slug
-    ? `${META.url}/preview/${slug}.png`
-    : screenshotUrl || undefined
+
+  const meta = {
+    title: name ? `${name} — ${META.title}` : undefined,
+    url: slug ? `${META.url}/editor?preset=${slug}` : undefined,
+    image: !render && slug ? `${META.url}/preview/${slug}.png` : screenshotUrl || undefined
+  }
 
   useKeyBindings({
     Escape: { fn: hideOverlay },
@@ -50,12 +48,7 @@ export default function Editor ({ presetName, presetSlug }) {
 
   return (
     <>
-      <SeoMeta
-        description={metaDescription}
-        image={metaImage}
-        title={metaTitle}
-        twitterCardType='summary_large_image'
-        url={metaUrl}
+      <SeoMeta twitterCardType='summary_large_image' {...meta}
       />
       {!render
         ? (
