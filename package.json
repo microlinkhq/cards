@@ -108,7 +108,6 @@
     "npm-check-updates": "latest",
     "prettier-standard": "latest",
     "simple-git-hooks": "latest",
-    "standard": "latest",
     "standard-markdown": "latest",
     "standard-version": "latest"
   },
@@ -118,7 +117,7 @@
   "scripts": {
     "clean": "lerna clean --yes && rm -rf node_modules",
     "contributors": "(lerna exec finepack --parallel && git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
-    "lint": "standard-markdown README.md && standard && lerna exec npm run lint",
+    "lint": "standard-markdown README.md && lerna exec npm run lint",
     "prerelease": "npm run update:check && npm run contributors",
     "pretest": "npm run lint",
     "release": "lerna publish --yes --sort --conventional-commits -m \"chore(release): %s\" --create-release github",
