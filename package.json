@@ -115,7 +115,7 @@
     "node": ">= 12"
   },
   "scripts": {
-    "clean": "lerna clean --yes && rm -rf node_modules",
+    "clean": "pnpm -r exec -- rm -rf node_modules",
     "contributors": "(lerna exec finepack --parallel && git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
     "lint": "standard-markdown README.md && lerna exec npm run lint",
     "prerelease": "npm run update:check && npm run contributors",
