@@ -48,7 +48,8 @@ export default function Editor ({ presetName, presetSlug }) {
 
   return (
     <>
-      <SeoMeta twitterCardType='summary_large_image' {...meta}
+      <SeoMeta
+        twitterCardType='summary_large_image' {...meta}
       />
       {!render
         ? (
