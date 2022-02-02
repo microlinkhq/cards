@@ -12,10 +12,12 @@ import themeContext from './theme-context'
 
 export const AppContext = createContext({})
 
+const getDefaultPreset = slug => getPresetBySlug(presets, slug) || getPresetBySlug(presets, DEFAULT_PRESET)
+
 export default function AppContextProvider ({ children }) {
   const [query, setQuery] = useQueryState()
 
-  const presetRef = useRef(getPresetBySlug(presets, query?.preset ?? DEFAULT_PRESET) || presets[DEFAULT_PRESET])
+  const presetRef = useRef(getDefaultPreset(query?.preset ?? DEFAULT_PRESET))
 
   const {
     code,
