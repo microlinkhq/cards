@@ -85,7 +85,7 @@ const query = {
   header: 'Lucas Ferreira',
   title:
     'Mestrando em Engenharia Eletrônica e Computação, Engenheiro de Computação, Desenvolvedor Front-end e Pesquisador.',
-  blog: ''
+  blog: '30/01/2022 • 3 minutos'
 }
 
 export const lucaspeferreira = { name: 'lucaspeferreira', code, query }
