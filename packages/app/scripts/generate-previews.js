@@ -11,11 +11,9 @@ const makeDir = require('make-dir')
 const stream = require('stream')
 const path = require('path')
 
-const ROOT_PATH = path.resolve(__dirname, '..')
-const PRESETS_ORIGIN_PATH = path.resolve(ROOT_PATH, 'src/components/presets')
-const PRESET_DIST_PATH = path.resolve(ROOT_PATH, 'public/preview')
+const { PRESETS_ORIGIN_PATH, PREVIEWS_DIST_PATH } = require('./consts')
 
-const outputPreset = preset => path.resolve(PRESET_DIST_PATH, `${preset}.png`)
+const outputPreset = preset => path.resolve(PREVIEWS_DIST_PATH, `${preset}.png`)
 
 const PRESETS = readdirSync(PRESETS_ORIGIN_PATH)
   .map(filename => path.basename(filename, '.js'))
@@ -50,7 +48,7 @@ const main = async () => {
     presets = presets.filter(preset => !existsFile.sync(outputPreset(preset)))
   }
 
-  await makeDir(PRESET_DIST_PATH)
+  await makeDir(PREVIEWS_DIST_PATH)
   await Promise.all(presets.map(generatePreview))
 }
 

@@ -75,6 +75,7 @@
   "scripts": {
     "build": "NODE_ENV=production next build",
     "clean": "rm -rf node_modules",
+    "create-preset": "node scripts/create-preset.js",
     "dev": "NODE_ENV=development next -p 3001",
     "export": "next export",
     "generate-previews": "DEBUG=microlink-cards* node scripts/generate-previews.js",
