@@ -36,11 +36,12 @@ const code = (
                 selector: 'a[href*="likes"]',
                 attr: 'text'
               },
-              date: {
+              tweetDate: {
                 selector: 'div [dir="auto"] a[href*="status"] span',
                 type: 'text'
               }
-            }
+            },
+            waitForSelector: 'div [dir="auto"] a[href*="status"] span'
           }}
         >
           {payload => {
@@ -136,7 +137,7 @@ const code = (
                   >
                     {data.retweets} {data.likes}
                     {data.retweets && data.likes ? ' · ' : ''}
-                    {data.date.replace('·', '')}
+                    {data.tweetDate.replace('·', '')}
                   </Text>
                 </Flex>
               </Flex>
