@@ -1,8 +1,6 @@
-import createMsgpack from 'msgpack5'
-import URLSafeBase64 from 'urlsafe-base64'
+import LZString from 'lz-string'
 
-const msgpack = createMsgpack()
+export const marshall = value => LZString.compressToEncodedURIComponent(value)
 
-export const marshall = value => URLSafeBase64.encode(msgpack.encode(value))
-
-export const unmarshall = value => msgpack.decode(URLSafeBase64.decode(value))
+export const unmarshall = value =>
+  LZString.decompressFromEncodedURIComponent(value)
