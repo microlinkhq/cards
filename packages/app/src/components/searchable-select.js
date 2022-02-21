@@ -12,11 +12,9 @@ const previews = (() => {
 
   return Object.values(presets).reduce((acc, { name }) => {
     const slug = getPresetSlug(name)
-
-    return {
-      ...acc,
+    return Object.assign(acc, {
       [slug]: require(`../../public/preview/${slug}.png`).default
-    }
+    })
   }, {})
 })()
 
@@ -43,7 +41,12 @@ const Option = ({ innerRef, innerProps, children, value, ...props }) => (
         {children}
       </Text>
       <Box>
-        <Image placeholder='blur' src={previews[value]} width={128} height={72} />
+        <Image
+          placeholder='blur'
+          src={previews[value]}
+          width={128}
+          height={72}
+        />
       </Box>
     </Flex>
   </components.Option>
