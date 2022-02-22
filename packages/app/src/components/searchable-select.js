@@ -12,9 +12,8 @@ const previews = (() => {
 
   return Object.values(presets).reduce((acc, { name }) => {
     const slug = getPresetSlug(name)
-    return Object.assign(acc, {
-      [slug]: require(`../../public/preview/${slug}.png`).default
-    })
+    acc[slug] = require(`../../public/preview/${slug}.png`).default
+    return acc
   }, {})
 })()
 

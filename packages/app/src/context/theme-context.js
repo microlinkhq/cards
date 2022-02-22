@@ -4,13 +4,10 @@ import { store, isSSR } from '@/lib'
 import { rgba } from 'polished'
 import Cycled from 'cycled'
 
-export const editorThemes = Object.keys(themelist).reduce(
-  (acc, id) =>
-    Object.assign(acc, {
-      [id]: require(`monaco-themes/themes/${themelist[id]}.json`)
-    }),
-  {}
-)
+export const editorThemes = Object.keys(themelist).reduce((acc, id) => {
+  acc[id] = require(`monaco-themes/themes/${themelist[id]}.json`)
+  return acc
+}, {})
 
 const cycledMode = new Cycled(Object.keys(editorThemes))
 const nextMode = () => cycledMode.next()
