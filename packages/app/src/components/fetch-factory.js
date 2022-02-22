@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useMountedRef } from '@/hooks'
 
 export const FetchFactory = ({
-  pending,
+  cache,
   children,
   fetcher,
   options,
@@ -17,11 +17,11 @@ export const FetchFactory = ({
     async function fetchData () {
       const id = JSON.stringify({ url, ...options })
 
-      let promise = pending.get(id)
+      let promise = cache.get(id)
 
       if (!promise) {
         promise = fetcher(url, options)
-        pending.set(id, promise)
+        cache.set(id, promise)
       }
 
       const result = await promiseHandler(promise)
@@ -29,7 +29,7 @@ export const FetchFactory = ({
     }
 
     fetchData()
-  }, [pending, fetcher, isMounted, url, options, promiseHandler])
+  }, [cache, fetcher, isMounted, url, options, promiseHandler])
 
   return children(result)
 }
