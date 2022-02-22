@@ -8,7 +8,7 @@ import {
 } from 'react-live'
 
 import { editorThemes } from '@/context/theme-context'
-import { debounce } from '@/lib'
+import { debounce, isDev } from '@/lib'
 import { theme } from '@/theme'
 
 import * as scope from './presets/scope'
@@ -22,7 +22,7 @@ const LivePreviewWrapper = styled('div')`
   position: relative;
 
   > * {
-    pointer-events: none;
+    pointer-events: ${!isDev ? 'none' : 'initial'};
   }
 
   ${({ isEditor }) =>
