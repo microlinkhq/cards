@@ -9,7 +9,7 @@ const promiseHandler = promise => promise.json()
 export const Fetch = ({ children, url, options }) => (
   <FetchFactory
     cache={pending}
-    func={ky}
+    fetcher={ky}
     url={url}
     options={options}
     promiseHandler={promiseHandler}
