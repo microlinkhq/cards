@@ -30,12 +30,12 @@
       "email": "miduga@gmail.com"
     },
     {
-      "name": "John Letey",
-      "email": "johnletey@gmail.com"
-    },
-    {
       "name": "Javier Álvarez Medina",
       "email": "jmedina@tinybird.co"
+    },
+    {
+      "name": "John Letey",
+      "email": "johnletey@gmail.com"
     },
     {
       "name": "Andrew James",
@@ -54,6 +54,14 @@
       "email": "scott@smhutch.co.uk"
     },
     {
+      "name": "Lucas Ferreira",
+      "email": "lucas@peferreira.com"
+    },
+    {
+      "name": "Zeno Rocha",
+      "email": "zno.rocha@gmail.com"
+    },
+    {
       "name": "cristianbgp",
       "email": "cristian.granda.pastor@gmail.com"
     },
@@ -70,12 +78,12 @@
       "email": "me@leerob.io"
     },
     {
-      "name": "Rubén",
-      "email": "rmoyarodriguez@gmail.com"
+      "name": "Mike San Román",
+      "email": "mike@msanroman.io"
     },
     {
-      "name": "Zeno Rocha",
-      "email": "zno.rocha@gmail.com"
+      "name": "Rubén",
+      "email": "rmoyarodriguez@gmail.com"
     }
   ],
   "repository": {
