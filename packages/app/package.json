@@ -65,8 +65,7 @@
     "eslint-config-next": "latest",
     "exists-file": "latest",
     "make-dir": "latest",
-    "next-sitemap": "latest",
-    "standard": "latest"
+    "next-sitemap": "latest"
   },
   "engines": {
     "node": ">= 12"
@@ -78,12 +77,10 @@
     "dev": "NODE_ENV=development next -p 3001",
     "export": "next export",
     "generate-previews": "DEBUG=microlink-cards* node scripts/generate-previews.js",
-    "lint": "standard && next lint",
+    "lint": "next lint",
     "postbuild": "NODE_ENV=production next-sitemap",
     "start": "next start",
-    "test": "exit 0",
-    "update": "ncu -u",
-    "update:check": "ncu -- --error-level 2"
+    "test": "exit 0"
   },
   "private": true,
   "license": "MIT"

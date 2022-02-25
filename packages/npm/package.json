@@ -40,8 +40,6 @@
   "devDependencies": {
     "@sindresorhus/slugify": "1",
     "ava": "latest",
-    "nyc": "latest",
-    "standard": "latest",
     "temperment": "latest"
   },
   "engines": {
@@ -52,10 +50,7 @@
   ],
   "scripts": {
     "clean": "rm -rf node_modules",
-    "lint": "standard",
-    "test": "nyc ava",
-    "update": "ncu -u",
-    "update:check": "ncu -- --error-level 2"
+    "test": "ava"
   },
   "license": "MIT",
   "publishConfig": {

@@ -99,6 +99,7 @@
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
+    "c8": "latest",
     "ci-publish": "latest",
     "conventional-github-releaser": "latest",
     "finepack": "latest",
@@ -108,6 +109,7 @@
     "npm-check-updates": "latest",
     "prettier-standard": "latest",
     "simple-git-hooks": "latest",
+    "standard": "latest",
     "standard-markdown": "latest",
     "standard-version": "latest"
   },
@@ -116,14 +118,14 @@
   },
   "scripts": {
     "clean": "pnpm -r exec -- rm -rf node_modules",
-    "contributors": "(lerna exec finepack --parallel && git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
-    "lint": "standard-markdown README.md && lerna exec npm run lint",
+    "contributors": "(pnpm -r exec finepack --parallel && git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
+    "lint": "standard-markdown README.md && pnpm -r run lint",
     "prerelease": "npm run update:check && npm run contributors",
     "pretest": "npm run lint",
     "release": "lerna publish --yes --sort --conventional-commits -m \"chore(release): %s\" --create-release github",
-    "test": "lerna run test",
-    "update": "lerna exec ncu -- -u",
-    "update:check": "ncu -- --error-level 2"
+    "test": "c8 pnpm -r run test",
+    "update": "pnpm -r exec ncu -- --upgrade && ncu -- --upgrade",
+    "update:check": "pnpm -r exec ncu -- --errorLevel 2 && ncu -- --errorLevel 2"
   },
   "private": true,
   "license": "MIT",
