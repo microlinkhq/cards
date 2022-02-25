@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/microlinkhq/cards/compare/v1.10.0...v1.11.0) (2022-02-25)
+
+
+### Bug Fixes
+
+* `accessibility` colors and preset preview ([97b2e51](https://github.com/microlinkhq/cards/commit/97b2e51b3dfdace4c3f00aee2d770dbdd79a8736))
+* `github-repo` preset ([191b2f4](https://github.com/microlinkhq/cards/commit/191b2f4412c723754a597447d42bad7aac610391))
+* `githubRepo` spacing ([7d24ddd](https://github.com/microlinkhq/cards/commit/7d24ddd9de1f21a6fe2e8be2f7c6597f5d622238))
+* `githubRepo` styles ([8657ebb](https://github.com/microlinkhq/cards/commit/8657ebb55aa2c5cc79be060ddc89eb548b379d18))
+* `thebootstrappedfounder` font & styles ([7f61291](https://github.com/microlinkhq/cards/commit/7f61291752a113b24540b079422f70420fac5adb))
+* bad character ([11fbc30](https://github.com/microlinkhq/cards/commit/11fbc30c3423b3bcf6897bec1b1bd5a55d867be2))
+* default preset logic ([ebf7b13](https://github.com/microlinkhq/cards/commit/ebf7b131d261018bcbf162a404f5f25e1ed92702))
+* draculashop preset ([fd8e7cd](https://github.com/microlinkhq/cards/commit/fd8e7cdc981b1aa9c9de6e41648ee99a763ee507))
+* github url ([89d5b29](https://github.com/microlinkhq/cards/commit/89d5b298b659925f63242ef1b523477fd322040f))
+* linter ([144dd13](https://github.com/microlinkhq/cards/commit/144dd1342b00375c403dfcdbabfe5d3b844295a1))
+* linter ([11ce80d](https://github.com/microlinkhq/cards/commit/11ce80d0fb29ea5f75db96610221f21d386ef9ad))
+* missing `twitter` preset data ([07785ea](https://github.com/microlinkhq/cards/commit/07785eacb95fd1dfee482052a76f61df156bbeba))
+* prevent unnecessary re-renderings ([cf138ff](https://github.com/microlinkhq/cards/commit/cf138ff6063c7597a9de8fc357f38a109e6fcf12))
+* remove `FALLBACK_SLUGS` logic ([6f434f5](https://github.com/microlinkhq/cards/commit/6f434f562d69671c86af4c13d21d819e02f066b9))
+* rename pending → cache ([c9b4ab3](https://github.com/microlinkhq/cards/commit/c9b4ab3dad1b53bf9f991ab326ec7cc83ea04085))
+* review comments ([8aa4a59](https://github.com/microlinkhq/cards/commit/8aa4a59da7bad02a8b1ea3ebab2671f58fc87911))
+* searchable-select text overflow ([1f1c18e](https://github.com/microlinkhq/cards/commit/1f1c18e480453f478a63018edbfb703ae278487e))
+* use `replace` over `replaceAll` ([ab0155c](https://github.com/microlinkhq/cards/commit/ab0155c73dcb595144bac61198660eb073812850))
+
+
+### Features
+
+* add `apple` preset ([f92c430](https://github.com/microlinkhq/cards/commit/f92c430ae08c4f09f53485cb1cc988127780a920)), closes [#228](https://github.com/microlinkhq/cards/issues/228)
+* add `appleAccessibility` preset ([4d012c0](https://github.com/microlinkhq/cards/commit/4d012c0134aee5980e2e93e33ed957d300d2fc23)), closes [#228](https://github.com/microlinkhq/cards/issues/228)
+* add `dashboard` preset ([8ff44ff](https://github.com/microlinkhq/cards/commit/8ff44ff11bb20950e5c7a1c995f168fbf5cf7cf3)), closes [#28](https://github.com/microlinkhq/cards/issues/28)
+* add `Fetch` component ([2681bc3](https://github.com/microlinkhq/cards/commit/2681bc3de3ec2e496e3e2ee72c34b92cf19bea47))
+* add `github-org` preset ([e3164d3](https://github.com/microlinkhq/cards/commit/e3164d328fb9ece83b28f1c8c9f9e5c42126415c))
+* add `githubRepo` preset ([a2740ef](https://github.com/microlinkhq/cards/commit/a2740efcc0a0bbd73e2efea0c2314efc15d122ab)), closes [#246](https://github.com/microlinkhq/cards/issues/246)
+* add `just-javascript` preset ([bbf54f8](https://github.com/microlinkhq/cards/commit/bbf54f871f242bd0baf2547231c477f60520bbe9)), closes [#263](https://github.com/microlinkhq/cards/issues/263)
+* add `netlify` preset ([4f5fd4a](https://github.com/microlinkhq/cards/commit/4f5fd4af6f05e6796e5da1bd415a76c8f3d5cc8b)), closes [#228](https://github.com/microlinkhq/cards/issues/228)
+* add `thebootstrappedfounder` preset ([77dc978](https://github.com/microlinkhq/cards/commit/77dc97854436e90bf49f9cd19ca4ea1e327a0547)), closes [#228](https://github.com/microlinkhq/cards/issues/228)
+* add draculashop preset ([c405acf](https://github.com/microlinkhq/cards/commit/c405acfbb583726888f844b9a00054d04f2ce317))
+* add mikesanroman preset ([704b9db](https://github.com/microlinkhq/cards/commit/704b9dbf13d8bf09f1f800df996ee28b216f3fb6))
+* improve `accessibility` query ([836a6cd](https://github.com/microlinkhq/cards/commit/836a6cd1af245becb5a792d11d2f6baa9499db19))
+* improve dx ([74e8b0c](https://github.com/microlinkhq/cards/commit/74e8b0ceb6f7c9f95fbc83b1c00c56e0169553bd))
+
+
+### Performance Improvements
+
+* prefer mutation instead of Object.assign ([b4ba014](https://github.com/microlinkhq/cards/commit/b4ba01487e5cfad88f201106f4ba61000a738fe5))
+
+
+
+
+
 # [1.10.0](https://github.com/microlinkhq/cards/compare/v1.9.0...v1.10.0) (2021-10-20)
 
 
