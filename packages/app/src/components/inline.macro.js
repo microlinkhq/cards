@@ -11,11 +11,13 @@ const BABEL_OPTS = {
  * https://prettier.io/docs/en/options.html
  */
 const PRETTIER_CONFIG = {
-  semi: true,
-  singleQuote: true,
+  arrowParens: 'avoid',
   jsxSingleQuote: true,
   printWidth: 60,
-  tabWidth: 2
+  semi: true, // semi: `false` doesn't work fine for this use-case
+  singleQuote: true,
+  tabWidth: 2,
+  trailingComma: 'none'
 }
 
 const toPrettier = ({ referencePath, babel, prettierOpts }) => {
