@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { META } from '@/constants'
 
 export const Meta = ({
+  children,
   description = META.description,
   image = META.image,
   logo = META.logo,
@@ -49,5 +50,7 @@ export const Meta = ({
     />
     <meta property='og:image' content={image} key='og_image' />
     <meta property='og:url' content={url} key='og_url' />
+
+    {children}
   </Head>
 )

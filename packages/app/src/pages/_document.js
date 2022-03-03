@@ -55,7 +55,9 @@ export default class MyDocument extends Document {
           <meta httpEquiv='x-ua-compatible' content='ie=edge' />
           <meta property='apple-mobile-web-app-capable' content='yes' />
           <meta property='mobile-web-app-capable' content='yes' />
+
           {/* <!-- Favicon --> */}
+
           <link
             rel='apple-touch-icon-precomposed'
             sizes='57x57'
