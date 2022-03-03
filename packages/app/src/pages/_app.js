@@ -5,7 +5,7 @@ import Head from 'next/head'
 
 import 'react-aspect-ratio/aspect-ratio.css'
 
-import { SeoMeta } from '@/components'
+import { Meta } from '@/components'
 import AppContextProvider from '@/context'
 import { theme } from '@/theme'
 import { notificationStyles } from '@/lib/notification'
@@ -35,7 +35,7 @@ export default class App extends NextApp {
           />
         </Head>
 
-        <SeoMeta />
+        <Meta />
         <AppContextProvider>
           <Component {...pageProps} />
         </AppContextProvider>

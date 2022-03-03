@@ -33,6 +33,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang='en' prefix='og: https://ogp.me/ns#'>
         <Head>
+          <meta charSet='utf-8' />
           <link
             rel='preconnect'
             href='https://fonts.gstatic.com'
@@ -50,7 +51,7 @@ export default class MyDocument extends Document {
           {/* <!-- Basic --> */}
           <meta property='og:type' content='website' />
           <meta property='og:site_name' content={META.title} />
-          <meta charSet='utf-8' />
+
           <meta httpEquiv='x-ua-compatible' content='ie=edge' />
           <meta property='apple-mobile-web-app-capable' content='yes' />
           <meta property='mobile-web-app-capable' content='yes' />

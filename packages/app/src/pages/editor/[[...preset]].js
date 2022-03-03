@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from 'react'
 
+import { AppFrame, presets, Meta, Spinner, Script } from '@/components'
 import { Overlays, PreviewArea, Sidebar } from '@/containers'
-import { AppFrame, presets, SeoMeta, Spinner, Script } from '@/components'
+import { getPresetBySlug, getPresetSlug } from '@/lib'
 import { META, OVERLAY_STATE } from '@/constants'
 import { useKeyBindings } from '@/hooks'
 import { AppContext } from '@/context'
-import { getPresetBySlug, getPresetSlug } from '@/lib'
 
 export default function Editor ({ presetName, presetSlug }) {
   const [render, setRender] = useState(false)
@@ -25,7 +25,10 @@ export default function Editor ({ presetName, presetSlug }) {
   const meta = {
     title: name ? `${name} — ${META.title}` : undefined,
     url: slug ? `${META.url}/editor?preset=${slug}` : undefined,
-    image: !render && slug ? `${META.url}/preview/${slug}.png` : screenshotUrl || undefined
+    image:
+      !render && slug
+        ? `${META.url}/preview/${slug}.png`
+        : screenshotUrl || undefined
   }
 
   useKeyBindings({
@@ -48,29 +51,25 @@ export default function Editor ({ presetName, presetSlug }) {
 
   return (
     <>
-      <SeoMeta
-        twitterCardType='summary_large_image' {...meta}
-      />
-      {!render
-        ? (
-          <AppFrame>
-            <Spinner />
+      <Meta twitterCardType='summary_large_image' {...meta} />
+      {!render ? (
+        <AppFrame>
+          <Spinner />
+        </AppFrame>
+      ) : (
+        <>
+          <AppFrame sx={{ bg }}>
+            <PreviewArea isEditor />
+            <Sidebar />
+            <Script
+              async
+              crossOrigin='anonymous'
+              src='https://polyfill.io/v3/polyfill.min.js?features=ResizeObserver'
+            />
           </AppFrame>
-          )
-        : (
-          <>
-            <AppFrame sx={{ bg }}>
-              <PreviewArea isEditor />
-              <Sidebar />
-              <Script
-                async
-                crossOrigin='anonymous'
-                src='https://polyfill.io/v3/polyfill.min.js?features=ResizeObserver'
-              />
-            </AppFrame>
-            <Overlays />
-          </>
-          )}
+          <Overlays />
+        </>
+      )}
     </>
   )
 }
