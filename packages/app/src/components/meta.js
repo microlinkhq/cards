@@ -13,12 +13,14 @@ export const Meta = ({
 }) => (
   <Head>
     {/* <!-- Search Engine --> */}
+
     <title key='title'>{title}</title>
     <link rel='canonical' href={url} key='canonical_url' />
     <meta name='description' content={description} key='description' />
     <meta name='image' content={image} key='image' />
 
     {/* <!-- Schema.org for Google --> */}
+
     <meta itemProp='name' content={title} key='schema_title' />
     <meta
       itemProp='description'
@@ -28,6 +30,7 @@ export const Meta = ({
     <meta itemProp='image' content={image} key='schema_image' />
 
     {/* <!-- Twitter --> */}
+
     <meta name='twitter:card' content={twitterCardType} key='twitter_card' />
     <meta name='twitter:title' content={title} key='twitter_title' />
     <meta
@@ -41,6 +44,7 @@ export const Meta = ({
     <meta name='twitter:site' content={META.twitter} />
 
     {/* <!-- Open Graph general (Facebook, Pinterest & Google+) --> */}
+
     <meta property='og:title' content={title} key='og_title' />
     <meta property='og:logo' content={logo} key='og_logo' />
     <meta
