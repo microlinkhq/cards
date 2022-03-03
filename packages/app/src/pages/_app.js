@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 import { ThemeProvider } from 'theme-ui'
 import NextApp from 'next/app'
-import Head from 'next/head'
 
 import 'react-aspect-ratio/aspect-ratio.css'
 
