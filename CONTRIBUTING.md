@@ -31,7 +31,7 @@ $ cd packages/app
 The command takes one argument, the **name** of your new preset:
 
 ```bash
-$ npm run create-script "My Awesome Preset"
+$ npm run create-preset "My Awesome Preset"
 ```
 
 This will generate a file in `PRESETS_DIR` and `PREVIEWS_DIR`:
