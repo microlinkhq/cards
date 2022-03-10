@@ -22,7 +22,7 @@ const code = (
           borderRadius: 4
         }}
       >
-        <Flex as='content'>
+        <Flex as='section'>
           <Flex
             sx={{
               background: '#303442',

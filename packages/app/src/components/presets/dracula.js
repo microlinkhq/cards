@@ -72,7 +72,7 @@ const code = (
           </Flex>
         </Flex>
 
-        <Flex as='content'>
+        <Flex as='section'>
           <Image
             sx={{
               width: 300,
