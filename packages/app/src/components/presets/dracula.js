@@ -118,7 +118,7 @@ const code = (
                 alignItems: 'center'
               }}
             >
-              <Flex>
+              <Flex as='span'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='28'
@@ -145,7 +145,7 @@ const code = (
                 views
               </Flex>
 
-              <Flex sx={{ marginLeft: 50 }}>
+              <Flex as='span' sx={{ marginLeft: 50 }}>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   width='28'
