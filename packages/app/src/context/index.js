@@ -15,8 +15,21 @@ export const AppContext = createContext({})
 const getDefaultPreset = slug =>
   getPresetBySlug(presets, slug) || getPresetBySlug(presets, DEFAULT_PRESET)
 
+const safeDecode = value => {
+  try {
+    return decodeURIComponent(value)
+  } catch (_) {
+    return value
+  }
+}
+
 export default function AppContextProvider ({ children }) {
-  const [query, setQuery] = useQueryState()
+  const [query, setQuery] = useQueryState(undefined, parsedQuery =>
+    Object.entries(parsedQuery).reduce((acc, [key, value]) => {
+      acc[key] = safeDecode(value)
+      return acc
+    }, {})
+  )
 
   const presetRef = useRef(getDefaultPreset(query?.preset ?? DEFAULT_PRESET))
 

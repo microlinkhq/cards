@@ -12,19 +12,12 @@ import {
   LiveError,
   LivePreview
 } from '@/components'
+
 import { OVERLAY_STATE, PREVIEW_CARD_WIDTH } from '@/constants'
 import { AppContext } from '@/context'
 import { theme } from '@/theme'
 
-const getWidth = el => {
-  if (!el) {
-    return 0
-  }
-
-  const { width } = el.getBoundingClientRect()
-
-  return width
-}
+const getWidth = el => (el ? el.getBoundingClientRect().width : 0)
 
 const DEFAULT_MAIN_WIDTH = PREVIEW_CARD_WIDTH + parseInt(theme.space[4]) * 2
 

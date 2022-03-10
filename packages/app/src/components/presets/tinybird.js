@@ -69,7 +69,7 @@ const code = (
           </Flex>
         </Flex>
 
-        <Flex as='content'>
+        <Flex as='section'>
           <Text
             sx={{
               display: 'inline',
