@@ -49,7 +49,7 @@ export const useScreenshotUrl = queryVariables => {
     setRunDownload(true)
   }, [queryVariables, sync])
 
-  useEffect(() => sync(queryVariables), [sync])
+  useEffect(() => sync(queryVariables), [queryVariables, sync])
 
   useEffect(() => {
     if (runDownload) {

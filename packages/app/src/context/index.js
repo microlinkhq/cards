@@ -12,7 +12,8 @@ import themeContext from './theme-context'
 
 export const AppContext = createContext({})
 
-const getDefaultPreset = slug => getPresetBySlug(presets, slug) || getPresetBySlug(presets, DEFAULT_PRESET)
+const getDefaultPreset = slug =>
+  getPresetBySlug(presets, slug) || getPresetBySlug(presets, DEFAULT_PRESET)
 
 export default function AppContextProvider ({ children }) {
   const [query, setQuery] = useQueryState()
@@ -28,7 +29,11 @@ export default function AppContextProvider ({ children }) {
     setQueryVariables
   } = editorContext(presetRef, query, setQuery)
 
-  const [screenshotUrl, syncScreenshotUrl, downloadScreenshot] = useScreenshotUrl(queryVariables)
+  const [
+    screenshotUrl,
+    syncScreenshotUrl,
+    downloadScreenshot
+  ] = useScreenshotUrl(queryVariables)
 
   const onOverlayShow = useCallback(() => syncScreenshotUrl(queryVariables), [
     queryVariables,
@@ -44,7 +49,7 @@ export default function AppContextProvider ({ children }) {
       setQueryVariables(presetRef.current.query)
       setQuery({ p: undefined, preset: presetSlug }, { replace: true })
     },
-    []
+    [setCode, setQuery, setQueryVariables]
   )
 
   const { handlePresetChange, presetOptions } = presetsContext(onPresetChange)

@@ -57,7 +57,7 @@ const PreviewScaler = ({ mainRef, ...props }) => {
         resizeObserver.disconnect()
       }
     }
-  }, [mainRef])
+  }, [mainRef, motionMainWidth])
 
   return <motion.div style={{ scale }} {...props} />
 }

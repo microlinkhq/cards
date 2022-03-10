@@ -47,10 +47,10 @@ const DragBar = ({ isHorizontal = false, onDrag = () => {} }) => {
   const { height, width } = useWindowSize()
 
   const onMove = useCallback(
-    (e) => {
+    event => {
       const size = !isHorizontal ? width : height
 
-      const cursorPos = e[!isHorizontal ? 'pageX' : 'pageY']
+      const cursorPos = event[!isHorizontal ? 'pageX' : 'pageY']
       const percent = 100 - (cursorPos / size) * 100
 
       dispatchResize()
@@ -59,7 +59,7 @@ const DragBar = ({ isHorizontal = false, onDrag = () => {} }) => {
     [height, isHorizontal, onDrag, width]
   )
 
-  const addListener = useCallback((e) => {
+  const addListener = useCallback(() => {
     setIsDrag(true)
     document.addEventListener('mousemove', onMove)
     document.addEventListener('touchmove', onMove)
@@ -87,6 +87,6 @@ const DragBar = ({ isHorizontal = false, onDrag = () => {} }) => {
   )
 }
 
-export const VerticalDragBar = (props) => <DragBar {...props} />
+export const VerticalDragBar = props => <DragBar {...props} />
 
-export const HorizontalDragBar = (props) => <DragBar isHorizontal {...props} />
+export const HorizontalDragBar = props => <DragBar isHorizontal {...props} />
