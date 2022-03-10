@@ -19,7 +19,7 @@ const code = (
           pl: 5,
           pr: 5,
           border: `10px solid ${query.color}`,
-          borderRadius: 4,
+          borderRadius: 4
         }}
       >
         <Flex as='content'>
@@ -27,12 +27,12 @@ const code = (
             sx={{
               background: '#303442',
               borderRadius: 20,
-              marginRight: 50,
+              marginRight: 50
             }}
           >
             <Image
               sx={{
-                width: 600,
+                width: 600
               }}
               src={`https://draculatheme.com/static/img/shop/${query.image}`}
             />
@@ -41,7 +41,7 @@ const code = (
           <Flex
             sx={{
               flexDirection: 'column',
-              justifyContent: 'center',
+              justifyContent: 'center'
             }}
           >
             <Paragraph
@@ -51,7 +51,7 @@ const code = (
                 fontSize: '50px',
                 fontWeight: 300,
                 fontFamily: 'Source Sans Pro',
-                color: '#f2f2f2',
+                color: '#f2f2f2'
               }}
             >
               <Text>{query.title}</Text>
@@ -67,31 +67,31 @@ const code = (
                 display: 'flex',
                 alignItems: 'center',
                 mt: 20,
-                ml: -1,
+                ml: -1
               }}
             >
               <Flex>
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#6D7290"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="feather feather-dollar-sign"
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='28'
+                  height='28'
+                  fill='none'
+                  stroke='#6D7290'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  className='feather feather-dollar-sign'
+                  viewBox='0 0 24 24'
                 >
-                    <line x1="12" y1="1" x2="12" y2="23"></line>
-                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                  <path d='M12 1L12 23'></path>
+                  <path d='M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6'></path>
                 </svg>
                 <Text
                   sx={{
                     mt: 0,
                     pl: 2,
                     pr: 2,
-                    color: query.color,
+                    color: query.color
                   }}
                 >
                   {query.price}
@@ -107,10 +107,10 @@ const code = (
 )
 
 const query = {
-  "color": "#bd93f9",
-  "image":"dracula-snapback-hat-1.png",
-  "price": 29.99,
-  "title": "Dracula Snapback Hat"
+  color: '#bd93f9',
+  image: 'dracula-snapback-hat-1.png',
+  price: 29.99,
+  title: 'Dracula Snapback Hat'
 }
 
 export const draculaShop = { name: 'Dracula Shop', code, query }
