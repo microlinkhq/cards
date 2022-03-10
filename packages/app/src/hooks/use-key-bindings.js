@@ -3,7 +3,10 @@ import { useState, useEffect } from 'react'
 const isCtrl = e => e.metaKey || e.ctrlKey
 
 // https://keycode.info
-export const useKeyBindings = (initialKeyBindings = {}, eventListener = 'keydown') => {
+export const useKeyBindings = (
+  initialKeyBindings = {},
+  eventListener = 'keydown'
+) => {
   const [keyBindings] = useState(initialKeyBindings)
 
   useEffect(() => {
@@ -25,5 +28,5 @@ export const useKeyBindings = (initialKeyBindings = {}, eventListener = 'keydown
       Object.keys(keyBindings).forEach(keyBinding =>
         document.removeEventListener(eventListener, keyBindings[keyBinding])
       )
-  }, [])
+  }, [eventListener, keyBindings])
 }

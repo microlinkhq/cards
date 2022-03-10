@@ -9,13 +9,16 @@ const presetOptions = Object.values(presets).map(({ name }) => ({
 }))
 
 export default function PresetsContext (onChange) {
-  const handlePresetChange = useCallback(presetSlug => {
-    const newPreset = getPresetBySlug(presets, presetSlug)
+  const handlePresetChange = useCallback(
+    presetSlug => {
+      const newPreset = getPresetBySlug(presets, presetSlug)
 
-    if (onChange) {
-      onChange(presetSlug, newPreset)
-    }
-  }, [])
+      if (onChange) {
+        onChange(presetSlug, newPreset)
+      }
+    },
+    [onChange]
+  )
 
   return {
     handlePresetChange,

@@ -36,7 +36,7 @@ export default function EditorContext (presetRef, query, setQuery) {
 
       updateQuery(updateQueryOpts)
     },
-    [setQuery]
+    [presetRef, setQuery]
   )
 
   const handleQueryVariables = useCallback(
