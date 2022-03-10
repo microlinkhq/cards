@@ -34,18 +34,11 @@ export const Overlays = () => {
       isOpen={isOverlay !== ''}
       onClose={hideOverlay}
     >
-      <Choose.When condition={showPreview}>
-        <OverlayPreview />
-      </Choose.When>
-
-      <Choose.When condition={showAbout}>
-        <OverlayAbout />
-      </Choose.When>
-
-      <Choose.When condition={showKeyBindings}>
-        <OverlayKeyBindings />
-      </Choose.When>
-
+      <Choose>
+        <Choose.When condition={showPreview} render={OverlayPreview} />
+        <Choose.When condition={showAbout} render={OverlayAbout} />
+        <Choose.When condition={showKeyBindings} render={OverlayKeyBindings} />
+      </Choose>
       <Flex as='footer' sx={{ justifyContent: 'flex-end', pt: 4 }}>
         <Button sx={{ bg: color, color: bg }} onClick={hideOverlay}>
           Got it
