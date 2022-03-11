@@ -19,17 +19,18 @@ export default function Editor ({ presetName, presetSlug }) {
     theme: { bg }
   } = useContext(AppContext)
 
-  const name = !render ? presetName : presetRef.current.name
-  const slug = !render ? presetSlug : getPresetSlug(name)
+  const name = render ? presetRef.current.name : presetName
+  const slug = render ? getPresetSlug(name) : presetSlug
 
-  const meta = {
-    title: name ? `${name} — ${META.title}` : undefined,
-    url: slug ? `${META.url}/editor?preset=${slug}` : undefined,
-    image:
-      !render && slug
-        ? `${META.url}/preview/${slug}.png`
-        : screenshotUrl || undefined
-  }
+  const meta = render
+    ? {
+        title: `${name} — ${META.title}`,
+        url: `${META.url}/editor?preset=${slug}`,
+        image: slug
+          ? `${META.url}/preview/${slug}.png`
+          : screenshotUrl || undefined
+      }
+    : undefined
 
   useKeyBindings({
     Escape: { fn: hideOverlay },
@@ -41,10 +42,7 @@ export default function Editor ({ presetName, presetSlug }) {
 
   useEffect(() => {
     if (!render) {
-      if (presetSlug) {
-        handlePresetChange(presetSlug)
-      }
-
+      if (presetSlug) handlePresetChange(presetSlug)
       setRender(true)
     }
   }, [handlePresetChange, presetSlug, render])

@@ -1,4 +1,3 @@
-
 const siteUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
   : require('./package.json').homepage

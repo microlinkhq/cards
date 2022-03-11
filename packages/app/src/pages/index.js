@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
-
-import { PreviewArea } from '@/containers'
+import { createElement, useEffect, useState } from 'react'
 import { AppFrame, Spinner } from '@/components'
+import { PreviewArea } from '@/containers'
+import { useRouter } from 'next/router'
 
 export default function Index () {
   const router = useRouter()
@@ -18,7 +17,9 @@ export default function Index () {
 
   return (
     <AppFrame>
-      {isLoading ? <Spinner /> : <PreviewArea isEditor={false} />}
+      {createElement(
+        isLoading ? Spinner : () => <PreviewArea isEditor={false} />
+      )}
     </AppFrame>
   )
 }

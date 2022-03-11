@@ -12,10 +12,7 @@ export default function PresetsContext (onChange) {
   const handlePresetChange = useCallback(
     presetSlug => {
       const newPreset = getPresetBySlug(presets, presetSlug)
-
-      if (onChange) {
-        onChange(presetSlug, newPreset)
-      }
+      if (onChange) onChange(presetSlug, newPreset)
     },
     [onChange]
   )
