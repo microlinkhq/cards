@@ -12,6 +12,11 @@ export const Meta = ({
   url = META.url
 }) => (
   <Head>
+    <meta
+      name='viewport'
+      content='width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0'
+    />
+
     {/* <!-- Search Engine --> */}
 
     <title key='title'>{title}</title>
