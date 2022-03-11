@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
-
-import { PreviewArea } from '@/containers'
 import { AppFrame, Spinner } from '@/components'
+import { useEffect, useState } from 'react'
+import { PreviewArea } from '@/containers'
+import { useRouter } from 'next/router'
 
 export default function Index () {
   const router = useRouter()
