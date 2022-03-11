@@ -1,5 +1,5 @@
-const siteUrl = process.env.NEXT_PUBLIC_VERCEL_URL
-  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+const siteUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
   : require('./package.json').homepage
 
 console.log('Sitemap will generated for', siteUrl)
