@@ -1,5 +1,5 @@
-import { createElement, useEffect, useState } from 'react'
 import { AppFrame, Spinner } from '@/components'
+import { useEffect, useState } from 'react'
 import { PreviewArea } from '@/containers'
 import { useRouter } from 'next/router'
 
@@ -17,9 +17,7 @@ export default function Index () {
 
   return (
     <AppFrame>
-      {createElement(
-        isLoading ? Spinner : () => <PreviewArea isEditor={false} />
-      )}
+      {isLoading ? <Spinner /> : <PreviewArea isEditor={false} />}
     </AppFrame>
   )
 }
