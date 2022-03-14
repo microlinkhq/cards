@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.6](https://github.com/microlinkhq/cards/compare/v1.11.5...v1.11.6) (2022-03-14)
+
+
+### Bug Fixes
+
+* avoid rehydrate component ([80cdfed](https://github.com/microlinkhq/cards/commit/80cdfed3d31c3572e1cc5daf938f5e1e1d1a2ab5))
+* conditions should be wrapper by choose ([4232cd5](https://github.com/microlinkhq/cards/commit/4232cd54905adc4d579e1c5c8dd5861e7d266bf9))
+* div cannot appear as a descendant of p ([0868e33](https://github.com/microlinkhq/cards/commit/0868e3350a85b24b8b3788a12112c04c1bde3d42))
+* dracula icons ([443c597](https://github.com/microlinkhq/cards/commit/443c597af16cb83f38dc9de47dfe6344ebe9f33b))
+* ensure all query values are decoded ([f4fc774](https://github.com/microlinkhq/cards/commit/f4fc774ed30bf66aded1c843a651f137020bbe81))
+* linter ([5e8765f](https://github.com/microlinkhq/cards/commit/5e8765f89f8e580fa65895ed842d654187d9cf67))
+* linter issues ([9587d2c](https://github.com/microlinkhq/cards/commit/9587d2c75947b33ee66cc32a8bfec5014fe677f6))
+* use section as markup ([63a471c](https://github.com/microlinkhq/cards/commit/63a471ca30b5fbb40727eed2132e096578197dd0))
+
+
+
+
+
 ## [1.11.5](https://github.com/microlinkhq/cards/compare/v1.11.4...v1.11.5) (2022-03-07)
 
 
