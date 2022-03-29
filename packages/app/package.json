@@ -33,7 +33,7 @@
     "@microlink/mql": "~0.10.18",
     "@microlink/react": "~5.5.7",
     "@microlink/react-json-view": "latest",
-    "@monaco-editor/react": "~4.3.1",
+    "@monaco-editor/react": "~4.4.1",
     "@snackbar/core": "~1.7.0",
     "babel-plugin-macros": "~3.1.0",
     "cycled": "~2.0.0",
