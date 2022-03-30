@@ -1,6 +1,7 @@
 const withTM = require('next-transpile-modules')([
   '@kikobeats/use-query-state',
-  'cycled'
+  'cycled',
+  'react-aspect-ratio'
 ])
 
 const nextConfig = {}
