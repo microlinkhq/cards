@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.9](https://github.com/microlinkhq/cards/compare/v1.11.8...v1.11.9) (2022-04-04)
+
+**Note:** Version bump only for package @microlink/cards-root
+
+
+
+
+
 ## [1.11.8](https://github.com/microlinkhq/cards/compare/v1.11.7...v1.11.8) (2022-03-28)
 
 **Note:** Version bump only for package @microlink/cards-root
