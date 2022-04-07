@@ -27,7 +27,7 @@
     "share"
   ],
   "dependencies": {
-    "@emotion/react": "~11.8.2",
+    "@emotion/react": "~11.9.0",
     "@kikobeats/use-query-state": "~1.1.1",
     "@mdx-js/react": "~1.6.22",
     "@microlink/mql": "~0.10.19",
