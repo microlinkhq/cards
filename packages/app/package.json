@@ -28,7 +28,7 @@
   ],
   "dependencies": {
     "@emotion/react": "~11.9.0",
-    "@kikobeats/use-query-state": "~1.1.1",
+    "@kikobeats/use-query-state": "1.2.0-beta.1",
     "@mdx-js/react": "~1.6.22",
     "@microlink/mql": "~0.10.19",
     "@microlink/react": "~5.5.8",
