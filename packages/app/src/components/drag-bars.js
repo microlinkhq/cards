@@ -21,13 +21,15 @@ const fullScreenStyle = {
   bottom: 0
 }
 
-const Dragger = styled(Box).attrs(({ isDrag, isHorizontal }) => ({
+const Dragger = styled(Box).attrs(({ $isDraggable, $isHorizontal }) => ({
   style: {
-    [!isHorizontal ? 'width' : 'height']: !isDrag ? '10px' : 'initial',
-    position: !isDrag ? 'absolute' : 'fixed',
-    zIndex: !isDrag ? 1 : 9999,
-    transform: !isDrag ? `translate${!isHorizontal ? 'X' : 'Y'}(-50%)` : 'none',
-    ...(!isDrag ? {} : fullScreenStyle)
+    [!$isHorizontal ? 'width' : 'height']: !$isDraggable ? '10px' : 'initial',
+    position: !$isDraggable ? 'absolute' : 'fixed',
+    zIndex: !$isDraggable ? 1 : 9999,
+    transform: !$isDraggable
+      ? `translate${!$isHorizontal ? 'X' : 'Y'}(-50%)`
+      : 'none',
+    ...(!$isDraggable ? {} : fullScreenStyle)
   }
 }))`
   left: 0;
@@ -43,7 +45,7 @@ const Dragger = styled(Box).attrs(({ isDrag, isHorizontal }) => ({
 `
 
 const DragBar = ({ isHorizontal = false, onDrag = () => {} }) => {
-  const [isDrag, setIsDrag] = useState(false)
+  const [isDraggable, setIsDraggable] = useState(false)
   const { height, width } = useWindowSize()
 
   const onMove = useCallback(
@@ -60,14 +62,14 @@ const DragBar = ({ isHorizontal = false, onDrag = () => {} }) => {
   )
 
   const addListener = useCallback(() => {
-    setIsDrag(true)
+    setIsDraggable(true)
     document.addEventListener('mousemove', onMove)
     document.addEventListener('touchmove', onMove)
   }, [onMove])
 
   const removeListener = useCallback(() => {
     dispatchResize()
-    setIsDrag(false)
+    setIsDraggable(false)
     document.removeEventListener('mousemove', onMove)
     document.removeEventListener('touchmove', onMove)
   }, [onMove])
@@ -75,8 +77,8 @@ const DragBar = ({ isHorizontal = false, onDrag = () => {} }) => {
   return (
     <Dragger
       sx={{ display: ['none', '', 'block'] }}
-      isDrag={isDrag}
-      isHorizontal={isHorizontal}
+      $isDraggable={isDraggable}
+      $isHorizontal={isHorizontal}
       onMouseDown={addListener}
       onMouseUp={removeListener}
       onMouseOut={removeListener}
