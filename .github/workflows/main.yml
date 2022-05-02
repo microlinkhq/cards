@@ -28,7 +28,6 @@ jobs:
           run_install: |
             recursive: true
             args:
-             - --force
              - --no-strict-peer-dependencies
       - name: Test
         run: npm test
