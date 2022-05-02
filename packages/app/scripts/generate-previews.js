@@ -21,7 +21,7 @@ const PRESETS = readdirSync(PRESETS_ORIGIN_PATH)
 
 const pipeline = promisify(stream.pipeline)
 
-const { homepage } = require('./package.json')
+const { homepage } = require('../package.json')
 
 const generatePreview = async preset => {
   const { data } = await mql(`${homepage}/?preset=${preset}`, {
