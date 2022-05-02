@@ -53,7 +53,7 @@
     "react-tabs": "~5.1.0",
     "styled-components": "~5.3.5",
     "theme-ui": "~0.14.1",
-    "throttle-debounce": "~4.0.0",
+    "throttle-debounce": "~5.0.0",
     "tickedoff": "~1.0.2"
   },
   "devDependencies": {
