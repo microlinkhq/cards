@@ -19,7 +19,8 @@ const code = (
       >
         <Flex
           sx={{
-            maxWidth: '50%'
+            maxWidth: '50%',
+            minWidth: '50%'
           }}
         >
           <Box
@@ -56,6 +57,7 @@ const code = (
           <Flex
             sx={{
               paddingLeft: 40,
+              paddingRight: 20,
               flexDirection: 'column'
             }}
           >
