@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import Inline from '../inline.macro'
-import { Box, Flex, Paragraph, Link } from './scope'
+import { Box, Flex, Paragraph, Image, Link } from './scope'
 
 const code = (
   <Inline>
@@ -13,19 +13,25 @@ const code = (
       <Flex
         sx={{
           alignItems: 'flex-end',
-          backgroundImage: `url(${query.imageUrl})`,
-          backgroundSize: 'cover',
           display: 'flex',
-          width: '100%'
         }}
       >
+        <Image
+          src={query.imageUrl}
+          sx={{
+            objectFit: 'cover',
+            position: 'absolute',
+            width: '100%',
+            height: '100%'
+          }}
+        />
         <Box
           sx={{
             background:
               'linear-gradient(180deg, rgba(3, 6, 39, 0) 0%, rgba(3, 6, 39, 1) 100%)',
             bottom: 0,
             position: 'absolute',
-            height: 455,
+            height: 400,
             width: '100%'
           }}
         />
