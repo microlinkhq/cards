@@ -10,11 +10,12 @@
     "url": "https://microlink.io"
   },
   "repository": {
+    "directory": "packages/npm",
     "type": "git",
-    "url": "git+https://github.com/microlinkhq/microlink-cards.git"
+    "url": "git+https://github.com/microlinkhq/cards.git"
   },
   "bugs": {
-    "url": "https://github.com/microlinkhq/microlink-cards/issues"
+    "url": "https://github.com/microlinkhq/cards/issues"
   },
   "keywords": [
     "card",

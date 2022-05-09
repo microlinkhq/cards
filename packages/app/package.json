@@ -9,6 +9,7 @@
     "url": "https://microlink.io"
   },
   "repository": {
+    "directory": "packages/app",
     "type": "git",
     "url": "git+https://github.com/microlinkhq/cards.git"
   },
