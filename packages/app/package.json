@@ -84,8 +84,8 @@
   },
   "private": true,
   "license": "MIT",
-  "resolutions": {
-    "react": "18",
-    "react-dom": "18"
+  "overrides": {
+    "react": "$react",
+    "react-dom": "$react-dom"
   }
 }
