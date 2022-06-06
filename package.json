@@ -18,12 +18,12 @@
       "email": "hi@breadadams.com"
     },
     {
-      "name": "GermanRodrickson",
-      "email": "germanrodrickson@gmail.com"
-    },
-    {
       "name": "Pedro Duarte",
       "email": "contact@peduarte.com"
+    },
+    {
+      "name": "GermanRodrickson",
+      "email": "germanrodrickson@gmail.com"
     },
     {
       "name": "Zeno Rocha",
@@ -34,40 +34,40 @@
       "email": "miduga@gmail.com"
     },
     {
-      "name": "John Letey",
-      "email": "johnletey@gmail.com"
-    },
-    {
       "name": "Javier Álvarez Medina",
       "email": "jmedina@tinybird.co"
+    },
+    {
+      "name": "John Letey",
+      "email": "johnletey@gmail.com"
     },
     {
       "name": "Andrew James",
       "email": "andrew.james@bcgdv.com"
     },
     {
-      "name": "Kiko",
-      "email": "travis@travis-ci.org"
-    },
-    {
       "name": "Rich Haines",
       "email": "hello@richardhaines.dev"
     },
     {
-      "name": "Scott Hutcheson",
-      "email": "scott@smhutch.co.uk"
+      "name": "Kiko",
+      "email": "travis@travis-ci.org"
+    },
+    {
+      "name": "cristianbgp",
+      "email": "cristian.granda.pastor@gmail.com"
     },
     {
       "name": "Lucas Ferreira",
       "email": "lucas@peferreira.com"
     },
     {
-      "name": "Sergio Álvarez",
-      "email": "sergio@codecoolture.com"
+      "name": "Scott Hutcheson",
+      "email": "scott@smhutch.co.uk"
     },
     {
-      "name": "cristianbgp",
-      "email": "cristian.granda.pastor@gmail.com"
+      "name": "Sergio Álvarez",
+      "email": "sergio@codecoolture.com"
     },
     {
       "name": "Miguel Piedrafita",
@@ -82,12 +82,12 @@
       "email": "me@leerob.io"
     },
     {
-      "name": "Rubén",
-      "email": "rmoyarodriguez@gmail.com"
-    },
-    {
       "name": "Mike San Román",
       "email": "mike@msanroman.io"
+    },
+    {
+      "name": "Rubén",
+      "email": "rmoyarodriguez@gmail.com"
     }
   ],
   "repository": {
