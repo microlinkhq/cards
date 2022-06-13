@@ -40,4 +40,5 @@ jobs:
         run: |
           git config --global user.email ${{ secrets.GIT_EMAIL }}
           git config --global user.name ${{ secrets.GIT_USERNAME }}
+          npm set "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN  }}"
           npm run release
