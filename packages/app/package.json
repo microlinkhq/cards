@@ -46,7 +46,7 @@
     "next-transpile-modules": "~9.0.0",
     "polished": "~4.2.2",
     "prettier": "~2.6.2",
-    "react": "~18.1.0",
+    "react": "~18.2.0",
     "react-aspect-ratio": "~1.1.2",
     "react-dom": "~18.1.0",
     "react-live": "~2.4.1",
