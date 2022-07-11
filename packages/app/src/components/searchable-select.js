@@ -1,21 +1,18 @@
 import ReactSelect, { components } from 'react-select'
 import { Box, Flex, Text } from 'theme-ui'
 import { useRef, useMemo } from 'react'
+import * as presets from './presets'
 import { lighten } from 'polished'
 import Image from 'next/image'
 
 import { theme as themeBase } from '@/theme'
 import { getPresetSlug } from '@/lib'
 
-const previews = (() => {
-  const { scope, ...presets } = require('./presets')
-
-  return Object.values(presets).reduce((acc, { name }) => {
-    const slug = getPresetSlug(name)
-    acc[slug] = require(`../../public/preview/${slug}.png`).default
-    return acc
-  }, {})
-})()
+const previews = Object.values(presets).reduce((acc, { name }) => {
+  const slug = getPresetSlug(name)
+  acc[slug] = require(`../../public/preview/${slug}.png`).default
+  return acc
+}, {})
 
 const Option = ({ innerRef, innerProps, children, value, ...props }) => (
   <components.Option {...props}>
