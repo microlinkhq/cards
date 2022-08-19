@@ -30,7 +30,7 @@
   "dependencies": {
     "@emotion/react": "~11.10.0",
     "@kikobeats/use-query-state": "1.2.1",
-    "@mdx-js/react": "~1.6.22",
+    "@mdx-js/react": "~2.1.3",
     "@microlink/mql": "~0.10.26",
     "@microlink/react": "~5.5.9",
     "@microlink/react-json-view": "~1.22.2",
