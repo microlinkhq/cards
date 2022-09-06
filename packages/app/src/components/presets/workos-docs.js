@@ -62,7 +62,7 @@ const code = (
                 backgroundColor: '#f5f5ff',
                 color: '#6363f1',
                 display: 'inline',
-                fontSize: 16,
+                fontSize: 20,
                 fontWeight: 400,
                 fontFamily: 'Untitled Sans',
                 lineHeight: '20px',
@@ -75,7 +75,7 @@ const code = (
           <Paragraph
             sx={{
               width: '100%',
-              fontSize: 32,
+              fontSize: 40,
               fontWeight: 500,
               lineHeight: 1.2,
               letterSpacing: '-.04em',
