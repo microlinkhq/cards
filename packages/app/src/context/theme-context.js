@@ -41,7 +41,7 @@ export default function ThemeContext () {
     const borderColor = rgba(color, 0.1)
     const iconColor = rgba(color, 0.75)
     return { bg, borderColor, color, contrast, iconColor }
-  }, [colorMode])
+  }, [editorTheme])
 
   return { colorMode, changeTheme: () => nextTheme(setColorMode), theme }
 }
