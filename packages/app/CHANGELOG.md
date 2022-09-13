@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://github.com/microlinkhq/cards/compare/v1.12.1...v1.13.0) (2022-09-13)
+
+### Bug Fixes
+
+* linter ([ff5bbd3](https://github.com/microlinkhq/cards/commit/ff5bbd336e0a6899bf75fd60012ffe6b48a04661))
+
+### Features
+
+* add WorkOS Docs preset ([8cddd61](https://github.com/microlinkhq/cards/commit/8cddd615e4dc182c31befa7e6ec91e04c1f61ba7))
+* tweak font size for WorkOS Docs preset ([12bc628](https://github.com/microlinkhq/cards/commit/12bc628ff683b612de1f6c15095319f6a1a80875))
+
 ## [1.12.1](https://github.com/microlinkhq/cards/compare/v1.12.0...v1.12.1) (2022-06-27)
 
 **Note:** Version bump only for package @microlink/cards-app
