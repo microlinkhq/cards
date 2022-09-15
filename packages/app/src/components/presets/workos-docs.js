@@ -51,8 +51,8 @@ const code = (
           }}
         >
           <svg
-            width='267'
-            height='34'
+            width='218'
+            height='28'
             viewBox='0 0 267 34'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'
