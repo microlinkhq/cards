@@ -28,13 +28,13 @@
     "share"
   ],
   "dependencies": {
-    "@emotion/react": "~11.10.0",
+    "@emotion/react": "~11.10.4",
     "@kikobeats/use-query-state": "1.2.1",
     "@mdx-js/react": "~1.6.22",
     "@microlink/mql": "~0.10.28",
     "@microlink/react": "~5.5.9",
     "@microlink/react-json-view": "~1.22.2",
-    "@monaco-editor/react": "~4.4.5",
+    "@monaco-editor/react": "~4.4.6",
     "@snackbar/core": "~1.7.0",
     "babel-plugin-macros": "~3.1.0",
     "cycled": "~2.0.0",
@@ -51,8 +51,8 @@
     "react-live": "~2.4.1",
     "react-select": "~5.4.0",
     "react-tabs": "~5.1.0",
-    "styled-components": "~5.3.5",
-    "theme-ui": "~0.14.7",
+    "styled-components": "~5.3.6",
+    "theme-ui": "~0.15.1",
     "throttle-debounce": "~5.0.0",
     "tickedoff": "~1.0.2"
   },
