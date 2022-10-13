@@ -49,7 +49,7 @@
     "react-aspect-ratio": "~1.1.2",
     "react-dom": "~18.2.0",
     "react-live": "~2.4.1",
-    "react-select": "~5.4.0",
+    "react-select": "~5.5.0",
     "react-tabs": "~5.1.0",
     "styled-components": "~5.3.6",
     "theme-ui": "~0.15.1",
