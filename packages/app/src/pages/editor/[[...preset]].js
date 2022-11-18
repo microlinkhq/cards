@@ -59,11 +59,6 @@ export default function Editor ({ presetName, presetSlug }) {
           <AppFrame sx={{ bg }}>
             <PreviewArea isEditor />
             <Sidebar />
-            <Script
-              async
-              crossOrigin='anonymous'
-              src='https://polyfill.io/v3/polyfill.min.js?features=ResizeObserver'
-            />
           </AppFrame>
           <Overlays />
         </>
