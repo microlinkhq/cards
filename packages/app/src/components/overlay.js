@@ -41,7 +41,7 @@ export const Overlay = ({
   isOpen,
   ...props
 }) => {
-  const onDismiss = (event) => {
+  const onDismiss = event => {
     if (event.target.dataset.overlayAction === 'close') {
       onClose(event)
     }
@@ -81,7 +81,7 @@ export const Overlay = ({
                   display: 'flex',
                   flexDirection: 'column',
                   bg: backgroundColor,
-                  color: color,
+                  color,
                   position: 'relative',
                   zIndex: 999,
                   width: fullWidth ? '100%' : 560,
