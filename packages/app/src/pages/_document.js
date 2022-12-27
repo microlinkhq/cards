@@ -36,7 +36,7 @@ export default class MyDocument extends Document {
           <meta charSet='utf-8' />
           <link
             rel='preconnect'
-            href='https://fonts.gstatic.com'
+            href='https://fonts.googleapis.com'
             crossOrigin='anonymous'
           />
           <link
@@ -48,18 +48,13 @@ export default class MyDocument extends Document {
             href='https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;500;600&display=optional'
             rel='stylesheet'
           />
-
           {/* <!-- Basic --> */}
-
           <meta property='og:type' content='website' />
           <meta property='og:site_name' content={META.title} />
-
           <meta httpEquiv='x-ua-compatible' content='ie=edge' />
           <meta property='apple-mobile-web-app-capable' content='yes' />
           <meta property='mobile-web-app-capable' content='yes' />
-
           {/* <!-- Favicon --> */}
-
           <link
             rel='apple-touch-icon-precomposed'
             sizes='57x57'
