@@ -29,7 +29,7 @@
   ],
   "dependencies": {
     "@emotion/react": "~11.10.5",
-    "@kikobeats/use-query-state": "1.2.1",
+    "@kikobeats/use-query-state": "1.2.2",
     "@microlink/mql": "~0.10.31",
     "@microlink/react": "~5.5.11",
     "@microlink/react-json-view": "~1.22.2",
