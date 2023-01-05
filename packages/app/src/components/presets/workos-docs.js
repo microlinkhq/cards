@@ -119,23 +119,25 @@ const code = (
         >
           <Flex>
             <Box sx={{ flex: 'auto', mr: 4 }}>
-              <Box>
-                <Text
-                  sx={{
-                    borderRadius: 32,
-                    backgroundColor: 'rgba(95, 92, 254, 0.25)',
-                    color: '#938FFF',
-                    display: 'inline',
-                    fontSize: 24,
-                    fontWeight: 500,
-                    fontFamily: 'Untitled Sans',
-                    lineHeight: '20px',
-                    padding: '12px 20px'
-                  }}
-                >
-                  {query.category}
-                </Text>
-              </Box>
+              {query.category !== '' && (
+                <Box>
+                  <Text
+                    sx={{
+                      borderRadius: 32,
+                      backgroundColor: 'rgba(95, 92, 254, 0.25)',
+                      color: '#938FFF',
+                      display: 'inline',
+                      fontSize: 24,
+                      fontWeight: 500,
+                      fontFamily: 'Untitled Sans',
+                      lineHeight: '20px',
+                      padding: '12px 20px'
+                    }}
+                  >
+                    {query.category}
+                  </Text>
+                </Box>
+              )}
               <Paragraph
                 sx={{
                   width: '100%',
