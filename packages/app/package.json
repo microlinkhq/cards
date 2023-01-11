@@ -38,7 +38,7 @@
     "babel-plugin-macros": "~3.1.0",
     "cycled": "~2.0.0",
     "deep-object-diff": "~1.1.9",
-    "framer-motion": "~8.3.3",
+    "framer-motion": "~8.4.0",
     "lz-ts": "~1.1.2",
     "monaco-themes": "~0.4.3",
     "next": "13.1.1",
