@@ -1,7 +1,13 @@
-/* eslint-disable no-use-before-define */
-
 import Inline from '../inline.macro'
 import { Image, Box, Flex, Text } from './scope'
+
+const query = {
+  bg: 'white',
+  color: 'black',
+  logo: 'https://svgur.com/i/KBR.svg',
+  domain: 'rauchg.com',
+  title: '2023 in Review'
+}
 
 const code = (
   <Inline>
@@ -64,13 +70,5 @@ const code = (
     </>
   </Inline>
 )
-
-const query = {
-  bg: 'white',
-  color: 'black',
-  logo: 'https://svgur.com/i/KBR.svg',
-  domain: 'rauchg.com',
-  title: '2020 in Review'
-}
 
 export const rauchg = { name: 'rauchg', code, query }

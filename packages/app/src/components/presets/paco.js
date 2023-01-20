@@ -1,7 +1,13 @@
-/* eslint-disable no-use-before-define */
-
 import Inline from '../inline.macro'
 import { Link, Image, Flex, Text } from './scope'
+
+const query = {
+  color: '#fff',
+  bg: '#000',
+  logo: 'https://svgur.com/i/L4d.svgnull',
+  domain: 'https://paco.im',
+  title: 'Shared Hook State with SWR'
+}
 
 const code = (
   <Inline>
@@ -35,13 +41,5 @@ const code = (
     </Flex>
   </Inline>
 )
-
-const query = {
-  color: '#fff',
-  bg: '#000',
-  logo: 'https://svgur.com/i/L4d.svgnull',
-  domain: 'https://paco.im',
-  title: 'Shared Hook State with SWR'
-}
 
 export const paco = { name: 'paco', code, query }

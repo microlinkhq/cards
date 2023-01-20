@@ -1,7 +1,16 @@
-/* eslint-disable no-use-before-define */
-
 import Inline from '../inline.macro'
 import { Avatar, Link, Image, Box, Flex, Paragraph } from './scope'
+
+const query = {
+  gradient: ['#D25778', '#EC585C', '#E7D155', '#56A8C6'],
+  color: 'black',
+  bg: 'white',
+  ticketNumber: '014747',
+  avatar: 'https://i.imgur.com/zvYelo4.jpg',
+  github: 'GermanRodrickson',
+  name: 'Germán Rodríguez',
+  logos: 'https://i.imgur.com/rbVQBad.png'
+}
 
 const code = (
   <Inline>
@@ -138,16 +147,4 @@ const code = (
     </Flex>
   </Inline>
 )
-
-const query = {
-  gradient: ['#D25778', '#EC585C', '#E7D155', '#56A8C6'],
-  color: 'black',
-  bg: 'white',
-  ticketNumber: '014747',
-  avatar: 'https://i.imgur.com/zvYelo4.jpg',
-  github: 'GermanRodrickson',
-  name: 'Germán Rodríguez',
-  logos: 'https://i.imgur.com/rbVQBad.png'
-}
-
 export const conference = { name: 'Conference', code, query }

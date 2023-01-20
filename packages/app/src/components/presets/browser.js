@@ -1,7 +1,27 @@
-/* eslint-disable no-use-before-define */
-
 import Inline from '../inline.macro'
 import { Image, Flex } from './scope'
+
+const query = {
+  bg: {
+    dark: '#222222',
+    light: '#F7F7F7'
+  },
+  borderColor: {
+    dark: '#333333',
+    light: '#EAEAEA'
+  },
+  image: 'https://i.imgur.com/J86MSbd.png',
+  browsers: {
+    dark: {
+      safari: 'https://svgshare.com/i/LMB.svg'
+    },
+    light: {
+      safari: 'https://svgshare.com/i/LNE.svg'
+    }
+  },
+  browser: 'safari',
+  theme: 'dark'
+}
 
 const code = (
   <Inline>
@@ -32,27 +52,5 @@ const code = (
     </Flex>
   </Inline>
 )
-
-const query = {
-  bg: {
-    dark: '#222222',
-    light: '#F7F7F7'
-  },
-  borderColor: {
-    dark: '#333333',
-    light: '#EAEAEA'
-  },
-  image: 'https://i.imgur.com/J86MSbd.png',
-  browsers: {
-    dark: {
-      safari: 'https://svgshare.com/i/LMB.svg'
-    },
-    light: {
-      safari: 'https://svgshare.com/i/LNE.svg'
-    }
-  },
-  browser: 'safari',
-  theme: 'dark'
-}
 
 export const browser = { name: 'Browser', code, query }

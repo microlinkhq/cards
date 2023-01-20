@@ -1,7 +1,13 @@
-/* eslint-disable no-use-before-define */
-
 import Inline from '../inline.macro'
 import { Link, Image, Box, Flex, Text } from './scope'
+
+const query = {
+  name: 'Belén Curcio',
+  avatar:
+    'https://www.datocms-assets.com/35255/1601389074-okbel.png?crop=focalpoint&fit=crop&fm=jpg&fp-x=0.5&fp-y=0.5&h=192&w=192',
+  logo: 'https://www.datocms-assets.com/35255/1603678368-logo.svg',
+  jobtitle: 'Solution Architect @ Vercel'
+}
 
 const code = (
   <Inline>
@@ -95,13 +101,5 @@ const code = (
     </>
   </Inline>
 )
-
-const query = {
-  name: 'Belén Curcio',
-  avatar:
-    'https://www.datocms-assets.com/35255/1601389074-okbel.png?crop=focalpoint&fit=crop&fm=jpg&fp-x=0.5&fp-y=0.5&h=192&w=192',
-  logo: 'https://www.datocms-assets.com/35255/1603678368-logo.svg',
-  jobtitle: 'Solution Architect @ Vercel'
-}
 
 export const nextjsConf = { name: 'Next.js Conf', code, query }
