@@ -146,7 +146,7 @@ const code = (
                   lineHeight: 1.2,
                   letterSpacing: '-.04em',
                   display: 'flex',
-                  justifyContent: 'center',
+                  justifyContent: 'left',
                   alignItems: 'center',
                   fontFamily: 'Untitled Sans',
                   color: '#e3e5e8',
