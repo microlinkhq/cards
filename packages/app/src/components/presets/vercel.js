@@ -1,7 +1,40 @@
-/* eslint-disable no-use-before-define */
-
 import Inline from '../inline.macro'
 import { Image, Link, Box, Text } from './scope'
+
+const query = {
+  headline: 'Serverless Deployments',
+  caption: 'with Vercel',
+  logo: 'vercel',
+  theme: 'dark',
+  bg: {
+    light: 'white',
+    dark: 'black'
+  },
+  color: {
+    light: 'black',
+    dark: 'white'
+  },
+  radial: {
+    light: 'lightgray',
+    dark: 'dimgray'
+  },
+  logos: {
+    light: {
+      vercel:
+        'https://assets.zeit.co/image/upload/front/assets/design/zeit-black-triangle.svg',
+      next: 'https://assets.zeit.co/image/upload/front/assets/design/nextjs-black-logo.svg',
+      hyper:
+        'https://assets.zeit.co/image/upload/front/assets/design/hyper-color-logo.svg'
+    },
+    dark: {
+      vercel:
+        'https://assets.zeit.co/image/upload/front/assets/design/zeit-white-triangle.svg',
+      next: 'https://assets.zeit.co/image/upload/front/assets/design/nextjs-white-logo.svg',
+      hyper:
+        'https://assets.zeit.co/image/upload/front/assets/design/hyper-bw-logo.svg'
+    }
+  }
+}
 
 const code = (
   <Inline>
@@ -53,42 +86,5 @@ const code = (
     </Box>
   </Inline>
 )
-
-const query = {
-  headline: 'Serverless Deployments',
-  caption: 'with Vercel',
-  logo: 'vercel',
-  theme: 'dark',
-  bg: {
-    light: 'white',
-    dark: 'black'
-  },
-  color: {
-    light: 'black',
-    dark: 'white'
-  },
-  radial: {
-    light: 'lightgray',
-    dark: 'dimgray'
-  },
-  logos: {
-    light: {
-      vercel:
-        'https://assets.zeit.co/image/upload/front/assets/design/zeit-black-triangle.svg',
-      next:
-        'https://assets.zeit.co/image/upload/front/assets/design/nextjs-black-logo.svg',
-      hyper:
-        'https://assets.zeit.co/image/upload/front/assets/design/hyper-color-logo.svg'
-    },
-    dark: {
-      vercel:
-        'https://assets.zeit.co/image/upload/front/assets/design/zeit-white-triangle.svg',
-      next:
-        'https://assets.zeit.co/image/upload/front/assets/design/nextjs-white-logo.svg',
-      hyper:
-        'https://assets.zeit.co/image/upload/front/assets/design/hyper-bw-logo.svg'
-    }
-  }
-}
 
 export const vercel = { name: 'Vercel', code, query }

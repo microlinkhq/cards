@@ -1,7 +1,12 @@
-/* eslint-disable no-use-before-define */
-
 import Inline from '../inline.macro'
 import { Link, Flex, Paragraph } from './scope'
+
+const query = {
+  bg: '#fff',
+  color: '#000',
+  description: 'Create Content, Get a Highly Optimized Website',
+  title: 'Contentz'
+}
 
 const code = (
   <Inline>
@@ -44,12 +49,5 @@ const code = (
     </Flex>
   </Inline>
 )
-
-const query = {
-  bg: '#fff',
-  color: '#000',
-  description: 'Create Content, Get a Highly Optimized Website',
-  title: 'Contentz'
-}
 
 export const contentz = { name: 'Contentz', code, query }

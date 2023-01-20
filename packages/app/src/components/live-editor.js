@@ -11,7 +11,7 @@ import { editorThemes } from '@/context/theme-context'
 import { debounce, isDev } from '@/lib'
 import { theme } from '@/theme'
 
-import * as scope from './presets/scope'
+import scope from './presets/scope'
 
 const LivePreviewWrapper = styled('div')`
   height: 100%;
