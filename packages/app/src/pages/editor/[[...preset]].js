@@ -58,7 +58,7 @@ export default function Editor ({ presetName, presetSlug }) {
         <>
           <AppFrame sx={{ bg }}>
             <PreviewArea isEditor />
-            <Sidebar />
+            {/* <Sidebar /> */}
           </AppFrame>
           <Overlays />
         </>

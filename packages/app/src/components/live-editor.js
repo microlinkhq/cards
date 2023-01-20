@@ -1,6 +1,9 @@
 import Monaco from '@monaco-editor/react'
 import styled from 'styled-components'
 import { Text } from 'theme-ui'
+
+import Inline from './inline.macro'
+
 import {
   LiveProvider as BaseProvider,
   LiveError as BaseError,
@@ -68,7 +71,32 @@ LiveProviderBase.defaultProps = {
 
 export const LiveProvider = ({ queryVariables: query, ...props }) => {
   const extendedScope = { ...scope, query }
-  return <LiveProviderBase {...props} scope={extendedScope} />
+
+  // at this point, it should be possible to
+  // call `props.code(extendedScope)` but babel macro is crying
+  const MyComponent = () => (
+    <Inline>
+      <div
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          display: 'flex',
+          color: 'white'
+        }}
+      >
+        <strong>Hello World!</strong>
+      </div>
+    </Inline>
+  )
+
+  return (
+    <LiveProviderBase
+      {...props}
+      code={MyComponent()}
+      scope={extendedScope}
+      noInline={false}
+    />
+  )
 }
 
 const LiveEditorBase = styled(Monaco)``
