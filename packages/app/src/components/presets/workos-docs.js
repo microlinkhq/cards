@@ -180,9 +180,7 @@ const code = (
           </Flex>
         </Box>
       )}
-    </Box>
 
-    <Box>
       {query.version !== "2" && (
         <Flex
           sx={{
