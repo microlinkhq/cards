@@ -16,7 +16,6 @@ export { Overlay } from './overlay'
 export { SearchableSelect } from './searchable-select'
 export { Meta } from './meta'
 export { Spinner } from './spinner'
-export { Lighthouse } from './lighthouse'
 export { Tab, Tabs, TabList, TabPanel } from './tabs'
 
 export { presets }
