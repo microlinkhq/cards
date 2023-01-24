@@ -11,6 +11,18 @@ const query = {
 const code = (
   <Inline>
     <Box>
+      <Link href='https://cdn.workos.com' rel='preconnect' />
+
+      <Link
+        href="https://cdn.workos.com/www/open-graph/main.css"
+        rel="stylesheet"
+      />
+
+      <Link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap"
+        rel="stylesheet"
+      />
+
       {query.version === "2" && (
         <Box
           sx={{
@@ -20,15 +32,6 @@ const code = (
             fontFamily: "Untitled Sans, Inter, sans-serif",
           }}
         >
-          <Link
-            href="https://cdn.workos.com/www/open-graph/main.css"
-            rel="stylesheet"
-          />
-          <Link
-            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&display=block"
-            rel="stylesheet"
-          />
-
           <Box
             sx={{
               position: "absolute",
@@ -70,8 +73,20 @@ const code = (
             }}
           />
 
-          <Flex sx={{ position: "relative", flexDirection: "column" }}>
-            <Box sx={{ padding: 56, height: 362, flexGrow: 0, flexShrink: 0 }}>
+          <Flex
+            sx={{
+              position: "relative",
+              flexDirection: "column",
+            }}
+          >
+            <Box
+              sx={{
+                padding: 56,
+                height: 362,
+                flexGrow: 0,
+                flexShrink: 0,
+              }}
+            >
               <Box
                 sx={{
                   display: "-webkit-box",
@@ -115,6 +130,7 @@ const code = (
                       display: "block",
                       fontSize: 34,
                       fontFamily: "IBM Plex Mono, Menlo, monospace",
+                      fontWeight: 500,
                       lineHeight: 56 / 34,
                       letterSpacing: "-0.01em",
                       color: "rgba(239, 243, 255, 0.635)",
@@ -171,7 +187,7 @@ const code = (
                   fontSize: 35,
                   marginLeft: 12,
                   letterSpacing: "-0.02em",
-                  transform: "translateY(-0.5px)",
+                  lineHeight: 24 / 35,
                 }}
               >
                 {query.category}
@@ -190,10 +206,6 @@ const code = (
             backgroundColor: "#1B1B1F",
           }}
         >
-          <Link
-            href="https://cdn.workos.com/www/open-graph/main.css"
-            rel="stylesheet"
-          />
           <Box
             sx={{
               position: "absolute",
