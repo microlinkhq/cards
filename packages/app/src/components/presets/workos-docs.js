@@ -31,7 +31,7 @@ const code = (
       </style>
 
       <Link
-        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&display=block"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=block"
         rel="stylesheet"
       />
 
@@ -142,6 +142,7 @@ const code = (
                       display: "block",
                       fontSize: 34,
                       fontFamily: "IBM Plex Mono, Menlo, monospace",
+                      fontWeight: 500,
                       lineHeight: 56 / 34,
                       letterSpacing: "-0.01em",
                       color: "rgba(239, 243, 255, 0.635)",
