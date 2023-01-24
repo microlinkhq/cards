@@ -34,16 +34,9 @@ export default class MyDocument extends Document {
       <Html lang='en' prefix='og: https://ogp.me/ns#'>
         <Head>
           <meta charSet='utf-8' />
-          <link
-            rel='preconnect'
-            href='https://fonts.googleapis.com'
-            crossOrigin='anonymous'
-          />
-          <link
-            rel='preconnect'
-            href='https://cdn.microlink.io'
-            crossOrigin='anonymous'
-          />
+          <link rel='preconnect' href='https://fonts.googleapis.com' />
+          <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin />
+          <link rel='preconnect' href='https://cdn.microlink.io' />
           <link
             href='https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;500;600&display=optional'
             rel='stylesheet'
