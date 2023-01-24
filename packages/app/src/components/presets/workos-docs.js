@@ -13,21 +13,21 @@ const code = (
     <Box>
       <style>
         {`
-        @font-face {
-          font-family: 'Untitled Sans';
-          src: url('https://cdn.workos.com/www/open-graph/untitled-sans-regular.woff2') format('woff2');
-          font-weight: 400;
-          font-style: normal;
-          font-display: block;
-        }
-        @font-face {
-          font-family: 'Untitled Sans';
-          src: url('https://cdn.workos.com/www/open-graph/untitled-sans-medium.woff2') format('woff2');
-          font-weight: 500;
-          font-style: normal;
-          font-display: block;
-        }
-      `}
+          @font-face {
+            font-family: 'Untitled Sans';
+            src: url('https://cdn.workos.com/www/open-graph/untitled-sans-regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: block;
+          }
+          @font-face {
+            font-family: 'Untitled Sans';
+            src: url('https://cdn.workos.com/www/open-graph/untitled-sans-medium.woff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+            font-display: block;
+          }
+        `}
       </style>
 
       <Link
