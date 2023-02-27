@@ -128,7 +128,7 @@ const code = (
                     fontSize: 40,
                     lineHeight: 56 / 40,
                     letterSpacing: '-0.01em',
-                    color: 'rgba(239, 243, 255, 0.635)'
+                    color: 'rgba(241, 246, 254, 0.7)'
                   }}
                 >
                   {query.description}
@@ -144,7 +144,7 @@ const code = (
                     fontWeight: 500,
                     lineHeight: 56 / 34,
                     letterSpacing: '-0.01em',
-                    color: 'rgba(239, 243, 255, 0.635)'
+                    color: 'rgba(241, 246, 254, 0.7)'
                   }}
                 >
                   {query.code}
