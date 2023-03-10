@@ -2,7 +2,7 @@
   "name": "@microlink/cards",
   "description": "The easiest way to create and share dynamic images at scale.",
   "homepage": "https://github.com/microlinkhq/cards/tree/master/packages/npm",
-  "version": "1.13.43",
+  "version": "1.13.44",
   "main": "src/index.js",
   "author": {
     "email": "hello@microlink.io",

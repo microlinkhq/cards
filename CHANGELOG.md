@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.13.44 (2023-03-10)
+
+**Note:** Version bump only for package @microlink/cards-root
+
 ## 1.13.43 (2023-03-08)
 
 **Note:** Version bump only for package @microlink/cards-root
