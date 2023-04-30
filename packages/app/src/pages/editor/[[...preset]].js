@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 
-import { AppFrame, presets, Meta, Spinner, Script } from '@/components'
+import { AppFrame, presets, Meta, Spinner } from '@/components'
 import { Overlays, PreviewArea, Sidebar } from '@/containers'
 import { getPresetBySlug, getPresetSlug } from '@/lib'
 import { META, OVERLAY_STATE } from '@/constants'
