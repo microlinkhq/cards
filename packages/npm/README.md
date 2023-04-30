@@ -40,8 +40,8 @@ const build = async () =>
   })
 
 build()
-  .then(outputFiles => console.log(outputFiles) && process.exit())
-  .catch(err => console.error(err) && process.exit(1))
+  .then(outputFiles => console.log(outputFiles))
+  .catch(error => console.error(error) || process.exit(1))
 ```
 
 ## License
