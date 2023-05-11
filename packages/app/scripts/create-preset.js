@@ -94,11 +94,7 @@ const main = async () => {
   fs.writeFileSync(presetsIndexPath, newPresetsIndex)
 }
 
-main()
-  .then(() => {
-    process.exit()
-  })
-  .catch(err => {
-    console.error(err.message)
-    process.exit(1)
-  })
+main().catch(error => {
+  console.error(error.message)
+  process.exit(1)
+})

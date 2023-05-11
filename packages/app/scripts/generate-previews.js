@@ -52,11 +52,7 @@ const main = async () => {
   await Promise.all(presets.map(generatePreview))
 }
 
-main()
-  .then(() => {
-    process.exit()
-  })
-  .catch(err => {
-    console.error(err)
-    process.exit(1)
-  })
+main().catch(error => {
+  console.error(error)
+  process.exit(1)
+})
