@@ -47,7 +47,7 @@
     "react": "~18.2.0",
     "react-aspect-ratio": "~1.1.4",
     "react-dom": "~18.2.0",
-    "react-live": "~4.0.1",
+    "react-live": "~4.1.1",
     "react-select": "~5.7.0",
     "react-tabs": "~6.0.0",
     "styled-components": "~5.3.6",
