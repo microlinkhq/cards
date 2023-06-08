@@ -40,7 +40,7 @@ const code = (
           flexDirection: 'column',
           width: '75%',
           boxShadow: 'rgba(0, 0, 0, 0.25) 0px 30px 60px',
-          border: '1px solid',
+          border: 1,
           borderColor: query.borderColor[query.theme],
           borderBottom: 0,
           borderRadius: '4px'

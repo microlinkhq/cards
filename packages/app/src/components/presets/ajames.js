@@ -32,7 +32,8 @@ const code = (
     <Box
       sx={{
         position: 'relative',
-        border: '1px solid black',
+        border: 1,
+        borderColor: 'black',
         backgroundColor: query.bgBase,
         backgroundImage: `url(${query.image})`,
         backgroundSize: 'contain',

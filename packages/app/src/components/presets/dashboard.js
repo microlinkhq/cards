@@ -139,7 +139,8 @@ const code = (
                 flexDirection: 'column',
                 background,
                 color,
-                border: `1px solid ${tintBg}`
+                border: 1,
+                borderColor: tintBg
               }}
             >
               {/* Header */}
@@ -285,13 +286,14 @@ const code = (
                   </svg>
                 </Flex>
 
-                <Flex sx={{ height: '50%', borderTop: `1px solid ${tintBg}` }}>
+                <Flex sx={{ height: '50%', borderTop: 1, borderColor: tintBg }}>
                   {/* Monthly analytics */}
                   <Box
                     sx={{
                       flex: '1 0 60%',
                       position: 'relative',
-                      borderRight: `1px solid ${tintBg}`,
+                      borderRight: 1,
+                      borderColor: tintBg,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',

@@ -165,7 +165,8 @@ const code = (
                     width: 80,
                     height: 80,
                     background: `url('${data.image.url}') no-repeat center center / cover`,
-                    border: '1px solid #e0e0e0',
+                    border: 1,
+                    borderColor: '#e0e0e0',
                     borderRadius: 6,
                     mr: 20
                   }}
