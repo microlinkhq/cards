@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import { ThemeProvider } from 'theme-ui'
+import { ThemeUIProvider } from 'theme-ui'
 import NextApp from 'next/app'
 
 import 'react-aspect-ratio/aspect-ratio.css'
@@ -24,12 +24,12 @@ export default class App extends NextApp {
   render () {
     const { Component, pageProps } = this.props
     return (
-      <ThemeProvider theme={theme}>
+      <ThemeUIProvider theme={theme}>
         <GlobalStylesheet />
         <AppContextProvider>
           <Component {...pageProps} />
         </AppContextProvider>
-      </ThemeProvider>
+      </ThemeUIProvider>
     )
   }
 }

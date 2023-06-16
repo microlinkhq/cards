@@ -51,7 +51,7 @@
     "react-select": "~5.7.0",
     "react-tabs": "~6.0.0",
     "styled-components": "~5.3.6",
-    "theme-ui": "~0.15.4",
+    "theme-ui": "~0.16.0",
     "throttle-debounce": "~5.0.0",
     "tickedoff": "~1.0.2"
   },
