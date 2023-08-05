@@ -43,7 +43,7 @@
     "monaco-themes": "~0.4.3",
     "next": "13.4.12",
     "polished": "~4.2.2",
-    "prettier": "~2.8.3",
+    "prettier": "~3.0.1",
     "react": "~18.2.0",
     "react-aspect-ratio": "~1.1.4",
     "react-dom": "~18.2.0",
