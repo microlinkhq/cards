@@ -5,7 +5,7 @@ import { useMountedRef } from '@/hooks'
 export const FetchFactory = ({
   cache,
   children,
-  fetcher,
+  fetcher = fetch,
   options,
   promiseHandler,
   url
