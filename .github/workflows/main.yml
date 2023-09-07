@@ -56,7 +56,7 @@ jobs:
           version: latest
           run_install: true
       - name: Test
-        run: npm test
+        run: pnpm test
       - name: Release
         env:
           CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -65,5 +65,5 @@ jobs:
           git config --global user.email ${{ secrets.GIT_EMAIL }}
           git config --global user.name ${{ secrets.GIT_USERNAME }}
           git pull origin master
-          npm set "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN  }}"
-          npm run release
+          pnpm set "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN  }}"
+          pnpm run release

@@ -27,7 +27,7 @@ jobs:
           version: latest
           run_install: true
       - name: Test
-        run: npm test
+        run: pnpm test
       - name: Report
         run: mkdir -p coverage && npx c8 report --reporter=text-lcov > coverage/lcov.info
       - name: Coverage
