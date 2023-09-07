@@ -30,7 +30,7 @@
   "dependencies": {
     "@emotion/react": "~11.11.0",
     "@kikobeats/use-query-state": "1.2.2",
-    "@microlink/mql": "~0.10.32",
+    "@microlink/mql": "~0.11.2",
     "@microlink/react": "~5.5.12",
     "@microlink/react-json-view": "~1.22.2",
     "@monaco-editor/react": "~4.5.0",
