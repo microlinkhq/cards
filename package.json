@@ -142,7 +142,7 @@
   },
   "scripts": {
     "clean": "pnpm -r exec -- rm -rf node_modules",
-    "contributors": "(pnpm -r exec finepack --parallel && git-authors-cli && finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
+    "contributors": "(pnpm -r exec finepack --parallel && git-authors-cli && npx finepack && git add package.json && git commit -m 'build: contributors' --no-verify) || true",
     "lint": "standard-markdown README.md && pnpm -r run lint",
     "prerelease": "npm run update:check",
     "pretest": "npm run lint",
@@ -159,7 +159,7 @@
     ]
   },
   "nano-staged": {
-    "*.js,!*.min.js,": [
+    "*.js,!*.min.js": [
       "prettier-standard",
       "standard --fix"
     ],
