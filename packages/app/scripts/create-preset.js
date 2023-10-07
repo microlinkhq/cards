@@ -1,8 +1,7 @@
 'use strict'
 
-const fs = require('fs')
 const path = require('path')
-const existsFile = require('exists-file')
+const fs = require('fs')
 
 const { PRESETS_ORIGIN_PATH, PREVIEWS_DIST_PATH } = require('./consts')
 
@@ -55,7 +54,7 @@ const main = async () => {
   const slug = getPresetSlug(presetName)
   const presetPath = path.resolve(PRESETS_ORIGIN_PATH, `${slug}.js`)
 
-  if (existsFile.sync(presetPath)) {
+  if (fs.existsSync(presetPath)) {
     const indicator = `"${presetName}"${
       presetName !== slug ? ` (${slug})` : ''
     }`

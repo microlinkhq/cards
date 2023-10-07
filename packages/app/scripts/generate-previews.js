@@ -3,13 +3,13 @@
 const debug = require('debug-logfmt')('microlink-cards:generate-preview')
 
 const { readdirSync, createWriteStream } = require('fs')
-const existsFile = require('exists-file')
 const mql = require('@microlink/mql')
 const { promisify } = require('util')
 const download = require('download')
 const makeDir = require('make-dir')
 const stream = require('stream')
 const path = require('path')
+const fs = require('fs')
 
 const { PRESETS_ORIGIN_PATH, PREVIEWS_DIST_PATH } = require('./consts')
 
@@ -45,7 +45,7 @@ const generatePreview = async preset => {
 const main = async () => {
   let presets = PRESETS
   if (!process.env.MICROLINK_CARDS_PREVIEW_FORCE) {
-    presets = presets.filter(preset => !existsFile.sync(outputPreset(preset)))
+    presets = presets.filter(preset => !fs.existsSync(outputPreset(preset)))
   }
 
   await makeDir(PREVIEWS_DIST_PATH)
