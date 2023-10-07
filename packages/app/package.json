@@ -61,7 +61,6 @@
     "download": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
-    "exists-file": "latest",
     "make-dir": "latest",
     "next-sitemap": "latest"
   },

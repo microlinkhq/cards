@@ -125,6 +125,7 @@
     "@commitlint/config-conventional": "latest",
     "@ksmithut/prettier-standard": "latest",
     "@lerna-lite/cli": "latest",
+    "@lerna-lite/publish": "latest",
     "c8": "latest",
     "ci-publish": "latest",
     "conventional-github-releaser": "latest",
@@ -159,7 +160,7 @@
     ]
   },
   "nano-staged": {
-    "*.js,!*.min.js": [
+    "*.js": [
       "prettier-standard",
       "standard --fix"
     ],

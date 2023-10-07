@@ -1,10 +1,9 @@
 'use strict'
 
 const slugify = require('@sindresorhus/slugify')
-const existsFile = require('exists-file')
 const temp = require('temperment')
-
 const test = require('ava')
+const fs = require('fs')
 
 const microlinkCards = require('..')
 
@@ -56,6 +55,6 @@ test('export cards', async t => {
   })
 
   outputFiles.forEach(outputFile => {
-    t.true(existsFile.sync(outputFile))
+    t.true(fs.existsSync(outputFile))
   })
 })
