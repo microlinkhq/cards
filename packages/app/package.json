@@ -50,7 +50,7 @@
     "react-live": "~4.1.3",
     "react-select": "~5.8.0",
     "react-tabs": "~6.0.0",
-    "styled-components": "~5.3.6",
+    "styled-components": "~6.1.1",
     "theme-ui": "~0.16.0",
     "throttle-debounce": "~5.0.0",
     "tickedoff": "~1.0.2"
