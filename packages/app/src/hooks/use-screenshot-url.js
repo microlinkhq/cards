@@ -5,7 +5,7 @@ import { DEFAULT_PRESET } from '@/constants'
 
 const shortenUrl = isDev
   ? 'http://localhost:3000/?adblock=false&element=%23screenshot&embed=screenshot.url&meta=false&screenshot&waitUntil.0=load&waitUntil.1=networkidle0&url='
-  : 'https://i.microlink.io/'
+  : 'https://screenshot.microlink.io/'
 
 const getUrl = () => {
   const urlObj = new URL(window.location)
