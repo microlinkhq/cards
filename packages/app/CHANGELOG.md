@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.75](https://github.com/microlinkhq/cards/compare/v1.13.74...v1.13.75) (2024-02-08)
+
+### Bug Fixes
+
+* avoid to use shorten url ([#490](https://github.com/microlinkhq/cards/issues/490)) ([8c67769](https://github.com/microlinkhq/cards/commit/8c6776900b50f5a60988f9b2542ad65472453eb9))
+
 ## [1.13.74](https://github.com/microlinkhq/cards/compare/v1.13.73...v1.13.74) (2024-02-01)
 
 **Note:** Version bump only for package @microlink/cards-app
