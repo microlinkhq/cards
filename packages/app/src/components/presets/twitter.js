@@ -43,31 +43,11 @@ const code = (
         href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=block'
         rel='stylesheet'
       />
-      <MQL
-        url={query.url}
-        options={{
-          data: {
-            retweets: {
-              selector: 'a[href*="retweets"]',
-              attr: 'text'
-            },
-            likes: {
-              selector: 'a[href*="likes"]',
-              attr: 'text'
-            },
-            tweetDate: {
-              selector: 'a[href*="status"] time',
-              type: 'text'
-            }
-          }
-        }}
-      >
+      <MQL url={query.url}>
         {payload => {
-          console.log(payload)
           if (payload === null) return <Spinner />
           const { data } = payload
-
-          const displayName = data.title.replace(' on Twitter', '')
+          const displayName = data.author.split('(')[0].trim()
           const tweetUrl = new URL(query.url)
           const username = tweetUrl.pathname.split('/')[1].toLowerCase()
           const theme = query.themes[query.theme]
@@ -76,6 +56,14 @@ const code = (
           const REGEX_URL =
             /(?:\s)(f|ht)tps?:\/\/([^\s\t\r\n<]*[^\s\t\r\n<)*_,.])/g // regex for urls
           const REGEX_HASHTAG = /\B(#[á-úÁ-Úä-üÄ-Üa-zA-Z0-9_]+)/g // regex for #hashtags
+
+          const formatDateTime = (dateString) => {
+            const date = new Date(dateString);
+            const options = { hour: '2-digit', minute: '2-digit', hour12: true };
+            const formattedTime = date.toLocaleTimeString('en-US', options);
+            const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            return `${formattedTime} · ${formattedDate}`;
+          }
 
           const tweet = (() => {
             let tweet = data.description
@@ -108,7 +96,7 @@ const code = (
               }}
             >
               <Flex as='header' sx={{ width: '100%' }}>
-                <Avatar sx={{ width: '50px' }} src={data.image.url} />
+                <Avatar sx={{ width: '50px' }} src={`https://unavatar.io/twitter/${username}`} />
 
                 <Box sx={{ lineHeight: '1.25', pl: 2 }}>
                   <Text
@@ -155,9 +143,7 @@ const code = (
                     color: query.themes[query.theme].secondary
                   }}
                 >
-                  {data.retweets} {data.likes}
-                  {data.retweets && data.likes ? ' · ' : ''}
-                  {data.tweetDate.replace('·', '')}
+                  {formatDateTime(data.date)}
                 </Text>
               </Flex>
             </Flex>
