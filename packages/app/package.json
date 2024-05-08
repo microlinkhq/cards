@@ -59,7 +59,7 @@
     "babel-plugin-styled-components": "latest",
     "debug-logfmt": "latest",
     "download": "latest",
-    "eslint": "latest",
+    "eslint": "8",
     "eslint-config-next": "latest",
     "make-dir": "latest",
     "next-sitemap": "latest"
