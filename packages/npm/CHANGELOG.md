@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.81](https://github.com/microlinkhq/cards/compare/v1.13.80...v1.13.81) (2024-12-20)
+
+**Note:** Version bump only for package @microlink/cards
+
 ## [1.13.80](https://github.com/microlinkhq/cards/compare/v1.13.79...v1.13.80) (2024-09-19)
 
 **Note:** Version bump only for package @microlink/cards
