@@ -15,9 +15,7 @@ const pipeline = promisify(stream.pipeline)
 const takeScreenshot = async (url, mqlOpts) => {
   const { data } = await mql(url, {
     adblock: false,
-    element: '#screenshot',
-    meta: false,
-    screenshot: true,
+    screenshot: { element: '#screenshot' },
     ...mqlOpts
   })
   return data.screenshot.url
