@@ -16,6 +16,7 @@ const takeScreenshot = async (url, mqlOpts) => {
   const { data } = await mql(url, {
     adblock: false,
     screenshot: { element: '#screenshot' },
+    meta: false,
     ...mqlOpts
   })
   return data.screenshot.url
