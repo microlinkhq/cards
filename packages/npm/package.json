@@ -4,6 +4,7 @@
   "homepage": "https://github.com/microlinkhq/cards/tree/master/packages/npm",
   "version": "1.13.81",
   "main": "src/index.js",
+  "types": "src/index.d.ts",
   "author": {
     "email": "hello@microlink.io",
     "name": "microlink.io",
@@ -46,7 +47,8 @@
     "node": ">= 10"
   },
   "files": [
-    "src"
+    "src",
+    "src/index.d.ts"
   ],
   "scripts": {
     "clean": "rm -rf node_modules",
