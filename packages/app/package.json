@@ -46,7 +46,7 @@
     "prettier": "2",
     "react": "~19.0.0",
     "react-aspect-ratio": "~1.1.9",
-    "react-dom": "~19.0.0",
+    "react-dom": "~19.2.8",
     "react-live": "~4.1.8",
     "react-select": "~5.9.0",
     "react-tabs": "~6.1.0",
