@@ -32,7 +32,7 @@
     "@kikobeats/use-query-state": "1.2.2",
     "@microlink/mql": "~0.13.12",
     "@microlink/react": "~5.5.22",
-    "@microlink/react-json-view": "~1.23.4",
+    "@microlink/react-json-view": "~1.31.25",
     "@monaco-editor/react": "~4.6.0",
     "@snackbar/core": "~1.7.0",
     "babel-plugin-macros": "~3.1.0",
